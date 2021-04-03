@@ -44,7 +44,7 @@ yarn build
 
 #### Resume
 
-自定义 `public/resume/resume-*.yml` 的简历文件。
+自定义 `public/resume/*.resume.yml` 的简历文件。
 
 - 图标可参见 [icones](https://icones.js.org/) 使用
 

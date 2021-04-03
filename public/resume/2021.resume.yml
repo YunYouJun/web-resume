@@ -43,7 +43,7 @@ education:
       studyType: 本科
       city: 上海
     - school: 摸鱼大学
-      icon: "ri:building-line"
+      icon: "ri:building-2-line"
       start: "20xx 年 9 月"
       end: "20xx 年 6 月"
       grade: "GPA: 3.93（专业第一）"
