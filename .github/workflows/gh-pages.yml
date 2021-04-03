@@ -1,0 +1,26 @@
+name: GitHub Pages
+on:
+  push:
+    branches:
+      - main
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
+
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: "14"
+
+      - run: yarn
+      - run: yarn build
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          force_orphan: true

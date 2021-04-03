@@ -1,0 +1,26 @@
+.text-kaiti {
+  font-family: '华文楷体';
+}
+
+.resume {
+  padding: 20px 50px;
+
+  h4 {
+    margin-bottom: 0px;
+  }
+
+  hr {
+    margin: 5px auto;
+  }
+
+  .brand-favicon {
+    height: 18px;
+    padding-bottom: 4px;
+  }
+}
+
+@media (max-width: 767px) {
+  .resume {
+    padding: 20px;
+  }
+}

@@ -1,0 +1,249 @@
+id: Suzumiya Haruhi
+name: 凉宫春日
+info:
+  avatar: https://s4.anilist.co/file/anilistcdn/character/medium/b251-I9jd3QatfZKA.jpg
+  bio: "我对普通的人类没有兴趣。你们之中要是有外星人、未来人、异世界的人、超能力者，就尽管来找我吧。"
+  # birth: "10-08"
+
+contact:
+  email:
+    href: mailto:sos@yunyoujun.cn
+    icon: ri:mail-line
+    label: sos@yunyoujun.cn
+  phone:
+    href: tel:166 6666 6666
+    icon: ri:smartphone-line
+    label: 166 6666 6666
+  blog:
+    href: http://www.haruhi.tv/
+    icon: ri:earth-line
+    label: http://www.haruhi.tv/
+  github:
+    href: https://github.com/YunYouJun
+    icon: ri:github-line
+    label: YunYouJun
+
+education:
+  icon: fa:graduation-cap
+  title: 教育背景
+  histories:
+    - school: 县立北高校
+      icon: "ri:building-line"
+      start: "20xx 年 9 月"
+      end: "20xx 年 6 月"
+      grade: "GPA: 3.92，均分 92.3（专业第一）"
+      area: SOS 团
+      studyType: "高中"
+      city: 日本，兵库县
+    - school: 市立东中
+      icon: "ri:building-2-line"
+      start: "20xx 年 9 月"
+      end: "20xx 年 6 月"
+      grade: "GPA: 3.33（专业前 10%）， CET-6"
+      area: 计算机科学与技术
+      studyType: 初中
+      city: 日本，兵库县
+
+project:
+  icon: ri:folders-line
+  title: 项目经历
+  sets:
+    - name: SOS 团
+      logo: ri:cloud-line
+      type: 组建社团
+      start: "20XX 年 5 月"
+      end: "至今"
+      url: "http://www.haruhi.tv/"
+      summary: 让世界变得更热闹的凉宫春日团
+      keywords:
+        - name: Html
+          icon: simple-icons:html5
+        - name: Css
+          icon: simple-icons:css3
+        - name: JavaScript
+          icon: simple-icons:javascript
+        - name: yaml
+          icon: file-icons:yaml
+      highlights:
+        - 以优秀的组织能力组建社团，并找寻到优秀的部员
+        - 指使部下 阿虚 开发 SOS 团官网，获得千万级 PV
+        - 组织团员开展丰富的合宿活动，破解谜题
+        - 成功拍摄大卖电影「朝比奈实玖瑠的冒险」
+    - name: hexo-theme-yun
+      logo: ri:cloud-line
+      type: 博客主题，开源项目
+      start: "2019 年 5 月"
+      end: "至今"
+      url: "https://yun.yunyoujun.cn"
+      summary: 一个简洁、优雅、快速的博客主题, <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/YunYouJun/hexo-theme-yun?style=social">
+      keywords:
+        - name: pug
+          icon: simple-icons:pug
+        - name: stylus
+          icon: simple-icons:stylus
+        - name: Hexo
+          icon: simple-icons:hexo
+        - name: JavaScript
+          icon: simple-icons:javascript
+        - name: yaml
+          icon: file-icons:yaml
+      highlights:
+        - 使用 pug 与 stylus 进行主题模版开发，熟练使用 CSS3 与 ES6 新特性实现自定义动画与样式
+        - 对 SEO、可访问性与加载速度进行优化，Chrome Lighthouse 测试 SEO/Accessibility/Best Practices 100，Performance 95
+        - 将通用功能抽取为可配置的内容，并为其编写多语言文件与中英文文档
+    - name: el-bot & mirai-ts
+      logo: ri:robot-line
+      type: 服务端，开源项目
+      summary: 聊天机器人框架及 API SDK，能够熟练使用 TypeScript 开发，实现支持可扩展插件的项目架构
+      start: "2020 年 6 月"
+      end: "至今"
+      url: "https://github.com/YunYouJun/el-bot"
+      keywords:
+        - name: TypeScript
+          icon: simple-icons:typescript
+        - name: "Node.js"
+          icon: simple-icons:node-dot-js
+        - name: "npm"
+          icon: simple-icons:npm
+        - name: "mongodb"
+          icon: simple-icons:mongodb
+    - name: Element-Theme-Ink
+      logo: ri:contrast-drop-2-line
+      type: 前端主题，开源项目
+      start: "2018 年 2 月"
+      end: "2019 年 1 月"
+      url: https://ink.elpsy.cn
+      keywords:
+        - name: "Element"
+          logo: https://ink.elpsy.cn/favicon.ico
+        - name: Scss
+          icon: simple-icons:sass
+        - name: Css
+          icon: simple-icons:css3
+        - name: Gulp
+          icon: simple-icons:gulp
+        - name: Vue.js
+          icon: simple-icons:vue-dot-js
+        - name: npm
+          icon: simple-icons:npm
+      summary: 一款极简风格的 Element 主题，使用 Scss 进行编写，Gulp 构建工作流，压缩打包分发至 npm。
+    - name: 其他
+      logo: ri:github-line
+      type: 业余开源项目
+      start: 2017 年 1 月
+      end: 至今
+      url: https://github.com/YunYouJun
+      highlights:
+        - 曾为 element-ui, element-plus, vuepress 等项目积极贡献 PR，并业余开源一些前端项目。
+
+skill:
+  icon: ri:flask-line
+  title: 技能经验
+  sets:
+    - title: 语言
+      keywords:
+        - name: " "
+          icon: simple-icons:markdown
+        - name: " "
+          icon: simple-icons:html5
+        - name: " "
+          icon: simple-icons:css3
+        - name: " "
+          icon: simple-icons:javascript
+        - name: "TypeScript > "
+          icon: simple-icons:typescript
+        - name: "scss == "
+          icon: simple-icons:sass
+        - name: "stylus == "
+          icon: simple-icons:stylus
+        - name: "Python，"
+          icon: simple-icons:python
+        - name: ""
+          icon: simple-icons:php
+        - name: ""
+          icon: simple-icons:cplusplus
+    - title: 环境
+      keywords:
+        - name: "macOS > "
+          icon: simple-icons:apple
+        - name: "Windows > "
+          icon: simple-icons:windows
+        - name: "Linux, "
+          icon: simple-icons:linux
+        - name: "Node.js, "
+          icon: simple-icons:node-dot-js
+        - name: "npm, "
+          icon: simple-icons:npm
+        - name: "Nginx, "
+          icon: simple-icons:nginx
+        - name: "Mysql, "
+          icon: simple-icons:mysql
+        - name: "MongoDB"
+          icon: simple-icons:mongodb
+    - title: 工具
+      keywords:
+        - name: "Vue.js, "
+          icon: simple-icons:vue-dot-js
+        - name: "Element, "
+          logo: https://ink.elpsy.cn/favicon.ico
+        - name: "Vuetify, "
+          icon: simple-icons:vuetify
+        - name: "Nuxt, "
+          icon: simple-icons:nuxt-dot-js
+        - name: "NestJS, "
+          icon: simple-icons:nestjs
+        - name: ""
+          icon: simple-icons:bootstrap
+        - name: ""
+          icon: simple-icons:three-dot-js
+        - name: ", "
+          icon: simple-icons:d3-dot-js
+        - name: "Gulp, "
+          icon: simple-icons:gulp
+        - icon: simple-icons:webpack
+        - name: Vite
+          icon: file-icons:vite
+    - title: 软件
+      keywords:
+        - name: "Visual Studio Code, "
+          icon: simple-icons:visualstudiocode
+        - name: "Cocos Creator, "
+          icon: simple-icons:cocos
+        - name: ""
+          icon: simple-icons:github
+        - name: "&"
+          icon: simple-icons:git
+        - name: "Bash || "
+          icon: ri:terminal-box-line
+        - name: ""
+          icon: simple-icons:adobephotoshop
+        - name: ""
+          icon: simple-icons:adobepremiere
+        - name: ""
+          icon: simple-icons:adobeaftereffects
+
+certificate:
+  icon: ri:award-line
+  title: 奖项表彰
+  histories:
+    - name: 第11回神户动画大赏的电视动画部门大奖
+      place: 神户
+      time: 2008
+    - name: 第11回神户动画大赏的主题曲奖
+      place: 神户
+      time: 2008
+    - name: 2007年东京动画Awards授予的电视动画部门优秀作品赏
+      place: 东京
+      time: 2007
+    - name: 获得ARC Awards 2006最佳动画、最佳喜剧、最佳男女主角等六项奖
+      place: 线上
+      time: 2006
+
+other:
+  icon: ri:information-line
+  title: 其他
+  info:
+    - DVD在日本国内的累计销量超过80万张
+    - 英文版DVD在美国每卷卖出8万套以上
+    - 我对普通的人类没有兴趣。你们之中要是有外星人、未来人、异世界的人、超能力者，就尽管来找我吧。
+    - 我编不下去了……

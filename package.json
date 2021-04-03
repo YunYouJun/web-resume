@@ -1,0 +1,44 @@
+{
+  "name": "resume",
+  "version": "0.1.0",
+  "private": true,
+  "repository": {
+    "url": "https://github.com/YunYouJun/web-resume"
+  },
+  "author": {
+    "url": "https://www.yunyoujun.cn",
+    "email": "me@yunyoujun.cn",
+    "name": "YunYouJun"
+  },
+  "scripts": {
+    "dev": "vite",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs",
+    "serve": "vite-preview",
+    "build": "vite build",
+    "schema": "ts-node-script scripts/schema.ts",
+    "prepare": "husky install"
+  },
+  "dependencies": {
+    "js-yaml": "^4.0.0",
+    "sass": "^1.32.8",
+    "vue": "^3.0.9",
+    "vue-gtag-next": "^1.14.0",
+    "vue-router": "4"
+  },
+  "devDependencies": {
+    "@rollup/plugin-yaml": "^3.0.0",
+    "@types/js-yaml": "^4.0.0",
+    "@types/node": "^14.14.37",
+    "@vitejs/plugin-vue": "^1.2.1",
+    "@vue/compiler-sfc": "^3.0.10",
+    "@yunyoujun/logger": "^0.1.2",
+    "husky": "^6.0.0",
+    "typescript": "^4.2.3",
+    "typescript-json-schema": "^0.50.0",
+    "vite": "^2.1.5",
+    "vite-plugin-components": "^0.8.3",
+    "vite-plugin-pages": "^0.9.1",
+    "vite-plugin-pwa": "^0.6.4"
+  }
+}

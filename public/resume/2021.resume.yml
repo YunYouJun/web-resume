@@ -1,0 +1,260 @@
+id: 云游君
+name: 云游君
+info:
+  avatar: https://yunyoujun.cn/images/avatar.jpg
+  bio: "All at sea."
+
+contact:
+  email:
+    href: mailto:me@yunyoujun.cn
+    icon: ri:mail-line
+    label: me@yunyoujun.cn
+  phone:
+    href: tel:166 xxxx xxxx
+    icon: ri:smartphone-line
+    label: 166 xxxx xxxx
+  blog:
+    href: https://www.yunyoujun.cn
+    icon: ri:earth-line
+    label: https://yunyoujun.cn
+  github:
+    href: https://github.com/YunYouJun
+    icon: ri:github-line
+    label: YunYouJun
+
+education:
+  icon: fa:graduation-cap
+  title: 教育背景
+  histories:
+    - school: 家里蹲大学
+      logo: "/img/logo/cuc-logo.jpg"
+      start: "20xx 年 9 月"
+      end: "20xx 年 6 月"
+      grade: "GPA: 3.92，均分 92.3（专业第三）"
+      area: 计算机应用技术（数字娱乐与动画技术方向）
+      studyType: "硕士"
+      city: 北京
+    - school: 划水大学
+      icon: "ri:building-line"
+      start: "20xx 年 9 月"
+      end: "20xx 年 6 月"
+      grade: "GPA: 3.33（专业前 10%）， CET-6"
+      area: 计算机科学与技术
+      studyType: 本科
+      city: 上海
+    - school: 摸鱼大学
+      icon: "ri:building-line"
+      start: "20xx 年 9 月"
+      end: "20xx 年 6 月"
+      grade: "GPA: 3.93（专业第一）"
+      area: 动画
+      studyType: 跨校辅修
+      city: 上海
+
+project:
+  icon: ri:folders-line
+  title: 项目经历
+  sets:
+    - name: hexo-theme-yun
+      logo: ri:cloud-line
+      type: 博客主题，开源项目
+      start: "2019 年 5 月"
+      end: "至今"
+      url: "https://yun.yunyoujun.cn"
+      summary: 一个简洁、优雅、快速的博客主题, <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/YunYouJun/hexo-theme-yun?style=social">
+      keywords:
+        - name: pug
+          icon: simple-icons:pug
+        - name: stylus
+          icon: simple-icons:stylus
+        - name: Hexo
+          icon: simple-icons:hexo
+        - name: JavaScript
+          icon: simple-icons:javascript
+        - name: yaml
+          icon: file-icons:yaml
+      highlights:
+        - 使用 pug 与 stylus 进行主题模版开发，熟练使用 CSS3 与 ES6 新特性实现自定义动画与样式
+        - 对 SEO、可访问性与加载速度进行优化，Chrome Lighthouse 测试 SEO/Accessibility/Best Practices 100，Performance 95
+        - 将通用功能抽取为可配置的内容，并为其编写多语言文件与中英文文档
+    - name: el-bot & mirai-ts
+      logo: ri:robot-line
+      type: 服务端，开源项目
+      summary: 聊天机器人框架及 API SDK，能够熟练使用 TypeScript 开发，实现支持可扩展插件的项目架构
+      start: "2020 年 6 月"
+      end: "至今"
+      url: "https://github.com/YunYouJun/el-bot"
+      keywords:
+        - name: TypeScript
+          icon: simple-icons:typescript
+        - name: "Node.js"
+          icon: simple-icons:node-dot-js
+        - name: "npm"
+          icon: simple-icons:npm
+        - name: "mongodb"
+          icon: simple-icons:mongodb
+    - name: Element-Theme-Ink
+      logo: ri:contrast-drop-2-line
+      type: 前端主题，开源项目
+      start: "2018 年 2 月"
+      end: "2019 年 1 月"
+      url: https://ink.elpsy.cn
+      keywords:
+        - name: "Element"
+          logo: https://ink.elpsy.cn/favicon.ico
+        - name: Scss
+          icon: simple-icons:sass
+        - name: Css
+          icon: simple-icons:css3
+        - name: Gulp
+          icon: simple-icons:gulp
+        - name: Vue.js
+          icon: simple-icons:vue-dot-js
+        - name: npm
+          icon: simple-icons:npm
+      summary: 一款极简风格的 Element 主题，使用 Scss 进行编写，Gulp 构建工作流，压缩打包分发至 npm。
+    - name: air-conditioner
+      type: 玩具项目
+      logo: ri:snowy-line
+      start: "2019 年 8 月"
+      end: "2021 年 1 月"
+      url: https://www.yunyoujun.cn/air-conditioner/
+      summary: 云空调，便携小空调，为你的夏日带去清凉！
+      keywords:
+        - name: "react"
+          icon: simple-icons:react
+        - name: material-ui
+          icon: simple-icons:material-ui
+        - name: Scss
+          icon: simple-icons:sass
+        - name: Css
+          icon: simple-icons:css3
+      highlights:
+        - "便携，静音，随时随地打开空调"
+        - 低功耗（使用 HTML CSS 而非 Canvas 绘制）
+        - 操作简单，安装便捷
+    - name: 其他
+      logo: ri:github-line
+      type: 业余开源项目
+      start: 2017 年 1 月
+      end: 至今
+      url: https://github.com/YunYouJun
+      highlights:
+        - 曾为 element-ui, element-plus, vuepress 等项目积极贡献 PR，并业余开源一些前端项目。
+
+skill:
+  icon: ri:flask-line
+  title: 技能经验
+  sets:
+    - title: 语言
+      keywords:
+        - name: " "
+          icon: simple-icons:markdown
+        - name: " "
+          icon: simple-icons:html5
+        - name: " "
+          icon: simple-icons:css3
+        - name: " "
+          icon: simple-icons:javascript
+        - name: "TypeScript > "
+          icon: simple-icons:typescript
+        - name: "scss == "
+          icon: simple-icons:sass
+        - name: "stylus == "
+          icon: simple-icons:stylus
+        - name: "Python，"
+          icon: simple-icons:python
+        - name: ""
+          icon: simple-icons:php
+        - name: ""
+          icon: simple-icons:cplusplus
+    - title: 环境
+      keywords:
+        - name: "macOS > "
+          icon: simple-icons:apple
+        - name: "Windows > "
+          icon: simple-icons:windows
+        - name: "Linux, "
+          icon: simple-icons:linux
+        - name: "Node.js, "
+          icon: simple-icons:node-dot-js
+        - name: "npm, "
+          icon: simple-icons:npm
+        - name: "Nginx, "
+          icon: simple-icons:nginx
+        - name: "Mysql, "
+          icon: simple-icons:mysql
+        - name: "MongoDB"
+          icon: simple-icons:mongodb
+    - title: 工具
+      keywords:
+        - name: "Vue.js, "
+          icon: simple-icons:vue-dot-js
+        - name: "Element, "
+          logo: https://ink.elpsy.cn/favicon.ico
+        - name: "Vuetify, "
+          icon: simple-icons:vuetify
+        - name: "Nuxt, "
+          icon: simple-icons:nuxt-dot-js
+        - name: "NestJS, "
+          icon: simple-icons:nestjs
+        - name: ""
+          icon: simple-icons:bootstrap
+        - name: ""
+          icon: simple-icons:three-dot-js
+        - name: ", "
+          icon: simple-icons:d3-dot-js
+        - name: "Gulp, "
+          icon: simple-icons:gulp
+        - icon: simple-icons:webpack
+        - name: Vite
+          icon: file-icons:vite
+    - title: 软件
+      keywords:
+        - name: "Visual Studio Code, "
+          icon: simple-icons:visualstudiocode
+        - name: "Cocos Creator, "
+          icon: simple-icons:cocos
+        - name: ""
+          icon: simple-icons:github
+        - name: "&"
+          icon: simple-icons:git
+        - name: "Bash || "
+          icon: ri:terminal-box-line
+        - name: ""
+          icon: simple-icons:adobephotoshop
+        - name: ""
+          icon: simple-icons:adobepremiere
+        - name: ""
+          icon: simple-icons:adobeaftereffects
+
+certificate:
+  icon: ri:award-line
+  title: 奖项表彰
+  histories:
+    - name: 一等奖学金、校三好学生、优秀毕业生、优秀毕业设计（论文）
+      place: 划水大学
+      time: 20xx-20xx
+    - name: 第X届中国大学生计算机设计大赛二等奖
+      place: XX
+      time: 20XX
+    - name: 第X届 XXX 大学生数学建模挑战赛二等奖
+      place: XX
+      time: 20XX
+    - name: 第X届XX杯XX赛区 C/C++ 组二等奖
+      place: XX赛区
+      time: 20XX
+    - name: 二等奖学金、校三好学生
+      place: 家里蹲大学
+      time: 20XX
+    - name: "XXXX-XXXX: X Xxxx Xxxxx Xxxxxxxxx of Xxxx Xxxxxx Based on X-Xxxxx Algorithm 一作"
+      place: XXXXX (EI - IEEE)
+      time: 20XX
+
+other:
+  icon: ri:information-line
+  title: 其他
+  info:
+    - 爱好科幻，中国科普作协会员，曾获XX幻想节科幻创作大赛一等奖，XX科普科幻青年之星
+    - 为人热心，曾前往XXXX支教，获全国大学生百强暑期优秀实践团队
+    - 我对普通的 996 公司没有兴趣，假如你们当中有假期多，下班早，工资高，又有趣的公司，就尽管来找我吧，完毕！

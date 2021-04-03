@@ -1,0 +1,365 @@
+{
+  "description": "简历配置",
+  "type": "object",
+  "properties": {
+    "name": {
+      "description": "姓名",
+      "type": "string"
+    },
+    "contact": {
+      "$ref": "#/definitions/Contact",
+      "description": "联系方式"
+    },
+    "education": {
+      "$ref": "#/definitions/Education"
+    },
+    "skill": {
+      "$ref": "#/definitions/Skill"
+    },
+    "project": {
+      "$ref": "#/definitions/Project"
+    },
+    "other": {
+      "$ref": "#/definitions/Other"
+    },
+    "certificate": {
+      "$ref": "#/definitions/Certificate"
+    },
+    "footer": {
+      "description": "页脚",
+      "type": "string"
+    }
+  },
+  "required": [
+    "certificate",
+    "contact",
+    "education",
+    "name",
+    "other",
+    "project",
+    "skill"
+  ],
+  "definitions": {
+    "Contact": {
+      "description": "联系方式",
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/definitions/BaseContact"
+      }
+    },
+    "BaseContact": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string"
+        },
+        "icon": {
+          "description": "图标",
+          "type": "string"
+        },
+        "label": {
+          "description": "显示的内容",
+          "type": "string"
+        }
+      },
+      "required": [
+        "href",
+        "icon",
+        "label"
+      ]
+    },
+    "Education": {
+      "description": "教育背景",
+      "type": "object",
+      "properties": {
+        "histories": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EducationHistory"
+          }
+        },
+        "icon": {
+          "description": "图标",
+          "type": "string"
+        },
+        "title": {
+          "description": "标题",
+          "type": "string"
+        }
+      },
+      "required": [
+        "histories",
+        "icon",
+        "title"
+      ]
+    },
+    "EducationHistory": {
+      "type": "object",
+      "properties": {
+        "school": {
+          "type": "string"
+        },
+        "icon": {
+          "type": "string"
+        },
+        "logo": {
+          "description": "学校 Logo",
+          "type": "string"
+        },
+        "start": {
+          "description": "开始时间",
+          "type": "string"
+        },
+        "end": {
+          "description": "结束时间",
+          "type": "string"
+        },
+        "grade": {
+          "description": "成绩",
+          "type": "string"
+        },
+        "area": {
+          "description": "专业类型",
+          "type": "string"
+        },
+        "studyType": {
+          "description": "类型",
+          "type": "string"
+        },
+        "city": {
+          "description": "城市",
+          "type": "string"
+        }
+      },
+      "required": [
+        "area",
+        "city",
+        "end",
+        "grade",
+        "school",
+        "start",
+        "studyType"
+      ]
+    },
+    "Skill": {
+      "description": "技能经验",
+      "type": "object",
+      "properties": {
+        "sets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SkillSet"
+          }
+        },
+        "icon": {
+          "description": "图标",
+          "type": "string"
+        },
+        "title": {
+          "description": "标题",
+          "type": "string"
+        }
+      },
+      "required": [
+        "icon",
+        "sets",
+        "title"
+      ]
+    },
+    "SkillSet": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "keywords": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Keyword"
+          }
+        }
+      },
+      "required": [
+        "keywords",
+        "title"
+      ]
+    },
+    "Keyword": {
+      "description": "关键字",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "名称",
+          "type": "string"
+        },
+        "icon": {
+          "description": "图标",
+          "type": "string"
+        },
+        "logo": {
+          "description": "Logo",
+          "type": "string"
+        }
+      }
+    },
+    "Project": {
+      "description": "项目经历",
+      "type": "object",
+      "properties": {
+        "sets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProjectSet"
+          }
+        },
+        "icon": {
+          "description": "图标",
+          "type": "string"
+        },
+        "title": {
+          "description": "标题",
+          "type": "string"
+        }
+      },
+      "required": [
+        "icon",
+        "sets",
+        "title"
+      ]
+    },
+    "ProjectSet": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "logo": {
+          "type": "string"
+        },
+        "type": {
+          "description": "类型",
+          "type": "string"
+        },
+        "start": {
+          "description": "开始时间",
+          "type": "string"
+        },
+        "end": {
+          "description": "结束时间",
+          "type": "string"
+        },
+        "url": {
+          "description": "链接",
+          "type": "string"
+        },
+        "summary": {
+          "description": "简介",
+          "type": "string"
+        },
+        "keywords": {
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
+                "$ref": "#/definitions/Keyword"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "highlights": {
+          "description": "亮点",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "end",
+        "logo",
+        "name",
+        "start",
+        "type"
+      ]
+    },
+    "Other": {
+      "description": "其他",
+      "type": "object",
+      "properties": {
+        "info": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "icon": {
+          "description": "图标",
+          "type": "string"
+        },
+        "title": {
+          "description": "标题",
+          "type": "string"
+        }
+      },
+      "required": [
+        "icon",
+        "info",
+        "title"
+      ]
+    },
+    "Certificate": {
+      "description": "奖项",
+      "type": "object",
+      "properties": {
+        "histories": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CertificateHistory"
+          }
+        },
+        "icon": {
+          "description": "图标",
+          "type": "string"
+        },
+        "title": {
+          "description": "标题",
+          "type": "string"
+        }
+      },
+      "required": [
+        "histories",
+        "icon",
+        "title"
+      ]
+    },
+    "CertificateHistory": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "名称",
+          "type": "string"
+        },
+        "place": {
+          "description": "地点",
+          "type": "string"
+        },
+        "time": {
+          "description": "时间",
+          "type": [
+            "string",
+            "number"
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "place",
+        "time"
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}
