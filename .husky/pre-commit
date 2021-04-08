@@ -3,3 +3,4 @@
 
 # generate schema
 yarn schema
+git add -A

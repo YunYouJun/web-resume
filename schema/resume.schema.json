@@ -236,6 +236,10 @@
         "logo": {
           "type": "string"
         },
+        "open": {
+          "description": "是否展开",
+          "type": "boolean"
+        },
         "type": {
           "description": "类型",
           "type": "string"
@@ -275,12 +279,19 @@
           "items": {
             "type": "string"
           }
+        },
+        "badges": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         }
       },
       "required": [
         "end",
         "logo",
         "name",
+        "open",
         "start",
         "type"
       ]
