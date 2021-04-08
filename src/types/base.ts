@@ -119,6 +119,10 @@ interface ProjectSet {
   name: string
   logo: string
   /**
+   * 是否展开
+   */
+  open: boolean
+  /**
    * 类型
    */
   type: string
@@ -143,6 +147,8 @@ interface ProjectSet {
    * 亮点
    */
   highlights?: string[]
+
+  badges?: string[]
 }
 
 /**

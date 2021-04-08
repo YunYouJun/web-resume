@@ -1,9 +1,9 @@
 <template>
   <div>
-    <h4>
+    <h2 class="text-2xl font-medium">
       <iconify-icon :icon="icon" class="title-icon" />
       {{ title }}
-    </h4>
+    </h2>
     <hr />
   </div>
 </template>

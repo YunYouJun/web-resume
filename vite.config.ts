@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import WindiCSS from 'vite-plugin-windicss'
 import { VitePWA } from 'vite-plugin-pwa'
 import ViteComponents from 'vite-plugin-components'
 import VitePages from 'vite-plugin-pages'
@@ -42,6 +43,10 @@ export default defineConfig({
     }),
     ViteComponents({
       directoryAsNamespace: true,
+    }),
+    // https://github.com/antfu/vite-plugin-windicss
+    WindiCSS({
+      safelist: 'prose prose-sm m-auto text-left',
     }),
     yaml(),
   ],

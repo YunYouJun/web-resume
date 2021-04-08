@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div v-if="certificate">
     <base-title :icon="certificate.icon" :title="certificate.title" />
-    <ul>
+    <ul class="list-disc">
       <certificate-item
         v-for="(history, index) in certificate.histories"
         :key="index"

@@ -18,22 +18,25 @@
           {{ set.start + ' ~ ' + set.end }}
         </span>
       </summary>
-      <div>
-        <div class="ml-3">
+      <div class="project-content">
+        <div v-if="set.keywords" class="ml-3">
           <span v-for="(keyword, index) in set.keywords" :key="index">
-            <img src="" />
-            <span v-if="keyword.icon">
-              <iconify-icon :icon="keyword.icon" />
-              {{ keyword.name }}
-            </span>
-            <span v-else-if="keyword.logo">
-              <img :src="keyword.logo" class="brand-favicon" />
-              {{ keyword.name }}
-            </span>
-            <span v-else>
+            <span v-if="typeof keyword === 'string'">
               {{ keyword }}
             </span>
-            <span v-if="index !== set.keywords.length - 1">, </span>
+            <template v-else>
+              <span v-if="keyword.icon">
+                <iconify-icon :icon="keyword.icon" />
+                {{ keyword.name }}
+              </span>
+              <span v-else-if="keyword.logo">
+                <img :src="keyword.logo" class="brand-favicon" />
+                {{ keyword.name }}
+              </span>
+            </template>
+            <span v-if="set.keywords && index !== set.keywords.length - 1"
+              >,
+            </span>
           </span>
           <span class="float-right">
             <a class="text-decoration-none" :href="set.url" target="_blank">
@@ -50,7 +53,7 @@
           </template>
           <span v-html="set.summary"></span>
         </div>
-        <ul class="mb-2">
+        <ul v-if="set.highlights" class="list-disc mb-2">
           <li
             v-for="highlight in set.highlights"
             :key="highlight"
@@ -66,33 +69,7 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
-
-interface Keyword {
-  icon: string
-  logo: string
-  name: string
-}
-
-interface Badge {}
-
-interface ProjectSet {
-  logo: string
-  url: string
-  badges: Badge[]
-  summary: string
-  name: string
-  type: string
-  keywords: Keyword[]
-  highlights: string[]
-  start: string
-  end: string
-}
-
-interface Project {
-  icon: string
-  title: string
-  sets: ProjectSet[]
-}
+import { Project } from '../../types/base'
 
 export default defineComponent({
   props: {

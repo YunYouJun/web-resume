@@ -1,14 +1,14 @@
 <template>
   <div>
-    <h1 class="name text-center">{{ resume.name }}</h1>
-    <small class="nav justify-content-center">
+    <h1 class="name text-center text-4xl">{{ resume.name }}</h1>
+    <small class="flex justify-center">
       <span class="mx-1">{{ resume.info.sex }}</span>
       <span class="mx-1">{{ resume.info.birth }}</span>
       <span class="mx-1">{{ resume.info.location }}</span>
     </small>
-    <ul class="nav justify-content-center">
+    <ul class="my-4 flex justify-center list-none">
       <li
-        class="nav-item"
+        class="mx-2 inline"
         v-for="contact in resume.contact"
         :key="contact.label"
       >

@@ -46,6 +46,7 @@ export default defineComponent({
 
 <style lang="scss">
 .school-logo {
+  display: inline;
   width: 22px;
   padding-bottom: 3px;
   margin-right: 5px;

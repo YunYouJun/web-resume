@@ -55,13 +55,15 @@ yarn build
 ```ts
 // src/main.ts
 app.use(VueGtag, {
-  property: { id: 'G-W022WEV65N' }
+  property: { id: 'G-W022WEV65N' },
 })
 ```
 
 ### Print
 
 使用 Chrome 右键打印，选择另存为 PDF。
+
+> 可自定义缩放比例，测试 72% 可以一页输出。
 
 ## FAQ
 
