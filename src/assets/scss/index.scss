@@ -4,6 +4,7 @@
 
 .resume {
   padding: 20px 50px;
+  font-size: 14px;
 
   a {
     color: dodgerblue;
@@ -19,12 +20,18 @@
 
   ul {
     list-style-type: disc;
-    padding-inline-start: 40px;
+    padding-inline-start: 35px;
   }
 
   .brand-favicon {
     height: 18px;
     padding-bottom: 2px;
+  }
+
+  summary,
+  details {
+    outline: none;
+    cursor: pointer;
   }
 }
 
