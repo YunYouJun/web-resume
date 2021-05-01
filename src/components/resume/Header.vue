@@ -12,7 +12,11 @@
         v-for="contact in resume.contact"
         :key="contact.label"
       >
-        <a class="text-decoration-none" :href="contact.href" target="_blank">
+        <a
+          class="text-decoration-none font-medium"
+          :href="contact.href"
+          target="_blank"
+        >
           <iconify-icon :icon="contact.icon" />
           {{ contact.label }}
         </a>

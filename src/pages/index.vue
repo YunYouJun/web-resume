@@ -1,7 +1,11 @@
 <template>
   <github-corner :url="url" color="#70b7fd" />
   <div class="home mt-10 text-center">
-    <img class="mx-auto" alt="Vue logo" src="../assets/logo.png" />
+    <img
+      class="mx-auto resume-logo"
+      alt="Resume logo"
+      src="/img/icons/favicon.svg"
+    />
     <HelloResume msg="Welcome to Web Resume" />
   </div>
 </template>
@@ -22,3 +26,9 @@ export default {
   },
 }
 </script>
+
+<style>
+.resume-logo {
+  width: 200px;
+}
+</style>

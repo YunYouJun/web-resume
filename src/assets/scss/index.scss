@@ -47,10 +47,15 @@
   border-radius: 2px;
   padding: 5px 1rem;
   transition: 0.2s;
+  outline: none;
 
   &:hover {
     color: white;
     background-color: black;
+  }
+
+  &:active {
+    outline: none;
   }
 }
 

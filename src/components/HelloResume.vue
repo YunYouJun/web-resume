@@ -3,25 +3,23 @@
     <h1 class="text-6xl font-light leading-normal">{{ msg }}</h1>
     <small> 可以被打印成 A4 PDF 的简历</small>
 
-    <form>
-      <div class="p-3">
-        <input
-          v-model="resumeYaml"
-          type="text"
-          class="resume-input mx-auto block"
-          placeholder="简历线上 Yaml 地址"
-        />
-      </div>
-      <div>
-        <button
-          type="submit"
-          class="resume-btn mt-3"
-          @click="showResume(resumeYaml)"
-        >
-          查看简历
-        </button>
-      </div>
-    </form>
+    <div class="p-3">
+      <input
+        v-model="resumeYaml"
+        type="text"
+        class="resume-input mx-auto block"
+        placeholder="简历线上 Yaml 地址"
+      />
+    </div>
+    <div>
+      <button
+        type="submit"
+        class="resume-btn mt-3"
+        @click="showResume(resumeYaml)"
+      >
+        查看简历
+      </button>
+    </div>
 
     <div class="mt-5">示例</div>
 
@@ -34,6 +32,18 @@
       >
         {{ link.name }}
       </button>
+    </div>
+    <div class="my-3">
+      <a
+        v-for="(link, i) in examples"
+        :key="i"
+        class="resume-btn m-2"
+        :href="getGithub1sUrl(link.url)"
+        :alt="link.name"
+        target="_blank"
+      >
+        「{{ link.name }}」YAML
+      </a>
     </div>
     <small class="mt-3 text-monospace">
       <a :href="homepage" title="Web Resume">https://resume.elpsy.cn</a>
@@ -58,21 +68,20 @@ export default defineComponent({
           url: '/resume/suzumiya.resume.yml',
         },
         {
-          name: '打工人',
+          name: '打工人 2021',
           url: '/resume/2021.resume.yml',
         },
       ],
-      resumeYaml: '',
+      resumeYaml: '/resume/2021.resume.yml',
     }
   },
   methods: {
-    showResume(url = '/resume/2021.resume.yml') {
-      if (!url) {
-        url = '/resume/2021.resume.yml'
-      }
-
+    getGithub1sUrl(url: string) {
+      return 'https://github1s.com/YunYouJun/web-resume/blob/HEAD/public' + url
+    },
+    showResume(url: string) {
       this.$router.push({
-        path: 'resume',
+        path: '/resume',
         query: {
           url,
         },
