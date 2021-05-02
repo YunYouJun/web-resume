@@ -14,8 +14,7 @@
 <script>
 import HelloResume from '~/components/HelloResume.vue'
 import pkg from '../../package.json'
-import VueAboutMe from 'vue-about-me'
-import 'vue-about-me/style'
+import VueAboutMe from 'vue-about-me/sfc'
 
 export default {
   name: 'home',

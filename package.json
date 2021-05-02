@@ -23,7 +23,7 @@
     "js-yaml": "^4.1.0",
     "sass": "^1.32.12",
     "vue": "^3.0.9",
-    "vue-about-me": "^1.0.0-alpha.3",
+    "vue-about-me": "^1.0.0-alpha.5",
     "vue-gtag-next": "^1.14.0",
     "vue-router": "4"
   },
