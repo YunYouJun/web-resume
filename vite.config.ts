@@ -22,7 +22,7 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       manifest: {
-        name: 'Resume',
+        name: 'Web Resume',
         short_name: 'resume',
         theme_color: '#4DBA87',
         icons: [
@@ -37,8 +37,6 @@ export default defineConfig({
             type: 'image/png',
           },
         ],
-        display: 'standalone',
-        background_color: '#000000',
       },
     }),
     ViteComponents({
