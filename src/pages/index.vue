@@ -8,19 +8,31 @@
     />
     <HelloResume msg="Welcome to Web Resume" />
   </div>
+  <vue-about-me :copyright="copyright" />
 </template>
 
 <script>
 import HelloResume from '~/components/HelloResume.vue'
 import pkg from '../../package.json'
+import VueAboutMe from 'vue-about-me'
+import 'vue-about-me/style'
 
 export default {
   name: 'home',
   components: {
     HelloResume,
+    VueAboutMe,
   },
   data() {
     return {
+      copyright: {
+        name: 'Web Resume',
+        repo: pkg.name,
+        author: pkg.author.name,
+        logo: 'ri:file-text-line',
+        link: 'https://github.com/YunYouJun/web-resume',
+        color: 'black',
+      },
       url: pkg.repository.url,
     }
   },

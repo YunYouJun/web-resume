@@ -49,13 +49,20 @@
   transition: 0.2s;
   outline: none;
 
-  &:hover {
+  &:hover,
+  &:focus {
     color: white;
     background-color: black;
   }
 
-  &:active {
+  &:active,
+  &:focus {
     outline: none;
+  }
+
+  &.active {
+    color: white;
+    background-color: black;
   }
 }
 

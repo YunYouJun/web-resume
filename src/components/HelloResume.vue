@@ -14,11 +14,19 @@
     <div>
       <button
         type="submit"
-        class="resume-btn mt-3"
+        class="resume-btn m-3"
         @click="showResume(resumeYaml)"
       >
         查看简历
       </button>
+      <a
+        class="resume-btn m-3"
+        :href="getGithub1sUrl(resumeYaml)"
+        target="_blank"
+        alt="查看"
+      >
+        查看 YAML
+      </a>
     </div>
 
     <div class="mt-5">示例</div>
@@ -27,23 +35,11 @@
       <button
         v-for="(link, i) in examples"
         :key="i"
-        class="resume-btn m-2"
-        @click="showResume(link.url)"
+        :class="['resume-btn', 'm-3', link.url === resumeYaml ? 'active' : '']"
+        @click="setResumeYaml(link.url)"
       >
         {{ link.name }}
       </button>
-    </div>
-    <div class="my-3">
-      <a
-        v-for="(link, i) in examples"
-        :key="i"
-        class="resume-btn m-2"
-        :href="getGithub1sUrl(link.url)"
-        :alt="link.name"
-        target="_blank"
-      >
-        「{{ link.name }}」YAML
-      </a>
     </div>
     <small class="mt-3 text-monospace">
       <a :href="homepage" title="Web Resume">https://resume.elpsy.cn</a>
@@ -72,10 +68,13 @@ export default defineComponent({
           url: '/resume/2021.resume.yml',
         },
       ],
-      resumeYaml: '/resume/2021.resume.yml',
+      resumeYaml: '',
     }
   },
   methods: {
+    setResumeYaml(url: string) {
+      this.resumeYaml = url
+    },
     getGithub1sUrl(url: string) {
       return 'https://github1s.com/YunYouJun/web-resume/blob/HEAD/public' + url
     },
