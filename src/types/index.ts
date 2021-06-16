@@ -1,5 +1,7 @@
+import { ViteSSGContext } from 'vite-ssg'
+export type UserModule = (ctx: ViteSSGContext) => void
+
 import { Contact, Education, Skill, Project, Other, Certificate } from './base'
-import * as Resume from './config'
 
 /**
  * 简历配置

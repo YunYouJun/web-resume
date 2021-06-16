@@ -1,18 +1,19 @@
-import { createApp } from 'vue'
+import { ViteSSG } from 'vite-ssg'
+import generatedRoutes from 'virtual:generated-pages'
+import { setupLayouts } from 'virtual:generated-layouts'
 
 import App from './App.vue'
-import VueGtag from 'vue-gtag-next'
-
-import router from './router'
 
 import 'virtual:windi.css'
 import 'virtual:windi-devtools'
 import './assets/scss/index.scss'
 
-const app = createApp(App)
+const routes = setupLayouts(generatedRoutes)
 
-app.use(router)
-app.use(VueGtag, {
-  property: { id: 'G-W022WEV65N' },
+// https://github.com/antfu/vite-ssg
+export const createApp = ViteSSG(App, { routes }, (ctx) => {
+  // install all modules under `modules/`
+  Object.values(import.meta.globEager('./modules/*.ts')).map((i) =>
+    i.install?.(ctx)
+  )
 })
-app.mount('#app')

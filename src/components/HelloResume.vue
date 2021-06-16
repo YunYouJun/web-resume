@@ -3,6 +3,19 @@
     <h1 class="text-6xl font-light leading-normal">{{ msg }}</h1>
     <small> 可以被打印成 A4 PDF 的简历</small>
 
+    <div class="mt-5">示例 YAML</div>
+
+    <div class="my-3">
+      <button
+        v-for="(link, i) in examples"
+        :key="i"
+        :class="['resume-btn', 'm-3', link.url === resumeYaml ? 'active' : '']"
+        @click="setResumeYaml(link.url)"
+      >
+        {{ link.name }}
+      </button>
+    </div>
+
     <div class="p-3">
       <input
         v-model="resumeYaml"
@@ -29,18 +42,6 @@
       </a>
     </div>
 
-    <div class="mt-5">示例</div>
-
-    <div class="my-3">
-      <button
-        v-for="(link, i) in examples"
-        :key="i"
-        :class="['resume-btn', 'm-3', link.url === resumeYaml ? 'active' : '']"
-        @click="setResumeYaml(link.url)"
-      >
-        {{ link.name }}
-      </button>
-    </div>
     <small class="mt-3 text-monospace">
       <a :href="homepage" title="Web Resume">https://resume.elpsy.cn</a>
     </small>

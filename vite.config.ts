@@ -1,9 +1,14 @@
 import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
+import Vue from '@vitejs/plugin-vue'
+import Pages from 'vite-plugin-pages'
+import Layouts from 'vite-plugin-vue-layouts'
 import WindiCSS from 'vite-plugin-windicss'
 import { VitePWA } from 'vite-plugin-pwa'
 import ViteComponents from 'vite-plugin-components'
-import VitePages from 'vite-plugin-pages'
+
+import Markdown from 'vite-plugin-md'
+import Prism from 'markdown-it-prism'
+import LinkAttributes from 'markdown-it-link-attributes'
 
 import path from 'path'
 
@@ -17,8 +22,35 @@ export default defineConfig({
     },
   },
   plugins: [
-    vue(),
-    VitePages(),
+    Vue({
+      include: [/\.vue$/, /\.md$/],
+    }),
+
+    // https://github.com/hannoeru/vite-plugin-pages
+    Pages({
+      extensions: ['vue', 'md'],
+    }),
+
+    // https://github.com/JohnCampionJr/vite-plugin-vue-layouts
+    Layouts(),
+
+    // https://github.com/antfu/vite-plugin-md
+    Markdown({
+      wrapperClasses: 'prose prose-sm m-auto text-left',
+      headEnabled: true,
+      markdownItSetup(md) {
+        // https://prismjs.com/
+        md.use(Prism)
+        md.use(LinkAttributes, {
+          pattern: /^https?:\/\//,
+          attrs: {
+            target: '_blank',
+            rel: 'noopener',
+          },
+        })
+      },
+    }),
+
     VitePWA({
       registerType: 'autoUpdate',
       manifest: {
