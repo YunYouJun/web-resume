@@ -6,16 +6,16 @@ import logger from './logger'
 
 // optionally pass argument to schema generator
 const settings: TJS.PartialArgs = {
-  required: true
+  required: true,
 }
 
 // optionally pass ts compiler options
 const compilerOptions: TJS.CompilerOptions = {
-  strictNullChecks: true
+  strictNullChecks: true,
 }
 
 const program = TJS.getProgramFromFiles(
-  [path.resolve('src/types/index.ts')],
+  [path.resolve('src/types/resume.ts')],
   compilerOptions
 )
 
@@ -23,5 +23,8 @@ const program = TJS.getProgramFromFiles(
 const schema = TJS.generateSchema(program, 'ResumeInfo', settings)
 
 // write
-fs.writeFileSync('schema/resume.schema.json', JSON.stringify(schema, null, 2))
+fs.writeFileSync(
+  'public/schema/resume.schema.json',
+  JSON.stringify(schema, null, 2)
+)
 logger.success('Generate resume schema successfully!')

@@ -6,7 +6,7 @@ import App from './App.vue'
 
 import 'virtual:windi.css'
 import 'virtual:windi-devtools'
-import './assets/scss/index.scss'
+import './styles/index.scss'
 
 const routes = setupLayouts(generatedRoutes)
 
