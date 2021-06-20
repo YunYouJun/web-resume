@@ -4,7 +4,8 @@
   "description": "Web 简历",
   "private": true,
   "repository": {
-    "url": "https://github.com/YunYouJun/web-resume"
+    "url": "https://github.com/YunYouJun/web-resume",
+    "type": "git"
   },
   "author": {
     "url": "https://www.yunyoujun.cn",
@@ -15,8 +16,9 @@
     "dev": "vite",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
+    "lint": "npx eslint --ext .js,.ts,.json,.vue --fix .",
     "serve": "vite-preview",
-    "build": "vite build",
+    "build": "cross-env NODE_ENV=production vite-ssg build",
     "schema": "ts-node-script scripts/schema.ts",
     "prepare": "husky install"
   },
@@ -25,7 +27,7 @@
     "nprogress": "^0.2.0",
     "sass": "^1.35.1",
     "vue": "^3.1.1",
-    "vue-about-me": "^1.0.0-alpha.5",
+    "vue-about-me": "^1.1.3",
     "vue-gtag-next": "^1.14.0",
     "vue-router": "^4.0.9"
   },
@@ -39,16 +41,18 @@
     "@vue/compiler-sfc": "^3.1.1",
     "@vue/server-renderer": "^3.1.1",
     "@vueuse/head": "^0.6.0",
+    "@yunyoujun/eslint-config": "^0.2.1",
     "@yunyoujun/logger": "^0.1.2",
+    "cross-env": "^7.0.3",
     "husky": "^6.0.0",
     "markdown-it-link-attributes": "^3.0.0",
     "markdown-it-prism": "^2.1.6",
     "typescript": "^4.3.4",
     "typescript-json-schema": "^0.50.1",
-    "vite": "^2.3.7",
+    "vite": "^2.3.8",
     "vite-plugin-components": "^0.8.4",
     "vite-plugin-md": "^0.6.7",
-    "vite-plugin-pages": "^0.13.1",
+    "vite-plugin-pages": "^0.13.2",
     "vite-plugin-pwa": "^0.7.3",
     "vite-plugin-vue-layouts": "^0.3.1",
     "vite-plugin-windicss": "^0.15.10",

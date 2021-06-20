@@ -1,4 +1,4 @@
-interface BaseContact {
+export interface BaseContact {
   href: string
   /**
    * 图标
@@ -46,7 +46,7 @@ interface Keyword {
   logo?: string
 }
 
-interface CertificateHistory {
+export interface CertificateHistory {
   /**
    * 名称
    */
@@ -68,7 +68,7 @@ export interface Certificate extends BaseItem {
   histories: CertificateHistory[]
 }
 
-interface EducationHistory {
+export interface EducationHistory {
   school: string
   icon?: string
   /**
@@ -115,13 +115,13 @@ export interface Other extends BaseItem {
   info: string[]
 }
 
-interface ProjectSet {
+export interface ProjectSet {
   name: string
   logo: string
   /**
    * 是否展开
    */
-  open: boolean
+  open?: boolean
   /**
    * 类型
    */
@@ -158,7 +158,7 @@ export interface Project extends BaseItem {
   sets: ProjectSet[]
 }
 
-interface SkillSet {
+export interface SkillSet {
   title: string
   keywords: Keyword[]
 }

@@ -24,9 +24,9 @@ export default defineComponent({
   setup() {
     const resume = ref<ResumeInfo>()
 
-    onBeforeMount(async () => {
+    onBeforeMount(async() => {
       const route = useRoute()
-      const url = (route.query['url'] as string) || '/resume/2021.resume.yml'
+      const url = (route.query.url as string) || '/resume/2021.resume.yml'
       resume.value = (await fetch(url)
         .then((res) => {
           return res.text()

@@ -34,8 +34,9 @@
                 {{ keyword.name }}
               </span>
             </template>
-            <span v-if="set.keywords && index !== set.keywords.length - 1"
-              >,
+            <span
+              v-if="set.keywords && index !== set.keywords.length - 1"
+            >,
             </span>
           </span>
           <span class="float-right">
@@ -47,7 +48,7 @@
 
         <div class="ml-3 my-1">
           <template v-if="set.badges">
-            <span class="mr-1" v-for="(badge, name) in set.badges" :key="name">
+            <span v-for="(badge, name) in set.badges" :key="name" class="mr-1">
               <img :src="badge" :alt="name" />
             </span>
           </template>
@@ -69,7 +70,7 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
-import { Project } from '../../types/base'
+import { Project } from '~/types/base'
 
 export default defineComponent({
   props: {

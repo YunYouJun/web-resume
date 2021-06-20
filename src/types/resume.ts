@@ -9,6 +9,14 @@ export interface ResumeInfo {
    */
   name: string
   /**
+   * 个人信息
+   */
+  info?: {
+    sex?: string
+    birth?: string
+    location?: string
+  }
+  /**
    * 联系方式
    */
   contact: Contact

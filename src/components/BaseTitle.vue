@@ -8,13 +8,14 @@
   </div>
 </template>
 
-<script>
-export default {
-  props: {
-    icon: String,
-    title: String,
-  },
-}
+<script lang="ts" setup>
+import { defineProps, toRefs } from 'vue'
+
+const props = defineProps({
+  icon: String,
+  title: String,
+})
+const { icon, title } = toRefs(props)
 </script>
 
 <style lang="scss">

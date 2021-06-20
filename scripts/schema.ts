@@ -16,7 +16,7 @@ const compilerOptions: TJS.CompilerOptions = {
 
 const program = TJS.getProgramFromFiles(
   [path.resolve('src/types/resume.ts')],
-  compilerOptions
+  compilerOptions,
 )
 
 // We can either get the schema for one file and one type...
@@ -25,6 +25,6 @@ const schema = TJS.generateSchema(program, 'ResumeInfo', settings)
 // write
 fs.writeFileSync(
   'public/schema/resume.schema.json',
-  JSON.stringify(schema, null, 2)
+  JSON.stringify(schema, null, 2),
 )
 logger.success('Generate resume schema successfully!')

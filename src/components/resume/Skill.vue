@@ -18,7 +18,7 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
-import { Skill } from '../../types/base'
+import { Skill } from '~/types/base'
 
 export default defineComponent({
   props: {

@@ -6,6 +6,21 @@
       "description": "姓名",
       "type": "string"
     },
+    "info": {
+      "description": "个人信息",
+      "type": "object",
+      "properties": {
+        "sex": {
+          "type": "string"
+        },
+        "birth": {
+          "type": "string"
+        },
+        "location": {
+          "type": "string"
+        }
+      }
+    },
     "contact": {
       "$ref": "#/definitions/Contact",
       "description": "联系方式"
@@ -291,7 +306,6 @@
         "end",
         "logo",
         "name",
-        "open",
         "start",
         "type"
       ]

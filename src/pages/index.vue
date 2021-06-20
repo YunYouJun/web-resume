@@ -7,35 +7,26 @@
       src="/img/icons/favicon.svg"
     />
     <HelloResume msg="Welcome to Web Resume" />
+    <vue-about-me :copyright="copyright"></vue-about-me>
   </div>
-  <vue-about-me :copyright="copyright" />
 </template>
 
-<script>
+<script lang="ts" setup>
 import HelloResume from '~/components/HelloResume.vue'
 import pkg from '../../package.json'
-import VueAboutMe from 'vue-about-me/sfc'
+import { ref } from 'vue'
 
-export default {
-  name: 'home',
-  components: {
-    HelloResume,
-    VueAboutMe,
-  },
-  data() {
-    return {
-      copyright: {
-        name: 'Web Resume',
-        repo: pkg.name,
-        author: pkg.author.name,
-        logo: 'ri:file-text-line',
-        link: 'https://github.com/YunYouJun/web-resume',
-        color: 'black',
-      },
-      url: pkg.repository.url,
-    }
-  },
+// @ts-ignore
+import VueAboutMe from '../../node_modules/vue-about-me/dist/vue-about-me.es.js'
+import 'vue-about-me/style'
+
+const copyright = {
+  name: 'Web Resume',
+  repo: pkg.name,
+  author: pkg.author.name,
 }
+
+const url = ref(pkg.repository.url)
 </script>
 
 <style>

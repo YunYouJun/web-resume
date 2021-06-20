@@ -9,7 +9,7 @@
       >
         <div>
           <img v-if="edu.logo" class="school-logo" :src="edu.logo" />
-          <span class="mr-1" v-else-if="edu.icon">
+          <span v-else-if="edu.icon" class="mr-1">
             <iconify-icon :icon="edu.icon" />
           </span>
           <span>
@@ -22,8 +22,7 @@
           </span>
         </div>
         <div>
-          <span>{{ edu.studyType }}</span
-          >， <span>{{ edu.area }}</span>
+          <span>{{ edu.studyType }}</span>， <span>{{ edu.area }}</span>
           <span v-if="edu.grade">，{{ edu.grade }}</span>
         </div>
       </div>
@@ -33,7 +32,7 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
-import { Education } from '../../types/base'
+import { Education } from '~/types/base'
 import IconifyIcon from '../IconifyIcon.vue'
 
 export default defineComponent({

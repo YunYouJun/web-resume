@@ -1,5 +1,5 @@
 <template>
-  <li>
+  <li v-if="history">
     <span class="font-weight-bold text-kaiti">
       {{ history.name }}
     </span>
@@ -13,12 +13,12 @@
   </li>
 </template>
 
-<script lang="ts">
-import { defineComponent, PropType } from 'vue'
+<script lang="ts" setup>
+import { defineProps } from 'vue'
+import type { PropType } from 'vue'
+import type { CertificateHistory } from '~/types/base'
 
-export default defineComponent({
-  props: {
-    history: Object as PropType<History>,
-  },
+const { history } = defineProps({
+  history: Object as PropType<CertificateHistory>,
 })
 </script>

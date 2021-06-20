@@ -1,9 +1,13 @@
 <template>
   <div>
-    <h1 class="text-6xl font-light leading-normal">{{ msg }}</h1>
+    <h1 class="text-6xl font-light leading-normal">
+      {{ props.msg }}
+    </h1>
     <small> 可以被打印成 A4 PDF 的简历</small>
 
-    <div class="mt-5">示例 YAML</div>
+    <div class="mt-5">
+      示例 YAML
+    </div>
 
     <div class="my-3">
       <button
@@ -43,50 +47,52 @@
     </div>
 
     <small class="mt-3 text-monospace">
-      <a :href="homepage" title="Web Resume">https://resume.elpsy.cn</a>
+      <a :href="homepage" title="Web Resume">{{ homepage }}</a>
     </small>
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script lang="ts" setup>
+import { defineProps, ref } from 'vue'
+import { useRouter } from 'vue-router'
 
-export default defineComponent({
-  props: {
-    msg: String,
-    links: Object,
-  },
-  data() {
-    return {
-      homepage: 'https://resume.elpsy.cn',
-      examples: [
-        {
-          name: '凉宫春日',
-          url: '/resume/suzumiya.resume.yml',
-        },
-        {
-          name: '打工人 2021',
-          url: '/resume/2021.resume.yml',
-        },
-      ],
-      resumeYaml: '',
-    }
-  },
-  methods: {
-    setResumeYaml(url: string) {
-      this.resumeYaml = url
-    },
-    getGithub1sUrl(url: string) {
-      return 'https://github1s.com/YunYouJun/web-resume/blob/HEAD/public' + url
-    },
-    showResume(url: string) {
-      this.$router.push({
-        path: '/resume',
-        query: {
-          url,
-        },
-      })
-    },
-  },
+const props = defineProps({
+  msg: String,
+  links: Object,
 })
+
+const homepage = 'https://resume.elpsy.cn'
+const examples = [
+  {
+    name: '凉宫春日',
+    url: '/resume/suzumiya.resume.yml',
+  },
+  {
+    name: '打工人 2021',
+    url: '/resume/2021.resume.yml',
+  },
+]
+
+const resumeYaml = ref('')
+
+/**
+ * 设置 yaml 链接
+ */
+function setResumeYaml(url: string) {
+  resumeYaml.value = url
+}
+
+function getGithub1sUrl(url: string) {
+  return 'https://github1s.com/YunYouJun/web-resume/blob/HEAD/public' + url
+}
+
+function showResume(url: string) {
+  const router = useRouter()
+  router.push({
+    path: '/resume',
+    query: {
+      url,
+    },
+  })
+}
 </script>
