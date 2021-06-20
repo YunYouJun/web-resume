@@ -28,5 +28,10 @@ export interface ResumeInfo {
   /**
    * 页脚
    */
-  footer?: string
+  footer?: {
+    /**
+     * 链接
+     */
+    link: string
+  }
 }

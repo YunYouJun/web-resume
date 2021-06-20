@@ -42,7 +42,16 @@
     },
     "footer": {
       "description": "页脚",
-      "type": "string"
+      "type": "object",
+      "properties": {
+        "link": {
+          "description": "链接",
+          "type": "string"
+        }
+      },
+      "required": [
+        "link"
+      ]
     }
   },
   "required": [

@@ -56,6 +56,8 @@
 import { defineProps, ref } from 'vue'
 import { useRouter } from 'vue-router'
 
+const router = useRouter()
+
 const props = defineProps({
   msg: String,
   links: Object,
@@ -87,7 +89,6 @@ function getGithub1sUrl(url: string) {
 }
 
 function showResume(url: string) {
-  const router = useRouter()
   router.push({
     path: '/resume',
     query: {

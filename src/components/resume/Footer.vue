@@ -1,15 +1,17 @@
 <template>
-  <div class="text-center">
-    <small class="text-monospace">{{ footer }}</small>
+  <div v-if="footer" class="text-center">
+    <a :href="footer.link" target="_blank">
+      <small class="text-monospace">{{ footer.link }}</small>
+    </a>
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script lang="ts" setup>
+import { defineProps } from 'vue'
+import type { PropType } from 'vue'
+import type { ResumeInfo } from '~/types'
 
-export default defineComponent({
-  props: {
-    footer: String,
-  },
+const { footer } = defineProps({
+  footer: Object as PropType<ResumeInfo['footer']>,
 })
 </script>
