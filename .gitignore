@@ -3,6 +3,10 @@ yarn.lock
 package-lock.json
 pnpm-lock.yaml
 
+# vite-ssg
+.vite-ssg-dist
+.vite-ssg-temp
+
 node_modules
 .DS_Store
 dist

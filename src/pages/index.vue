@@ -18,7 +18,7 @@ import { ref } from 'vue'
 
 // @ts-ignore
 import VueAboutMe from '../../node_modules/vue-about-me/dist/vue-about-me.es.js'
-import 'vue-about-me/style'
+import '../../node_modules/vue-about-me/dist/style.css'
 
 const copyright = {
   name: 'Web Resume',
