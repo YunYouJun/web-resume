@@ -75,6 +75,9 @@ import { Project } from '~/types/base'
 export default defineComponent({
   props: {
     project: Object as PropType<Project>,
+    default() {
+      return {}
+    },
   },
 })
 </script>

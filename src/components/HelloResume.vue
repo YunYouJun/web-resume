@@ -3,10 +3,10 @@
     <h1 class="text-6xl font-light leading-normal">
       {{ props.msg }}
     </h1>
-    <small> 可以被打印成 A4 PDF 的简历</small>
+    <small>{{ t('home.description') }}</small>
 
     <div class="mt-5">
-      示例 YAML
+      {{ t('noun.example') }} YAML
     </div>
 
     <div class="my-3">
@@ -20,32 +20,30 @@
       </button>
     </div>
 
-    <div class="p-3">
+    <div>
       <input
         v-model="resumeYaml"
         type="text"
         class="resume-input mx-auto block"
-        placeholder="简历线上 Yaml 地址"
+        :placeholder="t('home.address_placeholder')"
       />
     </div>
-    <div>
-      <button
-        type="submit"
-        class="resume-btn m-3"
-        @click="showResume(resumeYaml)"
-      >
-        查看简历
-      </button>
+    <div class="p-3">
       <a
         class="resume-btn m-3"
-        :href="getGithub1sUrl(resumeYaml)"
+        :href="`https://github1s.com/YunYouJun/web-resume/blob/HEAD/public${resumeYaml}`"
         target="_blank"
-        alt="查看"
       >
-        查看 YAML
+        {{ t('button.see_yaml') }}
+      </a>
+      <a
+        class="resume-btn m-3"
+        :href="`/resume?url=${resumeYaml}`"
+        target="_blank"
+      >
+        {{ t('button.see_resume') }}
       </a>
     </div>
-
     <small class="mt-3 text-monospace">
       <a :href="homepage" title="Web Resume">{{ homepage }}</a>
     </small>
@@ -53,10 +51,10 @@
 </template>
 
 <script lang="ts" setup>
-import { defineProps, ref } from 'vue'
-import { useRouter } from 'vue-router'
+import { computed, defineProps, ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 
-const router = useRouter()
+const { t } = useI18n()
 
 const props = defineProps({
   msg: String,
@@ -64,16 +62,18 @@ const props = defineProps({
 })
 
 const homepage = 'https://resume.elpsy.cn'
-const examples = [
-  {
-    name: '凉宫春日',
-    url: '/resume/suzumiya.resume.yml',
-  },
-  {
-    name: '打工人 2021',
-    url: '/resume/2021.resume.yml',
-  },
-]
+const examples = computed(() => {
+  return [
+    {
+      name: t('noun.worker') + ' 2021',
+      url: '/resume/2021.resume.yml',
+    },
+    {
+      name: t('noun.suzimiya'),
+      url: '/resume/suzumiya.resume.yml',
+    },
+  ]
+})
 
 const resumeYaml = ref('')
 
@@ -82,18 +82,5 @@ const resumeYaml = ref('')
  */
 function setResumeYaml(url: string) {
   resumeYaml.value = url
-}
-
-function getGithub1sUrl(url: string) {
-  return 'https://github1s.com/YunYouJun/web-resume/blob/HEAD/public' + url
-}
-
-function showResume(url: string) {
-  router.push({
-    path: '/resume',
-    query: {
-      url,
-    },
-  })
 }
 </script>

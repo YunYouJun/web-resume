@@ -10,6 +10,11 @@
   </div>
 </template>
 
+<route lang="yaml">
+meta:
+  layout: resume
+</route>
+
 <script lang="ts">
 import { defineComponent, ref, onBeforeMount } from 'vue'
 import { ResumeInfo } from '../types'

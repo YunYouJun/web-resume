@@ -1,0 +1,20 @@
+button:
+  about: 关于
+  back: 返回
+  go: 确定
+  home: 首页
+  toggle_dark: 切换深色模式
+  toggle_langs: 切换语言
+  # custom
+  see_yaml: 查看 YAML
+  see_resume: 查看简历
+not-found: 未找到页面
+
+home:
+  description: 可以被打印成 A4 PDF 的简历
+  address_placeholder: 简历线上 Yaml 地址
+
+noun:
+  worker: 打工人
+  suzimiya: 凉宫春日
+  example: 示例

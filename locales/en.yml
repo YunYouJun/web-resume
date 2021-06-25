@@ -1,0 +1,21 @@
+button:
+  about: About
+  back: Back
+  go: GO
+  home: Home
+  toggle_dark: Toggle dark mode
+  toggle_langs: Change languages
+  # custom
+  see_yaml: See Yaml
+  see_resume: See Resume
+
+not-found: Not found
+
+home:
+  description: Resume that can be printed as A4 PDF
+  address_placeholder: Yaml Online Address for Resume
+
+noun:
+  worker: Worker
+  suzimiya: Suzumiya Haruhi
+  example: Example

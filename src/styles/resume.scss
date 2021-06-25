@@ -1,0 +1,79 @@
+.text-kaiti {
+  font-family: '华文楷体';
+}
+
+.resume {
+  padding: 20px 50px;
+  font-size: 14px;
+
+  a {
+    color: dodgerblue;
+  }
+
+  img {
+    display: inline-block;
+  }
+
+  hr {
+    margin: 5px auto;
+  }
+
+  ul {
+    list-style-type: disc;
+    padding-inline-start: 35px;
+  }
+
+  .brand-favicon {
+    height: 18px;
+    padding-bottom: 2px;
+  }
+
+  summary,
+  details {
+    outline: none;
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 767px) {
+  .resume {
+    padding: 20px;
+  }
+}
+
+// components
+.resume-btn {
+  border: 2px solid black;
+  border-radius: 2px;
+  padding: 5px 1rem;
+  transition: 0.2s;
+  outline: none;
+
+  &:hover,
+  &:focus {
+    color: white;
+    background-color: black;
+  }
+
+  &:active,
+  &:focus {
+    outline: none;
+  }
+
+  &.active {
+    color: white;
+    background-color: black;
+  }
+}
+
+.resume-input {
+  border-radius: 2px;
+  border: 1px solid black;
+  width: 90%;
+  padding: 0.6rem 1rem;
+  background-color: transparent;
+
+  &:focus {
+    outline: none;
+  }
+}

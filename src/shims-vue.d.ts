@@ -1,3 +1,5 @@
+declare module '@rollup/plugin-yaml'
+
 /* eslint-disable import/no-duplicates */
 declare module '*.vue' {
   import { DefineComponent } from 'vue'
