@@ -19,7 +19,10 @@ import CertificateItem from '~/components/certificate/CertificateItem.vue'
 export default defineComponent({
   components: { CertificateItem },
   props: {
-    certificate: Object as PropType<Certificate>,
+    certificate: {
+      type: Object as PropType<Certificate | null>,
+      default: null,
+    },
   },
 })
 </script>

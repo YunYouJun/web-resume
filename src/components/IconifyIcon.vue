@@ -9,7 +9,10 @@ import { defineComponent } from 'vue'
 
 export default defineComponent({
   props: {
-    icon: String,
+    icon: {
+      type: String,
+      default: 'ri:question-mark',
+    },
   },
 })
 </script>

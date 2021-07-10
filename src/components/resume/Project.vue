@@ -68,15 +68,16 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, PropType } from 'vue'
-import { Project } from '~/types/base'
+<script setup lang="ts">
+import { defineComponent } from 'vue'
+import type { PropType } from 'vue'
+import type { Project } from '~/types/base'
 
 export default defineComponent({
   props: {
-    project: Object as PropType<Project>,
-    default() {
-      return {}
+    project: {
+      type: Object as PropType<Project | null>,
+      default: null,
     },
   },
 })

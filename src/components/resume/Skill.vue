@@ -22,7 +22,10 @@ import { Skill } from '~/types/base'
 
 export default defineComponent({
   props: {
-    skill: Object as PropType<Skill>,
+    skill: {
+      type: Object as PropType<Skill | null>,
+      default: null,
+    },
   },
 })
 </script>

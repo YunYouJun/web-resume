@@ -35,7 +35,10 @@ import IconifyIcon from '../IconifyIcon.vue'
 export default defineComponent({
   components: { IconifyIcon },
   props: {
-    resume: Object as PropType<ResumeInfo>,
+    resume: {
+      type: Object as PropType<ResumeInfo | null>,
+      default: null,
+    },
   },
 })
 </script>

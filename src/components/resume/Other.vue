@@ -11,11 +11,14 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
-import { Other } from '~/types/base'
+import type { Other } from '~/types/base'
 
 export default defineComponent({
   props: {
-    other: Object as PropType<Other>,
+    other: {
+      type: Object as PropType<Other | null>,
+      default: null,
+    },
   },
 })
 </script>
