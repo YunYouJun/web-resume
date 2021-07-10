@@ -1,3 +1,7 @@
 {
-  "extends": "@yunyoujun"
+  "extends": "@yunyoujun",
+  "rules": {
+    "no-undef": "off",
+    "vue/require-default-prop": "off"
+  }
 }

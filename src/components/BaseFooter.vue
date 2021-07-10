@@ -3,7 +3,7 @@ import { useI18n } from 'vue-i18n'
 import { isDark, toggleDark } from '~/logic'
 
 // @ts-ignore
-import pkg from '../../package.json'
+import pkg from '~/../package.json'
 import VueAboutMe from 'vue-about-me'
 import 'vue-about-me/style.css'
 
@@ -28,20 +28,12 @@ const copyright = {
       <i-ri-home-2-line />
     </router-link>
 
-    <a
-      class="icon-btn mx-2"
-      :title="t('button.toggle_dark')"
-      @click="toggleDark"
-    >
+    <a class="icon-btn mx-2" :title="t('button.toggle_dark')" @click="toggleDark">
       <i-ri-moon-line v-if="isDark" />
       <i-ri-sun-line v-else />
     </a>
 
-    <a
-      class="icon-btn mx-2"
-      :title="t('button.toggle_langs')"
-      @click="toggleLocales"
-    >
+    <a class="icon-btn mx-2" :title="t('button.toggle_langs')" @click="toggleLocales">
       <i-ri-translate />
     </a>
 

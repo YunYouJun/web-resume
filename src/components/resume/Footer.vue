@@ -7,7 +7,6 @@
 </template>
 
 <script lang="ts" setup>
-import { defineProps } from 'vue'
 import type { PropType } from 'vue'
 import type { ResumeInfo } from '~/types'
 

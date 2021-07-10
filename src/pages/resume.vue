@@ -15,9 +15,9 @@ meta:
   layout: resume
 </route>
 
-<script lang="ts">
-import { defineComponent, ref, onBeforeMount } from 'vue'
-import { ResumeInfo } from '../types'
+<script setup lang="ts">
+import { ref, onBeforeMount } from 'vue'
+import type { ResumeInfo } from '../types'
 import yaml from 'js-yaml'
 import { useRoute } from 'vue-router'
 // method 1
@@ -25,24 +25,17 @@ import { useRoute } from 'vue-router'
 // method 2
 // online load yaml
 
-export default defineComponent({
-  setup() {
-    const resume = ref<ResumeInfo>()
+const resume = ref<ResumeInfo>()
 
-    onBeforeMount(async() => {
-      const route = useRoute()
-      const url = (route.query.url as string) || '/resume/2021.resume.yml'
-      resume.value = (await fetch(url)
-        .then((res) => {
-          return res.text()
-        })
-        .then((data) => {
-          return yaml.load(data)
-        })) as ResumeInfo
+onBeforeMount(async() => {
+  const route = useRoute()
+  const url = (route.query.url as string) || '/resume/2021.resume.yml'
+  resume.value = (await fetch(url)
+    .then((res) => {
+      return res.text()
     })
-    return {
-      resume,
-    }
-  },
+    .then((data) => {
+      return yaml.load(data)
+    })) as ResumeInfo
 })
 </script>

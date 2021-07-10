@@ -5,10 +5,17 @@ declare module 'vue' {
   export interface GlobalComponents {
     BaseFooter: typeof import('./src/components/BaseFooter.vue')['default']
     BaseTitle: typeof import('./src/components/BaseTitle.vue')['default']
+    CertificateCertificateItem: typeof import('./src/components/certificate/CertificateItem.vue')['default']
     GithubCorner: typeof import('./src/components/GithubCorner.vue')['default']
     HelloResume: typeof import('./src/components/HelloResume.vue')['default']
     IconifyIcon: typeof import('./src/components/IconifyIcon.vue')['default']
-    CertificateCertificateItem: typeof import('./src/components/certificate/CertificateItem.vue')['default']
+    IRiFileInfoLine: typeof import('virtual:vite-icons/ri/file-info-line')['default']
+    IRiFileTextLine: typeof import('virtual:vite-icons/ri/file-text-line')['default']
+    IRiGithubLine: typeof import('virtual:vite-icons/ri/github-line')['default']
+    IRiHome2Line: typeof import('virtual:vite-icons/ri/home2-line')['default']
+    IRiMoonLine: typeof import('virtual:vite-icons/ri/moon-line')['default']
+    IRiSunLine: typeof import('virtual:vite-icons/ri/sun-line')['default']
+    IRiTranslate: typeof import('virtual:vite-icons/ri/translate')['default']
     ResumeCertificate: typeof import('./src/components/resume/Certificate.vue')['default']
     ResumeEducation: typeof import('./src/components/resume/Education.vue')['default']
     ResumeFooter: typeof import('./src/components/resume/Footer.vue')['default']
@@ -16,13 +23,6 @@ declare module 'vue' {
     ResumeOther: typeof import('./src/components/resume/Other.vue')['default']
     ResumeProject: typeof import('./src/components/resume/Project.vue')['default']
     ResumeSkill: typeof import('./src/components/resume/Skill.vue')['default']
-    IRiFileTextLine: typeof import('virtual:vite-icons/ri/file-text-line')['default']
-    IRiHome2Line: typeof import('virtual:vite-icons/ri/home2-line')['default']
-    IRiMoonLine: typeof import('virtual:vite-icons/ri/moon-line')['default']
-    IRiSunLine: typeof import('virtual:vite-icons/ri/sun-line')['default']
-    IRiTranslate: typeof import('virtual:vite-icons/ri/translate')['default']
-    IRiFileInfoLine: typeof import('virtual:vite-icons/ri/file-info-line')['default']
-    IRiGithubLine: typeof import('virtual:vite-icons/ri/github-line')['default']
   }
 }
 
