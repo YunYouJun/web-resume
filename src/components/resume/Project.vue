@@ -68,7 +68,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script lang="ts">
 import { defineComponent } from 'vue'
 import type { PropType } from 'vue'
 import type { Project } from '~/types/base'
