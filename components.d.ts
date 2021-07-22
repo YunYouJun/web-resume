@@ -14,6 +14,7 @@ declare module 'vue' {
     IRiGithubLine: typeof import('virtual:vite-icons/ri/github-line')['default']
     IRiHome2Line: typeof import('virtual:vite-icons/ri/home2-line')['default']
     IRiMoonLine: typeof import('virtual:vite-icons/ri/moon-line')['default']
+    IRiSideBarLine: typeof import('virtual:vite-icons/ri/side-bar-line')['default']
     IRiSunLine: typeof import('virtual:vite-icons/ri/sun-line')['default']
     IRiTranslate: typeof import('virtual:vite-icons/ri/translate')['default']
     ResumeCertificate: typeof import('./src/components/resume/Certificate.vue')['default']

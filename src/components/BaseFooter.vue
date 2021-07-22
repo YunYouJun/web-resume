@@ -28,7 +28,11 @@ const copyright = {
       <i-ri-home-2-line />
     </router-link>
 
-    <a class="icon-btn mx-2" :title="t('button.toggle_dark')" @click="toggleDark">
+    <router-link class="icon-btn mx-2" to="/editor" :title="t('button.editor')">
+      <i-ri-side-bar-line />
+    </router-link>
+
+    <a class="icon-btn mx-2" :title="t('button.toggle_dark')" @click="()=>{toggleDark()}">
       <i-ri-moon-line v-if="isDark" />
       <i-ri-sun-line v-else />
     </a>

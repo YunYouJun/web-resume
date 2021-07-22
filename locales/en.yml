@@ -1,6 +1,7 @@
 button:
   about: About
   back: Back
+  editor: Editor
   go: GO
   home: Home
   toggle_dark: Toggle dark mode

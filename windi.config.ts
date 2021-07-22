@@ -19,7 +19,7 @@ export default defineConfig({
               textDecoration: 'underline',
               '&:hover': {
                 opacity: 1,
-                color: colors.teal[600],
+                color: colors.blue[500],
               },
             },
             b: { color: 'inherit' },
