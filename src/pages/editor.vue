@@ -1,41 +1,78 @@
 <template>
-  <div class="home mt-8 text-center">
-    Todo: 编辑器
-
-    <div id="editor-container" ref="container"></div>
+  <div class="editor-page text-center">
+    <h1 class="m-4">
+      {{ t('editor.name') }}
+    </h1>
+    <div class="resume-container">
+      <ResumeAll v-if="resume" :resume="resume" />
+    </div>
+    <div class="editor-container">
+      <MonacoEditor :text="resumeTxt" />
+    </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import * as monaco from 'monaco-editor'
-import { ref, onMounted, onBeforeMount } from 'vue'
+import { computed, onBeforeMount, ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { useRoute } from 'vue-router'
 import { useResume } from '~/logic/resume'
 
-const resumeTxt = ref('')
+import yaml from 'js-yaml'
+import type { ResumeInfo } from '~/types'
+
+const { t } = useI18n()
+
 const route = useRoute()
+const resumeTxt = ref('')
+const resume = ref<ResumeInfo | null>()
 
-const container = ref<HTMLElement | null>()
-
-onMounted(async() => {
+onBeforeMount(async() => {
   const txt = await useResume(route.query.url as string)
   resumeTxt.value = txt
-  console.log(txt)
-  if (container.value) {
-    monaco.editor.create(container.value, {
-      value: resumeTxt.value,
-      language: 'yaml',
-      theme: 'vs-dark',
-      wordWrap: 'on',
-    })
-  }
+
+  resume.value = yaml.load(resumeTxt.value) as ResumeInfo
 })
 </script>
 
-<style>
-#editor-container {
+<style lang="scss">
+.editor-page {
+  overflow: hidden;
+}
+
+.resume-container, .editor-container {
+  display: inline-block;
   width: 50%;
-  height: 80vh;
+  height: 73vh;
   text-align: left;
+}
+
+.resume-container {
+  padding: 2rem;
+  border: 1px solid white;
+  overflow-y: scroll;
+}
+
+// scrollbar
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar:horizontal {
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #999;
 }
 </style>

@@ -17,7 +17,7 @@
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
     "lint": "npx eslint --ext .js,.ts,.json,.vue --fix .",
-    "serve": "vite-preview",
+    "serve": "vite preview",
     "build": "cross-env NODE_ENV=production vite-ssg build",
     "schema": "ts-node-script scripts/schema.ts",
     "prepare": "husky install"

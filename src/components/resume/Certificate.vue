@@ -14,10 +14,8 @@
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
 import { Certificate } from '~/types/base'
-import CertificateItem from '~/components/certificate/CertificateItem.vue'
 
 export default defineComponent({
-  components: { CertificateItem },
   props: {
     certificate: {
       type: Object as PropType<Certificate | null>,

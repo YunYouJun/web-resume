@@ -14,6 +14,10 @@ import LinkAttributes from 'markdown-it-link-attributes'
 
 import path from 'path'
 
+const prefix = 'monaco-editor/esm/vs'
+
+const markdownWrapperClasses = 'prose prose-sm m-auto text-left'
+
 // import yaml from '@rollup/plugin-yaml'
 
 // https://vitejs.dev/config/
@@ -23,6 +27,23 @@ export default defineConfig({
       '~/': `${path.resolve(__dirname, 'src')}/`,
     },
   },
+
+  // for monaco-editor
+  build: {
+    rollupOptions: {
+      output: {
+        inlineDynamicImports: false,
+        manualChunks: {
+          jsonWorker: [`${prefix}/language/json/json.worker`],
+          cssWorker: [`${prefix}/language/css/css.worker`],
+          htmlWorker: [`${prefix}/language/html/html.worker`],
+          tsWorker: [`${prefix}/language/typescript/ts.worker`],
+          editorWorker: [`${prefix}/editor/editor.worker`],
+        },
+      },
+    },
+  },
+
   plugins: [
     Vue({
       include: [/\.vue$/, /\.md$/],
@@ -38,7 +59,7 @@ export default defineConfig({
 
     // https://github.com/antfu/vite-plugin-md
     Markdown({
-      wrapperClasses: 'prose prose-sm m-auto text-left',
+      wrapperClasses: markdownWrapperClasses,
       headEnabled: true,
       markdownItSetup(md) {
         // https://prismjs.com/
@@ -71,8 +92,14 @@ export default defineConfig({
     // https://github.com/antfu/vite-plugin-icons
     ViteIcons(),
 
+    // https://github.com/antfu/vite-plugin-windicss
+    WindiCSS({
+      safelist: markdownWrapperClasses,
+    }),
+
     VitePWA({
       registerType: 'autoUpdate',
+      includeAssets: ['favicon.svg', 'robots.txt', 'safari-pinned-tab.svg'],
       manifest: {
         name: 'Web Resume',
         short_name: 'resume',
@@ -94,15 +121,19 @@ export default defineConfig({
 
     // https://github.com/intlify/vite-plugin-vue-i18n
     VueI18n({
+      runtimeOnly: true,
+      compositionOnly: true,
       include: [path.resolve(__dirname, 'locales/**')],
     }),
 
-    // https://github.com/antfu/vite-plugin-windicss
-    WindiCSS({
-      safelist: 'prose prose-sm m-auto text-left',
-    }),
     // yaml(),
   ],
+
+  server: {
+    fs: {
+      strict: true,
+    },
+  },
 
   // https://github.com/antfu/vite-ssg
   ssgOptions: {
