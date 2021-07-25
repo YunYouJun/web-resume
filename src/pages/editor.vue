@@ -43,36 +43,14 @@ onBeforeMount(async() => {
 .resume-container, .editor-container {
   display: inline-block;
   width: 50%;
-  height: 73vh;
+  height: 72vh;
   text-align: left;
 }
 
 .resume-container {
   padding: 2rem;
-  border: 1px solid white;
+  border: 1px solid var(--wr-border-color);
   overflow-y: scroll;
 }
 
-// scrollbar
-::-webkit-scrollbar {
-  width: 6px;
-}
-
-::-webkit-scrollbar:horizontal {
-  height: 6px;
-}
-
-::-webkit-scrollbar-track {
-  background: transparent;
-  border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #ccc;
-  border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #999;
-}
 </style>

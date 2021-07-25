@@ -1,0 +1,10 @@
+:root {
+  --wr-border-color: black;
+  --button-border-color: var(--wr-border-color);
+  --button-active-text-color: white;
+}
+
+.dark {
+  --wr-border-color: white;
+  --button-active-text-color: black;
+}
