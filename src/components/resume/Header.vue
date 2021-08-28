@@ -27,18 +27,22 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, PropType } from 'vue'
-import { ResumeInfo } from '~/types'
-import IconifyIcon from '../IconifyIcon.vue'
+<script lang="ts" setup>
+import { watch } from 'vue'
+import type { PropType } from 'vue'
+import type { ResumeInfo } from '~/types'
 
-export default defineComponent({
-  components: { IconifyIcon },
-  props: {
-    resume: {
-      type: Object as PropType<ResumeInfo | null>,
-      default: null,
-    },
+const { resume } = defineProps({
+  resume: {
+    type: Object as PropType<ResumeInfo | null>,
+    default: null,
   },
 })
+
+watch(
+  () => resume,
+  (val) => {
+    console.log('watch', val)
+  },
+)
 </script>

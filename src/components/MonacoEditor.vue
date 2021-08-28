@@ -3,7 +3,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, onMounted, watch, watchEffect } from 'vue'
+import { ref, onMounted, watch, inject } from 'vue'
 import { isDark } from '~/logic'
 
 // monaco
@@ -13,14 +13,20 @@ import JsonWorker from 'monaco-editor/esm/vs/language/json/json.worker?worker'
 import CssWorker from 'monaco-editor/esm/vs/language/css/css.worker?worker'
 import HtmlWorker from 'monaco-editor/esm/vs/language/html/html.worker?worker'
 import TsWorker from 'monaco-editor/esm/vs/language/typescript/ts.worker?worker'
+import { sleep } from '~/utils'
 
 let monaco: typeof m
 
 const container = ref<HTMLElement | null>()
-const editor = ref<m.editor.IStandaloneCodeEditor | null>()
 
-const { text } = defineProps({
-  text: String,
+// ref is too slow
+let editor: m.editor.IStandaloneCodeEditor
+
+const props = defineProps({
+  text: {
+    type: String,
+    default: '// 在线使用 yaml 编辑你的简历',
+  },
 })
 
 // @ts-ignore
@@ -43,6 +49,8 @@ self.MonacoEnvironment = {
   },
 }
 
+const updateResumeTxt = inject('updateResumeTxt')
+
 onMounted(async() => {
   // https://github.com/antfu/vite-ssg/issues/74
 // dynamic import
@@ -50,12 +58,29 @@ onMounted(async() => {
     monaco = await import('monaco-editor')
   }
   if (container.value) {
-    console.log(text)
-    editor.value = monaco.editor.create(container.value, {
-      value: text,
+    editor = monaco.editor.create(container.value, {
+      value: props.text,
       language: 'yaml',
-      theme: isDark ? 'vs-dark' : 'vs',
+      theme: isDark.value ? 'vs-dark' : 'vs',
       wordWrap: 'on',
+    })
+
+    const waitEditorLoad = async() => {
+      if (!editor) {
+        console.log('等待编辑器初始化...')
+        await sleep(200)
+        waitEditorLoad()
+      }
+    }
+
+    await waitEditorLoad()
+    console.log('monaco-editor 初始化完成')
+
+    console.log('props.text', props.text)
+    editor?.setValue(props.text || '')
+
+    editor.onDidChangeModelContent((event) => {
+      updateResumeTxt(editor.getValue())
     })
   }
 })
@@ -63,11 +88,6 @@ onMounted(async() => {
 watch(isDark, (val) => {
   monaco.editor.setTheme(val ? 'vs-dark' : 'vs')
 })
-
-// watchEffect(() => {
-//   editor.value?.setValue(text || '')
-// })
-
 </script>
 
 <style>
