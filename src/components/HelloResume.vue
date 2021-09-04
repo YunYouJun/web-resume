@@ -31,7 +31,7 @@
     <div class="p-3">
       <a
         class="resume-btn m-3"
-        :href="`https://github1s.com/YunYouJun/web-resume/blob/HEAD/public${resumeYaml}`"
+        :href="`https://github.com/YunYouJun/web-resume/blob/main/public${resumeYaml}`"
         target="_blank"
       >{{ t('button.see_yaml') }}
       </a>

@@ -8,10 +8,11 @@
 
 - 在 Web 端显示你的简历
 - 可以被打印成 A4 PDF
-- 通过 yml 配置你的简历内容
+- 通过 YAML 配置你的简历内容
+  - **支持在线编辑预览**
   - 理论上可以任意换肤，但是抱歉目前还只有这一种 hhh
   - 在线解析
-  - yaml 验证，提供字段验证和类型提示（你可能需要安装 [vscode-yaml](https://github.com/redhat-developer/vscode-yaml) 插件）
+  - YAML 验证，提供字段验证和类型提示（你可能需要安装 [vscode-yaml](https://github.com/redhat-developer/vscode-yaml) 插件）
 - PWA
 - 自由使用 Web 图标
 
@@ -79,4 +80,3 @@ app.use(VueGtag, {
 ## Todo
 
 - [ ] 中英文使用手册
-- [ ] 在线编辑
