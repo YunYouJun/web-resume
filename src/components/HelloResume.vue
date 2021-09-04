@@ -33,12 +33,14 @@
         class="resume-btn m-3"
         :href="`https://github1s.com/YunYouJun/web-resume/blob/HEAD/public${resumeYaml}`"
         target="_blank"
-      >{{ t('button.see_yaml') }}</a>
+      >{{ t('button.see_yaml') }}
+      </a>
       <a
         class="resume-btn m-3"
         :href="`/resume?url=${resumeYaml}`"
         target="_blank"
-      >{{ t('button.see_resume') }}</a>
+      >{{ t('button.see_resume') }}
+      </a>
     </div>
     <small class="mt-3 text-monospace">
       <a :href="homepage" title="Web Resume">{{ homepage }}</a>
@@ -52,10 +54,7 @@ import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
 
-const props = defineProps({
-  msg: String,
-  links: Object,
-})
+const props = defineProps<{ msg: string }>()
 
 const homepage = 'https://resume.elpsy.cn'
 const examples = computed(() => {

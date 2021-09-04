@@ -10,10 +10,9 @@
 </template>
 
 <script lang="ts" setup>
-import type { PropType } from 'vue'
 import type { CertificateHistory } from '~/types/base'
 
-const { history } = defineProps({
-  history: Object as PropType<CertificateHistory>,
-})
+const { history } = defineProps<{
+  history: CertificateHistory
+}>()
 </script>

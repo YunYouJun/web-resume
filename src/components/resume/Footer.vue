@@ -10,7 +10,5 @@
 import type { PropType } from 'vue'
 import type { ResumeInfo } from '~/types'
 
-const { footer } = defineProps({
-  footer: Object as PropType<ResumeInfo['footer']>,
-})
+const { footer } = defineProps<{ footer: ResumeInfo['footer'] }>()
 </script>

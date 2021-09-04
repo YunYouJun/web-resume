@@ -2,11 +2,13 @@ import { defineConfig } from 'vite'
 import Vue from '@vitejs/plugin-vue'
 import Pages from 'vite-plugin-pages'
 import Layouts from 'vite-plugin-vue-layouts'
-import ViteIcons, { ViteIconsResolver } from 'vite-plugin-icons'
+import Icons from 'unplugin-icons/vite'
+import IconsResolver from 'unplugin-icons/resolver'
 import WindiCSS from 'vite-plugin-windicss'
 import { VitePWA } from 'vite-plugin-pwa'
 import VueI18n from '@intlify/vite-plugin-vue-i18n'
-import ViteComponents from 'vite-plugin-components'
+import Components from 'unplugin-vue-components/vite'
+import AutoImport from 'unplugin-auto-import/vite'
 
 import Markdown from 'vite-plugin-md'
 import Prism from 'markdown-it-prism'
@@ -57,6 +59,49 @@ export default defineConfig({
     // https://github.com/JohnCampionJr/vite-plugin-vue-layouts
     Layouts(),
 
+    // https://github.com/antfu/unplugin-auto-import
+    AutoImport({
+      imports: [
+        'vue',
+        'vue-router',
+        'vue-i18n',
+        '@vueuse/head',
+        '@vueuse/core',
+      ],
+      dts: true,
+    }),
+
+    // https://github.com/antfu/vite-plugin-components
+    Components({
+      // allow auto load markdown components under `./src/components/`
+      extensions: ['vue', 'md'],
+
+      dts: true,
+
+      // allow auto import and register components used in markdown
+      include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
+
+      directoryAsNamespace: true,
+
+      // custom resolvers
+      resolvers: [
+        // auto import icons
+        // https://github.com/antfu/unplugin-icons
+        IconsResolver({
+          // componentPrefix: '',
+          // enabledCollections: ['carbon']
+        }),
+      ],
+    }),
+
+    // https://github.com/antfu/unplugin-icons
+    Icons(),
+
+    // https://github.com/antfu/vite-plugin-windicss
+    WindiCSS({
+      safelist: markdownWrapperClasses,
+    }),
+
     // https://github.com/antfu/vite-plugin-md
     Markdown({
       wrapperClasses: markdownWrapperClasses,
@@ -72,29 +117,6 @@ export default defineConfig({
           },
         })
       },
-    }),
-
-    // https://github.com/antfu/vite-plugin-components
-    ViteComponents({
-      // allow auto load markdown components under `./src/components/`
-      extensions: ['vue', 'md'],
-
-      // allow auto import and register components used in markdown
-      customLoaderMatcher: (id) => id.endsWith('.md'),
-
-      globalComponentsDeclaration: true,
-
-      directoryAsNamespace: true,
-
-      customComponentResolvers: ViteIconsResolver(),
-    }),
-
-    // https://github.com/antfu/vite-plugin-icons
-    ViteIcons(),
-
-    // https://github.com/antfu/vite-plugin-windicss
-    WindiCSS({
-      safelist: markdownWrapperClasses,
     }),
 
     VitePWA({
