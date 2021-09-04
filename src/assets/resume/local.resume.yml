@@ -1,4 +1,3 @@
-# 简历源文件示例
 id: 云游君
 name: 云游君
 info:
@@ -94,6 +93,26 @@ project:
           icon: simple-icons:npm
         - name: "mongodb"
           icon: simple-icons:mongodb
+    - name: Element-Theme-Ink
+      logo: ri:contrast-drop-2-line
+      type: 前端主题，开源项目
+      start: "2018 年 2 月"
+      end: "2019 年 1 月"
+      url: https://ink.elpsy.cn
+      keywords:
+        - name: "Element"
+          logo: https://ink.elpsy.cn/favicon.ico
+        - name: Scss
+          icon: simple-icons:sass
+        - name: Css
+          icon: simple-icons:css3
+        - name: Gulp
+          icon: simple-icons:gulp
+        - name: Vue.js
+          icon: simple-icons:vue-dot-js
+        - name: npm
+          icon: simple-icons:npm
+      summary: 一款极简风格的 Element 主题，使用 Scss 进行编写，Gulp 构建工作流，压缩打包分发至 npm。
     - name: air-conditioner
       type: 玩具项目
       logo: ri:snowy-line
@@ -114,28 +133,6 @@ project:
         - "便携，静音，随时随地打开空调"
         - 低功耗（使用 HTML CSS 而非 Canvas 绘制）
         - 操作简单，安装便捷
-    - name: 蚂蚁集团 支付宝 体验技术部
-      logo: ri:alipay-line
-      type: 实习，前端开发
-      start: "2021 年 7 月"
-      end: "至今"
-      keywords:
-        - name: react
-          icon: simple-icons:react
-        - name: less
-          icon: simple-icons:less
-        - name: XCode
-          icon: simple-icons:xcode
-        - name: TypeScript
-          icon: simple-icons:typescript
-        - name: RPC 等内部工具
-          icon: 🐜
-      summary: 🐜 🌲 参与蚂蚁森林神奇动物徽章旋转动画、内部某未上线项目部分模块开发、完整负责蚂蚁森林五周年活动页前端开发（2021.8.27 活动结束）
-    - name: 腾讯 CSIG 智慧出行
-      logo: ri:qq-line
-      type: 实习，前端开发，汽车云大数据平台业务开发
-      start: "2021 年 5 月"
-      end: "2021 年 7 月"
     - name: 其他
       logo: ri:github-line
       type: 业余开源项目
@@ -143,7 +140,7 @@ project:
       end: 至今
       url: https://github.com/YunYouJun
       highlights:
-        - Element Plus 团队核心成员，曾为 element-ui, element-plus, vitepress 等项目积极贡献 PR，并业余开源一些前端项目。
+        - 曾为 element-ui, element-plus, vuepress 等项目积极贡献 PR，并业余开源一些前端项目。
 
 skill:
   icon: ri:flask-line

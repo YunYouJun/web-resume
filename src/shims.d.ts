@@ -1,4 +1,4 @@
-declare module '@rollup/plugin-yaml'
+declare module '*.yml'
 
 /* eslint-disable import/no-duplicates */
 declare module '*.vue' {

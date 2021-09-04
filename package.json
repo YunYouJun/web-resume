@@ -39,7 +39,6 @@
   "devDependencies": {
     "@iconify/json": "^1.1.373",
     "@intlify/vite-plugin-vue-i18n": "^2.3.2",
-    "@rollup/plugin-yaml": "^3.1.0",
     "@types/js-yaml": "^4.0.3",
     "@types/markdown-it-link-attributes": "^3.0.1",
     "@types/node": "^16.3.1",

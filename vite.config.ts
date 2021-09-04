@@ -20,8 +20,6 @@ const prefix = 'monaco-editor/esm/vs'
 
 const markdownWrapperClasses = 'prose prose-sm m-auto text-left'
 
-// import yaml from '@rollup/plugin-yaml'
-
 // https://vitejs.dev/config/
 export default defineConfig({
   resolve: {

@@ -7,7 +7,7 @@ import type { ResumeInfo } from '~/types'
 export const useEditorStore = defineStore('editor', () => {
   const editor = ref<m.editor.IStandaloneCodeEditor | null>()
 
-  const resumeText = ref('// 在线使用 yaml 编辑你的简历')
+  const resumeText = ref('# 在线使用 yaml 编辑你的简历')
   const resumeJson = computed(
     () => (yaml.load(resumeText.value) as ResumeInfo) || {}
   )
