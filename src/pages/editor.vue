@@ -11,28 +11,37 @@
         <MonacoEditor :text="resumeText" />
       </div>
     </div>
+    <div>
+      <a class="resume-btn mt-3" href="/resume" target="_blank">{{
+        t('button.see_resume')
+      }}</a>
+    </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { useEditorStore } from '~/stores/editor'
+import { getCache, useEditorStore } from '~/stores/editor'
 
 import { onBeforeMount, ref } from 'vue'
-// import { useI18n } from 'vue-i18n'
+import { useI18n } from 'vue-i18n'
 import { useRoute } from 'vue-router'
 import { useResume } from '~/logic/resume'
 
 const editorStore = useEditorStore()
 
-// const { t } = useI18n()
+const { t } = useI18n()
 
 const route = useRoute()
 const resumeText = ref(editorStore.resumeText)
 
 onBeforeMount(async () => {
-  const txt = await useResume(route.query.url as string)
-  editorStore.setResume(txt)
-  editorStore.editor?.setValue(txt)
+  // 若本地不存在，则设置默认值
+  if (!getCache('text')) {
+    const txt =
+      `# ${t('editor.name')}\n` + (await useResume(route.query.url as string))
+    editorStore.setResume(txt)
+    editorStore.editor?.setValue(txt)
+  }
 })
 </script>
 
@@ -45,7 +54,7 @@ onBeforeMount(async () => {
   border: 1px solid var(--wr-border-color);
   padding: 0;
   overflow: hidden;
-  height: 81vh;
+  height: 88vh;
 }
 
 .resume-container,

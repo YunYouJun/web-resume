@@ -15,12 +15,16 @@ import type { ResumeInfo } from '../types'
 import yaml from 'js-yaml'
 import { useRoute } from 'vue-router'
 import { useResume } from '~/logic/resume'
+import { getCache } from '~/stores/editor'
 
 const resume = ref<ResumeInfo>()
 const route = useRoute()
 
 onBeforeMount(async () => {
-  const txt = await useResume(route.query.url as string)
-  resume.value = yaml.load(txt) as ResumeInfo
+  let text = getCache('text') || ''
+  if (route.query.url) {
+    text = await useResume(route.query.url as string)
+  }
+  resume.value = yaml.load(text) as ResumeInfo
 })
 </script>

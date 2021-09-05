@@ -7,8 +7,8 @@
 </template>
 
 <script lang="ts" setup>
-import type { PropType } from 'vue'
 import type { ResumeInfo } from '~/types'
 
-const { footer } = defineProps<{ footer: ResumeInfo['footer'] }>()
+const props = defineProps<{ footer: ResumeInfo['footer'] }>()
+const footer = toRef(props, 'footer')
 </script>

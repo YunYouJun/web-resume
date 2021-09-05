@@ -4,16 +4,27 @@ import * as m from 'monaco-editor'
 import yaml from 'js-yaml'
 import type { ResumeInfo } from '~/types'
 
+export const namespace = 'web-resume'
+
+export function setCache(key: string, value: string) {
+  localStorage.setItem(`${namespace}-${key}`, value)
+}
+
+export function getCache(key: string) {
+  return localStorage.getItem(`${namespace}-${key}`)
+}
+
 export const useEditorStore = defineStore('editor', () => {
   const editor = ref<m.editor.IStandaloneCodeEditor | null>()
 
-  const resumeText = ref('# 在线使用 yaml 编辑你的简历')
+  const resumeText = ref(getCache('text') || '')
   const resumeJson = computed(
     () => (yaml.load(resumeText.value) as ResumeInfo) || {}
   )
 
   function setResumeText(value: string) {
     resumeText.value = value
+    setCache('text', value)
   }
 
   function setResume(value: string) {

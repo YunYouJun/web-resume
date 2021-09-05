@@ -12,7 +12,9 @@
 <script lang="ts" setup>
 import type { CertificateHistory } from '~/types/base'
 
-const { history } = defineProps<{
+const props = defineProps<{
   history: CertificateHistory
 }>()
+
+const history = toRef(props, 'history')
 </script>

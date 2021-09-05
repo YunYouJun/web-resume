@@ -18,7 +18,17 @@
 
 ## Usage
 
+### 在线使用
+
+下方导航栏切换至编辑器页面，在线编辑简历对应配置项即可。
+
+> 图标可参见 [icones](https://icones.js.org/) 使用
+
+### 本地使用
+
 点击仓库右上角 `Use this template`，或 clone 本项目。
+
+> 热加载。
 
 ```bash
 git clone https://github.com/YunYouJun/web-resume
@@ -26,35 +36,26 @@ cd web-resume
 yarn
 ```
 
-### Preview
+#### Command
 
-预览
+- 预览: `yarn dev` (`http://localhost:3000/`)
+- 构建: `yarn build`
 
-```sh
-yarn dev
-# http://localhost:3000/
-```
+#### Custom
 
-### Build
+##### Resume
 
-```sh
-yarn build
-```
+自定义 `src/assets/resume/local.resume.yml` 的简历文件，支持热加载。
 
-### Custom
+> 本地热加载页面，请进入 `http://localhost:3000/local`
+> 使用 VSCode 还可以有本地 YAML 格式校验哦～
 
-#### Resume
-
-自定义 `public/resume/*.resume.yml` 的简历文件。
-
-- 图标可参见 [icones](https://icones.js.org/) 使用
-
-#### Google Analytics
+##### Google Analytics
 
 修改 id。
 
 ```ts
-// src/main.ts
+// src/modules/gtag.ts
 app.use(VueGtag, {
   property: { id: 'G-W022WEV65N' },
 })
@@ -64,14 +65,7 @@ app.use(VueGtag, {
 
 使用 Chrome 右键打印，选择另存为 PDF。
 
-> 可自定义缩放比例，测试 78% 左右可以一页输出。
-
-## FAQ
-
-### Hot reload
-
-- 使用 `import resume from '~/assets/resume/2021.resume.yml'` 的方式导入以支持热加载
-- 线上加载 yml 不支持热加载
+> 可自定义缩放比例，测试 78% 左右（自己试试咯）可以一页输出。
 
 ## Ref
 

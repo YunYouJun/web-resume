@@ -15,6 +15,7 @@ import JsonWorker from 'monaco-editor/esm/vs/language/json/json.worker?worker'
 import CssWorker from 'monaco-editor/esm/vs/language/css/css.worker?worker'
 import HtmlWorker from 'monaco-editor/esm/vs/language/html/html.worker?worker'
 import TsWorker from 'monaco-editor/esm/vs/language/typescript/ts.worker?worker'
+import YamlWorker from 'monaco-yaml/lib/esm/yaml.worker?worker'
 
 let monaco: typeof m
 
@@ -41,6 +42,9 @@ self.MonacoEnvironment = {
     if (label === 'typescript' || label === 'javascript') {
       return new TsWorker()
     }
+    if (label === 'yaml') {
+      return new YamlWorker()
+    }
     return new EditorWorker()
   },
 }
@@ -51,12 +55,27 @@ onMounted(async () => {
   if (typeof window !== 'undefined') {
     monaco = await import('monaco-editor')
   }
-  if (container.value) {
+
+  if (container.value && !editor) {
     editor = monaco.editor.create(container.value, {
       value: editorStore.resumeText,
       language: 'yaml',
       theme: isDark.value ? 'vs-dark' : 'vs',
       wordWrap: 'on',
+    })
+
+    // @ts-expect-error
+    monaco.languages.yaml?.yamlDefaults.setDiagnosticsOptions({
+      validate: true,
+      enableSchemaRequest: true,
+      format: true,
+      hover: true,
+      completion: true,
+      schemas: [
+        {
+          uri: 'https://raw.githubusercontent.com/YunYouJun/web-resume/main/public/schema/resume.schema.json',
+        },
+      ],
     })
 
     editorStore.setEditor(editor)

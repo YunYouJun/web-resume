@@ -1,4 +1,6 @@
 import { defineConfig } from 'vite'
+import path from 'path'
+
 import Vue from '@vitejs/plugin-vue'
 import Pages from 'vite-plugin-pages'
 import Layouts from 'vite-plugin-vue-layouts'
@@ -14,7 +16,7 @@ import Markdown from 'vite-plugin-md'
 import Prism from 'markdown-it-prism'
 import LinkAttributes from 'markdown-it-link-attributes'
 
-import path from 'path'
+import Yaml from '@rollup/plugin-yaml'
 
 const prefix = 'monaco-editor/esm/vs'
 
@@ -39,6 +41,7 @@ export default defineConfig({
           htmlWorker: [`${prefix}/language/html/html.worker`],
           tsWorker: [`${prefix}/language/typescript/ts.worker`],
           editorWorker: [`${prefix}/editor/editor.worker`],
+          yamlWorker: ['monaco-yaml/lib/esm/yaml.worker'],
         },
       },
     },
@@ -139,14 +142,17 @@ export default defineConfig({
       },
     }),
 
-    // https://github.com/intlify/vite-plugin-vue-i18n
+    // https://github.com/intlify/bundle-tools/tree/main/packages/vite-plugin-vue-i18n
     VueI18n({
       runtimeOnly: true,
       compositionOnly: true,
       include: [path.resolve(__dirname, 'locales/**')],
     }),
 
-    // yaml(),
+    Yaml({
+      // avoid conflict with i18n yml
+      exclude: 'locales/*.yml',
+    }),
   ],
 
   server: {
@@ -162,7 +168,7 @@ export default defineConfig({
   },
 
   optimizeDeps: {
-    include: ['vue', 'vue-router', '@vueuse/core'],
+    include: ['vue', 'vue-router', '@vueuse/core', 'js-yaml'],
     exclude: ['vue-demi'],
   },
 })

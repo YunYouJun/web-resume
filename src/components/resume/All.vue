@@ -19,11 +19,4 @@ const props = withDefaults(
   }>(),
   {}
 )
-
-watch(
-  () => props.resume,
-  () => {
-    console.log(props.resume)
-  }
-)
 </script>

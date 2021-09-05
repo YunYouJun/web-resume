@@ -10,8 +10,6 @@ meta:
 </route>
 
 <script setup lang="ts">
-import resume from '~/assets/resume/local.resume.yml'
-onMounted(() => {
-  console.log(resume)
-})
+import localResume from '~/assets/resume/local.resume.yml'
+const resume = ref(localResume)
 </script>
