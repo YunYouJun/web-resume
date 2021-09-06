@@ -62,7 +62,6 @@ onMounted(async () => {
       language: 'yaml',
       theme: isDark.value ? 'vs-dark' : 'vs',
       wordWrap: 'on',
-      automaticLayout: true,
     })
 
     // @ts-expect-error
@@ -79,6 +78,11 @@ onMounted(async () => {
       ],
     })
 
+    // add resize for editor
+    window.addEventListener('resize', () => {
+      editor.layout()
+    })
+    
     editorStore.setEditor(editor)
 
     editor.onDidChangeModelContent((event) => {
