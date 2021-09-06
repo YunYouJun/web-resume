@@ -62,6 +62,7 @@ onMounted(async () => {
       language: 'yaml',
       theme: isDark.value ? 'vs-dark' : 'vs',
       wordWrap: 'on',
+      automaticLayout: true,
     })
 
     // @ts-expect-error
