@@ -78,6 +78,11 @@ onMounted(async () => {
       ],
     })
 
+    // add resize for editor
+    window.addEventListener('resize', () => {
+      editor.layout()
+    })
+    
     editorStore.setEditor(editor)
 
     editor.onDidChangeModelContent((event) => {

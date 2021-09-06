@@ -51,6 +51,7 @@ onBeforeMount(async () => {
 }
 
 .preview-container {
+  display: flex;
   border: 1px solid var(--wr-border-color);
   padding: 0;
   overflow: hidden;
