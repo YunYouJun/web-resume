@@ -18,9 +18,17 @@ export const useEditorStore = defineStore('editor', () => {
   const editor = ref<m.editor.IStandaloneCodeEditor | null>()
 
   const resumeText = ref(getCache('text') || '')
-  const resumeJson = computed(
-    () => (yaml.load(resumeText.value) as ResumeInfo) || {}
-  )
+
+  let resumeCached: ResumeInfo
+
+  const resumeJson = computed(() => {
+    try {
+      resumeCached = yaml.load(resumeText.value) as ResumeInfo
+    } catch (e) {
+      console.log(e)
+    }
+    return resumeCached
+  })
 
   function setResumeText(value: string) {
     resumeText.value = value
