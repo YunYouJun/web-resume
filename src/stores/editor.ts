@@ -18,9 +18,37 @@ export const useEditorStore = defineStore('editor', () => {
   const editor = ref<m.editor.IStandaloneCodeEditor | null>()
 
   const resumeText = ref(getCache('text') || '')
-  const resumeJson = computed(
-    () => (yaml.load(resumeText.value) as ResumeInfo) || {}
-  )
+
+  let resumeCached: ResumeInfo
+
+  const resumeJson = computed(() => {
+    try {
+      resumeCached = yaml.load(resumeText.value) as ResumeInfo
+      clearErrorMessage()
+    } catch (e: any) {
+      setErrorMessage(e.mark.line + 1, e.mark.column + 1, e.reason)
+    }
+    return resumeCached
+  })
+
+  function clearErrorMessage() {
+    const editorModel = editor.value?.getModel()
+    if (!editorModel) return
+    m.editor.setModelMarkers(editorModel, 'yaml', [])
+  }
+
+  function setErrorMessage(line: number, column: number, message: string) {
+    const editorModel = editor.value?.getModel()
+    if (!editorModel) return
+    m.editor.setModelMarkers(editorModel, 'yaml', [{
+      startLineNumber: line,
+      endLineNumber: line,
+      startColumn: column,
+      endColumn: editorModel.getLineContent(line).length + 1,
+      severity: m.MarkerSeverity.Error,
+      message: message,
+    }])
+  }
 
   function setResumeText(value: string) {
     resumeText.value = value
