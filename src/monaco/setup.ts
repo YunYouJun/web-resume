@@ -3,8 +3,15 @@
 
 export const setup = async () => {
   // avoid vite-ssg navigator error
-  const { editor, Uri } = await import('monaco-editor/esm/vs/editor/editor.api')
-  // const monaco = await import('monaco-editor')
+  // const { editor, Uri } = await import('monaco-editor/esm/vs/editor/editor.api')
+  if (window.monaco) {
+    return {
+      monaco: window.monaco,
+    }
+  }
+
+  const monaco = await import('monaco-editor')
+  window.monaco = monaco
 
   // const { setDiagnosticsOptions } = await import('monaco-yaml')
 
@@ -82,7 +89,7 @@ export const setup = async () => {
     await new Promise<void>((resolve) => onMounted(resolve))
   }
 
-  return { editor, Uri }
+  return { monaco }
 }
 
 export default setup

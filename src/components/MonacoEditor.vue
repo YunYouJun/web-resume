@@ -23,18 +23,20 @@ async function start() {
     // https://github.com/antfu/vite-ssg/issues/74
     // dynamic import
     // const { monaco } =
-    const { editor, Uri } = await setupMonaco()
+    const { monaco } = await setupMonaco()
 
     if (container.value && !codeEditor) {
-      codeEditor = editor.create(container.value, {
+      codeEditor = monaco.editor.create(container.value, {
         language: 'yaml',
         theme: isDark.value ? 'vs-dark' : 'vs',
         wordWrap: 'on',
-        model: editor.createModel(
-          editorStore.resumeText,
-          'yaml',
-          Uri.parse('resume.yml')
-        ),
+        // for monaco-yaml, but has not been solved, see `src/monaco/setup.ts`
+        // model: monaco.editor.createModel(
+        //   editorStore.resumeText,
+        //   'yaml',
+        //   monaco.Uri.parse('resume.yml')
+        // ),
+        value: editorStore.resumeText,
       })
 
       // add resize for editor
@@ -50,7 +52,7 @@ async function start() {
     }
 
     watch(isDark, (val) => {
-      editor.setTheme(val ? 'vs-dark' : 'vs')
+      monaco.editor.setTheme(val ? 'vs-dark' : 'vs')
     })
   }
 }
