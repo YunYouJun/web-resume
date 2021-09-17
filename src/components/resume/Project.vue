@@ -68,19 +68,11 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
-import type { PropType } from 'vue'
+<script lang="ts" setup>
 import type { Project } from '~/types/base'
 
-export default defineComponent({
-  props: {
-    project: {
-      type: Object as PropType<Project | null>,
-      default: null,
-    },
-  },
-})
+const props = defineProps<{ project: Project }>()
+const { project } = toRefs(props)
 </script>
 
 <style lang="scss">

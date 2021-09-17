@@ -10,7 +10,6 @@ meta:
 </route>
 
 <script setup lang="ts">
-import { ref, onBeforeMount } from 'vue'
 import type { ResumeInfo } from '../types'
 import yaml from 'js-yaml'
 import { useRoute } from 'vue-router'

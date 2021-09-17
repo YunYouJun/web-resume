@@ -12,7 +12,6 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from 'vue'
 import { Certificate } from '~/types/base'
 
 export default defineComponent({

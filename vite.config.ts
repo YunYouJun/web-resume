@@ -17,8 +17,7 @@ import Prism from 'markdown-it-prism'
 import LinkAttributes from 'markdown-it-link-attributes'
 
 import Yaml from '@rollup/plugin-yaml'
-
-const prefix = 'monaco-editor/esm/vs'
+import { prefix as monacoPrefix } from './src/monaco'
 
 const markdownWrapperClasses = 'prose prose-sm m-auto text-left'
 
@@ -30,17 +29,16 @@ export default defineConfig({
     },
   },
 
-  // for monaco-editor
   build: {
     rollupOptions: {
       output: {
         inlineDynamicImports: false,
         manualChunks: {
-          jsonWorker: [`${prefix}/language/json/json.worker`],
-          cssWorker: [`${prefix}/language/css/css.worker`],
-          htmlWorker: [`${prefix}/language/html/html.worker`],
-          tsWorker: [`${prefix}/language/typescript/ts.worker`],
-          editorWorker: [`${prefix}/editor/editor.worker`],
+          editorWorker: [`${monacoPrefix}/editor/editor.worker`],
+          // jsonWorker: [`${monacoPrefix}/language/json/json.worker`],
+          // cssWorker: [`${monacoPrefix}/language/css/css.worker`],
+          // htmlWorker: [`${monacoPrefix}/language/html/html.worker`],
+          // tsWorker: [`${monacoPrefix}/language/typescript/ts.worker`],
           yamlWorker: ['monaco-yaml/lib/esm/yaml.worker'],
         },
       },
@@ -168,7 +166,7 @@ export default defineConfig({
   },
 
   optimizeDeps: {
-    include: ['vue', 'vue-router', '@vueuse/core', 'js-yaml'],
+    include: ['vue', 'vue-router', '@vueuse/core', 'js-yaml', 'monaco-yaml'],
     exclude: ['vue-demi'],
   },
 })

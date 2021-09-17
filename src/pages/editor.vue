@@ -8,7 +8,9 @@
         <ResumeAll :resume="editorStore.resumeJson" />
       </div>
       <div class="editor-container">
-        <MonacoEditor :text="resumeText" />
+        <client-only>
+          <MonacoEditor :text="resumeText" />
+        </client-only>
       </div>
     </div>
     <div>
@@ -22,7 +24,6 @@
 <script lang="ts" setup>
 import { getCache, useEditorStore } from '~/stores/editor'
 
-import { onBeforeMount, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRoute } from 'vue-router'
 import { useResume } from '~/logic/resume'
@@ -40,7 +41,7 @@ onBeforeMount(async () => {
     const txt =
       `# ${t('editor.name')}\n` + (await useResume(route.query.url as string))
     editorStore.setResume(txt)
-    editorStore.editor?.setValue(txt)
+    editorStore.codeEditor?.setValue(txt)
   }
 })
 </script>

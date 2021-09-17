@@ -29,7 +29,6 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, toRefs } from 'vue'
 import pkg from '~/../package.json'
 
 const props = withDefaults(

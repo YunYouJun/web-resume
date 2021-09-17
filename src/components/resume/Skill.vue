@@ -16,16 +16,9 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, PropType } from 'vue'
+<script lang="ts" setup>
 import { Skill } from '~/types/base'
 
-export default defineComponent({
-  props: {
-    skill: {
-      type: Object as PropType<Skill | null>,
-      default: null,
-    },
-  },
-})
+const props = defineProps<{ skill: Skill }>()
+const { skill } = toRefs(props)
 </script>

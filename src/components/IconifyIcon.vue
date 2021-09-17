@@ -1,20 +1,18 @@
 <template>
   <span class="icon-container">
-    <span class="iconify" :data-icon="icon"></span>
+    <span class="iconify" :data-icon="props.icon"></span>
   </span>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
-
-export default defineComponent({
-  props: {
-    icon: {
-      type: String,
-      default: 'ri:question-mark',
-    },
-  },
-})
+<script lang="ts" setup>
+const props = withDefaults(
+  defineProps<{
+    icon: string
+  }>(),
+  {
+    icon: 'ri:question-mark',
+  }
+)
 </script>
 
 <style lang="scss">

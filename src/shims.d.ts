@@ -1,15 +1,16 @@
+import * as m from 'monaco-editor'
+import type { Environment } from 'monaco-editor/esm/vs/editor/editor.api'
+
 declare module '*.yml'
 
 /* eslint-disable import/no-duplicates */
 declare module '*.vue' {
-  import { DefineComponent } from 'vue'
   const component: DefineComponent<{}, {}, any>
   export default component
 }
 
 // with vite-plugin-md, markdowns can be treat as Vue components
 declare module '*.md' {
-  import { ComponentOptions } from 'vue'
   const component: ComponentOptions
   export default component
 }
@@ -18,4 +19,6 @@ declare module '*.md' {
 
 declare interface Window {
   // extend the window
+  monaco: typeof m | undefined
+  MonacoEnvironment: Environment
 }

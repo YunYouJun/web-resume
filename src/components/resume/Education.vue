@@ -31,7 +31,6 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from 'vue'
 import { Education } from '~/types/base'
 import IconifyIcon from '../IconifyIcon.vue'
 

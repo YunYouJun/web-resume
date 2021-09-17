@@ -3,97 +3,59 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, onMounted, watch } from 'vue'
 import { isDark } from '~/logic'
 
 import { useEditorStore } from '~/stores/editor'
 
-// monaco
 import * as m from 'monaco-editor'
-import EditorWorker from 'monaco-editor/esm/vs/editor/editor.worker?worker'
-import JsonWorker from 'monaco-editor/esm/vs/language/json/json.worker?worker'
-import CssWorker from 'monaco-editor/esm/vs/language/css/css.worker?worker'
-import HtmlWorker from 'monaco-editor/esm/vs/language/html/html.worker?worker'
-import TsWorker from 'monaco-editor/esm/vs/language/typescript/ts.worker?worker'
-import YamlWorker from 'monaco-yaml/lib/esm/yaml.worker?worker'
+import setupMonaco from '~/monaco/setup'
 
-let monaco: typeof m
-
-const editorStore = useEditorStore()
-
-const container = ref<HTMLElement | null>()
+import { isClient } from '~/utils'
 
 // ref is too slow
-let editor: m.editor.IStandaloneCodeEditor
+let codeEditor: m.editor.IStandaloneCodeEditor
 
-// @ts-ignore
-// https://github.com/vitejs/vite/discussions/1791#discussioncomment-321046
-self.MonacoEnvironment = {
-  getWorker(_: any, label: string) {
-    if (label === 'json') {
-      return new JsonWorker()
+const editorStore = useEditorStore()
+const container = ref<HTMLElement | null>()
+
+async function start() {
+  if (isClient) {
+    // https://github.com/antfu/vite-ssg/issues/74
+    // dynamic import
+    // const { monaco } =
+    const { editor, Uri } = await setupMonaco()
+
+    if (container.value && !codeEditor) {
+      codeEditor = editor.create(container.value, {
+        language: 'yaml',
+        theme: isDark.value ? 'vs-dark' : 'vs',
+        wordWrap: 'on',
+        model: editor.createModel(
+          editorStore.resumeText,
+          'yaml',
+          Uri.parse('resume.yml')
+        ),
+      })
+
+      // add resize for editor
+      self.addEventListener('resize', () => {
+        codeEditor.layout()
+      })
+
+      editorStore.setEditor(codeEditor)
+
+      codeEditor.onDidChangeModelContent((event: any) => {
+        editorStore.setResume(codeEditor.getValue())
+      })
     }
-    if (label === 'css' || label === 'scss' || label === 'less') {
-      return new CssWorker()
-    }
-    if (label === 'html' || label === 'handlebars' || label === 'razor') {
-      return new HtmlWorker()
-    }
-    if (label === 'typescript' || label === 'javascript') {
-      return new TsWorker()
-    }
-    if (label === 'yaml') {
-      return new YamlWorker()
-    }
-    return new EditorWorker()
-  },
+
+    watch(isDark, (val) => {
+      editor.setTheme(val ? 'vs-dark' : 'vs')
+    })
+  }
 }
 
-onMounted(async () => {
-  // https://github.com/antfu/vite-ssg/issues/74
-  // dynamic import
-  if (typeof window !== 'undefined') {
-    monaco = await import('monaco-editor')
-  }
-
-  if (container.value && !editor) {
-    editor = monaco.editor.create(container.value, {
-      value: editorStore.resumeText,
-      language: 'yaml',
-      theme: isDark.value ? 'vs-dark' : 'vs',
-      wordWrap: 'on',
-    })
-
-    // @ts-expect-error
-    monaco.languages.yaml?.yamlDefaults.setDiagnosticsOptions({
-      validate: true,
-      enableSchemaRequest: true,
-      format: true,
-      hover: true,
-      completion: true,
-      schemas: [
-        {
-          uri: 'https://raw.githubusercontent.com/YunYouJun/web-resume/main/public/schema/resume.schema.json',
-        },
-      ],
-    })
-
-    // add resize for editor
-    window.addEventListener('resize', () => {
-      editor.layout()
-    })
-
-    editorStore.setEditor(editor)
-
-    editor.onDidChangeModelContent((event) => {
-      editorStore.setResume(editor.getValue())
-    })
-  }
-})
-
-watch(isDark, (val) => {
-  monaco.editor.setTheme(val ? 'vs-dark' : 'vs')
-})
+start()
 </script>
 
 <style>
