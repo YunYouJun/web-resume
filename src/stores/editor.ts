@@ -41,7 +41,7 @@ export const useEditorStore = defineStore('editor', () => {
   async function clearErrorMessage() {
     const editorModel = codeEditor.value?.getModel()
     if (editorModel && isClient) {
-      const { editor } = await import('monaco-editor/esm/vs/editor/editor.api')
+      const { editor } = await import('monaco-editor')
       editor.setModelMarkers(editorModel, 'yaml', [])
     }
   }
@@ -53,8 +53,7 @@ export const useEditorStore = defineStore('editor', () => {
   ) {
     const editorModel = codeEditor.value?.getModel()
     if (editorModel && isClient) {
-      const { MarkerSeverity } = await import('monaco-editor')
-      const { editor } = await import('monaco-editor/esm/vs/editor/editor.api')
+      const { editor, MarkerSeverity } = await import('monaco-editor')
       editor.setModelMarkers(editorModel, 'yaml', [
         {
           startLineNumber: line,

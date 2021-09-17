@@ -3,7 +3,6 @@
 
 export const setup = async () => {
   // avoid vite-ssg navigator error
-  // const { editor, Uri } = await import('monaco-editor/esm/vs/editor/editor.api')
   if (window.monaco) {
     return {
       monaco: window.monaco,
