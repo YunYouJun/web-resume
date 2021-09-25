@@ -1,7 +1,10 @@
 import * as m from 'monaco-editor'
 import type { Environment } from 'monaco-editor/esm/vs/editor/editor.api'
 
-declare module '*.yml'
+declare module '*.yml' {
+  const data: any
+  export default data
+}
 
 /* eslint-disable import/no-duplicates */
 declare module '*.vue' {
