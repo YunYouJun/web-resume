@@ -11,7 +11,7 @@ const props = withDefaults(
   }>(),
   {
     icon: 'ri:question-mark',
-  }
+  },
 )
 </script>
 

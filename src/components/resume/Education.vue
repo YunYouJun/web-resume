@@ -31,8 +31,8 @@
 </template>
 
 <script lang="ts">
-import { Education } from '~/types/base'
 import IconifyIcon from '../IconifyIcon.vue'
+import { Education } from '~/types/base'
 
 export default defineComponent({
   components: { IconifyIcon },

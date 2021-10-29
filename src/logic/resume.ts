@@ -3,9 +3,9 @@
  * @param url
  */
 export async function useResume(url: string) {
-  if (!url) {
+  if (!url)
     url = '/resume/2021.resume.yml'
-  }
+
   const txt = await fetch(url).then((res) => {
     return res.text()
   })

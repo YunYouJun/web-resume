@@ -39,7 +39,7 @@ const props = withDefaults(
   {
     url: pkg.repository.url,
     color: 'black',
-  }
+  },
 )
 
 const { color } = toRefs(props)

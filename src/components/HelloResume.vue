@@ -59,7 +59,7 @@ const homepage = 'https://resume.elpsy.cn'
 const examples = computed(() => {
   return [
     {
-      name: t('noun.worker') + ' 2021',
+      name: `${t('noun.worker')} 2021`,
       url: '/resume/2021.resume.yml',
     },
     {

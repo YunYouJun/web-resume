@@ -9,9 +9,8 @@ import { isClient } from '~/utils'
 export const namespace = 'web-resume'
 
 export function setCache(key: string, value: string) {
-  if (isClient) {
+  if (isClient)
     localStorage.setItem(`${namespace}-${key}`, value)
-  }
 }
 
 export function getCache(key: string) {
@@ -29,10 +28,10 @@ export const useEditorStore = defineStore('editor', () => {
     try {
       resumeCached = yaml.load(resumeText.value) as ResumeInfo
       clearErrorMessage()
-    } catch (e: any) {
-      if (e) {
+    }
+    catch (e: any) {
+      if (e)
         setErrorMessage(e.mark.line + 1, e.mark.column + 1, e.reason)
-      }
     }
     return resumeCached
   })
@@ -49,7 +48,7 @@ export const useEditorStore = defineStore('editor', () => {
   async function setErrorMessage(
     line: number,
     column: number,
-    message: string
+    message: string,
   ) {
     const editorModel = codeEditor.value?.getModel()
     if (editorModel && isClient) {
@@ -61,7 +60,7 @@ export const useEditorStore = defineStore('editor', () => {
           startColumn: column,
           endColumn: editorModel.getLineContent(line).length + 1,
           severity: MarkerSeverity.Error,
-          message: message,
+          message,
         },
       ])
     }
@@ -90,6 +89,5 @@ export const useEditorStore = defineStore('editor', () => {
   }
 })
 
-if (import.meta.hot) {
+if (import.meta.hot)
   import.meta.hot.accept(acceptHMRUpdate(useEditorStore, import.meta.hot))
-}

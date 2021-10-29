@@ -22,10 +22,10 @@
 </template>
 
 <script lang="ts" setup>
-import { getCache, useEditorStore } from '~/stores/editor'
 
 import { useI18n } from 'vue-i18n'
 import { useRoute } from 'vue-router'
+import { getCache, useEditorStore } from '~/stores/editor'
 import { useResume } from '~/logic/resume'
 
 const editorStore = useEditorStore()
@@ -35,11 +35,11 @@ const { t } = useI18n()
 const route = useRoute()
 const resumeText = ref(editorStore.resumeText)
 
-onBeforeMount(async () => {
+onBeforeMount(async() => {
   // 若本地不存在，则设置默认值
   if (!getCache('text')) {
-    const txt =
-      `# ${t('editor.name')}\n` + (await useResume(route.query.url as string))
+    const txt
+      = `# ${t('editor.name')}\n${await useResume(route.query.url as string)}`
     editorStore.setResume(txt)
     editorStore.codeEditor?.setValue(txt)
   }

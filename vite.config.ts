@@ -1,5 +1,5 @@
-import { defineConfig } from 'vite'
 import path from 'path'
+import { defineConfig } from 'vite'
 
 import Vue from '@vitejs/plugin-vue'
 import Pages from 'vite-plugin-pages'
@@ -94,7 +94,9 @@ export default defineConfig({
     }),
 
     // https://github.com/antfu/unplugin-icons
-    Icons(),
+    Icons({
+      autoInstall: true,
+    }),
 
     // https://github.com/antfu/vite-plugin-windicss
     WindiCSS({

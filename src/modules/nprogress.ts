@@ -1,5 +1,5 @@
-import { UserModule } from '~/types'
 import NProgress from 'nprogress'
+import { UserModule } from '~/types'
 
 export const install: UserModule = ({ isClient, router }) => {
   if (isClient) {

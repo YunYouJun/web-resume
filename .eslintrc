@@ -1,8 +1,5 @@
 {
-  "extends": "@yunyoujun",
-  "rules": {
-    "no-undef": "off",
-    "comma-dangle": "off",
-    "space-before-function-paren": "off"
-  }
+  "extends": [
+    "@antfu"
+  ]
 }

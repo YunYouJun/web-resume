@@ -3,11 +3,11 @@
 </template>
 
 <script lang="ts" setup>
+import * as m from 'monaco-editor'
 import { isDark } from '~/logic'
 
 import { useEditorStore } from '~/stores/editor'
 
-import * as m from 'monaco-editor'
 import setupMonaco from '~/monaco/setup'
 
 import { isClient } from '~/utils'

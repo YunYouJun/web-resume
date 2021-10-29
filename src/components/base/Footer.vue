@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
+import VueAboutMe from 'vue-about-me'
 import { isDark, toggleDark } from '~/logic'
 
 // @ts-ignore
 import pkg from '~/../package.json'
-import VueAboutMe from 'vue-about-me'
 import 'vue-about-me/style.css'
 
 const { t, availableLocales, locale } = useI18n()

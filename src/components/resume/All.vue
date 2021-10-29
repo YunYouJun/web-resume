@@ -41,14 +41,14 @@ const props = withDefaults(
   defineProps<{
     resume: ResumeInfo
   }>(),
-  {}
+  {},
 )
 
 const { resume } = toRefs(props)
 
 const compOrder = computed(() => {
-  const order = Object.keys(props.resume).filter((type) =>
-    resumeComponents.includes(type)
+  const order = Object.keys(props.resume).filter(type =>
+    resumeComponents.includes(type),
   )
   return order
 })
