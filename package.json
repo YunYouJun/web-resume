@@ -22,6 +22,10 @@
     "schema": "ts-node-script scripts/schema.ts",
     "prepare": "husky install"
   },
+  "lint-staged": {
+    "*.{vue,ts,js}": "eslint --fix",
+    "src/types/*.ts": "npm run schema"
+  },
   "dependencies": {
     "@vueuse/core": "^6.7.4",
     "@vueuse/head": "^0.6.0",
@@ -55,6 +59,7 @@
     "cross-env": "^7.0.3",
     "eslint": "^8.1.0",
     "husky": "^7.0.4",
+    "lint-staged": "^11.2.6",
     "markdown-it-link-attributes": "^3.0.0",
     "markdown-it-prism": "^2.2.1",
     "typescript": "^4.4.4",

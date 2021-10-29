@@ -1,7 +1,4 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-# generate schema
-pnpm lint
-pnpm schema
-git add -A
+npx lint-staged
