@@ -38,25 +38,16 @@ export const setup = async() => {
       )
 
       // https://github.com/vitejs/vite/discussions/1791#discussioncomment-321046
-      self.MonacoEnvironment = {
-        getWorker(_: string, label: string) {
-          // we do not need these
-          // if (label === 'json') {
-          //   return new JsonWorker()
-          // }
-          // if (label === 'css' || label === 'scss' || label === 'less') {
-          //   return new CssWorker()
-          // }
-          // if (label === 'html' || label === 'handlebars' || label === 'razor') {
-          //   return new HtmlWorker()
-          // }
-          // if (label === 'typescript' || label === 'javascript') {
-          //   return new TsWorker()
-          // }
-          if (label === 'yaml')
-            return new YamlWorker()
-
-          return new EditorWorker()
+      window.MonacoEnvironment = {
+        getWorker(_moduleId: string, label: string) {
+          switch (label) {
+            case 'editorWorkerService':
+              return new EditorWorker()
+            case 'yaml':
+              return new YamlWorker()
+            default:
+              throw new Error(`Unknown label ${label}`)
+          }
         },
       }
     })(),
@@ -70,16 +61,16 @@ export const setup = async() => {
   // https://github.com/vitejs/vite/issues/3820#issuecomment-863585040
   // I had submit a issue: https://github.com/remcohaszing/monaco-yaml/issues/115
   // setDiagnosticsOptions({
-  //   validate: true,
   //   enableSchemaRequest: true,
-  //   format: true,
   //   hover: true,
   //   completion: true,
+  //   validate: true,
+  //   format: true,
   //   schemas: [
   //     {
   //       uri: 'https://raw.githubusercontent.com/YunYouJun/web-resume/main/public/schema/resume.schema.json',
   //       // uri: '/schema/resume.schema.json',
-  //       fileMatch: ['resume.yml', '*.yaml'],
+  //       fileMatch: ['*.yml', '*.yaml'],
   //     },
   //   ],
   // })

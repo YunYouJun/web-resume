@@ -8,19 +8,10 @@ import { isClient } from '~/utils'
 
 export const namespace = 'web-resume'
 
-export function setCache(key: string, value: string) {
-  if (isClient)
-    localStorage.setItem(`${namespace}-${key}`, value)
-}
-
-export function getCache(key: string) {
-  return isClient && localStorage.getItem(`${namespace}-${key}`)
-}
-
 export const useEditorStore = defineStore('editor', () => {
   const codeEditor = ref<m.editor.IStandaloneCodeEditor | null>()
 
-  const resumeText = ref(getCache('text') || '')
+  const resumeText = useStorage(`${namespace}-text`, '')
 
   let resumeCached: ResumeInfo
 
@@ -68,7 +59,6 @@ export const useEditorStore = defineStore('editor', () => {
 
   function setResumeText(value: string) {
     resumeText.value = value
-    setCache('text', value)
   }
 
   function setResume(value: string) {

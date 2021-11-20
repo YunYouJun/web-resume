@@ -2,7 +2,7 @@
   <div class="editor-page text-center">
     <!-- <h1 class="m-4">
       {{ t('editor.name') }}
-    </h1> -->
+    </h1>-->
     <div class="preview-container">
       <div class="resume-container resume">
         <ResumeAll :resume="editorStore.resumeJson" />
@@ -14,9 +14,11 @@
       </div>
     </div>
     <div>
-      <a class="resume-btn mt-3" href="/resume" target="_blank">{{
-        t('button.see_resume')
-      }}</a>
+      <a class="resume-btn mt-3" href="/resume" target="_blank">
+        {{
+          t('button.see_resume')
+        }}
+      </a>
     </div>
   </div>
 </template>
@@ -25,7 +27,7 @@
 
 import { useI18n } from 'vue-i18n'
 import { useRoute } from 'vue-router'
-import { getCache, useEditorStore } from '~/stores/editor'
+import { useEditorStore } from '~/stores/editor'
 import { useResume } from '~/logic/resume'
 
 const editorStore = useEditorStore()
@@ -37,7 +39,7 @@ const resumeText = ref(editorStore.resumeText)
 
 onBeforeMount(async() => {
   // 若本地不存在，则设置默认值
-  if (!getCache('text')) {
+  if (!editorStore.resumeText) {
     const txt
       = `# ${t('editor.name')}\n${await useResume(route.query.url as string)}`
     editorStore.setResume(txt)
