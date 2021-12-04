@@ -2,14 +2,19 @@
   "description": "简历配置",
   "type": "object",
   "properties": {
-    "name": {
-      "description": "姓名",
-      "type": "string"
-    },
-    "info": {
-      "description": "个人信息",
+    "basics": {
       "type": "object",
       "properties": {
+        "name": {
+          "description": "姓名",
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "bio": {
+          "type": "string"
+        },
         "sex": {
           "type": "string"
         },
@@ -19,7 +24,10 @@
         "location": {
           "type": "string"
         }
-      }
+      },
+      "required": [
+        "name"
+      ]
     },
     "contact": {
       "$ref": "#/definitions/Contact",
@@ -55,10 +63,10 @@
     }
   },
   "required": [
+    "basics",
     "certificate",
     "contact",
     "education",
-    "name",
     "other",
     "project",
     "skill"

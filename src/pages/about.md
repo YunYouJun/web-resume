@@ -36,3 +36,7 @@ contact:
     icon: ri:github-line
     label: YunYouJun
 ```
+
+- 简洁至上：以 Markdown 为中心编写简历，基于 YAML 数据配置
+- Vue 驱动：使用 Vue 自定义组件
+- 高性能：为每个页面预渲染生成静态的 HTML，同时在页面被加载的时候，将作为 SPA 运行。

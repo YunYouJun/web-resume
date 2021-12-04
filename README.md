@@ -74,3 +74,6 @@ app.use(VueGtag, {
 ## Todo
 
 - [ ] 中英文使用手册
+- [ ] How about keeping it consistent with [jsonresume](https://jsonresume.org/)?
+  - [resume-schema](https://github.com/jsonresume/resume-schema)
+  - [schema.json](https://raw.githubusercontent.com/jsonresume/resume-schema/master/schema.json)

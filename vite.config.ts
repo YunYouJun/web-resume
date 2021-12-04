@@ -48,6 +48,13 @@ export default defineConfig({
   plugins: [
     Vue({
       include: [/\.vue$/, /\.md$/],
+      template: {
+        compilerOptions: {
+          isCustomElement: (tag) => {
+            return ['github-corners'].includes(tag)
+          },
+        },
+      },
     }),
 
     // https://github.com/hannoeru/vite-plugin-pages

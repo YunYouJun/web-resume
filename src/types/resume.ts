@@ -4,18 +4,18 @@ import { Contact, Education, Skill, Project, Other, Certificate } from './base'
  * 简历配置
  */
 export interface ResumeInfo {
-  /**
-   * 姓名
-   */
-  name: string
-  /**
-   * 个人信息
-   */
-  info?: {
+  basics: {
+    /**
+     * 姓名
+     */
+    name: string
+    label?: string
+    bio?: string
     sex?: string
     birth?: string
     location?: string
   }
+
   /**
    * 联系方式
    */

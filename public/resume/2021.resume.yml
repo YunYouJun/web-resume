@@ -1,7 +1,7 @@
 # 简历源文件示例
-id: 云游君
-name: 云游君
-info:
+basics:
+  id: 云游君
+  name: 云游君
   avatar: https://yunyoujun.cn/images/avatar.jpg
   bio: "All at sea."
 

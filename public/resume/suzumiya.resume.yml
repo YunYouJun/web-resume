@@ -1,9 +1,9 @@
-id: Suzumiya Haruhi
-name: 凉宫春日
-info:
+basics:
+  name: 凉宫春日
+  id: Suzumiya Haruhi
+  # birth: "10-08"
   avatar: https://s4.anilist.co/file/anilistcdn/character/medium/b251-I9jd3QatfZKA.jpg
   bio: "我对普通的人类没有兴趣。你们之中要是有外星人、未来人、异世界的人、超能力者，就尽管来找我吧。"
-  # birth: "10-08"
 
 contact:
   email:
@@ -134,7 +134,7 @@ project:
       end: 至今
       url: https://github.com/YunYouJun
       highlights:
-        - 曾为 element-ui, element-plus, vuepress 等项目积极贡献 PR，并业余开源一些前端项目。
+        - 曾为 element-ui, element-plus, vitepress 等项目积极贡献 PR，并业余开源一些前端项目。
 
 skill:
   icon: ri:flask-line

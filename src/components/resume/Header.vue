@@ -1,6 +1,6 @@
 <template>
   <h1 class="font-normal text-center text-4xl">
-    {{ resume.name }}
+    {{ resume.basics.name }}
   </h1>
   <small v-if="resume.info" class="flex justify-center">
     <span class="mx-1">{{ resume.info.sex }}</span>

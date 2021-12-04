@@ -1,6 +1,6 @@
-id: 云游君
-name: 云游君
-info:
+basics:
+  name: 云游君
+  label: 程序员
   avatar: https://yunyoujun.cn/images/avatar.jpg
   bio: "All at sea."
 
@@ -140,7 +140,7 @@ project:
       end: 至今
       url: https://github.com/YunYouJun
       highlights:
-        - 曾为 element-ui, element-plus, vuepress 等项目积极贡献 PR，并业余开源一些前端项目。
+        - 曾为 element-ui, element-plus, vitepress 等项目积极贡献 PR，并业余开源一些前端项目。
 
 skill:
   icon: ri:flask-line
