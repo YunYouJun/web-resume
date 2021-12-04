@@ -1,5 +1,5 @@
 <template>
-  <github-corners :reverse="isDark" :url="pkg.repository.url" blank></github-corners>
+  <github-corners :url="pkg.repository.url" blank></github-corners>
   <div class="home mt-8 text-center">
     <p class="text-10xl">
       <i-ri-file-text-line class="inline-block" />
@@ -10,7 +10,13 @@
 
 <script lang="ts" setup>
 import pkg from '~/../package.json'
-import { isDark } from '~/logic'
+
+useHead({
+  script: [{
+    src: 'https://cdn.jsdelivr.net/npm/wc-github-corners@latest',
+    type: 'module',
+  }],
+})
 </script>
 
 <style>
