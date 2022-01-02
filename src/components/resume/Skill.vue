@@ -7,7 +7,7 @@
           {{ sets.title }}：
           <span v-for="set in sets.keywords" :key="set.name">
             <iconify-icon v-if="set.icon" :icon="set.icon" />
-            <img v-if="set.logo" :src="set.logo" class="brand-favicon" />
+            <img v-if="set.logo" :src="set.logo" class="brand-favicon">
             {{ set.name }}
           </span>
         </li>
@@ -17,7 +17,7 @@
 </template>
 
 <script lang="ts" setup>
-import { Skill } from '~/types/base'
+import type { Skill } from '~/types/base'
 
 const props = defineProps<{ skill: Skill }>()
 const { skill } = toRefs(props)

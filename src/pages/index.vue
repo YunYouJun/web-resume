@@ -1,5 +1,5 @@
 <template>
-  <github-corners :url="pkg.repository.url" blank></github-corners>
+  <github-corners :url="pkg.repository.url" blank />
   <div class="home mt-8 text-center">
     <p class="text-10xl">
       <i-ri-file-text-line class="inline-block" />
@@ -13,7 +13,7 @@ import pkg from '~/../package.json'
 
 useHead({
   script: [{
-    src: 'https://cdn.jsdelivr.net/npm/wc-github-corners@latest',
+    src: 'https://cdn.jsdelivr.net/npm/wc-github-corners@0.1.5',
     type: 'module',
   }],
 })

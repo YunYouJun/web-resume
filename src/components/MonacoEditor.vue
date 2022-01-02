@@ -1,9 +1,9 @@
 <template>
-  <div id="editor-container" ref="container"></div>
+  <div id="editor-container" ref="container" />
 </template>
 
 <script lang="ts" setup>
-import * as m from 'monaco-editor'
+import type * as m from 'monaco-editor'
 import { isDark } from '~/logic'
 
 import { useEditorStore } from '~/stores/editor'

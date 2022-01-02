@@ -55,5 +55,5 @@ const copyright = {
       <i-ri-github-line />
     </a>
   </nav>
-  <vue-about-me :is-dark="isDark" :copyright="copyright"></vue-about-me>
+  <vue-about-me :is-dark="isDark" :copyright="copyright" />
 </template>

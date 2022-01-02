@@ -12,7 +12,7 @@
 </template>
 
 <script lang="ts">
-import { Certificate } from '~/types/base'
+import type { Certificate } from '~/types/base'
 
 export default defineComponent({
   props: {

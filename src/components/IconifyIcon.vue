@@ -1,6 +1,6 @@
 <template>
   <span class="icon-container">
-    <span class="iconify" :data-icon="props.icon"></span>
+    <span class="iconify" :data-icon="props.icon" />
   </span>
 </template>
 

@@ -1,6 +1,6 @@
 import { acceptHMRUpdate, defineStore } from 'pinia'
 
-import * as m from 'monaco-editor'
+import type * as m from 'monaco-editor'
 
 import yaml from 'js-yaml'
 import type { ResumeInfo } from '~/types'

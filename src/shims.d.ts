@@ -1,4 +1,4 @@
-import * as m from 'monaco-editor'
+import type * as m from 'monaco-editor'
 import type { Environment } from 'monaco-editor/esm/vs/editor/editor.api'
 
 declare module '*.yml' {

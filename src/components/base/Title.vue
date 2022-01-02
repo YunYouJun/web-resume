@@ -4,7 +4,7 @@
       <iconify-icon :icon="icon" class="title-icon" />
       {{ title }}
     </h2>
-    <hr />
+    <hr>
   </div>
 </template>
 

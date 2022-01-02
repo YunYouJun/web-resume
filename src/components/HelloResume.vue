@@ -26,7 +26,7 @@
         type="text"
         class="resume-input mx-auto block"
         :placeholder="t('home.address_placeholder')"
-      />
+      >
     </div>
     <div class="p-3">
       <a

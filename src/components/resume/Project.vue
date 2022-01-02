@@ -30,7 +30,7 @@
                 {{ keyword.name }}
               </span>
               <span v-else-if="keyword.logo">
-                <img :src="keyword.logo" class="brand-favicon" />
+                <img :src="keyword.logo" class="brand-favicon">
                 {{ keyword.name }}
               </span>
             </template>
@@ -49,20 +49,20 @@
         <div class="ml-3 my-1">
           <template v-if="set.badges">
             <span v-for="(badge, name) in set.badges" :key="name" class="mr-1">
-              <img :src="badge" :alt="name" />
+              <img :src="badge" :alt="name">
             </span>
           </template>
-          <span v-html="set.summary"></span>
+          <span v-html="set.summary" />
         </div>
         <ul v-if="set.highlights" class="list-disc mb-2">
           <li
             v-for="highlight in set.highlights"
             :key="highlight"
             v-html="highlight"
-          ></li>
+          />
           <!-- {{ highlight }} -->
         </ul>
-        <hr class="mx-3" />
+        <hr class="mx-3">
       </div>
     </details>
   </div>

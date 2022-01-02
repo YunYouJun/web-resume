@@ -1,4 +1,4 @@
-import { Contact, Education, Skill, Project, Other, Certificate } from './base'
+import type { Certificate, Contact, Education, Other, Project, Skill } from './base'
 
 /**
  * 简历配置

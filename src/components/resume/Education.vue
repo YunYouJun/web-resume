@@ -8,7 +8,7 @@
         class="mb-2"
       >
         <div>
-          <img v-if="edu.logo" class="school-logo" :src="edu.logo" />
+          <img v-if="edu.logo" class="school-logo" :src="edu.logo">
           <span v-else-if="edu.icon" class="mr-1">
             <iconify-icon :icon="edu.icon" />
           </span>
@@ -32,7 +32,7 @@
 
 <script lang="ts">
 import IconifyIcon from '../IconifyIcon.vue'
-import { Education } from '~/types/base'
+import type { Education } from '~/types/base'
 
 export default defineComponent({
   components: { IconifyIcon },
