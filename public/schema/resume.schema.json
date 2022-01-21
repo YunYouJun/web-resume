@@ -2,6 +2,9 @@
   "description": "简历配置",
   "type": "object",
   "properties": {
+    "name": {
+      "type": "string"
+    },
     "basics": {
       "type": "object",
       "properties": {
@@ -67,6 +70,7 @@
     "certificate",
     "contact",
     "education",
+    "name",
     "other",
     "project",
     "skill"

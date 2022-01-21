@@ -3,8 +3,8 @@
     <!-- <h1 class="m-4">
       {{ t('editor.name') }}
     </h1>-->
-    <div class="preview-container">
-      <div class="resume-container resume">
+    <div class="preview-container" grid="~ cols-2 gap-4 <sm:cols-1">
+      <div class="resume-container resume shadow">
         <ResumeAll :resume="editorStore.resumeJson" />
       </div>
       <div class="editor-container">
@@ -54,24 +54,20 @@ onBeforeMount(async() => {
 }
 
 .preview-container {
-  display: flex;
   border: 1px solid var(--wr-border-color);
   padding: 0;
   overflow: hidden;
-  height: 88vh;
 }
 
 .resume-container,
 .editor-container {
-  display: inline-block;
-  width: 50%;
-  height: 100%;
+  height: 87vh;
   text-align: left;
 }
 
 .resume-container {
   padding: 2rem;
-  overflow-y: scroll;
+  overflow: scroll;
   border-right: 1px solid var(--wr-border-color);
 }
 </style>

@@ -1,11 +1,11 @@
 <template>
   <h1 class="font-normal text-center text-4xl">
-    {{ resume.basics.name }}
+    {{ resume.name || resume.basics.name }}
   </h1>
-  <small v-if="resume.info" class="flex justify-center">
-    <span class="mx-1">{{ resume.info.sex }}</span>
-    <span class="mx-1">{{ resume.info.birth }}</span>
-    <span class="mx-1">{{ resume.info.location }}</span>
+  <small v-if="resume.basics" class="flex justify-center">
+    <span class="mx-1">{{ resume.basics.sex }}</span>
+    <span class="mx-1">{{ resume.basics.birth }}</span>
+    <span class="mx-1">{{ resume.basics.location }}</span>
   </small>
   <ul class="my-4 block text-center list-none" style="padding-left: 0">
     <li
