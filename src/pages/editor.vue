@@ -28,7 +28,7 @@
 import { useI18n } from 'vue-i18n'
 import { useRoute } from 'vue-router'
 import { useEditorStore } from '~/stores/editor'
-import { useResume } from '~/logic/resume'
+import { useResume } from '~/composables/resume'
 
 const editorStore = useEditorStore()
 

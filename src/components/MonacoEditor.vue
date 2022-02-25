@@ -4,7 +4,7 @@
 
 <script lang="ts" setup>
 import type * as m from 'monaco-editor'
-import { isDark } from '~/logic'
+import { isDark } from '~/composables'
 
 import { useEditorStore } from '~/stores/editor'
 

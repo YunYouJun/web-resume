@@ -13,7 +13,7 @@ meta:
 import yaml from 'js-yaml'
 import { useRoute } from 'vue-router'
 import type { ResumeInfo } from '../types'
-import { useResume } from '~/logic/resume'
+import { useResume } from '~/composables/resume'
 import { useEditorStore } from '~/stores/editor'
 
 const editorStore = useEditorStore()

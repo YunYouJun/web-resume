@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 import VueAboutMe from 'vue-about-me'
-import { isDark, toggleDark } from '~/logic'
+import { isDark, toggleDark } from '~/composables'
 
-// @ts-ignore
 import pkg from '~/../package.json'
 import 'vue-about-me/style.css'
 
