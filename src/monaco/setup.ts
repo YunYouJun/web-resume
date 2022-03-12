@@ -1,19 +1,7 @@
-
-import type * as m from 'monaco-editor'
-import type {
-  Environment,
-} from 'monaco-editor/esm/vs/editor/editor.api'
 // import resumeSchema from '../../public/schema/resume.schema.json'
 
 // a magic way to fix vite worker with monaco-yaml
 // https://github.com/remcohaszing/monaco-yaml/issues/150
-
-declare global {
-  interface Window {
-    monaco: typeof m | undefined
-    MonacoEnvironment: Environment
-  }
-}
 
 export const setup = async() => {
   // avoid vite-ssg navigator error
@@ -26,8 +14,6 @@ export const setup = async() => {
   const { setDiagnosticsOptions } = await import('monaco-yaml')
   const monaco = await import('monaco-editor')
   window.monaco = monaco
-
-  // const { setDiagnosticsOptions } = await import('monaco-yaml')
 
   await Promise.all([
     // load workers
@@ -71,10 +57,10 @@ export const setup = async() => {
   // debug yaml
   // console.debug(languages.yaml)
 
-  // current is monaco-yaml@3.2.1
-  // I can not solve error `Unpected usage at EditorSimpleWorker.loadForeignModule`, so i comment it.
+  // Related issues to solve it
   // https://github.com/vitejs/vite/issues/3820#issuecomment-863585040
-  // I had submit a issue: https://github.com/remcohaszing/monaco-yaml/issues/115
+  // https://github.com/remcohaszing/monaco-yaml/issues/115
+  // https://github.com/remcohaszing/monaco-yaml/issues/150
   setDiagnosticsOptions({
     enableSchemaRequest: true,
     hover: true,

@@ -16,7 +16,7 @@ id: 云游君
 name: 云游君
 info:
   avatar: https://yunyoujun.cn/images/avatar.jpg
-  bio: 'All at sea.'
+  bio: All at sea.
 
 contact:
   email:

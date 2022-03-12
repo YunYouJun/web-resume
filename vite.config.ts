@@ -169,7 +169,7 @@ export default defineConfig({
   },
 
   optimizeDeps: {
-    include: ['vue', 'vue-router', '@vueuse/core', 'js-yaml', 'monaco-yaml'],
+    include: ['vue', 'vue-router', '@vueuse/core', 'js-yaml', 'monaco-yaml', 'vue-about-me', 'monaco-editor'],
     exclude: ['vue-demi'],
   },
 })

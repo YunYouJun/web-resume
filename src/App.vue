@@ -11,6 +11,10 @@ import { useHead } from '@vueuse/head'
 useHead({
   title: 'Web Resume',
   meta: [{ name: 'description', content: 'Web 简历' }],
+  script: [{
+    // iconify icon cdn
+    src: 'https://code.iconify.design/2/2.1.2/iconify.min.js',
+  }],
 })
 </script>
 

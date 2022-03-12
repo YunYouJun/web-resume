@@ -78,3 +78,11 @@ app.use(VueGtag, {
 - [ ] How about keeping it consistent with [jsonresume](https://jsonresume.org/)?
   - [resume-schema](https://github.com/jsonresume/resume-schema)
   - [schema.json](https://raw.githubusercontent.com/jsonresume/resume-schema/master/schema.json)
+
+## Sponsors
+
+<p align="center">
+  <a href="https://cdn.jsdelivr.net/gh/YunYouJun/sponsors/public/sponsors.svg">
+    <img src='https://cdn.jsdelivr.net/gh/YunYouJun/sponsors/public/sponsors.svg'/>
+  </a>
+</p>

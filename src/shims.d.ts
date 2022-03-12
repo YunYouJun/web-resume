@@ -24,3 +24,10 @@ declare interface Window {
   monaco: typeof m | undefined
   MonacoEnvironment: Environment
 }
+
+declare global {
+  interface Window {
+    monaco: typeof m | undefined
+    MonacoEnvironment: Environment
+  }
+}
