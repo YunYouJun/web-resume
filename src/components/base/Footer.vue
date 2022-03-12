@@ -24,24 +24,24 @@ const copyright = {
 <template>
   <nav class="text-center text-xl mt-6">
     <router-link class="icon-btn mx-2" to="/" :title="t('button.home')">
-      <i-ri-home-2-line />
+      <div i-ri-home-2-line />
     </router-link>
 
     <router-link class="icon-btn mx-2" to="/editor" :title="t('button.editor')">
-      <i-ri-side-bar-line />
+      <div i-ri-side-bar-line />
     </router-link>
 
     <a class="icon-btn mx-2" :title="t('button.toggle_dark')" @click="()=>{toggleDark()}">
-      <i-ri-moon-line v-if="isDark" />
-      <i-ri-sun-line v-else />
+      <div v-if="isDark" i-ri-moon-line />
+      <div v-else i-ri-sun-line />
     </a>
 
     <a class="icon-btn mx-2" :title="t('button.toggle_langs')" @click="toggleLocales">
-      <i-ri-translate />
+      <div i-ri-translate />
     </a>
 
     <router-link class="icon-btn mx-2" to="/about" :title="t('button.about')">
-      <i-ri-file-info-line />
+      <div i-ri-file-info-line />
     </router-link>
 
     <a
@@ -51,7 +51,7 @@ const copyright = {
       target="_blank"
       title="GitHub"
     >
-      <i-ri-github-line />
+      <div i-ri-github-line />
     </a>
   </nav>
   <vue-about-me :is-dark="isDark" :copyright="copyright" />

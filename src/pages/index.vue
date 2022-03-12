@@ -1,9 +1,7 @@
 <template>
   <github-corners :reverse="isDark || null" :url="pkg.repository.url" blank />
   <div class="home mt-8 text-center">
-    <p class="text-10xl">
-      <i-ri-file-text-line class="inline-block" />
-    </p>
+    <div i-ri-file-text-line inline-block text-9xl />
     <HelloResume msg="Web Resume" />
   </div>
 </template>

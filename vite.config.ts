@@ -4,13 +4,11 @@ import { defineConfig } from 'vite'
 import Vue from '@vitejs/plugin-vue'
 import Pages from 'vite-plugin-pages'
 import Layouts from 'vite-plugin-vue-layouts'
-import Icons from 'unplugin-icons/vite'
-import IconsResolver from 'unplugin-icons/resolver'
-import WindiCSS from 'vite-plugin-windicss'
 import { VitePWA } from 'vite-plugin-pwa'
 import VueI18n from '@intlify/vite-plugin-vue-i18n'
 import Components from 'unplugin-vue-components/vite'
 import AutoImport from 'unplugin-auto-import/vite'
+import Unocss from 'unocss/vite'
 
 import Markdown from 'vite-plugin-md'
 import Prism from 'markdown-it-prism'
@@ -86,29 +84,12 @@ export default defineConfig({
       include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
 
       directoryAsNamespace: true,
-
-      // custom resolvers
-      resolvers: [
-        // auto import icons
-        // https://github.com/antfu/unplugin-icons
-        IconsResolver({
-          // componentPrefix: '',
-          // enabledCollections: ['carbon']
-        }),
-      ],
-
       dts: 'src/components.d.ts',
     }),
 
-    // https://github.com/antfu/unplugin-icons
-    Icons({
-      autoInstall: true,
-    }),
-
-    // https://github.com/antfu/vite-plugin-windicss
-    WindiCSS({
-      safelist: markdownWrapperClasses,
-    }),
+    // https://github.com/antfu/unocss
+    // see unocss.config.ts for config
+    Unocss(),
 
     // https://github.com/antfu/vite-plugin-md
     Markdown({
