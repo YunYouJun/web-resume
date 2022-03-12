@@ -32,6 +32,8 @@ export default defineConfig({
       output: {
         inlineDynamicImports: false,
         manualChunks: {
+          // as a chunk to load error (KeyCode is undefined)
+          monaco: ['monaco-editor'],
           editorWorker: [`${monacoPrefix}/editor/editor.worker`],
           // jsonWorker: [`${monacoPrefix}/language/json/json.worker`],
           // cssWorker: [`${monacoPrefix}/language/css/css.worker`],
@@ -150,7 +152,7 @@ export default defineConfig({
   },
 
   optimizeDeps: {
-    include: ['vue', 'vue-router', '@vueuse/core', 'js-yaml', 'monaco-yaml', 'vue-about-me', 'monaco-editor'],
+    include: ['vue', 'vue-router', '@vueuse/core', 'js-yaml', 'vue-about-me', 'monaco-editor', 'monaco-yaml/yaml.worker.js'],
     exclude: ['vue-demi'],
   },
 })
