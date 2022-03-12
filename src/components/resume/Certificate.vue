@@ -11,15 +11,10 @@
   </div>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
 import type { Certificate } from '~/types/base'
 
-export default defineComponent({
-  props: {
-    certificate: {
-      type: Object as PropType<Certificate | null>,
-      default: null,
-    },
-  },
+withDefaults(defineProps<{ certificate: Certificate | null }>(), {
+  certificate: null,
 })
 </script>

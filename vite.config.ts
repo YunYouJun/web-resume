@@ -39,7 +39,7 @@ export default defineConfig({
           // cssWorker: [`${monacoPrefix}/language/css/css.worker`],
           // htmlWorker: [`${monacoPrefix}/language/html/html.worker`],
           // tsWorker: [`${monacoPrefix}/language/typescript/ts.worker`],
-          yamlWorker: ['monaco-yaml/lib/esm/yaml.worker'],
+          yamlWorker: ['monaco-yaml/yaml.worker'],
         },
       },
     },
@@ -82,8 +82,6 @@ export default defineConfig({
       // allow auto load markdown components under `./src/components/`
       extensions: ['vue', 'md'],
 
-      dts: true,
-
       // allow auto import and register components used in markdown
       include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
 
@@ -98,6 +96,8 @@ export default defineConfig({
           // enabledCollections: ['carbon']
         }),
       ],
+
+      dts: 'src/components.d.ts',
     }),
 
     // https://github.com/antfu/unplugin-icons
@@ -161,12 +161,6 @@ export default defineConfig({
       exclude: 'locales/*.yml',
     }),
   ],
-
-  server: {
-    fs: {
-      strict: true,
-    },
-  },
 
   // https://github.com/antfu/vite-ssg
   ssgOptions: {

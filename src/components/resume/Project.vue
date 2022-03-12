@@ -49,7 +49,7 @@
         <div class="ml-3 my-1">
           <template v-if="set.badges">
             <span v-for="(badge, name) in set.badges" :key="name" class="mr-1">
-              <img :src="badge" :alt="name">
+              <img :src="badge" :alt="name.toString()">
             </span>
           </template>
           <span v-html="set.summary" />

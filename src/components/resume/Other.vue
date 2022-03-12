@@ -9,15 +9,10 @@
   </div>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
 import type { Other } from '~/types/base'
 
-export default defineComponent({
-  props: {
-    other: {
-      type: Object as PropType<Other | null>,
-      default: null,
-    },
-  },
+withDefaults(defineProps<{ other: Other | null }>(), {
+  other: null,
 })
 </script>

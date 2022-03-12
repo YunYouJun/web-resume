@@ -19,7 +19,6 @@ declare module '*.md' {
 }
 
 /* eslint-enable import/no-duplicates */
-
 declare interface Window {
   // extend the window
   monaco: typeof m | undefined
