@@ -1,13 +1,11 @@
-import { setDiagnosticsOptions } from 'monaco-yaml'
-// import resumeSchema from '../resume.schema.json'
 
 import type * as m from 'monaco-editor'
 import type {
   Environment,
 } from 'monaco-editor/esm/vs/editor/editor.api'
+// import resumeSchema from '../../public/schema/resume.schema.json'
 
-import 'monaco-editor'
-
+// a magic way to fix vite worker with monaco-yaml
 // https://github.com/remcohaszing/monaco-yaml/issues/150
 
 declare global {
@@ -25,6 +23,7 @@ export const setup = async() => {
     }
   }
 
+  const { setDiagnosticsOptions } = await import('monaco-yaml')
   const monaco = await import('monaco-editor')
   window.monaco = monaco
 
@@ -84,8 +83,9 @@ export const setup = async() => {
     format: true,
     schemas: [
       {
-        uri: 'https://raw.githubusercontent.com/YunYouJun/web-resume/main/public/schema/resume.schema.json',
-        // uri: '/schema/resume.schema.json',
+        uri: 'https://resume.elpsy.cn/schema/resume.schema.json',
+        // uri: 'https://raw.githubusercontent.com/YunYouJun/web-resume/main/public/schema/resume.schema.json',
+        // schema: resumeSchema,
         fileMatch: ['*.yml', '*.yaml'],
       },
     ],
