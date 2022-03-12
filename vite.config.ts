@@ -74,7 +74,7 @@ export default defineConfig({
         '@vueuse/head',
         '@vueuse/core',
       ],
-      dts: true,
+      dts: 'src/auto-imports.d.ts',
     }),
 
     // https://github.com/antfu/vite-plugin-components

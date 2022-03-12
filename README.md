@@ -73,6 +73,7 @@ app.use(VueGtag, {
 
 ## Todo
 
+- [ ] Drag Card
 - [ ] 中英文使用手册
 - [ ] How about keeping it consistent with [jsonresume](https://jsonresume.org/)?
   - [resume-schema](https://github.com/jsonresume/resume-schema)

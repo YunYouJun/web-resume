@@ -31,11 +31,11 @@ async function start() {
         theme: isDark.value ? 'vs-dark' : 'vs',
         wordWrap: 'on',
         // for monaco-yaml, but has not been solved, see `src/monaco/setup.ts`
-        // model: monaco.editor.createModel(
-        //   editorStore.resumeText,
-        //   'yaml',
-        //   monaco.Uri.parse('resume.yml')
-        // ),
+        model: monaco.editor.createModel(
+          editorStore.resumeText,
+          'yaml',
+          monaco.Uri.parse('resume.yml'),
+        ),
         value: editorStore.resumeText,
       })
 

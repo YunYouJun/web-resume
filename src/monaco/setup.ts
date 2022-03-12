@@ -1,5 +1,21 @@
-// import { setDiagnosticsOptions } from 'monaco-yaml'
+import { setDiagnosticsOptions } from 'monaco-yaml'
 // import resumeSchema from '../resume.schema.json'
+
+import type * as m from 'monaco-editor'
+import type {
+  Environment,
+} from 'monaco-editor/esm/vs/editor/editor.api'
+
+import 'monaco-editor'
+
+// https://github.com/remcohaszing/monaco-yaml/issues/150
+
+declare global {
+  interface Window {
+    monaco: typeof m | undefined
+    MonacoEnvironment: Environment
+  }
+}
 
 export const setup = async() => {
   // avoid vite-ssg navigator error
@@ -33,7 +49,7 @@ export const setup = async() => {
           // import('monaco-editor/esm/vs/language/css/css.worker?worker'),
           // import('monaco-editor/esm/vs/language/html/html.worker?worker'),
           // import('monaco-editor/esm/vs/language/typescript/ts.worker?worker'),
-          import('monaco-yaml/yaml.worker?worker'),
+          import('./workaround-yaml.worker?worker'),
         ],
       )
 
@@ -60,20 +76,20 @@ export const setup = async() => {
   // I can not solve error `Unpected usage at EditorSimpleWorker.loadForeignModule`, so i comment it.
   // https://github.com/vitejs/vite/issues/3820#issuecomment-863585040
   // I had submit a issue: https://github.com/remcohaszing/monaco-yaml/issues/115
-  // setDiagnosticsOptions({
-  //   enableSchemaRequest: true,
-  //   hover: true,
-  //   completion: true,
-  //   validate: true,
-  //   format: true,
-  //   schemas: [
-  //     {
-  //       uri: 'https://raw.githubusercontent.com/YunYouJun/web-resume/main/public/schema/resume.schema.json',
-  //       // uri: '/schema/resume.schema.json',
-  //       fileMatch: ['*.yml', '*.yaml'],
-  //     },
-  //   ],
-  // })
+  setDiagnosticsOptions({
+    enableSchemaRequest: true,
+    hover: true,
+    completion: true,
+    validate: true,
+    format: true,
+    schemas: [
+      {
+        uri: 'https://raw.githubusercontent.com/YunYouJun/web-resume/main/public/schema/resume.schema.json',
+        // uri: '/schema/resume.schema.json',
+        fileMatch: ['*.yml', '*.yaml'],
+      },
+    ],
+  })
 
   if (getCurrentInstance())
     await new Promise<void>(resolve => onMounted(resolve))
