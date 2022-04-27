@@ -1,8 +1,8 @@
-import VueGtag from 'vue-gtag-next'
+import { createGtm } from '@gtm-support/vue-gtm'
 import type { UserModule } from '~/types'
 
 export const install: UserModule = ({ app }) => {
-  app.use(VueGtag, {
-    property: { id: 'G-W022WEV65N' },
-  })
+  app.use(createGtm({
+    id: 'GTM-TK2QFDK',
+  }))
 }
