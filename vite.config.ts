@@ -17,7 +17,7 @@ import LinkAttributes from 'markdown-it-link-attributes'
 import Yaml from '@rollup/plugin-yaml'
 import { prefix as monacoPrefix } from './src/monaco'
 
-const markdownWrapperClasses = 'prose prose-sm m-auto text-left'
+const markdownWrapperClasses = 'markdown-body max-w-900px m-auto text-left'
 
 // https://vitejs.dev/config/
 export default defineConfig({

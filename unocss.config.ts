@@ -24,8 +24,12 @@ export default defineConfig({
     presetTypography(),
     presetWebFonts({
       fonts: {
-        sans: 'DM Sans',
-        serif: 'DM Serif Display',
+        serif: [
+          {
+            name: 'Noto Serif SC',
+            weights: [900],
+          },
+        ],
         mono: 'DM Mono',
       },
     }),
@@ -34,5 +38,5 @@ export default defineConfig({
     transformerDirectives(),
     transformerVariantGroup(),
   ],
-  safelist: 'prose prose-sm m-auto text-left'.split(' '),
+  safelist: 'max-w-900px m-auto text-left'.split(' '),
 })

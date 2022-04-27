@@ -6,6 +6,7 @@ import App from './App.vue'
 
 import '@unocss/reset/tailwind.css'
 // your custom styles here
+import 'star-markdown-css/src/scss/theme/yun.scss'
 import './styles/index.scss'
 
 import 'uno.css'
