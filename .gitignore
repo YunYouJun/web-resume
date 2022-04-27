@@ -3,10 +3,6 @@ yarn.lock
 package-lock.json
 pnpm-lock.yaml
 
-# auto genereate
-components.d.ts
-auto-imports.d.ts
-
 # vite-ssg
 .vite-ssg-dist
 .vite-ssg-temp
