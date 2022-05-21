@@ -2,6 +2,7 @@
   "name": "web-resume",
   "version": "0.2.0",
   "private": true,
+  "packageManager": "pnpm@7.1.2",
   "description": "Web 简历",
   "author": {
     "url": "https://www.yunyoujun.cn",

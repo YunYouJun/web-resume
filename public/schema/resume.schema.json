@@ -78,31 +78,7 @@
   "definitions": {
     "Contact": {
       "description": "联系方式",
-      "type": "object",
-      "additionalProperties": {
-        "$ref": "#/definitions/BaseContact"
-      }
-    },
-    "BaseContact": {
-      "type": "object",
-      "properties": {
-        "href": {
-          "type": "string"
-        },
-        "icon": {
-          "description": "图标",
-          "type": "string"
-        },
-        "label": {
-          "description": "显示的内容",
-          "type": "string"
-        }
-      },
-      "required": [
-        "href",
-        "icon",
-        "label"
-      ]
+      "type": "object"
     },
     "Education": {
       "description": "教育背景",

@@ -1,7 +1,7 @@
 # custom
 yarn.lock
 package-lock.json
-pnpm-lock.yaml
+# pnpm-lock.yaml
 
 # vite-ssg
 .vite-ssg-dist
