@@ -31,7 +31,7 @@ const copyright = {
       <div i-ri-side-bar-line />
     </router-link>
 
-    <a class="icon-btn mx-2" :title="t('button.toggle_dark')" @click="()=>{toggleDark()}">
+    <a class="icon-btn mx-2" :title="t('button.toggle_dark')" @click="() => { toggleDark() }">
       <div v-if="isDark" i-ri-moon-line />
       <div v-else i-ri-sun-line />
     </a>

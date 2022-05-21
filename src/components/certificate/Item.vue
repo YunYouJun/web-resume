@@ -1,3 +1,13 @@
+<script lang="ts" setup>
+import type { CertificateHistory } from '~/types/base'
+
+const props = defineProps<{
+  history: CertificateHistory
+}>()
+
+const history = toRef(props, 'history')
+</script>
+
 <template>
   <li v-if="history">
     <span class="font-weight-bold text-kaiti">{{ history.name }}</span>
@@ -8,13 +18,3 @@
     <span class="float-right">{{ history.time }}</span>
   </li>
 </template>
-
-<script lang="ts" setup>
-import type { CertificateHistory } from '~/types/base'
-
-const props = defineProps<{
-  history: CertificateHistory
-}>()
-
-const history = toRef(props, 'history')
-</script>

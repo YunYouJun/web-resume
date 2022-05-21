@@ -1,3 +1,11 @@
+<script lang="ts" setup>
+import type { Other } from '~/types/base'
+
+withDefaults(defineProps<{ other: Other | null }>(), {
+  other: null,
+})
+</script>
+
 <template>
   <div v-if="other">
     <base-title :icon="other.icon" :title="other.title" />
@@ -8,11 +16,3 @@
     </ul>
   </div>
 </template>
-
-<script lang="ts" setup>
-import type { Other } from '~/types/base'
-
-withDefaults(defineProps<{ other: Other | null }>(), {
-  other: null,
-})
-</script>

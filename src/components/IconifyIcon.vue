@@ -1,9 +1,3 @@
-<template>
-  <span class="icon-container">
-    <span class="iconify" :data-icon="props.icon" />
-  </span>
-</template>
-
 <script lang="ts" setup>
 const props = withDefaults(
   defineProps<{
@@ -14,6 +8,12 @@ const props = withDefaults(
   },
 )
 </script>
+
+<template>
+  <span class="icon-container">
+    <span class="iconify" :data-icon="props.icon" />
+  </span>
+</template>
 
 <style lang="scss">
 .icon-container {

@@ -1,7 +1,3 @@
-<template>
-  <div id="editor-container" ref="container" />
-</template>
-
 <script lang="ts" setup>
 import type * as m from 'monaco-editor'
 import { isDark } from '~/composables'
@@ -59,6 +55,10 @@ async function start() {
 
 start()
 </script>
+
+<template>
+  <div id="editor-container" ref="container" />
+</template>
 
 <style>
 #editor-container {

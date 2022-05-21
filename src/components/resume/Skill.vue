@@ -1,3 +1,10 @@
+<script lang="ts" setup>
+import type { Skill } from '~/types/base'
+
+const props = defineProps<{ skill: Skill }>()
+const { skill } = toRefs(props)
+</script>
+
 <template>
   <div v-if="skill">
     <base-title :icon="skill.icon" :title="skill.title" />
@@ -15,10 +22,3 @@
     </div>
   </div>
 </template>
-
-<script lang="ts" setup>
-import type { Skill } from '~/types/base'
-
-const props = defineProps<{ skill: Skill }>()
-const { skill } = toRefs(props)
-</script>

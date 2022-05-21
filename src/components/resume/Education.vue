@@ -1,3 +1,12 @@
+<script lang="ts" setup>
+import IconifyIcon from '../IconifyIcon.vue'
+import type { Education } from '~/types/base'
+
+withDefaults(defineProps<{ education: Education | null }>(), {
+  education: null,
+})
+</script>
+
 <template>
   <div v-if="education">
     <base-title :icon="education.icon" :title="education.title" />
@@ -18,7 +27,7 @@
             {{ edu.city }}
           </span>
           <span class="float-right">
-            {{ edu.start + ' ~ ' + edu.end }}
+            {{ `${edu.start} ~ ${edu.end}` }}
           </span>
         </div>
         <div>
@@ -29,15 +38,6 @@
     </div>
   </div>
 </template>
-
-<script lang="ts" setup>
-import IconifyIcon from '../IconifyIcon.vue'
-import type { Education } from '~/types/base'
-
-withDefaults(defineProps<{ education: Education | null }>(), {
-  education: null,
-})
-</script>
 
 <style lang="scss">
 .school-logo {

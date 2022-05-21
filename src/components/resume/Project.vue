@@ -1,3 +1,10 @@
+<script lang="ts" setup>
+import type { Project } from '~/types/base'
+
+const props = defineProps<{ project: Project }>()
+const { project } = toRefs(props)
+</script>
+
 <template>
   <div v-if="project">
     <base-title :icon="project.icon" :title="project.title" />
@@ -12,10 +19,10 @@
           {{ set.name }}
         </span>
         <span>
-          {{ '，' + set.type }}
+          {{ `，${set.type}` }}
         </span>
         <span class="float-right">
-          {{ set.start + ' ~ ' + set.end }}
+          {{ `${set.start} ~ ${set.end}` }}
         </span>
       </summary>
       <div class="project-content">
@@ -67,13 +74,6 @@
     </details>
   </div>
 </template>
-
-<script lang="ts" setup>
-import type { Project } from '~/types/base'
-
-const props = defineProps<{ project: Project }>()
-const { project } = toRefs(props)
-</script>
 
 <style lang="scss">
 .project-name {

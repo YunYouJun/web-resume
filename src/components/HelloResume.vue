@@ -1,3 +1,34 @@
+<script lang="ts" setup>
+import { useI18n } from 'vue-i18n'
+
+const props = defineProps<{ msg: string }>()
+
+const { t } = useI18n()
+
+const homepage = 'https://resume.elpsy.cn'
+const examples = computed(() => {
+  return [
+    {
+      name: `${t('noun.worker')} 2021`,
+      url: '/resume/2021.resume.yml',
+    },
+    {
+      name: t('noun.suzimiya'),
+      url: '/resume/suzumiya.resume.yml',
+    },
+  ]
+})
+
+const resumeYaml = ref('')
+
+/**
+ * 设置 yaml 链接
+ */
+function setResumeYaml(url: string) {
+  resumeYaml.value = url
+}
+</script>
+
 <template>
   <div>
     <h1 class="text-6xl font-light leading-normal">
@@ -13,7 +44,7 @@
       <button
         v-for="(link, i) in examples"
         :key="i"
-        :class="['resume-btn', 'm-3', link.url === resumeYaml ? 'active' : '']"
+        class="resume-btn m-3" :class="[link.url === resumeYaml ? 'active' : '']"
         @click="setResumeYaml(link.url)"
       >
         {{ link.name }}
@@ -47,34 +78,3 @@
     </small>
   </div>
 </template>
-
-<script lang="ts" setup>
-import { useI18n } from 'vue-i18n'
-
-const { t } = useI18n()
-
-const props = defineProps<{ msg: string }>()
-
-const homepage = 'https://resume.elpsy.cn'
-const examples = computed(() => {
-  return [
-    {
-      name: `${t('noun.worker')} 2021`,
-      url: '/resume/2021.resume.yml',
-    },
-    {
-      name: t('noun.suzimiya'),
-      url: '/resume/suzumiya.resume.yml',
-    },
-  ]
-})
-
-const resumeYaml = ref('')
-
-/**
- * 设置 yaml 链接
- */
-function setResumeYaml(url: string) {
-  resumeYaml.value = url
-}
-</script>

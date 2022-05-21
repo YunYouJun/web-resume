@@ -2,7 +2,7 @@ basics:
   name: 云游君
   label: 程序员
   avatar: https://yunyoujun.cn/images/avatar.jpg
-  bio: "All at sea."
+  bio: All at sea.
 
 contact:
   email:
@@ -27,26 +27,26 @@ education:
   title: 教育背景
   histories:
     - school: 家里蹲大学
-      logo: "/img/logo/cuc-logo.jpg"
-      start: "20xx 年 9 月"
-      end: "20xx 年 6 月"
-      grade: "GPA: 3.92，均分 92.3（专业第三）"
+      logo: /img/logo/cuc-logo.jpg
+      start: 20xx 年 9 月
+      end: 20xx 年 6 月
+      grade: 'GPA: 3.92，均分 92.3（专业第三）'
       area: 计算机应用技术（数字娱乐与动画技术方向）
-      studyType: "硕士"
+      studyType: 硕士
       city: 北京
     - school: 划水大学
-      icon: "ri:building-line"
-      start: "20xx 年 9 月"
-      end: "20xx 年 6 月"
-      grade: "GPA: 3.33（专业前 10%）， CET-6"
+      icon: 'ri:building-line'
+      start: 20xx 年 9 月
+      end: 20xx 年 6 月
+      grade: 'GPA: 3.33（专业前 10%）， CET-6'
       area: 计算机科学与技术
       studyType: 本科
       city: 上海
     - school: 摸鱼大学
-      icon: "ri:building-2-line"
-      start: "20xx 年 9 月"
-      end: "20xx 年 6 月"
-      grade: "GPA: 3.93（专业第一）"
+      icon: 'ri:building-2-line'
+      start: 20xx 年 9 月
+      end: 20xx 年 6 月
+      grade: 'GPA: 3.93（专业第一）'
       area: 动画
       studyType: 跨校辅修
       city: 上海
@@ -58,9 +58,9 @@ project:
     - name: hexo-theme-yun
       logo: ri:cloud-line
       type: 博客主题，开源项目
-      start: "2019 年 5 月"
-      end: "至今"
-      url: "https://yun.yunyoujun.cn"
+      start: 2019 年 5 月
+      end: 至今
+      url: 'https://yun.yunyoujun.cn'
       summary: 一个简洁、优雅、快速的博客主题, <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/YunYouJun/hexo-theme-yun?style=social">
       keywords:
         - name: pug
@@ -81,26 +81,26 @@ project:
       logo: ri:robot-line
       type: 服务端，开源项目
       summary: 聊天机器人框架及 API SDK，能够熟练使用 TypeScript 开发，实现支持可扩展插件的项目架构
-      start: "2020 年 6 月"
-      end: "至今"
-      url: "https://github.com/YunYouJun/el-bot"
+      start: 2020 年 6 月
+      end: 至今
+      url: 'https://github.com/YunYouJun/el-bot'
       keywords:
         - name: TypeScript
           icon: simple-icons:typescript
-        - name: "Node.js"
+        - name: Node.js
           icon: simple-icons:node-dot-js
-        - name: "npm"
+        - name: npm
           icon: simple-icons:npm
-        - name: "mongodb"
+        - name: mongodb
           icon: simple-icons:mongodb
     - name: Element-Theme-Ink
       logo: ri:contrast-drop-2-line
       type: 前端主题，开源项目
-      start: "2018 年 2 月"
-      end: "2019 年 1 月"
+      start: 2018 年 2 月
+      end: 2019 年 1 月
       url: https://ink.elpsy.cn
       keywords:
-        - name: "Element"
+        - name: Element
           logo: https://ink.elpsy.cn/favicon.ico
         - name: Scss
           icon: simple-icons:sass
@@ -116,12 +116,12 @@ project:
     - name: air-conditioner
       type: 玩具项目
       logo: ri:snowy-line
-      start: "2019 年 8 月"
-      end: "2021 年 1 月"
+      start: 2019 年 8 月
+      end: 2021 年 1 月
       url: https://www.yunyoujun.cn/air-conditioner/
       summary: 云空调，便携小空调，为你的夏日带去清凉！
       keywords:
-        - name: "react"
+        - name: react
           icon: simple-icons:react
         - name: material-ui
           icon: simple-icons:material-ui
@@ -130,7 +130,7 @@ project:
         - name: Css
           icon: simple-icons:css3
       highlights:
-        - "便携，静音，随时随地打开空调"
+        - 便携，静音，随时随地打开空调
         - 低功耗（使用 HTML CSS 而非 Canvas 绘制）
         - 操作简单，安装便捷
     - name: 其他
@@ -148,84 +148,84 @@ skill:
   sets:
     - title: 语言
       keywords:
-        - name: " "
+        - name: ' '
           icon: simple-icons:markdown
-        - name: " "
+        - name: ' '
           icon: simple-icons:html5
-        - name: " "
+        - name: ' '
           icon: simple-icons:css3
-        - name: " "
+        - name: ' '
           icon: simple-icons:javascript
-        - name: "TypeScript > "
+        - name: 'TypeScript > '
           icon: simple-icons:typescript
-        - name: "scss == "
+        - name: 'scss == '
           icon: simple-icons:sass
-        - name: "stylus == "
+        - name: 'stylus == '
           icon: simple-icons:stylus
-        - name: "Python，"
+        - name: Python，
           icon: simple-icons:python
-        - name: ""
+        - name: ''
           icon: simple-icons:php
-        - name: ""
+        - name: ''
           icon: simple-icons:cplusplus
     - title: 环境
       keywords:
-        - name: "macOS > "
+        - name: 'macOS > '
           icon: simple-icons:apple
-        - name: "Windows > "
+        - name: 'Windows > '
           icon: simple-icons:windows
-        - name: "Linux, "
+        - name: 'Linux, '
           icon: simple-icons:linux
-        - name: "Node.js, "
+        - name: 'Node.js, '
           icon: simple-icons:node-dot-js
-        - name: "npm, "
+        - name: 'npm, '
           icon: simple-icons:npm
-        - name: "Nginx, "
+        - name: 'Nginx, '
           icon: simple-icons:nginx
-        - name: "Mysql, "
+        - name: 'Mysql, '
           icon: simple-icons:mysql
-        - name: "MongoDB"
+        - name: MongoDB
           icon: simple-icons:mongodb
     - title: 工具
       keywords:
-        - name: "Vue.js, "
+        - name: 'Vue.js, '
           icon: simple-icons:vue-dot-js
-        - name: "Element, "
+        - name: 'Element, '
           logo: https://ink.elpsy.cn/favicon.ico
-        - name: "Vuetify, "
+        - name: 'Vuetify, '
           icon: simple-icons:vuetify
-        - name: "Nuxt, "
+        - name: 'Nuxt, '
           icon: simple-icons:nuxt-dot-js
-        - name: "NestJS, "
+        - name: 'NestJS, '
           icon: simple-icons:nestjs
-        - name: ""
+        - name: ''
           icon: simple-icons:bootstrap
-        - name: ""
+        - name: ''
           icon: simple-icons:three-dot-js
-        - name: ", "
+        - name: ', '
           icon: simple-icons:d3-dot-js
-        - name: "Gulp, "
+        - name: 'Gulp, '
           icon: simple-icons:gulp
         - icon: simple-icons:webpack
         - name: Vite
           icon: file-icons:vite
     - title: 软件
       keywords:
-        - name: "Visual Studio Code, "
+        - name: 'Visual Studio Code, '
           icon: simple-icons:visualstudiocode
-        - name: "Cocos Creator, "
+        - name: 'Cocos Creator, '
           icon: simple-icons:cocos
-        - name: ""
+        - name: ''
           icon: simple-icons:github
-        - name: "&"
+        - name: '&'
           icon: simple-icons:git
-        - name: "Bash || "
+        - name: 'Bash || '
           icon: ri:terminal-box-line
-        - name: ""
+        - name: ''
           icon: simple-icons:adobephotoshop
-        - name: ""
+        - name: ''
           icon: simple-icons:adobepremiere
-        - name: ""
+        - name: ''
           icon: simple-icons:adobeaftereffects
 
 certificate:
@@ -247,7 +247,7 @@ certificate:
     - name: 一等奖学金、校三好学生
       place: 家里蹲大学
       time: 20XX
-    - name: "XXXX-XXXX: X Xxxx Xxxxx Xxxxxxxxx of Xxxx Xxxxxx Based on X-Xxxxx Algorithm 一作"
+    - name: 'XXXX-XXXX: X Xxxx Xxxxx Xxxxxxxxx of Xxxx Xxxxxx Based on X-Xxxxx Algorithm 一作'
       place: XXXXX (EI - IEEE)
       time: 20XX
 

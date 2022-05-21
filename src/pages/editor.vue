@@ -1,8 +1,32 @@
+<script lang="ts" setup>
+import { useI18n } from 'vue-i18n'
+import { useRoute } from 'vue-router'
+import { useEditorStore } from '~/stores/editor'
+import { useResume } from '~/composables/resume'
+
+const editorStore = useEditorStore()
+
+const { t } = useI18n()
+
+const route = useRoute()
+const resumeText = ref(editorStore.resumeText)
+
+onBeforeMount(async () => {
+  // 若本地不存在，则设置默认值
+  if (!editorStore.resumeText) {
+    const txt
+      = `# ${t('editor.name')}\n${await useResume(route.query.url as string)}`
+    editorStore.setResume(txt)
+    editorStore.codeEditor?.setValue(txt)
+  }
+})
+</script>
+
 <template>
   <div class="editor-page text-center">
     <!-- <h1 class="m-4">
       {{ t('editor.name') }}
-    </h1>-->
+    </h1> -->
     <div class="preview-container" grid="~ cols-2 gap-4 <sm:cols-1">
       <div class="resume-container resume shadow">
         <ResumeAll :resume="editorStore.resumeJson" />
@@ -22,31 +46,6 @@
     </div>
   </div>
 </template>
-
-<script lang="ts" setup>
-
-import { useI18n } from 'vue-i18n'
-import { useRoute } from 'vue-router'
-import { useEditorStore } from '~/stores/editor'
-import { useResume } from '~/composables/resume'
-
-const editorStore = useEditorStore()
-
-const { t } = useI18n()
-
-const route = useRoute()
-const resumeText = ref(editorStore.resumeText)
-
-onBeforeMount(async() => {
-  // 若本地不存在，则设置默认值
-  if (!editorStore.resumeText) {
-    const txt
-      = `# ${t('editor.name')}\n${await useResume(route.query.url as string)}`
-    editorStore.setResume(txt)
-    editorStore.codeEditor?.setValue(txt)
-  }
-})
-</script>
 
 <style lang="scss">
 .editor-page {

@@ -1,3 +1,13 @@
+<script lang="ts" setup>
+import type { ResumeInfo } from '~/types'
+
+const props = defineProps<{
+  resume: ResumeInfo
+}>()
+
+const resume = toRef(props, 'resume')
+</script>
+
 <template>
   <h1 class="font-normal text-center text-4xl">
     {{ resume.name || resume.basics.name }}
@@ -24,13 +34,3 @@
     </li>
   </ul>
 </template>
-
-<script lang="ts" setup>
-import type { ResumeInfo } from '~/types'
-
-const props = defineProps<{
-  resume: ResumeInfo
-}>()
-
-const resume = toRef(props, 'resume')
-</script>

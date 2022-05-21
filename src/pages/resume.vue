@@ -1,14 +1,3 @@
-<template>
-  <div v-if="resume" class="resume">
-    <resume-all :resume="resume" />
-  </div>
-</template>
-
-<route lang="yaml">
-meta:
-  layout: resume
-</route>
-
 <script setup lang="ts">
 import yaml from 'js-yaml'
 import { useRoute } from 'vue-router'
@@ -21,7 +10,7 @@ const editorStore = useEditorStore()
 const resume = ref<ResumeInfo>()
 const route = useRoute()
 
-onBeforeMount(async() => {
+onBeforeMount(async () => {
   let text = editorStore.resumeText || ''
   if (route.query.url)
     text = await useResume(route.query.url as string)
@@ -29,3 +18,14 @@ onBeforeMount(async() => {
   resume.value = yaml.load(text) as ResumeInfo
 })
 </script>
+
+<template>
+  <div v-if="resume" class="resume">
+    <resume-all :resume="resume" />
+  </div>
+</template>
+
+<route lang="yaml">
+meta:
+  layout: resume
+</route>

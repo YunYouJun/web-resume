@@ -1,7 +1,3 @@
-<template>
-  <router-view />
-</template>
-
 <script setup lang="ts">
 import { useHead } from '@vueuse/head'
 
@@ -17,6 +13,10 @@ useHead({
   }],
 })
 </script>
+
+<template>
+  <router-view />
+</template>
 
 <style lang="scss">
 #app {

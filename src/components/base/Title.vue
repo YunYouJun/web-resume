@@ -1,3 +1,12 @@
+<script lang="ts" setup>
+const props = defineProps({
+  icon: String,
+  title: String,
+})
+
+const { icon, title } = toRefs(props)
+</script>
+
 <template>
   <div>
     <h2 class="text-2xl font-medium">
@@ -7,15 +16,6 @@
     <hr>
   </div>
 </template>
-
-<script lang="ts" setup>
-const props = defineProps({
-  icon: String,
-  title: String,
-})
-
-const { icon, title } = toRefs(props)
-</script>
 
 <style lang="scss">
 .title-icon {
