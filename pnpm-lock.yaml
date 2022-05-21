@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@antfu/eslint-config': ^0.23.1
   '@gtm-support/vue-gtm': ^1.5.0
+  '@iconify-json/mdi': ^1.1.16
   '@iconify-json/ri': ^1.1.1
   '@intlify/vite-plugin-vue-i18n': ^3.4.0
   '@rollup/plugin-yaml': ^3.1.0
@@ -66,6 +67,7 @@ dependencies:
 devDependencies:
   '@antfu/eslint-config': 0.23.1_utdtartgf6fqqgkivzeynh76la
   '@gtm-support/vue-gtm': 1.5.0_vue@3.2.35
+  '@iconify-json/mdi': 1.1.16
   '@iconify-json/ri': 1.1.1
   '@intlify/vite-plugin-vue-i18n': 3.4.0_abphxkwbsfthber2us4s6gnc3u
   '@rollup/plugin-yaml': 3.1.0
@@ -1430,6 +1432,12 @@ packages:
 
   /@humanwhocodes/object-schema/1.2.1:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
+    dev: true
+
+  /@iconify-json/mdi/1.1.16:
+    resolution: {integrity: sha512-jzz5C3pRIUJ+mxc/J7oIUtzlCBHj92LMIvsA3H0fWpJPktGFvxYckkm6DmscNaLcL/WG+rqrxbSppBN2yuuWkA==}
+    dependencies:
+      '@iconify/types': 1.1.0
     dev: true
 
   /@iconify-json/ri/1.1.1:

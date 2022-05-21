@@ -15,7 +15,7 @@ const { project } = toRefs(props)
     >
       <summary>
         <iconify-icon :icon="set.logo" />
-        <span class="project-name font-weight-bold">
+        <span class="project-name font-bold">
           {{ set.name }}
         </span>
         <span>

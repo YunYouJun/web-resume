@@ -46,7 +46,8 @@
 
 // components
 .resume-btn {
-  border: 2px solid var(--button-border-color);
+  cursor: pointer;
+  border: 2px solid var(--wr-btn-border-color);
   border-radius: 2px;
   padding: 5px 1rem;
   transition: 0.2s;
@@ -55,19 +56,29 @@
   &:hover,
   &:focus,
   &.active {
-    color: var(--button-active-text-color);
-    background-color: var(--button-border-color);
+    color: var(--wr-btn-active-text-color);
+    background-color: var(--wr-btn-border-color);
   }
 
   &:active,
   &:focus {
     outline: none;
   }
+
+  &.disabled {
+    --wr-btn-border-color: lightgray;
+    color: gray;
+    @apply cursor-not-allowed;
+
+    &:hover {
+      background-color: transparent;
+    }
+  }
 }
 
 .resume-input {
   border-radius: 2px;
-  border: 1px solid var(--button-border-color);
+  border: 1px solid var(--wr-btn-border-color);
   width: 90%;
   padding: 0.6rem 1rem;
   background-color: transparent;

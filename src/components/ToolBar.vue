@@ -17,14 +17,18 @@ const showToolbar = ref(true)
 useEventListener('beforeprint', () => {
   showToolbar.value = false
 })
+useEventListener('afterprint', () => {
+  showToolbar.value = true
+})
 
 const showLocal = ref(import.meta.env.DEV || false)
 </script>
 
 <template>
-  <nav :class="showToolbar ? 'opacity-100' : 'opacity-0'" class="absolute left-0 shadow-md flex flex-col p-2 transition hover:opacity-100" bg="light-200 dark:dark-200">
-    <button class="icon-btn" @click="showToolbar = false">
-      <div i-ri-eye-off-line />
+  <nav :class="showToolbar ? 'opacity-100' : 'opacity-0'" class="fixed left-0 shadow-md flex flex-col p-2 transition hover:opacity-100" bg="light-200 dark:dark-200">
+    <button class="icon-btn" @click="showToolbar = !showToolbar">
+      <div v-if="showToolbar" i-ri-pushpin-line text="orange" />
+      <div v-else i-ri-pushpin-2-line />
     </button>
 
     <router-link v-if="showLocal" class="icon-btn" to="/local" :title="t('button.local')">

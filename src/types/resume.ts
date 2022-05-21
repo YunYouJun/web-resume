@@ -4,7 +4,8 @@ import type { Certificate, Contact, Education, Other, Project, Skill } from './b
  * 简历配置
  */
 export interface ResumeInfo {
-  name: string
+  name?: string
+
   basics: {
     /**
      * 姓名

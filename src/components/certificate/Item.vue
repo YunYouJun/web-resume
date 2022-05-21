@@ -10,7 +10,7 @@ const history = toRef(props, 'history')
 
 <template>
   <li v-if="history">
-    <span class="font-weight-bold text-kaiti">{{ history.name }}</span>
+    <span class="font-bold text-kaiti">{{ history.name }}</span>
     <span>
       <iconify-icon class="position-icon" icon="ri:map-pin-line" />
       {{ history.place }}
