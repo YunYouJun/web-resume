@@ -21,6 +21,7 @@ declare module '@vue/runtime-core' {
     ResumeSkill: typeof import('./components/resume/Skill.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    ToolBar: typeof import('./components/ToolBar.vue')['default']
   }
 }
 

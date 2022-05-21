@@ -41,7 +41,7 @@ const compOrder = computed(() => {
 </script>
 
 <template>
-  <div v-if="props.resume">
+  <div v-if="props.resume" class="resume">
     <resume-header :resume="resume" />
 
     <keep-alive>

@@ -33,13 +33,15 @@
 ```bash
 git clone https://github.com/YunYouJun/web-resume
 cd web-resume
-yarn
+pnpm i
+pnpm run resume
 ```
 
 #### Command
 
-- 预览: `yarn dev` (`http://localhost:3000/`)
-- 构建: `yarn build`
+- 预览: `pnpm dev` (`http://localhost:3000/`)
+- 预览简历：`pnpm resume`
+- 构建: `pnpm build`
 
 #### Custom
 

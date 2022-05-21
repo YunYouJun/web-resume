@@ -4,6 +4,7 @@ button:
   editor: Editor
   go: GO
   home: Home
+  local: Local
   toggle_dark: Toggle dark mode
   toggle_langs: Change languages
   # custom

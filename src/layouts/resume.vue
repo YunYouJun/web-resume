@@ -1,5 +1,7 @@
 <template>
-  <main class="text-gray-700 dark:text-gray-200">
+  <ToolBar />
+
+  <main class="text-black dark:text-gray-100">
     <router-view />
   </main>
 </template>

@@ -18,6 +18,7 @@
     "lint": "eslint .",
     "serve": "vite preview",
     "build": "cross-env NODE_ENV=production vite-ssg build",
+    "resume": "vite --host --open /local",
     "schema": "ts-node-script scripts/schema.ts",
     "prepare": "husky install",
     "typecheck": "vue-tsc --noEmit"

@@ -5,13 +5,10 @@ const resume = ref(localResume)
 </script>
 
 <template>
-  <div v-if="resume" class="resume">
-    <resume-all :resume="resume" />
-  </div>
+  <resume-all v-if="resume" :resume="resume" />
 </template>
 
 <route lang="yaml">
 meta:
   layout: resume
 </route>
-
