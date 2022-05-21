@@ -94,8 +94,8 @@ project:
     - name: 蚂蚁集团 支付宝 体验技术部
       logo: ri:alipay-line
       type: 实习，前端开发
-      start: "2021 年 7 月"
-      end: "至今"
+      start: 2021 年 7 月
+      end: 至今
       keywords:
         - name: react
           icon: simple-icons:react
@@ -111,8 +111,8 @@ project:
     - name: 腾讯 CSIG 智慧出行
       logo: ri:qq-line
       type: 实习，前端开发，汽车云大数据平台业务开发
-      start: "2021 年 5 月"
-      end: "2021 年 7 月"
+      start: 2021 年 5 月
+      end: 2021 年 7 月
     - name: 其他
       logo: ri:github-line
       type: 业余开源项目

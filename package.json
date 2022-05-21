@@ -74,7 +74,7 @@
     "vue-tsc": "^0.34.15"
   },
   "lint-staged": {
-    "*.{vue,ts,js}": "eslint --fix",
+    "*.{vue,ts,js,yml}": "eslint --fix",
     "src/types/*.ts": "npm run schema"
   }
 }
