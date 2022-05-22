@@ -15,8 +15,9 @@ body,
   padding: 0;
 }
 
-html.dark {
-  background: #121212;
+html {
+  color: var(--wr-c-text);
+  background-color: var(--wr-c-bg);
 }
 
 #nprogress {

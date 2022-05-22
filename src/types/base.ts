@@ -52,7 +52,7 @@ export interface CertificateHistory {
   /**
    * 地点
    */
-  place: string
+  place?: string
   /**
    * 时间
    */
@@ -120,6 +120,10 @@ export interface ProjectSet {
    * 是否展开
    */
   open?: boolean
+  /**
+   * GitHub Repo
+   */
+  repo?: string
   /**
    * 类型
    */

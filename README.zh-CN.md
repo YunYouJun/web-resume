@@ -5,15 +5,15 @@
 [Vite](https://vitejs.dev/) + [Vue3](https://github.com/vuejs/vue-next/) + [sass](https://sass-lang.com/) + [iconify](https://github.com/iconify) + [YAML](https://yaml.org/) + [Chrome](https://www.google.com/chrome/)
 
 <p align='center'>
-<b>English</b> | <a href="./README.zh-CN.md">简体中文</a>
+<a href="./README.md">English</a> | <b>简体中文</b>
 </p>
 
 ## Feature
 
-- Display your resume on the web
-- Can be printed as A4 PDF
-- Configure your resume content via YAML
-  - Support online editing preview (If you need to store resumes, you should use the local method.)
+- 在 Web 端显示你的简历
+- 可以被打印成 A4 PDF
+- 通过 YAML 配置你的简历内容
+  - **支持在线编辑预览**（如果你需要存储简历，你更应该使用本地的方式）
   - 理论上可以任意换肤，但是抱歉目前还只有这一种 hhh
   - 在线解析
   - YAML 验证，提供字段验证和类型提示（你可能需要安装 [vscode-yaml](https://github.com/redhat-developer/vscode-yaml) 插件）

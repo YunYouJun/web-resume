@@ -1,11 +1,15 @@
 :root {
-  --wr-c-link: dodgerblue;
+  --wr-c-text: black;
+  --wr-c-link: #0078e7;
   --wr-c-border: black;
   --wr-btn-border-color: var(--wr-c-border);
   --wr-btn-active-text-color: white;
 }
 
 .dark {
+  --wr-c-bg: #121212;
+  --wr-c-text: #f3f4f6;
+  --wr-c-link: dodgerblue;
   --wr-c-border: white;
   --wr-btn-active-text-color: black;
 }

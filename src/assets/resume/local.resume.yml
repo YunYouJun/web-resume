@@ -26,7 +26,7 @@ education:
   icon: fa:graduation-cap
   title: 教育背景
   histories:
-    - school: 家里蹲大学
+    - school: 中国传媒大学
       logo: /img/logo/cuc-logo.jpg
       start: 2019 年 9 月
       end: 2022 年 6 月
@@ -34,7 +34,7 @@ education:
       area: 计算机应用技术（数字娱乐与动画技术方向）
       studyType: 硕士
       city: 北京
-    - school: 划水大学
+    - school: 上海海事大学
       icon: 'ri:building-line'
       start: 2014 年 9 月
       end: 2018 年 6 月
@@ -42,7 +42,7 @@ education:
       area: 计算机科学与技术
       studyType: 本科
       city: 上海
-    - school: 摸鱼大学
+    - school: 上海理工大学
       icon: 'ri:building-2-line'
       start: 2015 年 9 月
       end: 2017 年 6 月
@@ -56,12 +56,13 @@ project:
   title: 项目经历
   sets:
     - name: hexo-theme-yun
+      repo: YunYouJun/hexo-theme-yun
       logo: ri:cloud-line
       type: 博客主题，开源项目
       start: 2019 年 5 月
       end: 至今
       url: 'https://yun.yunyoujun.cn'
-      summary: 一个简洁、优雅、快速的博客主题, <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/YunYouJun/hexo-theme-yun?style=social">
+      summary: 一个简洁、优雅、快速的博客主题
       keywords:
         - name: pug
           icon: simple-icons:pug
@@ -78,6 +79,7 @@ project:
         - 对 SEO、可访问性与加载速度进行优化，Chrome Lighthouse 测试 SEO/Accessibility/Best Practices 100，Performance 95
         - 将通用功能抽取为可配置的内容，并为其编写多语言文件与中英文文档
     - name: cook
+      repo: YunYouJun/cook
       logo: mdi:pot-mix-outline
       type: 服务端，开源项目
       summary: 食材标签交互筛选，跳转 B 站做菜适配链。访问量破百万，受人民网、人民日报、半月谈、解放日报等多家媒体采访转发。
@@ -113,15 +115,8 @@ project:
       type: 实习，前端开发，汽车云大数据平台业务开发
       start: 2021 年 5 月
       end: 2021 年 7 月
-    - name: 其他
-      logo: ri:github-line
-      type: 业余开源项目
-      start: 2017 年 1 月
-      end: 至今
-      url: https://github.com/YunYouJun
-      highlights:
-        - Element Plus 团队核心成员，曾为 Element UI, Omi, Vitesse 等项目积极贡献 PR，并业余开源一些前端项目。
     - name: air-conditioner
+      repo: YunYouJun/air-conditioner
       type: 玩具项目
       logo: ri:snowy-line
       start: 2019 年 8 月
@@ -138,7 +133,7 @@ project:
         - name: Css
           icon: simple-icons:css3
       highlights:
-        - 便携，静音，随时随地打开空调；操作简单，安装便捷；低功耗（使用 HTML CSS 而非 Canvas 绘制）
+        - 便携，静音，随时随地打开空调；操作简单，安装便捷；低功耗（使用纯 CSS 绘制）
     - name: 其他
       logo: ri:github-line
       type: 业余开源项目
@@ -255,23 +250,19 @@ certificate:
     - name: 一等奖学金、校三好学生、优秀毕业生、优秀毕业设计（论文）
       place: 上海海事大学
       time: 2014-2018
-    - name: 第X届中国大学生计算机设计大赛二等奖
-      place: XX
-      time: 20XX
-    - name: 第X届 XXX 大学生数学建模挑战赛二等奖
-      place: XX
-      time: 20XX
-    - name: 第X届XX杯XX赛区 C/C++ 组二等奖
-      place: XX赛区
-      time: 20XX
-    - name: 'XXXX-XXXX: X Xxxx Xxxxx Xxxxxxxxx of Xxxx Xxxxxx Based on X-Xxxxx Algorithm 一作'
-      place: XXXXX (EI - IEEE)
-      time: 20XX
+    - name: 第十届中国大学生计算机设计大赛二等奖、第七届 MathorCup 大学生数学建模挑战赛二等奖
+      time: 2017
+    - name: 第九届蓝桥杯上海赛区 C/C++ 组二等奖
+      place: 上海
+      time: 2018
+    - name: 'Color-Dust: A Data Visualization Application of Image Color Based on K-Means Algorithm 一作'
+      place: ICMLC (EI - IEEE)
+      time: 2020
 
 other:
   icon: ri:information-line
   title: 其他
   info:
-    - 爱好科幻，中国科普作协会员，曾获XX幻想节科幻创作大赛一等奖，XX科普科幻青年之星
-    - 为人热心，曾前往XXXX支教，获全国大学生百强暑期优秀实践团队
+    - 爱好科幻，中国科普作协会员，曾获上海市幻想节科幻创作大赛一等奖、科普科幻青年之星
+    - 为人热心，曾前往甘肃武威支教，全国大学生百强暑期优秀实践团队
     - 我对普通的 996 公司没有兴趣，假如你们当中有假期多，下班早，工资高，又有趣的公司，就尽管来找我吧，完毕！
