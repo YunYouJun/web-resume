@@ -14,25 +14,33 @@
 - Can be printed as A4 PDF
 - Configure your resume content via YAML
   - Support online editing preview (If you need to store resumes, you should use the local method.)
-  - 理论上可以任意换肤，但是抱歉目前还只有这一种 hhh
-  - 在线解析
-  - YAML 验证，提供字段验证和类型提示（你可能需要安装 [vscode-yaml](https://github.com/redhat-developer/vscode-yaml) 插件）
+  - Custom Style
+  - Online Parse
+  - YAML validation, providing field validation and type hinting (Maybe you need install [vscode-yaml](https://github.com/redhat-developer/vscode-yaml))
 - PWA
-- 自由使用 Web 图标
+- Free to use web icons
 
 ## Usage
 
-### 在线使用
+### Online
+
+#### Preview
+
+View `https://resume.elpsy.cn/resume?url=` + `Your Resume File URL`.
+
+For example: `https://resume.elpsy.cn/resume?url=https://fastly.jsdelivr.net/gh/YunYouJun/web-resume/src/assets/resume/local.resume.yml`.
+
+#### Edit
 
 下方导航栏切换至编辑器页面，在线编辑简历对应配置项即可。
 
 > 图标可参见 [icones](https://icones.js.org/) 使用
 
-### 本地使用
+### Local
 
-点击仓库右上角 `Use this template`，或 clone 本项目。
+> You can use it with hot reload.
 
-> 热加载。
+Click repo `Use this template`, or clone this。
 
 ```bash
 git clone https://github.com/YunYouJun/web-resume
@@ -43,22 +51,22 @@ pnpm run resume
 
 #### Command
 
-- 预览: `pnpm dev` (`http://localhost:3000/`)
-- 预览简历：`pnpm resume`
-- 构建: `pnpm build`
+- Preview: `pnpm dev` (`http://localhost:3000/`)
+- Preview Resume：`pnpm resume`
+- Build: `pnpm build`
 
 #### Custom
 
 ##### Resume
 
-自定义 `src/assets/resume/local.resume.yml` 的简历文件，支持热加载。
+Custom `src/assets/resume/local.resume.yml` (Hot Reload)
 
-> 本地热加载页面，请进入 `http://localhost:3000/local`
-> 使用 VSCode 还可以有本地 YAML 格式校验哦～
+> View `http://localhost:3000/local`
+> You can use vscode with yaml validate.
 
 ##### Google Analytics
 
-修改 id。
+Custom ID.
 
 ```ts
 // src/modules/gtag.ts
@@ -69,13 +77,13 @@ app.use(VueGtag, {
 
 ### Print
 
-使用 Chrome 右键打印，选择另存为 PDF。
+Use Chrome to right-click to print and select `Save as PDF`.
 
-> 可自定义缩放比例，测试 78% 左右（自己试试咯）可以一页输出。
+> You can customize the zoom ratio, test about 78% (try it yourself), and you can output on one page.
 
 ## Ref
 
-整体样式布局，参考自 LaTeX 简历模版 [billryan/resume](https://github.com/billryan/resume/tree/zh_CN)。
+Styles refer to LaTeX resume template [billryan/resume](https://github.com/billryan/resume/tree/zh_CN).
 
 ## Todo
 

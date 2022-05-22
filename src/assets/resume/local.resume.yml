@@ -55,6 +55,28 @@ project:
   icon: ri:folders-line
   title: 项目经历
   sets:
+    - name: 蚂蚁集团 支付宝 体验技术部
+      logo: ri:alipay-line
+      type: 实习，前端开发
+      start: 2021 年 7 月
+      end: 至今
+      keywords:
+        - name: React
+          icon: simple-icons:react
+        - name: Less
+          icon: simple-icons:less
+        - name: XCode
+          icon: simple-icons:xcode
+        - name: TypeScript
+          icon: simple-icons:typescript
+        - name: RPC 等内部工具
+          icon: 🐜
+      summary: 🐜 🌲 编写蚂蚁森林神奇动物徽章旋转动画、蚂蚁新村部分模块开发、完整负责蚂蚁森林五周年活动页前端开发（2021.8.27 活动结束）
+    - name: 腾讯 CSIG 智慧出行
+      logo: ri:qq-line
+      type: 实习，前端开发，汽车云大数据平台画像业务开发
+      start: 2021 年 5 月
+      end: 2021 年 7 月
     - name: hexo-theme-yun
       repo: YunYouJun/hexo-theme-yun
       logo: ri:cloud-line
@@ -64,15 +86,15 @@ project:
       url: 'https://yun.yunyoujun.cn'
       summary: 一个简洁、优雅、快速的博客主题
       keywords:
-        - name: pug
+        - name: Pug
           icon: simple-icons:pug
-        - name: stylus
+        - name: Stylus
           icon: simple-icons:stylus
         - name: Hexo
           icon: simple-icons:hexo
         - name: JavaScript
           icon: simple-icons:javascript
-        - name: yaml
+        - name: Yaml
           icon: file-icons:yaml
       highlights:
         - 使用 pug 与 stylus 进行主题模版开发，熟练使用 CSS3 与 ES6 新特性实现自定义动画与样式
@@ -81,7 +103,7 @@ project:
     - name: cook
       repo: YunYouJun/cook
       logo: mdi:pot-mix-outline
-      type: 服务端，开源项目
+      type: 隔离食用手册，开源项目
       summary: 食材标签交互筛选，跳转 B 站做菜适配链。访问量破百万，受人民网、人民日报、半月谈、解放日报等多家媒体采访转发。
       start: 2022 年 4 月
       end: 至今
@@ -93,28 +115,6 @@ project:
           icon: simple-icons:vuedotjs
         - name: UnoCSS
           icon: simple-icons:csswizardry
-    - name: 蚂蚁集团 支付宝 体验技术部
-      logo: ri:alipay-line
-      type: 实习，前端开发
-      start: 2021 年 7 月
-      end: 至今
-      keywords:
-        - name: react
-          icon: simple-icons:react
-        - name: less
-          icon: simple-icons:less
-        - name: XCode
-          icon: simple-icons:xcode
-        - name: TypeScript
-          icon: simple-icons:typescript
-        - name: RPC 等内部工具
-          icon: 🐜
-      summary: 🐜 🌲 编写蚂蚁森林神奇动物徽章旋转动画、蚂蚁新村部分模块开发、完整负责蚂蚁森林五周年活动页前端开发（2021.8.27 活动结束）
-    - name: 腾讯 CSIG 智慧出行
-      logo: ri:qq-line
-      type: 实习，前端开发，汽车云大数据平台业务开发
-      start: 2021 年 5 月
-      end: 2021 年 7 月
     - name: air-conditioner
       repo: YunYouJun/air-conditioner
       type: 玩具项目
@@ -124,13 +124,13 @@ project:
       url: https://www.yunyoujun.cn/air-conditioner/
       summary: 云空调，便携小空调，为你的夏日带去清凉！用户访问量破千万。
       keywords:
-        - name: react
+        - name: React
           icon: simple-icons:react
-        - name: material-ui
+        - name: Material UI
           icon: simple-icons:material-ui
-        - name: Scss
+        - name: SCSS
           icon: simple-icons:sass
-        - name: Css
+        - name: CSS
           icon: simple-icons:css3
       highlights:
         - 便携，静音，随时随地打开空调；操作简单，安装便捷；低功耗（使用纯 CSS 绘制）
@@ -143,16 +143,13 @@ project:
       keywords:
         - name: Vue
           icon: simple-icons:vuedotjs
-        - name: react
+        - name: React
           icon: simple-icons:react
-        - name: material-ui
-          icon: simple-icons:material-ui
         - name: Scss
           icon: simple-icons:sass
-        - name: Css
-          icon: simple-icons:css3
       highlights:
-        - 曾为 element-ui, element-plus, vitepress 等项目积极贡献 PR，并业余开源一些前端项目 Valaxy、ADV.JS 等。
+        - 中国开源码力榜 Top 99，Element Plus 团队核心成员，为 Element, Vitesse 等 50 个开源项目积极贡献 PR。
+        - 个人开源项目 Valaxy（博客框架）、ADV.JS（文字冒险游戏引擎）等共计收获 8k Star。
 
 skill:
   icon: ri:flask-line
@@ -255,6 +252,9 @@ certificate:
     - name: 第九届蓝桥杯上海赛区 C/C++ 组二等奖
       place: 上海
       time: 2018
+    - name: 腾讯犀牛鸟开源人才培养计划 Omi 结业
+      place: 线上
+      time: 2021
     - name: 'Color-Dust: A Data Visualization Application of Image Color Based on K-Means Algorithm 一作'
       place: ICMLC (EI - IEEE)
       time: 2020

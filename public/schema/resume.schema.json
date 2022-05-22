@@ -251,6 +251,10 @@
           "description": "是否展开",
           "type": "boolean"
         },
+        "repo": {
+          "description": "GitHub Repo",
+          "type": "string"
+        },
         "type": {
           "description": "类型",
           "type": "string"
@@ -377,7 +381,6 @@
       },
       "required": [
         "name",
-        "place",
         "time"
       ]
     }
