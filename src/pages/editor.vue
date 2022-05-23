@@ -1,24 +1,27 @@
 <script lang="ts" setup>
 import { useI18n } from 'vue-i18n'
-import { useRoute } from 'vue-router'
 import { useEditorStore } from '~/stores/editor'
+
 import { useResume } from '~/composables/resume'
 
 const editorStore = useEditorStore()
 
 const { t } = useI18n()
 
-const route = useRoute()
 const resumeText = ref(editorStore.resumeText)
+
+async function resetResumeText() {
+  const resumeExample = await useResume('/resume/suzumiya.resume.yml')
+
+  const prefix = `# ${t('editor.name')}\n`
+  const txt = prefix + resumeExample
+  editorStore.codeEditor?.setValue(txt)
+}
 
 onBeforeMount(async () => {
   // 若本地不存在，则设置默认值
-  if (!editorStore.resumeText) {
-    const txt
-      = `# ${t('editor.name')}\n${await useResume(route.query.url as string)}`
-    editorStore.setResume(txt)
-    editorStore.codeEditor?.setValue(txt)
-  }
+  if (!editorStore.resumeText)
+    await resetResumeText()
 })
 </script>
 
@@ -27,8 +30,8 @@ onBeforeMount(async () => {
     <!-- <h1 class="m-4">
       {{ t('editor.name') }}
     </h1> -->
-    <div class="preview-container" grid="~ cols-2 gap-4 <sm:cols-1">
-      <div class="resume-container resume shadow">
+    <div class="preview-container" grid="~ cols-2 <sm:cols-1">
+      <div class="resume-container resume shadow w-full">
         <ResumeAll :resume="editorStore.resumeJson" />
       </div>
       <div class="editor-container">
@@ -37,8 +40,14 @@ onBeforeMount(async () => {
         </client-only>
       </div>
     </div>
+    <div m="t-2" text="sm gray-800 dark:gray">
+      注意：此处主要作示例体验与临时修改使用。如果你想要更好的编辑体验，你应当使用本地开发的方式。
+    </div>
     <div>
-      <a class="resume-btn mt-3" href="/resume" target="_blank">
+      <button class="resume-btn m-2" @click="resetResumeText">
+        重置内容
+      </button>
+      <a class="resume-btn m-2" href="/resume" target="_blank">
         {{
           t('button.see_resume')
         }}
@@ -53,7 +62,7 @@ onBeforeMount(async () => {
 }
 
 .preview-container {
-  border: 1px solid var(--wr-border-color);
+  border: 1px solid var(--wr-c-border);
   padding: 0;
   overflow: hidden;
 }
@@ -67,6 +76,6 @@ onBeforeMount(async () => {
 .resume-container {
   padding: 2rem;
   overflow: scroll;
-  border-right: 1px solid var(--wr-border-color);
+  border-right: 1px solid var(--wr-c-border);
 }
 </style>

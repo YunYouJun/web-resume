@@ -3,22 +3,34 @@ import { acceptHMRUpdate, defineStore } from 'pinia'
 import type * as m from 'monaco-editor'
 
 import yaml from 'js-yaml'
+import Ajv from 'ajv'
 import type { ResumeInfo } from '~/types'
 import { isClient } from '~/utils'
+
+import resumeSchema from '~/../public/schema/resume.schema.json'
+
+const ajv = new Ajv()
+const validate = ajv.compile(resumeSchema)
 
 export const namespace = 'web-resume'
 
 export const useEditorStore = defineStore('editor', () => {
-  const codeEditor = ref<m.editor.IStandaloneCodeEditor | null>()
+  // must shallow to avoid stuck
+  const codeEditor = shallowRef<m.editor.IStandaloneCodeEditor | null>()
 
   const resumeText = useStorage(`${namespace}-text`, '')
 
-  let resumeCached: ResumeInfo
+  let resumeCached: ResumeInfo | undefined
 
   const resumeJson = computed(() => {
     try {
       resumeCached = yaml.load(resumeText.value) as ResumeInfo
-      clearErrorMessage()
+      const valid = validate(resumeCached)
+
+      if (!valid)
+        resumeCached = undefined
+      else
+        clearErrorMessage()
     }
     catch (e: any) {
       if (e)

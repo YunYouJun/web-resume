@@ -52,6 +52,7 @@
     "@types/nprogress": "^0.2.0",
     "@vitejs/plugin-vue": "^2.3.3",
     "@yunyoujun/logger": "^0.2.3",
+    "ajv": "^8.11.0",
     "critters": "^0.0.16",
     "cross-env": "^7.0.3",
     "eslint": "^8.16.0",

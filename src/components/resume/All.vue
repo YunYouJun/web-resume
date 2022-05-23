@@ -11,7 +11,9 @@ const props = withDefaults(
   defineProps<{
     resume: ResumeInfo
   }>(),
-  {},
+  {
+    resume: {},
+  },
 )
 
 const resumeComponents = [
@@ -41,7 +43,7 @@ const compOrder = computed(() => {
 </script>
 
 <template>
-  <div v-if="props.resume" class="resume">
+  <div v-if="Object.keys(props.resume).length" class="resume">
     <resume-header :resume="resume" />
 
     <keep-alive>
