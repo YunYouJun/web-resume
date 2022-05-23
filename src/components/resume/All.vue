@@ -7,14 +7,10 @@ import ResumeCertificate from '~/components/resume/Certificate.vue'
 import ResumeSkill from '~/components/resume/Skill.vue'
 import ResumeOther from '~/components/resume/Other.vue'
 
-const props = withDefaults(
-  defineProps<{
+const props
+  = defineProps<{
     resume: ResumeInfo
-  }>(),
-  {
-    resume: {},
-  },
-)
+  }>()
 
 const resumeComponents = [
   'education',

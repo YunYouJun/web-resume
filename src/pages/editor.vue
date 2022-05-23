@@ -32,7 +32,7 @@ onBeforeMount(async () => {
     </h1> -->
     <div class="preview-container" grid="~ cols-2 <sm:cols-1">
       <div class="resume-container resume shadow w-full">
-        <ResumeAll :resume="editorStore.resumeJson" />
+        <ResumeAll v-if="editorStore.resumeJson" :resume="editorStore.resumeJson" />
       </div>
       <div class="editor-container">
         <client-only>
@@ -41,7 +41,7 @@ onBeforeMount(async () => {
       </div>
     </div>
     <div m="t-2" text="sm gray-800 dark:gray">
-      注意：此处主要作示例体验与临时修改使用。如果你想要更好的编辑体验，你应当使用本地开发的方式。
+      注意：此处主要作示例体验与临时修改使用。如果您想要更好的编辑体验，您可以使用本地开发的方式。
     </div>
     <div>
       <button class="resume-btn m-2" @click="resetResumeText">

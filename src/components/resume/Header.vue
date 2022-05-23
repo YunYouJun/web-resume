@@ -1,16 +1,9 @@
 <script lang="ts" setup>
 import type { ResumeInfo } from '~/types'
 
-const props = withDefaults(defineProps<{
+const props = defineProps<{
   resume: ResumeInfo
-}>(), {
-  resume: {
-    name: 'Your Name',
-    basics: {
-      name: 'Your Name',
-    },
-  },
-})
+}>()
 
 const resume = toRef(props, 'resume')
 const name = computed(() => {
