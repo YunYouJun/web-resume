@@ -1,0 +1,1 @@
+import{_ as o,c as a,n as t,F as c,j as n,o as r,G as s}from"./app.ca348c53.js";import"./yamlWorker.591d481f.js";import"./monaco.d34c9b32.js";const _={},l=n("h1",null,"404",-1);function m(f,i){const e=s;return r(),a(c,null,[t(e),l],64)}var B=o(_,[["render",m]]);export{B as default};
