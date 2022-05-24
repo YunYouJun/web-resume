@@ -32,7 +32,7 @@ onBeforeMount(async () => {
     </h1> -->
     <div class="preview-container" grid="~ cols-2 <sm:cols-1">
       <div class="resume-container resume shadow w-full">
-        <ResumeAll v-if="editorStore.resumeJson" :resume="editorStore.resumeJson" />
+        <ResumeAll v-if="editorStore.resumeJson" class="min-w-500px" :resume="editorStore.resumeJson" />
       </div>
       <div class="editor-container">
         <client-only>
@@ -69,7 +69,7 @@ onBeforeMount(async () => {
 
 .resume-container,
 .editor-container {
-  height: 87vh;
+  height: calc(100vh - 100px);
   text-align: left;
 }
 

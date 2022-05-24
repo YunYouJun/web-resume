@@ -15,6 +15,6 @@ const history = toRef(props, 'history')
       <iconify-icon class="position-icon" icon="ri:map-pin-line" />
       {{ history.place }}
     </span>
-    <span class="float-right">{{ history.time }}</span>
+    <span class="float-right" font="mono">{{ history.time }}</span>
   </li>
 </template>

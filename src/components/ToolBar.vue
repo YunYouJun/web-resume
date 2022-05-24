@@ -3,6 +3,7 @@ import { isDark, toggleDark } from '~/composables'
 
 import pkg from '~/../package.json'
 import 'vue-about-me/style.css'
+import { useAppStore } from '~/stores/app'
 
 const { t, availableLocales, locale } = useI18n()
 
@@ -12,22 +13,27 @@ const toggleLocales = () => {
   locale.value = locales[(locales.indexOf(locale.value) + 1) % locales.length]
 }
 
-const showToolbar = ref(true)
+const app = useAppStore()
 
 useEventListener('beforeprint', () => {
-  showToolbar.value = false
+  app.showToolbar = false
 })
 useEventListener('afterprint', () => {
-  showToolbar.value = true
+  app.showToolbar = true
 })
 
 const showLocal = ref(import.meta.env.DEV || false)
 </script>
 
 <template>
-  <nav :class="showToolbar ? 'opacity-100' : 'opacity-0'" class="fixed left-0 shadow-md flex flex-col p-2 transition hover:opacity-100" bg="light-200 dark:dark-200">
-    <button class="icon-btn" @click="showToolbar = !showToolbar">
-      <div v-if="showToolbar" i-ri-pushpin-line text="orange" />
+  <nav
+    :class="app.showToolbar ? 'opacity-100' : 'opacity-0'"
+    class="z-10 fixed rounded m-auto left-0 shadow-md transition hover:opacity-100"
+    bg="light-200 dark:dark-200" p="2"
+    flex="~ col" justify="center"
+  >
+    <button class="icon-btn" @click="app.showToolbar = !app.showToolbar">
+      <div v-if="app.showToolbar" i-ri-pushpin-line text="orange" />
       <div v-else i-ri-pushpin-2-line />
     </button>
 

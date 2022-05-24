@@ -254,12 +254,12 @@ certificate:
     - name: 第九届蓝桥杯上海赛区 C/C++ 组二等奖
       place: 上海
       time: 2018
-    - name: 腾讯犀牛鸟开源人才培养计划 Omi 结业
-      place: 线上
-      time: 2021
     - name: 'Color-Dust: A Data Visualization Application of Image Color Based on K-Means Algorithm 一作'
       place: ICMLC (EI - IEEE)
       time: 2020
+    - name: 腾讯犀牛鸟开源人才培养计划 Omi 结业
+      place: 线上
+      time: 2021
 
 other:
   icon: ri:information-line
