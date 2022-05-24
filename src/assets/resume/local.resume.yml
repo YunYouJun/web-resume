@@ -12,7 +12,7 @@ contact:
     icon: ri:mail-line
     label: me@yunyoujun.cn
   phone:
-    href: tel:166 xxxx xxxx
+    href: tel:166xxxxxxxx
     icon: ri:smartphone-line
     label: 166 xxxx xxxx
   blog:
@@ -119,7 +119,7 @@ project:
           icon: simple-icons:csswizardry
     - name: air-conditioner
       repo: YunYouJun/air-conditioner
-      type: 玩具项目
+      type: 玩具，开源项目
       logo: ri:snowy-line
       start: 2019 年 8 月
       end: 2021 年 1 月
@@ -257,7 +257,7 @@ certificate:
     - name: 'Color-Dust: A Data Visualization Application of Image Color Based on K-Means Algorithm 一作'
       place: ICMLC (EI - IEEE)
       time: 2020
-    - name: 腾讯犀牛鸟开源人才培养计划 Omi 结业
+    - name: 腾讯犀牛鸟开源人才培养计划 Omi（1/14）结业
       place: 线上
       time: 2021
 
@@ -265,6 +265,9 @@ other:
   icon: ri:information-line
   title: 其他
   info:
-    - 爱好科幻，中国科普作协会员，曾获上海市幻想节科幻创作大赛一等奖、科普科幻青年之星
+    - 爱好科幻，中国科普作协会员，曾获科普中国科普科幻青年之星、上海市幻想节科幻创作大赛一等奖
     - 为人热心，曾前往甘肃武威支教，全国大学生百强暑期优秀实践团队
     - 我对普通的 996 公司没有兴趣，假如你们当中有假期多，下班早，工资高，又有趣的公司，就尽管来找我吧，完毕！
+
+footer:
+  link: https://resume.elpsy.cn/local
