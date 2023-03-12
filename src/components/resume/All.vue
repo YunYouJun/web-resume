@@ -20,7 +20,7 @@ const resumeComponents = [
   'other',
 ]
 
-const resumeMap = {
+const resumeMap: Record<string, any> = {
   education: ResumeEducation,
   project: ResumeProject,
   certificate: ResumeCertificate,
@@ -34,7 +34,23 @@ const compOrder = computed(() => {
   const order = Object.keys(props.resume).filter(type =>
     resumeComponents.includes(type),
   )
-  return order
+  return order as (keyof ResumeInfo)[]
+})
+
+const resumeArr = computed(() => {
+  const arr: {
+    component: any
+    props: any
+    attr: keyof ResumeInfo
+  }[] = []
+  compOrder.value.forEach((type) => {
+    arr.push({
+      attr: type,
+      component: resumeMap[type],
+      props: resume.value[type],
+    })
+  })
+  return arr
 })
 </script>
 
@@ -43,9 +59,12 @@ const compOrder = computed(() => {
     <resume-header :resume="resume" />
 
     <keep-alive>
-      <template v-for="(type, i) in compOrder" :key="i">
-        <component :is="resumeMap[type]" class="mt-3" :[type]="resume[type]" />
-      </template>
+      <Component
+        :is="r.component"
+        v-for="r in resumeArr"
+        :key="r.attr" class="mt-3"
+        :[r.attr]="r.props"
+      />
     </keep-alive>
 
     <resume-footer v-if="resume.footer" :footer="resume.footer" />
