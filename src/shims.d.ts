@@ -12,7 +12,7 @@ declare module '*.vue' {
   export default component
 }
 
-// with vite-plugin-md, markdowns can be treat as Vue components
+// with vite-plugin-vue-markdown, markdowns can be treat as Vue components
 declare module '*.md' {
   const component: ComponentOptions
   export default component

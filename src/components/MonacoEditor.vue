@@ -8,21 +8,20 @@ import setupMonaco from '~/monaco/setup'
 
 import { isClient } from '~/utils'
 
-// ref is too slow
-let codeEditor: m.editor.IStandaloneCodeEditor
-
 const editorStore = useEditorStore()
 const container = ref<HTMLElement | null>()
 
 async function start() {
   if (isClient) {
+    const codeEditor = shallowRef<m.editor.IStandaloneCodeEditor | null>()
+
     // https://github.com/antfu/vite-ssg/issues/74
     // dynamic import
     // const { monaco } =
     const { monaco } = await setupMonaco()
 
-    if (container.value && !codeEditor) {
-      codeEditor = monaco.editor.create(container.value, {
+    if (container.value && !editorStore.codeEditor) {
+      codeEditor.value = monaco.editor.create(container.value, {
         language: 'yaml',
         theme: isDark.value ? 'vs-dark' : 'vs',
         wordWrap: 'on',
@@ -37,13 +36,14 @@ async function start() {
 
       // add resize for editor
       self.addEventListener('resize', () => {
-        codeEditor.layout()
+        codeEditor.value?.layout()
       })
 
-      editorStore.setEditor(codeEditor)
+      editorStore.setEditor(codeEditor.value)
 
-      codeEditor.onDidChangeModelContent((event: any) => {
-        editorStore.setResume(codeEditor.getValue())
+      codeEditor.value!.onDidChangeModelContent((_event: any) => {
+        if (codeEditor.value)
+          editorStore.setResume(codeEditor.value.getValue())
       })
     }
 
@@ -53,7 +53,15 @@ async function start() {
   }
 }
 
-start()
+onMounted(() => {
+  start()
+})
+
+onUnmounted(() => {
+  editorStore.codeEditor?.getModel()?.dispose()
+  editorStore.codeEditor?.dispose()
+  editorStore.codeEditor = null
+})
 </script>
 
 <template>

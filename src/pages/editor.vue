@@ -47,11 +47,11 @@ onBeforeMount(async () => {
       <button class="resume-btn m-2" @click="resetResumeText">
         重置内容
       </button>
-      <a class="resume-btn m-2" href="/resume" target="_blank">
+      <RouterLink class="resume-btn m-2" to="/resume">
         {{
           t('button.see_resume')
         }}
-      </a>
+      </RouterLink>
     </div>
   </div>
 </template>

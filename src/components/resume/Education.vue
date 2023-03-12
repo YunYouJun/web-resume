@@ -19,11 +19,11 @@ withDefaults(defineProps<{ education: Education | null }>(), {
         <div>
           <img v-if="edu.logo" class="school-logo" :src="edu.logo">
           <span v-else-if="edu.icon" class="mr-1">
-            <iconify-icon :icon="edu.icon" />
+            <IconifyIcon :icon="edu.icon" />
           </span>
           <span>
             <strong>{{ edu.school }}</strong>
-            <iconify-icon class="position-icon" icon="ri:map-pin-line" />
+            <IconifyIcon class="position-icon" icon="ri:map-pin-line" />
             {{ edu.city }}
           </span>
           <span class="float-right">

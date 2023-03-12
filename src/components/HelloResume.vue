@@ -74,12 +74,9 @@ function setResumeYaml(id: string) {
         target="_blank"
       >{{ t('button.see_yaml') }}
       </a>
-      <a
-        class="resume-btn m-3"
-        :href="`/resume?url=${resumeYaml}`"
-        target="_blank"
-      >{{ t('button.see_resume') }}
-      </a>
+      <RouterLink class="resume-btn m-3" :to="`/resume?url=${resumeYaml}`">
+        {{ t('button.see_resume') }}
+      </RouterLink>
     </div>
     <small class="mt-3 text-monospace">
       <a :href="homepage" title="Web Resume">{{ homepage }}</a>

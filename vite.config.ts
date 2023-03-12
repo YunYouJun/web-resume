@@ -1,16 +1,16 @@
-import path from 'path'
+import path from 'node:path'
 import { defineConfig } from 'vite'
 
 import Vue from '@vitejs/plugin-vue'
 import Pages from 'vite-plugin-pages'
 import Layouts from 'vite-plugin-vue-layouts'
 import { VitePWA } from 'vite-plugin-pwa'
-import VueI18n from '@intlify/vite-plugin-vue-i18n'
+import VueI18n from '@intlify/unplugin-vue-i18n/vite'
 import Components from 'unplugin-vue-components/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import Unocss from 'unocss/vite'
 
-import Markdown from 'vite-plugin-md'
+import Markdown from 'vite-plugin-vue-markdown'
 import Prism from 'markdown-it-prism'
 import LinkAttributes from 'markdown-it-link-attributes'
 
@@ -93,7 +93,7 @@ export default defineConfig({
     // see unocss.config.ts for config
     Unocss(),
 
-    // https://github.com/antfu/vite-plugin-md
+    // https://github.com/antfu/vite-plugin-vue-markdown
     Markdown({
       wrapperClasses: markdownWrapperClasses,
       headEnabled: true,
@@ -151,8 +151,8 @@ export default defineConfig({
     formatting: 'minify',
   },
 
-  optimizeDeps: {
-    include: ['vue', 'vue-router', '@vueuse/core', 'js-yaml', 'vue-about-me', 'monaco-editor', 'monaco-yaml/yaml.worker.js'],
-    exclude: ['vue-demi'],
+  ssr: {
+    // TODO: workaround until they support native ESM
+    noExternal: ['workbox-window', /vue-i18n/],
   },
 })
