@@ -13,7 +13,13 @@ const name = computed(() => {
 
 <template>
   <div v-if="resume">
-    <h1 class="font-normal text-center text-4xl">
+    <div v-if="resume.basics.avatar" class="flex justify-between items-center">
+      <span class="font-normal text-center text-4xl">
+        {{ name || 'Your Name' }}
+      </span>
+      <img :src="resume.basics.avatar" class="max-h-3cm max-w-3cm ">
+    </div>
+    <h1 v-else class="font-normal text-center text-4xl">
       {{ name || 'Your Name' }}
     </h1>
     <small v-if="resume.basics" class="flex justify-center">

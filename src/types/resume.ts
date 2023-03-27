@@ -16,6 +16,7 @@ export interface ResumeInfo {
     sex?: string
     birth?: string
     location?: string
+    avatar?: string
   }
 
   /**
