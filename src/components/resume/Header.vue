@@ -17,7 +17,7 @@ const name = computed(() => {
       <span class="font-normal text-center text-4xl">
         {{ name || 'Your Name' }}
       </span>
-      <img v-if="resume.basics.avatar" :src="resume.basics.avatar" style="max-height: 3cm; max-width: 3cm;">
+      <img v-if="resume.basics.avatar" class="max-h-3cm" :src="resume.basics.avatar">
     </div>
     <small v-if="resume.basics" class="flex justify-center">
       <span class="mx-1">{{ resume.basics.sex }}</span>
