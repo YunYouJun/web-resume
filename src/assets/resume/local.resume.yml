@@ -3,7 +3,7 @@
 basics:
   name: 云游君
   label: 程序员
-  avatar: https://yunyoujun.cn/images/avatar.jpg
+  # avatar: https://yunyoujun.cn/images/avatar.jpg
   bio: All at sea.
 
 contact:
