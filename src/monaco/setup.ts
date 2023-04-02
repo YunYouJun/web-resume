@@ -3,7 +3,7 @@
 // a magic way to fix vite worker with monaco-yaml
 // https://github.com/remcohaszing/monaco-yaml/issues/150
 
-export const setup = async () => {
+export async function setup() {
   // avoid vite-ssg navigator error
   if (window.monaco) {
     return {
