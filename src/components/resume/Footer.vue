@@ -6,7 +6,7 @@ const footer = toRef(props, 'footer')
 </script>
 
 <template>
-  <div v-if="footer" class="text-center">
+  <div v-if="footer" class="text-center" mt="2">
     <a :href="footer.link" target="_blank">
       <small class="text-monospace">{{ footer.link }}</small>
     </a>
