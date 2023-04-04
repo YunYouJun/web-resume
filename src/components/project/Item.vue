@@ -86,9 +86,9 @@ onMounted(async () => {
         />
         <!-- {{ highlight }} -->
       </ul>
-      <hr class="mx-3">
     </div>
   </details>
+  <hr class="mx-3">
 </template>
 
 <style lang="scss">

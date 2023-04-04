@@ -71,7 +71,7 @@ project:
           icon: simple-icons:less
         - name: XCode
           icon: simple-icons:xcode
-        - name: TypeScript
+        - name: TypeScript，Zustand
           icon: simple-icons:typescript
         - name: RPC 等内部工具
           icon: 🐜
@@ -79,12 +79,15 @@ project:
       highlights:
         - 蚂蚁庄园前端开发：开发五周年活动，从零到一开发做饭互动玩法，负责并保障庄园五福分会场及年夜饭活动上线，超出业务目标
         - 蚂蚁庄园架构升级：将维护近六年的项目从原生开发迁移升级至内部 React 框架，并进行大幅的性能与结构优化
+        - 了解图形学基础，能够进行图形互动相关玩法、动画状态机与轻量 3D 交互场景实现，蚂蚁森林徽章、小鸡公仔 3D 模型展示等
         - （实习 2021.7）🐜 🌲 蚂蚁森林神奇动物徽章旋转动画、蚂蚁新村部分模块开发、负责蚂蚁森林五周年活动页前端开发
     - name: 腾讯 CSIG 智慧出行
       logo: ri:qq-line
       type: 实习，前端开发，汽车云大数据平台画像业务开发
       start: 2021 年 5 月
       end: 2021 年 7 月
+      open: false
+      summary: 独立进行腾讯云汽车大数据中后台及图表开发，React + Tea
     - name: cook
       repo: YunYouJun/cook
       logo: mdi:pot-mix-outline
@@ -101,6 +104,7 @@ project:
         - name: UnoCSS
           icon: simple-icons:csswizardry
     - name: air-conditioner
+      open: false
       repo: YunYouJun/air-conditioner
       type: 玩具，开源项目
       logo: ri:snowy-line
@@ -120,6 +124,7 @@ project:
       highlights:
         - 便携，静音，随时随地打开空调；操作简单，安装便捷；低功耗（使用纯 CSS 绘制）
     - name: hexo-theme-yun
+      open: false
       repo: YunYouJun/hexo-theme-yun
       logo: ri:cloud-line
       type: 博客主题，开源项目
@@ -140,8 +145,7 @@ project:
           icon: file-icons:yaml
       highlights:
         - 使用 pug 与 stylus 进行主题模版开发，熟练使用 CSS3 与 ES6 新特性实现自定义动画与样式
-        - 对 SEO、可访问性与加载速度进行优化，Chrome Lighthouse 测试 SEO/Accessibility/Best Practices 100，Performance 95
-        - 将通用功能抽取为可配置的内容，并为其编写多语言文件与中英文文档
+        - 对 SEO、可访问性与加载速度进行优化，Chrome Lighthouse 测试 SEO/Accessibility/Best Practices 100，Performance 95。
     - name: 其他
       logo: ri:github-line
       type: 业余开源项目
@@ -158,6 +162,7 @@ project:
       highlights:
         - 中国开源码力榜 Top 99，Element Plus 团队核心成员，为 Element, Vitesse 等 50 个开源项目积极贡献 PR。
         - 个人开源项目 Valaxy（博客框架）、ADV.JS（文字冒险游戏引擎）等共计收获 10k Star。
+        - 在图形互动，细节优化，用户体验，兼容适配，项目工程化与大型开源项目协作方面有一定经验。
 
 skill:
   icon: ri:flask-line

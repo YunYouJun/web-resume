@@ -1,6 +1,7 @@
 <script setup lang="ts">
 // @ts-expect-error yml
 import localResume from '~/assets/resume/local.resume.yml'
+
 const resume = ref(localResume)
 </script>
 
