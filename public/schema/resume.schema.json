@@ -26,6 +26,9 @@
         },
         "location": {
           "type": "string"
+        },
+        "avatar": {
+          "type": "string"
         }
       },
       "required": [
