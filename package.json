@@ -31,7 +31,7 @@
     "@vueuse/core": "^9.13.0",
     "@vueuse/head": "^1.1.23",
     "js-yaml": "^4.1.0",
-    "monaco-editor": "^0.36.1",
+    "monaco-editor": "^0.37.0",
     "monaco-yaml": "4.0.4",
     "nprogress": "^0.2.0",
     "pinia": "^2.0.33",
@@ -44,10 +44,10 @@
     "vue-router": "^4.1.6"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^0.38.2",
+    "@antfu/eslint-config": "^0.38.4",
     "@gtm-support/vue-gtm": "^1.5.0",
     "@iconify-json/mdi": "^1.1.50",
-    "@iconify-json/ri": "^1.1.5",
+    "@iconify-json/ri": "^1.1.6",
     "@intlify/unplugin-vue-i18n": "^0.10.0",
     "@rollup/plugin-yaml": "^4.0.1",
     "@types/js-yaml": "^4.0.5",
