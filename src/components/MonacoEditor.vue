@@ -35,7 +35,7 @@ async function start() {
       })
 
       // add resize for editor
-      self.addEventListener('resize', () => {
+      globalThis.addEventListener('resize', () => {
         codeEditor.value?.layout()
       })
 
