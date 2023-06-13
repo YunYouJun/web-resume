@@ -2,7 +2,7 @@
 import yaml from 'js-yaml'
 import { useRoute } from 'vue-router'
 import type { ResumeInfo } from '../types'
-import { useResume } from '~/composables/resume'
+import { fetchText } from '~/utils'
 import { useEditorStore } from '~/stores/editor'
 
 const editorStore = useEditorStore()
@@ -13,7 +13,7 @@ const route = useRoute()
 onBeforeMount(async () => {
   let text = editorStore.resumeText || ''
   if (route.query.url)
-    text = await useResume(route.query.url as string)
+    text = await fetchText(route.query.url as string)
 
   resume.value = yaml.load(text) as ResumeInfo
 })

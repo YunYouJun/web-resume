@@ -4,17 +4,19 @@ import type * as m from 'monaco-editor'
 
 import yaml from 'js-yaml'
 import Ajv from 'ajv'
+import { useAppStore } from './app'
 import type { ResumeInfo } from '~/types'
-import { isClient } from '~/utils'
+import { fetchText, isClient, namespace } from '~/utils'
 
 import resumeSchema from '~/../public/schema/resume.schema.json'
 
 const ajv = new Ajv()
 const validate = ajv.compile(resumeSchema)
 
-export const namespace = 'web-resume'
-
 export const useEditorStore = defineStore('editor', () => {
+  const { t } = useI18n()
+  const app = useAppStore()
+
   // must shallow to avoid stuck
   const codeEditor = shallowRef<m.editor.IStandaloneCodeEditor | null>()
 
@@ -73,21 +75,27 @@ export const useEditorStore = defineStore('editor', () => {
     resumeText.value = value
   }
 
-  function setResume(value: string) {
-    setResumeText(value)
-  }
-
   function setEditor(value: m.editor.IStandaloneCodeEditor) {
     codeEditor.value = value
   }
 
   return {
     codeEditor,
+
     resumeText,
     resumeJson,
+
     setEditor,
-    setResume,
     setResumeText,
+
+    async reset() {
+      app.resumeUrl = '/resume/suzumiya.resume.yml'
+
+      const resumeExample = await fetchText('/resume/suzumiya.resume.yml')
+      const prefix = `# ${t('editor.name')}\n`
+      const txt = prefix + resumeExample
+      codeEditor.value?.setValue(txt)
+    },
   }
 })
 

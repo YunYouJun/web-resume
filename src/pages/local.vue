@@ -1,8 +1,15 @@
 <script setup lang="ts">
 // @ts-expect-error yml
 import localResume from '~/assets/resume/local.resume.yml'
+import { useAppStore } from '~/stores/app'
 
 const resume = ref(localResume)
+
+const app = useAppStore()
+
+onMounted(() => {
+  app.resumeUrl = 'https://raw.githubusercontent.com/YunYouJun/web-resume/main/src/assets/resume/local.resume.yml'
+})
 </script>
 
 <template>

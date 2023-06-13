@@ -1,8 +1,7 @@
 <template>
   <ToolBar />
 
-  <main class="p-2">
+  <main>
     <router-view />
-    <BaseFooter />
   </main>
 </template>

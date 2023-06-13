@@ -37,13 +37,13 @@ function setResumeYaml(id: string) {
 </script>
 
 <template>
-  <div>
+  <div text="center">
     <h1 class="text-6xl font-light leading-normal">
       {{ props.msg }}
     </h1>
-    <small>{{ t('home.description') }}</small>
+    <small text-base op="60">{{ t('home.description') }}</small>
 
-    <div class="mt-5">
+    <!-- <div class="mt-5">
       {{ t('noun.example') }} YAML
     </div>
 
@@ -74,12 +74,10 @@ function setResumeYaml(id: string) {
         target="_blank"
       >{{ t('button.see_yaml') }}
       </a>
-      <RouterLink class="resume-btn m-3" :to="`/resume?url=${resumeYaml}`">
-        {{ t('button.see_resume') }}
-      </RouterLink>
+
     </div>
     <small class="mt-3 text-monospace">
       <a :href="homepage" title="Web Resume">{{ homepage }}</a>
-    </small>
+    </small> -->
   </div>
 </template>

@@ -43,7 +43,7 @@ async function start() {
 
       codeEditor.value!.onDidChangeModelContent((_event: any) => {
         if (codeEditor.value)
-          editorStore.setResume(codeEditor.value.getValue())
+          editorStore.setResumeText(codeEditor.value.getValue())
       })
     }
 

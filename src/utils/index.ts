@@ -1,4 +1,6 @@
+export * from './resume'
 export const isClient = typeof window !== 'undefined'
+export const namespace = 'web-resume'
 
 /**
  * 是否为生产环境
