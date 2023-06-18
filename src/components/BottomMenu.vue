@@ -34,10 +34,12 @@ function onClick(item: BottomMenuItem) {
   if (active.value)
     router.push(active.value)
 }
+
+const app = useAppStore()
 </script>
 
 <template>
-  <YlfBottomMenu fixed inset-x-0 bottom-0 shadow>
+  <YlfBottomMenu v-if="!app.isPrinting" fixed inset-x-0 bottom-0 shadow>
     <YlfBottomMenuItem
       v-for="item in items"
       :key="item.to"

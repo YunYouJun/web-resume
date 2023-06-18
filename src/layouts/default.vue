@@ -1,7 +1,7 @@
 <template>
   <ToolBar />
 
-  <main>
+  <main pt="$top-nav-height" pb="$bottom-menu-height">
     <router-view />
   </main>
 

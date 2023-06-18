@@ -57,3 +57,11 @@ pnpm run resume
 ```
 
 <br />
+
+## 快捷键
+
+- `Ctrl + P` 打印
+
+### `/editor` 简历编辑器页面
+
+- `Esc` 退出简历全屏

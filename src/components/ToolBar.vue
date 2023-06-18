@@ -17,10 +17,10 @@ const app = useAppStore()
 const user = useUserStore()
 
 useEventListener('beforeprint', () => {
-  app.showToolbar = false
+  app.isPrinting = true
 })
 useEventListener('afterprint', () => {
-  app.showToolbar = true
+  app.isPrinting = false
 })
 
 const showLocal = ref(import.meta.env.DEV || false)
@@ -28,7 +28,8 @@ const showLocal = ref(import.meta.env.DEV || false)
 
 <template>
   <nav
-    :class="app.showToolbar ? 'opacity-100' : 'opacity-0'"
+    fixed top-0 inset-x-0
+    :class="(!app.isPrinting && app.showToolbar) ? 'opacity-100' : 'opacity-0'"
     class="z-100 rounded m-auto left-0 shadow-md transition hover:opacity-100"
     bg="light-200 dark:dark-200" p="2"
     flex="~" justify="center"

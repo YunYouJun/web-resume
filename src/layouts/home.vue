@@ -1,7 +1,7 @@
 <template>
-  <ToolBar class="fixed" />
+  <ToolBar />
 
-  <main h="screen" flex="~ col" justify="center" items="center">
+  <main h="screen" flex="~ col" justify="center" items="center" pb="$bottom-menu-height">
     <router-view />
     <BaseFooter />
     <BottomMenu />

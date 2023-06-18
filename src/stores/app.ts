@@ -3,6 +3,7 @@ import type { ResumeItem } from '~/types'
 import { namespace, resumeExamples } from '~/utils'
 
 export const useAppStore = defineStore('app', () => {
+  const isPrinting = ref(false)
   const showToolbar = ref(true)
 
   /**
@@ -16,6 +17,7 @@ export const useAppStore = defineStore('app', () => {
   const curResume = useStorage<ResumeItem>(`${namespace}:cur-resume`, resumeExamples[0])
 
   return {
+    isPrinting,
     showToolbar,
     queryStr,
 

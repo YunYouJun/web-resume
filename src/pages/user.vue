@@ -51,6 +51,7 @@ const user = useUserStore()
   padding: 4px 8px;
   outline: none;
   width: 100%;
+  background-color: transparent;
 
   &:focus {
     border-color: #000;
