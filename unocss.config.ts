@@ -9,6 +9,10 @@ import {
   transformerVariantGroup,
 } from 'unocss'
 
+const icons = [
+  'i-ri-github-fill',
+]
+
 export default defineConfig({
   shortcuts: [
     ['btn', 'px-4 py-1 rounded inline-block bg-blue-600 text-white cursor-pointer hover:bg-blue-700 disabled:cursor-default disabled:bg-gray-600 disabled:opacity-50'],
@@ -37,5 +41,5 @@ export default defineConfig({
     transformerDirectives(),
     transformerVariantGroup(),
   ],
-  safelist: 'max-w-900px m-auto text-left'.split(' '),
+  safelist: 'max-w-900px m-auto text-left'.split(' ').concat(icons),
 })

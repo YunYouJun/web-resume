@@ -66,6 +66,11 @@ pnpm run resume
 
 - `Esc` 退出简历全屏
 
+## FAQ
+
+- `i-xxx`: 走 UnoCSS CSS 图标，须添加 `safelist` 至 `unocss.config.ts` 中，可静态编译。
+- `xx:yyy`: 如 `ri:github-line`，走 Iconify 图标，使用全局 CDN 动态请求。
+
 ## Other
 
 还在不断优化捏！

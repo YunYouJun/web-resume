@@ -27,11 +27,16 @@ const name = computed(() => {
       <span class="mx-1">{{ resume.basics.birth }}</span>
       <span class="mx-1">{{ resume.basics.location }}</span>
     </small>
-    <ul class="my-4 block text-center list-none" style="padding-left: 0">
+    <ul
+      class="my-6 text-center list-none"
+      flex justify="center" items="center"
+      text-0.9rem
+    >
       <li
         v-for="(contact, key) in resume.contact"
         :key="contact.label"
-        class="mx-3 inline-block"
+        class="mx-3"
+        inline-flex justify="center" items="center"
       >
         <ResumeContactPhone v-if="key === 'phone'" :contact="contact" />
         <a
@@ -39,9 +44,12 @@ const name = computed(() => {
           class="text-decoration-none font-medium"
           :href="contact.href"
           target="_blank"
+          inline-flex justify="center" items="center"
         >
-          <iconify-icon :icon="contact.icon" />
-          <span class="resume-contact-label" ml="1">
+          <div v-if="contact.icon.startsWith('i-')" inline-flex :class="contact.icon" />
+          <iconify-icon v-else :icon="contact.icon" />
+
+          <span inline-flex class="resume-contact-label" ml="1">
             {{ contact.label }}
           </span>
         </a>

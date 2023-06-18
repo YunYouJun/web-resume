@@ -39,7 +39,7 @@ export interface ResumeInfo {
   education: Education
   skill: Skill
   project: Project
-  other: Other
+  other?: Other
   certificate: Certificate
   /**
    * 页脚

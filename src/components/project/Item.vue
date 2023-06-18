@@ -43,24 +43,27 @@ onMounted(async () => {
       </span>
     </summary>
     <div class="project-content">
-      <div v-if="set.keywords" class="ml-3">
-        <span v-for="(keyword, index) in set.keywords" :key="index">
+      <div v-if="set.keywords" class="resume-project-keywords" op="80" m="l-3 y-1">
+        <span
+          v-for="(keyword, index) in set.keywords" :key="index"
+          border="1px solid black" rounded-full p="x-6px y-2px"
+          text="xs"
+          inline-flex justify="center" items="center"
+          scale-92
+        >
           <span v-if="typeof keyword === 'string'">
             {{ keyword }}
           </span>
-          <template v-else>
-            <span v-if="keyword.icon">
+          <span v-else>
+            <span v-if="keyword.icon" mr="1">
               <iconify-icon :icon="keyword.icon" />
-              {{ keyword.name }}
             </span>
             <span v-else-if="keyword.logo">
               <img :src="keyword.logo" class="brand-favicon">
+            </span>
+            <span>
               {{ keyword.name }}
             </span>
-          </template>
-          <span
-            v-if="set.keywords && index !== set.keywords.length - 1"
-          >,
           </span>
         </span>
         <span class="float-right">
