@@ -6,7 +6,7 @@ const props = defineProps<{
 }>()
 
 const formattedLabel = computed(() => {
-  const label = props.contact.label
+  const label = props.contact.label.toString()
   if (label.length !== 11)
     return label
 
@@ -26,9 +26,14 @@ const formattedLabel = computed(() => {
   >
     <iconify-icon :icon="contact.icon" />
     <span class="resume-contact-label">
-      <span v-for="label, i in formattedLabel" :key="i" ml="1">
-        {{ label }}
-      </span>
+      <template v-if="Array.isArray(formattedLabel)">
+        <span v-for="label, i in formattedLabel" :key="i" ml="1">
+          {{ label }}
+        </span>
+      </template>
+      <template v-else>
+        {{ formattedLabel }}
+      </template>
     </span>
   </a>
 </template>
