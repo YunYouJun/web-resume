@@ -30,10 +30,11 @@ const showLocal = ref(import.meta.env.DEV || false)
   <nav
     fixed top-0 inset-x-0
     :class="(!app.isPrinting && app.showToolbar) ? 'opacity-100' : 'opacity-0'"
-    class="z-100 rounded m-auto left-0 shadow-md transition hover:opacity-100"
+    class="rounded m-auto left-0 shadow-md transition hover:opacity-100"
     bg="light-200 dark:dark-200" p="2"
     flex="~" justify="center"
     w="full"
+    z="$top-nav-z-index"
   >
     <button class="icon-btn" @click="app.showToolbar = !app.showToolbar">
       <div v-if="app.showToolbar" i-ri-pushpin-line text="orange" />

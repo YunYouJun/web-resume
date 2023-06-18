@@ -41,7 +41,10 @@ watch(() => app.isPrinting, (val) => {
 <template>
   <div mx="-4" class="editor-page text-center" relative>
     <div class="preview-container <sm:flex-col" flex="~" text-left justify="center" items="center">
-      <div class="resume-container shadow w-1/2 h-full lt-sm:(w-full h-1/2)" relative overflow="hidden" z-99>
+      <div
+        class="resume-container shadow w-1/2 h-full lt-sm:(w-full h-1/2)" relative overflow="hidden"
+        :class="isFullscreen ? 'z-101' : 'z-99'"
+      >
         <div
           overflow="auto"
           :class="{

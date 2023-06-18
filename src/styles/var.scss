@@ -18,3 +18,9 @@
   --wr-c-border: white;
   --wr-btn-active-text-color: black;
 }
+
+// z-index
+:root {
+  --top-nav-z-index: 100;
+  --bottom-menu-z-index: 100;
+}
