@@ -1,7 +1,16 @@
+<script lang="ts" setup>
+const app = useAppStore()
+</script>
+
 <template>
   <ToolBar />
 
-  <main pt="$top-nav-height" pb="$bottom-menu-height" px="4">
+  <main
+    :class="{
+      'pt-$top-nav-height': !app.isPrinting,
+    }"
+    pb="$bottom-menu-height"
+  >
     <router-view />
   </main>
 

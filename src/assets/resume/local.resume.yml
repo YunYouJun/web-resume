@@ -2,7 +2,7 @@
 
 basics:
   name: 云游君
-  label: 程序员
+  # label: 程序员
   # avatar: https://yunyoujun.cn/images/avatar.jpg
   bio: All at sea.
 
@@ -21,7 +21,7 @@ contact:
     label: https://yunyoujun.cn
   github:
     href: https://github.com/YunYouJun
-    icon: i-ri-github-fill
+    icon: ri:github-fill
     label: YunYouJun
 
 education:

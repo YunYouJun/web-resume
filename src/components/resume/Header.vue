@@ -21,6 +21,8 @@ const name = computed(() => {
     </div>
     <h1 v-else class="font-normal text-center text-4xl">
       {{ name || 'Your Name' }}
+      <br>
+      <small text-xs>{{ resume.basics.label }}</small>
     </h1>
     <small v-if="resume.basics" class="flex justify-center">
       <span class="mx-1">{{ resume.basics.sex }}</span>
@@ -28,9 +30,9 @@ const name = computed(() => {
       <span class="mx-1">{{ resume.basics.location }}</span>
     </small>
     <ul
-      class="my-6 text-center list-none"
+      class="my-4 text-center list-none"
       flex justify="center" items="center"
-      text-0.9rem
+      text="0.9em"
     >
       <li
         v-for="(contact, key) in resume.contact"
@@ -46,7 +48,10 @@ const name = computed(() => {
           target="_blank"
           inline-flex justify="center" items="center"
         >
-          <div v-if="contact.icon.startsWith('i-')" inline-flex :class="contact.icon" />
+          <div
+            v-if="contact.icon.startsWith('i-')" inline-flex
+            :class="contact.icon"
+          />
           <iconify-icon v-else :icon="contact.icon" />
 
           <span inline-flex class="resume-contact-label" ml="1">

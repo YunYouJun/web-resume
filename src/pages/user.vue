@@ -3,7 +3,7 @@ const user = useUserStore()
 </script>
 
 <template>
-  <div max-w-xl m-auto text-center>
+  <div px="4" max-w-xl m-auto text-center>
     <h2 text-4xl mt="8" my="4">
       用户设置
     </h2>

@@ -18,7 +18,7 @@ import Yaml from '@rollup/plugin-yaml'
 import { componentsDir } from '@yunlefun/vue-components'
 import { prefix as monacoPrefix } from './src/monaco'
 
-const markdownWrapperClasses = 'markdown-body max-w-900px m-auto text-left'
+const markdownWrapperClasses = 'markdown-body max-w-900px m-auto text-left px-4'
 
 // https://vitejs.dev/config/
 export default defineConfig({
