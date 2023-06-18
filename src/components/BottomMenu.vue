@@ -24,6 +24,12 @@ const items = computed<BottomMenuItem[]>(() => {
       title: '我的',
       to: '/user',
     },
+    {
+      icon: 'i-ri-file-info-line',
+      activeIcon: 'i-ri-file-info-fill',
+      title: t('button.about'),
+      to: '/about',
+    },
   ]
 })
 

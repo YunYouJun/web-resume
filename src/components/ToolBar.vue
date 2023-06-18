@@ -64,10 +64,6 @@ const showLocal = ref(import.meta.env.DEV || false)
       <div i-ri-translate />
     </a>
 
-    <router-link class="icon-btn" to="/about" :title="t('button.about')">
-      <div i-ri-file-info-line />
-    </router-link>
-
     <a
       class="icon-btn"
       rel="noreferrer"

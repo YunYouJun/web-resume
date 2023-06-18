@@ -65,3 +65,7 @@ pnpm run resume
 ### `/editor` 简历编辑器页面
 
 - `Esc` 退出简历全屏
+
+## Other
+
+还在不断优化捏！

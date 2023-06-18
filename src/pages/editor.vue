@@ -39,38 +39,37 @@ watch(() => app.isPrinting, (val) => {
 </script>
 
 <template>
-  <div class="editor-page text-center">
-    <!-- <h1 class="m-4">
-      {{ t('editor.name') }}
-    </h1> -->
-    <div class="preview-container" grid="~ cols-2 <sm:cols-1">
-      <div class="resume-container resume shadow w-full" relative>
+  <div mx="-4" class="editor-page text-center" relative>
+    <div class="preview-container <sm:flex-col" flex="~" text-left justify="center" items="center">
+      <div class="resume-container shadow w-1/2 h-full lt-sm:(w-full h-1/2)" relative overflow="hidden" z-99>
         <div
+          overflow="auto"
           :class="{
-            'fixed inset-0 z-100 bg-white dark:bg-black overflow-auto': isFullscreen,
+            'fixed inset-0 bg-white dark:bg-black overflow-auto': isFullscreen,
+            'w-full h-full absolute': !isFullscreen,
           }"
         >
-          <button
-            v-if="!app.isPrinting"
-            transition
-            :class="isFullscreen ? 'fixed' : 'absolute'"
-            top-2 right-2 p="2" op="60"
-            hover="bg-gray text-white"
-            rounded-full
-            @click="toggleFullscreen"
-          >
-            <div v-if="!isFullscreen" i-ri-fullscreen-line />
-            <div v-else i-ri-fullscreen-exit-line />
-          </button>
-
           <ResumeAll
             v-if="editorStore.resumeJson"
-            class="min-w-500px"
+            class="resume min-w-500px"
             :resume="editorStore.resumeJson"
           />
         </div>
+
+        <button
+          v-if="!app.isPrinting"
+          transition
+          :class="isFullscreen ? 'fixed' : 'absolute'"
+          top-2 right-2 p="2" op="60"
+          hover="bg-gray text-white"
+          rounded-full
+          @click="toggleFullscreen"
+        >
+          <div v-if="!isFullscreen" i-ri-fullscreen-line />
+          <div v-else i-ri-fullscreen-exit-line />
+        </button>
       </div>
-      <div class="editor-container">
+      <div class="editor-container w-1/2 h-full lt-sm:(w-full h-1/2)">
         <client-only>
           <MonacoEditor :text="resumeText" />
         </client-only>
@@ -94,13 +93,11 @@ watch(() => app.isPrinting, (val) => {
 
 .resume-container,
 .editor-container {
-  height: 100%;
+  flex-grow: 1;
   text-align: left;
 }
 
 .resume-container {
-  padding: 2rem;
-  overflow: auto;
   border-right: 1px solid var(--wr-c-border);
 }
 </style>

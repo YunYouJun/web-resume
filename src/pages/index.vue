@@ -15,7 +15,7 @@ import pkg from '~/../package.json'
   <div i-ri-file-text-line inline-block text-9xl />
   <HelloResume my="6" msg="Web Resume" />
 
-  <RouterLink to="/editor" class="resume-btn text-4xl rounded-full" my="6" p="x-8 y-4">
+  <RouterLink to="/editor" class="resume-btn text-3xl rounded-full" my="6" p="x-8 y-4">
     Get Started | 开始 →
   </RouterLink>
   <a

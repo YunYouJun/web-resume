@@ -106,7 +106,7 @@ watch(selectedResume, () => {
         @after-leave="app.queryStr = ''"
       >
         <ComboboxOptions
-          z-99
+          z-999
           bg="white dark:gray-700"
           class="absolute mt-1 max-h-60 w-full overflow-auto rounded-md  py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm"
         >
