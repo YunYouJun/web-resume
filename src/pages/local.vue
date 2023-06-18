@@ -8,7 +8,11 @@ const resume = ref(localResume)
 const app = useAppStore()
 
 onMounted(() => {
-  app.resumeUrl = 'https://raw.githubusercontent.com/YunYouJun/web-resume/main/src/assets/resume/local.resume.yml'
+  app.curResume = {
+    title: 'Local',
+    url: 'https://raw.githubusercontent.com/YunYouJun/web-resume/main/src/assets/resume/local.resume.yml',
+    href: 'https://github.com/YunYouJun/web-resume/blob/main/src/assets/resume/local.resume.yml',
+  }
 })
 </script>
 

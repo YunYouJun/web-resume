@@ -14,6 +14,7 @@
     "url": "https://github.com/YunYouJun/web-resume",
     "type": "git"
   },
+  "homepage": "https://resume.elpsy.cn",
   "scripts": {
     "dev": "vite --host",
     "lint": "eslint .",

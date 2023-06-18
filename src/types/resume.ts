@@ -1,5 +1,18 @@
 import type { Certificate, Contact, Education, Other, Project, Skill } from './base'
 
+export interface ResumeItem {
+  id?: string
+  title?: string
+  /**
+   * raw text url
+   */
+  url: string
+  /**
+   * raw href
+   */
+  href?: string
+}
+
 /**
  * 简历配置
  */

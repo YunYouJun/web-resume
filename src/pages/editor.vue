@@ -1,10 +1,7 @@
 <script lang="ts" setup>
-import { useI18n } from 'vue-i18n'
 import { useEditorStore } from '~/stores/editor'
 
 const editorStore = useEditorStore()
-
-const { t } = useI18n()
 
 const resumeText = ref(editorStore.resumeText)
 

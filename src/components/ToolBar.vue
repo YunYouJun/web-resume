@@ -4,7 +4,6 @@ import { isDark, toggleDark } from '~/composables'
 import pkg from '~/../package.json'
 import 'vue-about-me/style.css'
 import { useAppStore } from '~/stores/app'
-import { useEditorStore } from '~/stores/editor'
 
 const { t, availableLocales, locale } = useI18n()
 
@@ -15,7 +14,6 @@ function toggleLocales() {
 }
 
 const app = useAppStore()
-const editor = useEditorStore()
 
 useEventListener('beforeprint', () => {
   app.showToolbar = false

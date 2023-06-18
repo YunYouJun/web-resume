@@ -5,7 +5,6 @@ const props = defineProps<{ msg: string }>()
 
 const { t } = useI18n()
 
-const homepage = 'https://resume.elpsy.cn'
 const examples = computed(() => {
   return [
     {

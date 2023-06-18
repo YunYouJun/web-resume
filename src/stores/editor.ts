@@ -5,8 +5,8 @@ import type * as m from 'monaco-editor'
 import yaml from 'js-yaml'
 import Ajv from 'ajv'
 import { useAppStore } from './app'
-import type { ResumeInfo } from '~/types'
-import { fetchText, isClient, namespace } from '~/utils'
+import type { ResumeInfo, ResumeItem } from '~/types'
+import { fetchText, isClient, namespace, resumeExamples } from '~/utils'
 
 import resumeSchema from '~/../public/schema/resume.schema.json'
 
@@ -88,19 +88,17 @@ export const useEditorStore = defineStore('editor', () => {
     setEditor,
     setResumeText,
 
-    async goToResumeUrl(url: string) {
-      app.resumeUrl = url
+    async goToResume(resume: ResumeItem) {
+      app.curResume = resume
 
-      alert(app.resumeUrl)
-
-      const resumeExample = await fetchText(app.resumeUrl)
+      const resumeExample = await fetchText(app.curResume.url)
       const prefix = `# ${t('editor.name')}\n`
       const txt = prefix + resumeExample
       codeEditor.value?.setValue(txt)
     },
 
     async reset() {
-      this.goToResumeUrl('/resume/suzumiya.resume.yml')
+      this.goToResume(resumeExamples[0])
     },
   }
 })

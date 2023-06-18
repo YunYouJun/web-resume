@@ -10,19 +10,23 @@ import {
 } from '@headlessui/vue'
 import { fetchText } from '~/utils'
 
-import { resumeExamples } from '~/utils/resume'
+import type { ResumeItem } from '~/types'
 
 const app = useAppStore()
 const editor = useEditorStore()
 
 async function onEnterUrl() {
-  if (app.resumeUrl) {
-    const text = await fetchText(app.resumeUrl)
+  if (app.curResume.url) {
+    const text = await fetchText(app.curResume.url)
     editor.setResumeText(text)
   }
 }
 
-const selected = ref(resumeExamples[0])
+const defaultSelected: ResumeItem = {
+  url: '',
+  href: '',
+}
+const selected = ref(defaultSelected)
 
 function onChange(e: Event & {
   target: HTMLInputElement
@@ -33,42 +37,46 @@ function onChange(e: Event & {
 /**
  * @description 过滤后的简历列表
  */
-const filteredResume = computed(() =>
-  app.queryStr === ''
-    ? resumeExamples
-    : resumeExamples.filter((r) => {
-      let inTitle = false
+const filteredResume = computed<ResumeItem[]>(() => {
+  if (!app.queryStr)
+    return app.usedResumes.slice(1)
 
-      const simpleQueryStr = app.queryStr.toLowerCase().replace(/\s+/g, '')
+  return [{ url: app.queryStr }].concat(app.usedResumes.filter((r) => {
+    let inTitle = false
 
-      if (r.title) {
-        inTitle = r.title
-          .toLowerCase()
-          .replace(/\s+/g, '')
-          .includes(simpleQueryStr)
-      }
+    const simpleQueryStr = app.queryStr.toLowerCase().replace(/\s+/g, '')
 
-      return r.url
+    if (r.title) {
+      inTitle = r.title
         .toLowerCase()
         .replace(/\s+/g, '')
-        .includes(simpleQueryStr) || inTitle
-    }),
-)
+        .includes(simpleQueryStr)
+    }
+
+    return r.url
+      .toLowerCase()
+      .replace(/\s+/g, '')
+      .includes(simpleQueryStr) || inTitle
+  }))
+})
 
 function displayValue(resume: any) {
   if (resume && resume.url)
     return resume.url
 
-  return app.resumeUrl
+  return app.curResume.url
 }
+
+/**
+ * @description 监听简历选择
+ */
+watch(selected, () => {
+  app.setNewResume(selected.value)
+  editor.goToResume(selected.value)
+})
 </script>
 
 <template>
-  <!-- <input
-    v-model="app.resumeUrl"
-
-    @keyup.enter="onEnterUrl"
-  > -->
   <Combobox v-model="selected">
     <div w="full" relative>
       <div
@@ -83,6 +91,7 @@ function displayValue(resume: any) {
           w="full"
           text="sm gray-700 dark:light-200"
           @change="onChange"
+          @enter="onEnterUrl"
         />
         <ComboboxButton
           class="absolute inset-y-0 left-3 flex items-center pr-2"
@@ -141,6 +150,19 @@ function displayValue(resume: any) {
                 :class="{ 'text-white': active, 'text-teal-600': !active }"
               >
                 <div i-ri-check-line class="h-5 w-5" aria-hidden="true" />
+              </span>
+
+              <span
+                v-if="active"
+                class="absolute inset-y-0 right-8 p-1"
+                :class="{ 'text-white': active }"
+                inline-flex justify="center" items="center"
+                op="80"
+                cursor="pointer"
+              >
+                <div hover="bg-gray" rounded-full inline-flex justify="center" p="1" @click="app.removeResume(resume)">
+                  <div i-ri-close-line aria-hidden="true" />
+                </div>
               </span>
             </li>
           </ComboboxOption>
