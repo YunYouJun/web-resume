@@ -49,6 +49,7 @@
       "$ref": "#/definitions/Project"
     },
     "other": {
+      "description": "其他",
       "$ref": "#/definitions/Other"
     },
     "certificate": {
@@ -73,7 +74,6 @@
     "certificate",
     "contact",
     "education",
-    "other",
     "project",
     "skill"
   ],

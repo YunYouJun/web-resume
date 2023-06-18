@@ -75,7 +75,7 @@ project:
         - name: TypeScript
           icon: simple-icons:typescript
         - name: Zustand
-        - name: RPC 等内部工具
+        - name: RPC 等相关内部调试工具
           icon: 🐜
       summary: ToC, 🐤 蚂蚁庄园, 月DAU千万，互动应用（支付宝端内流量第二）
       highlights:
