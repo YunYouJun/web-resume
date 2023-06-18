@@ -80,7 +80,51 @@
   "definitions": {
     "Contact": {
       "description": "联系方式",
-      "type": "object"
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/definitions/BaseContact"
+      },
+      "properties": {
+        "email": {
+          "$ref": "#/definitions/BaseContact",
+          "description": "邮箱"
+        },
+        "phone": {
+          "$ref": "#/definitions/BaseContact",
+          "description": "电话"
+        },
+        "blog": {
+          "$ref": "#/definitions/BaseContact",
+          "description": "博客"
+        }
+      },
+      "required": [
+        "blog",
+        "email",
+        "phone"
+      ]
+    },
+    "BaseContact": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "description": "链接",
+          "type": "string"
+        },
+        "icon": {
+          "description": "图标",
+          "type": "string"
+        },
+        "label": {
+          "description": "显示的内容",
+          "type": "string"
+        }
+      },
+      "required": [
+        "href",
+        "icon",
+        "label"
+      ]
     },
     "Education": {
       "description": "教育背景",

@@ -6,7 +6,7 @@ import yaml from 'js-yaml'
 import Ajv from 'ajv'
 import { useAppStore } from './app'
 import type { ResumeInfo, ResumeItem } from '~/types'
-import { fetchText, isClient, namespace, resumeExamples } from '~/utils'
+import { fetchText, isClient, namespace, overrideResume, resumeExamples } from '~/utils'
 
 import resumeSchema from '~/../public/schema/resume.schema.json'
 
@@ -15,6 +15,7 @@ const validate = ajv.compile(resumeSchema)
 
 export const useEditorStore = defineStore('editor', () => {
   const { t } = useI18n()
+  const user = useUserStore()
   const app = useAppStore()
 
   // must shallow to avoid stuck
@@ -38,7 +39,14 @@ export const useEditorStore = defineStore('editor', () => {
       if (e)
         setErrorMessage(e.mark.line + 1, e.mark.column + 1, e.reason)
     }
-    return resumeCached
+
+    if (!resumeCached)
+      return
+
+    if (!user.settings.overrideInfo)
+      return resumeCached
+    else
+      return overrideResume(resumeCached, user.userInfo)
   })
 
   // helper

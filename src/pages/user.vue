@@ -12,6 +12,11 @@ const user = useUserStore()
     </small>
 
     <div>
+      <button class="resume-btn" rounded-full p="2" border="2px solid black" mt="6" text-2xl @click="user.settings.overrideInfo = !user.settings.overrideInfo">
+        <div v-if="user.settings.overrideInfo" i-ri-eye-line />
+        <div v-else i-ri-eye-off-line />
+      </button>
+
       <div class="ylf-input-container">
         <label class="ylf-input-label" for="name">姓名</label>
         <input v-model="user.userInfo.name" class="ylf-input">

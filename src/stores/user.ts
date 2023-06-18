@@ -8,8 +8,16 @@ export const useUserStore = defineStore('user', () => {
     email: '',
   })
 
+  const settings = useStorage(`${namespace}:settings`, {
+    /**
+     * 覆盖敏感信息（如：姓名、电话、邮箱）
+     */
+    overrideInfo: true,
+  })
+
   return {
     userInfo,
+    settings,
   }
 })
 

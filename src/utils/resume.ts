@@ -1,4 +1,5 @@
-import type { ResumeItem } from '~/types'
+import type { UserInfo } from 'web-resume/config'
+import type { ResumeInfo, ResumeItem } from '~/types'
 
 /**
  * 获取文本内容
@@ -23,3 +24,27 @@ export const resumeExamples: ResumeItem[] = [
     href: 'https://github.com/YunYouJun/web-resume/blob/main/src/assets/resume/local.resume.yml',
   },
 ]
+
+/**
+ *
+ * @param resumeInfo
+ * @param userInfo
+ * @returns
+ */
+export function overrideResume(resumeInfo: ResumeInfo, userInfo: UserInfo) {
+  if (resumeInfo && resumeInfo.contact && userInfo.name) {
+    if (resumeInfo.basics.name)
+      resumeInfo.basics.name = userInfo.name
+
+    if (resumeInfo.contact.phone && userInfo.phone) {
+      resumeInfo.contact.phone.label = userInfo.phone
+      resumeInfo.contact.phone.href = `tel:${userInfo.phone}`
+    }
+
+    if (resumeInfo.contact.email && userInfo.email) {
+      resumeInfo.contact.email.label = userInfo.email
+      resumeInfo.contact.email.href = `mailto:${userInfo.email}`
+    }
+  }
+  return resumeInfo
+}

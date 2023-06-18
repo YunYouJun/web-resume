@@ -14,6 +14,7 @@ function toggleLocales() {
 }
 
 const app = useAppStore()
+const user = useUserStore()
 
 useEventListener('beforeprint', () => {
   app.showToolbar = false
@@ -41,6 +42,11 @@ const showLocal = ref(import.meta.env.DEV || false)
     <router-link v-if="showLocal" class="icon-btn" to="/local" :title="t('button.local')">
       <div i-ri-device-line />
     </router-link>
+
+    <button class="icon-btn" @click="user.settings.overrideInfo = !user.settings.overrideInfo">
+      <div v-if="user.settings.overrideInfo" i-ri-eye-line />
+      <div v-else i-ri-eye-off-line />
+    </button>
 
     <AddressBar />
 
