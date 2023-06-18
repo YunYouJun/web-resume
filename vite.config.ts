@@ -15,6 +15,7 @@ import Prism from 'markdown-it-prism'
 import LinkAttributes from 'markdown-it-link-attributes'
 
 import Yaml from '@rollup/plugin-yaml'
+import { componentsDir } from '@yunlefun/vue-components'
 import { prefix as monacoPrefix } from './src/monaco'
 
 const markdownWrapperClasses = 'markdown-body max-w-900px m-auto text-left'
@@ -85,6 +86,7 @@ export default defineConfig({
     // https://github.com/antfu/vite-plugin-components
     Components({
       // allow auto load markdown components under `./src/components/`
+      dirs: ['src/components', componentsDir],
       extensions: ['vue', 'md'],
 
       // allow auto import and register components used in markdown

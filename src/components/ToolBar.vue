@@ -42,14 +42,6 @@ const showLocal = ref(import.meta.env.DEV || false)
       <div i-ri-device-line />
     </router-link>
 
-    <router-link class="icon-btn" to="/" :title="t('button.home')">
-      <div i-ri-home-2-line />
-    </router-link>
-
-    <router-link class="icon-btn" to="/editor" :title="t('button.editor')">
-      <div i-ri-side-bar-line />
-    </router-link>
-
     <AddressBar />
 
     <a class="icon-btn" :title="t('button.toggle_dark')" @click="() => { toggleDark() }">

@@ -4,4 +4,6 @@
   <main>
     <router-view />
   </main>
+
+  <BottomMenu />
 </template>

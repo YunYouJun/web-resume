@@ -16,7 +16,21 @@ export interface BaseContact {
 /**
  * 联系方式
  */
-export type Contact = Record<string, BaseContact>
+export interface Contact {
+  /**
+   * 邮箱
+   */
+  email: BaseContact
+  /**
+   * 电话
+   */
+  phone: BaseContact
+  /**
+   * 博客
+   */
+  blog: BaseContact
+  [key: string]: BaseContact
+}
 
 interface BaseItem {
   /**

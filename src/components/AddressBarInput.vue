@@ -22,11 +22,7 @@ async function onEnterUrl() {
   }
 }
 
-const defaultSelected: ResumeItem = {
-  url: '',
-  href: '',
-}
-const selected = ref(defaultSelected)
+const selectedResume = ref(app.usedResumes[0])
 
 function onChange(e: Event & {
   target: HTMLInputElement
@@ -70,14 +66,14 @@ function displayValue(resume: any) {
 /**
  * @description 监听简历选择
  */
-watch(selected, () => {
-  app.setNewResume(selected.value)
-  editor.goToResume(selected.value)
+watch(selectedResume, () => {
+  app.setNewResume(selectedResume.value)
+  editor.goToResume(selectedResume.value)
 })
 </script>
 
 <template>
-  <Combobox v-model="selected">
+  <Combobox v-model="selectedResume">
     <div w="full" relative>
       <div
         class="relative w-full cursor-default overflow-hidden text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-teal-300 sm:text-sm"

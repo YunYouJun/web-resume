@@ -11,6 +11,7 @@ declare module 'vue' {
     AddressBarInput: typeof import('./components/AddressBarInput.vue')['default']
     BaseFooter: typeof import('./components/base/Footer.vue')['default']
     BaseTitle: typeof import('./components/base/Title.vue')['default']
+    BottomMenu: typeof import('./components/BottomMenu.vue')['default']
     CertificateItem: typeof import('./components/certificate/Item.vue')['default']
     HelloResume: typeof import('./components/HelloResume.vue')['default']
     IconifyIcon: typeof import('./components/IconifyIcon.vue')['default']
@@ -27,5 +28,7 @@ declare module 'vue' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     ToolBar: typeof import('./components/ToolBar.vue')['default']
+    YlfBottomMenu: typeof import('./../node_modules/.pnpm/@yunlefun+vue-components@0.0.5-beta.4/node_modules/@yunlefun/vue-components/dist/runtime/components/YlfBottomMenu.vue')['default']
+    YlfBottomMenuItem: typeof import('./../node_modules/.pnpm/@yunlefun+vue-components@0.0.5-beta.4/node_modules/@yunlefun/vue-components/dist/runtime/components/YlfBottomMenuItem.vue')['default']
   }
 }

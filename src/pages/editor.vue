@@ -27,9 +27,6 @@ onBeforeMount(async () => {
         </client-only>
       </div>
     </div>
-    <div m="t-4" text="xs gray-800 dark:gray">
-      注意：您还可以 clone 本项目，进入 <code>`/local`</code> 使用本地开发的方式。
-    </div>
   </div>
 </template>
 
@@ -46,7 +43,10 @@ onBeforeMount(async () => {
 
 .resume-container,
 .editor-container {
-  height: calc(100vh - 100px);
+  --top-nav-height: 52px;
+  --bottom-menu-height: 60px;
+
+  height: calc(100vh - var(--top-nav-height) - var(--bottom-menu-height) - 2px);
   text-align: left;
 }
 
