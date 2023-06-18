@@ -11,6 +11,7 @@ import 'star-markdown-css/src/scss/theme/yun.scss'
 import './styles/index.scss'
 
 import 'uno.css'
+
 import type { UserModule } from './types'
 
 const routes = setupLayouts(generatedRoutes)

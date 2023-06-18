@@ -7,6 +7,8 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    AddressBar: typeof import('./components/AddressBar.vue')['default']
+    AddressBarInput: typeof import('./components/AddressBarInput.vue')['default']
     BaseFooter: typeof import('./components/base/Footer.vue')['default']
     BaseTitle: typeof import('./components/base/Title.vue')['default']
     CertificateItem: typeof import('./components/certificate/Item.vue')['default']

@@ -11,5 +11,8 @@
   },
   "files.associations": {
     "*.css": "postcss"
-  }
+  },
+  "cSpell.words": [
+    "headlessui"
+  ]
 }

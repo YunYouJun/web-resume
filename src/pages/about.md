@@ -7,7 +7,7 @@ title: About
   <h3>About</h3>
 </div>
 
-Web 端可打印为 PDF 的简历
+> Web 端可打印为 PDF 的简历
 
 - 使用 YAML 编写
 
@@ -40,3 +40,20 @@ contact:
 - 简洁至上：以 Markdown 为中心编写简历，基于 YAML 数据配置
 - Vue 驱动：使用 Vue 自定义组件
 - 高性能：为每个页面预渲染生成静态的 HTML，同时在页面被加载的时候，将作为 SPA 运行。
+
+## 如何本地开发（热更新）
+
+> You can use it with hot reload.
+
+Click repo `Use this template`, or clone this。
+
+```bash
+git clone https://github.com/YunYouJun/web-resume
+cd web-resume
+pnpm i
+pnpm run resume
+# pnpm run dev
+# view http://localhost:5173/local
+```
+
+<br />

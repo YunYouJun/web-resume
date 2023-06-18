@@ -70,7 +70,7 @@ export async function setup() {
     format: true,
     schemas: [
       {
-        uri: 'https://resume.elpsy.cn/schema/resume.schema.json',
+        uri: '/schema/resume.schema.json',
         // uri: 'https://raw.githubusercontent.com/YunYouJun/web-resume/main/public/schema/resume.schema.json',
         // schema: resumeSchema,
         fileMatch: ['*.yml', '*.yaml'],

@@ -5,7 +5,6 @@ import pkg from '~/../package.json'
 import 'vue-about-me/style.css'
 import { useAppStore } from '~/stores/app'
 import { useEditorStore } from '~/stores/editor'
-import { fetchText } from '~/utils'
 
 const { t, availableLocales, locale } = useI18n()
 
@@ -26,19 +25,12 @@ useEventListener('afterprint', () => {
 })
 
 const showLocal = ref(import.meta.env.DEV || false)
-
-async function onEnterUrl() {
-  if (app.resumeUrl) {
-    const text = await fetchText(app.resumeUrl)
-    editor.setResumeText(text)
-  }
-}
 </script>
 
 <template>
   <nav
     :class="app.showToolbar ? 'opacity-100' : 'opacity-0'"
-    class="z-10 rounded m-auto left-0 shadow-md transition hover:opacity-100"
+    class="z-100 rounded m-auto left-0 shadow-md transition hover:opacity-100"
     bg="light-200 dark:dark-200" p="2"
     flex="~" justify="center"
     w="full"
@@ -60,32 +52,7 @@ async function onEnterUrl() {
       <div i-ri-side-bar-line />
     </router-link>
 
-    <div class="inline-flex" flex="grow" px="1" relative>
-      <input
-        v-model="app.resumeUrl"
-        border-1px
-        class="outline-none focus:(border-blue-500 border-solid)) dark:border-gray-700"
-        inline-flex justify="center" items="center"
-        bg="gray-200 dark:warm-gray-800" rounded-full
-        w="full"
-        text="sm gray-700 dark:light-200"
-        px="4"
-        @keyup.enter="onEnterUrl"
-      >
-      <div absolute top-0 bottom-0 right-4 flex justify="center" items="center">
-        <RouterLink class="input-bar-icon-btn" :to="`/resume?url=${app.resumeUrl}`" :title="t('button.see_resume')">
-          <div i-ri-slideshow-4-line />
-        </RouterLink>
-
-        <button
-          class="input-bar-icon-btn"
-          title="重置"
-          @click="editor.reset()"
-        >
-          <div i-ri-eraser-line />
-        </button>
-      </div>
-    </div>
+    <AddressBar />
 
     <a class="icon-btn" :title="t('button.toggle_dark')" @click="() => { toggleDark() }">
       <div v-if="isDark" i-ri-moon-line />

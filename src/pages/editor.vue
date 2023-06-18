@@ -31,7 +31,7 @@ onBeforeMount(async () => {
       </div>
     </div>
     <div m="t-4" text="xs gray-800 dark:gray">
-      注意：此处主要作示例体验与临时修改使用。如果您想要更好的编辑体验，您可以使用本地开发的方式。
+      注意：您还可以 clone 本项目，进入 <code>`/local`</code> 使用本地开发的方式。
     </div>
   </div>
 </template>

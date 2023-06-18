@@ -1,4 +1,7 @@
 export interface BaseContact {
+  /**
+   * 链接
+   */
   href: string
   /**
    * 图标

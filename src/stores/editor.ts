@@ -88,13 +88,19 @@ export const useEditorStore = defineStore('editor', () => {
     setEditor,
     setResumeText,
 
-    async reset() {
-      app.resumeUrl = '/resume/suzumiya.resume.yml'
+    async goToResumeUrl(url: string) {
+      app.resumeUrl = url
 
-      const resumeExample = await fetchText('/resume/suzumiya.resume.yml')
+      alert(app.resumeUrl)
+
+      const resumeExample = await fetchText(app.resumeUrl)
       const prefix = `# ${t('editor.name')}\n`
       const txt = prefix + resumeExample
       codeEditor.value?.setValue(txt)
+    },
+
+    async reset() {
+      this.goToResumeUrl('/resume/suzumiya.resume.yml')
     },
   }
 })
