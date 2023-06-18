@@ -29,17 +29,21 @@ const name = computed(() => {
     </small>
     <ul class="my-4 block text-center list-none" style="padding-left: 0">
       <li
-        v-for="contact in resume.contact"
+        v-for="(contact, key) in resume.contact"
         :key="contact.label"
         class="mx-3 inline-block"
       >
+        <ResumeContactPhone v-if="key === 'phone'" :contact="contact" />
         <a
+          v-else
           class="text-decoration-none font-medium"
           :href="contact.href"
           target="_blank"
         >
           <iconify-icon :icon="contact.icon" />
-          {{ contact.label }}
+          <span class="resume-contact-label" ml="1">
+            {{ contact.label }}
+          </span>
         </a>
       </li>
     </ul>

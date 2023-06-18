@@ -19,6 +19,7 @@ declare module 'vue' {
     ProjectItem: typeof import('./components/project/Item.vue')['default']
     ResumeAll: typeof import('./components/resume/All.vue')['default']
     ResumeCertificate: typeof import('./components/resume/Certificate.vue')['default']
+    ResumeContactPhone: typeof import('./components/resume/Contact/Phone.vue')['default']
     ResumeEducation: typeof import('./components/resume/Education.vue')['default']
     ResumeFooter: typeof import('./components/resume/Footer.vue')['default']
     ResumeHeader: typeof import('./components/resume/Header.vue')['default']
