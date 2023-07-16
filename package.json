@@ -24,6 +24,7 @@
     "resume": "vite --host --open /local",
     "schema": "tsx scripts/schema.ts",
     "prepare": "husky install",
+    "preview": "vite preview",
     "typecheck": "vue-tsc --noEmit",
     "test": "vitest",
     "test:unit": "vitest"

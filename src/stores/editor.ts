@@ -8,7 +8,7 @@ import { useAppStore } from './app'
 import type { ResumeInfo, ResumeItem } from '~/types'
 import { fetchText, isClient, namespace, overrideResume, resumeExamples } from '~/utils'
 
-const resumeSchema = await import('/schema/resume.schema.json?url')
+import resumeSchema from '~/assets/schema/resume.schema.json'
 
 const ajv = new Ajv()
 const validate = ajv.compile(resumeSchema)
