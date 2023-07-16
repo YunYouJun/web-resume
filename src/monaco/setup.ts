@@ -39,7 +39,6 @@ export async function setup() {
       )
 
       // https://github.com/vitejs/vite/discussions/1791#discussioncomment-321046
-      // @ts-expect-error Environment
       window.MonacoEnvironment = {
         getWorker(_moduleId: string, label: string) {
           switch (label) {

@@ -22,7 +22,7 @@ const program = TJS.getProgramFromFiles(
 // We can either get the schema for one file and one type...
 const schema = TJS.generateSchema(program, 'ResumeInfo', settings)
 
-const formattedSchema = JSON.stringify(schema, null, 2)
+const formattedSchema = `${JSON.stringify(schema, null, 2)}\n`
 // write
 fs.writeFileSync(
   'src/assets/schema/resume.schema.json',
