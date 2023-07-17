@@ -11,7 +11,7 @@ const { skill } = toRefs(props)
     <div>
       <ul>
         <li v-for="(sets, index) in skill.sets" :key="index">
-          {{ sets.title }}：
+          <span v-if="sets.title">{{ sets.title }}：</span>
           <span v-for="set in sets.keywords" :key="set.name">
             <iconify-icon v-if="set.icon" :icon="set.icon" />
             <img v-if="set.logo" :src="set.logo" class="brand-favicon">
