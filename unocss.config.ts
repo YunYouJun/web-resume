@@ -16,7 +16,7 @@ const icons = [
 export default defineConfig({
   shortcuts: [
     ['btn', 'px-4 py-1 rounded inline-block bg-blue-600 text-white cursor-pointer hover:bg-blue-700 disabled:cursor-default disabled:bg-gray-600 disabled:opacity-50'],
-    ['icon-btn', 'm-2 text-black dark:(text-white hover:text-blue-400) text-[0.9em] inline-flex justify-center items-center cursor-pointer select-none transition duration-200 ease-in-out hover:text-blue-600'],
+    ['icon-btn', 'm-2 text-black dark:(text-white hover:text-blue-400) inline-flex justify-center items-center cursor-pointer select-none transition duration-200 ease-in-out hover:text-blue-600'],
   ],
   presets: [
     presetUno(),

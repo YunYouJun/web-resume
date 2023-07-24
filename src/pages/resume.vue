@@ -22,8 +22,3 @@ onBeforeMount(async () => {
 <template>
   <resume-all v-if="resume" :resume="resume" />
 </template>
-
-<route lang="yaml">
-meta:
-  layout: resume
-</route>

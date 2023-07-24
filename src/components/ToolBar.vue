@@ -76,15 +76,3 @@ const showLocal = ref(import.meta.env.DEV || false)
     </a>
   </nav>
 </template>
-
-<style lang="scss">
-.input-bar-icon-btn {
-  @apply inline-flex justify-center items-center p-6px rounded-full bg-gray-200 dark:bg-warm-gray-800 dark:text-gray-200 hover:(dark:text-gray-200);
-
-  div {
-    display: inline-flex;
-    width: 1em;
-    height: 1em;
-  }
-}
-</style>

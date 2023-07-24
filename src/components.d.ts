@@ -13,6 +13,7 @@ declare module 'vue' {
     BaseTitle: typeof import('./components/base/Title.vue')['default']
     BottomMenu: typeof import('./components/BottomMenu.vue')['default']
     CertificateItem: typeof import('./components/certificate/Item.vue')['default']
+    DialogCopied: typeof import('./components/DialogCopied.vue')['default']
     HelloResume: typeof import('./components/HelloResume.vue')['default']
     IconifyIcon: typeof import('./components/IconifyIcon.vue')['default']
     MonacoEditor: typeof import('./components/MonacoEditor.vue')['default']

@@ -45,7 +45,7 @@ const app = useAppStore()
 </script>
 
 <template>
-  <YlfBottomMenu v-if="!app.isPrinting" fixed inset-x-0 bottom-0 shadow>
+  <YlfBottomMenu v-if="!app.isPrinting" fixed inset-x-0 bottom-0 shadow-2xl>
     <YlfBottomMenuItem
       v-for="item in items"
       :key="item.to"

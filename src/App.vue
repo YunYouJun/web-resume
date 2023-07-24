@@ -16,6 +16,7 @@ useHead({
 
 <template>
   <router-view />
+  <DialogCopied />
 </template>
 
 <style lang="scss">

@@ -23,9 +23,10 @@ const formattedLabel = computed(() => {
     class="text-decoration-none font-medium"
     :href="contact.href"
     target="_blank"
+    inline-flex
   >
     <iconify-icon :icon="contact.icon" />
-    <span class="resume-contact-label">
+    <span class="resume-contact-label" inline-flex>
       <template v-if="Array.isArray(formattedLabel)">
         <span v-for="label, i in formattedLabel" :key="i" ml="1">
           {{ label }}
