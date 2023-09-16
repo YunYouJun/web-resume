@@ -11,8 +11,13 @@ export async function setup() {
     }
   }
 
-  const { setDiagnosticsOptions } = await import('monaco-yaml')
+  const { configureMonacoYaml } = await import('monaco-yaml')
   const monaco = await import('monaco-editor')
+
+  const monacoYaml = configureMonacoYaml(monaco, {
+    // …
+  })
+
   window.monaco = monaco
 
   await Promise.all([
@@ -61,7 +66,8 @@ export async function setup() {
   // https://github.com/vitejs/vite/issues/3820#issuecomment-863585040
   // https://github.com/remcohaszing/monaco-yaml/issues/115
   // https://github.com/remcohaszing/monaco-yaml/issues/150
-  setDiagnosticsOptions({
+  // https://github.com/remcohaszing/monaco-yaml/releases/tag/v5.0.0
+  monacoYaml.update({
     enableSchemaRequest: true,
     hover: true,
     completion: true,

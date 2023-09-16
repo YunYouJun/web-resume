@@ -26,10 +26,9 @@ export const resumeExamples: ResumeItem[] = [
 ]
 
 /**
- *
+ * override sensitive info
  * @param resumeInfo
  * @param userInfo
- * @returns
  */
 export function overrideResume(resumeInfo: ResumeInfo, userInfo: UserInfo) {
   if (resumeInfo && resumeInfo.contact && userInfo.name) {

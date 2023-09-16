@@ -10,7 +10,7 @@ import Components from 'unplugin-vue-components/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import Unocss from 'unocss/vite'
 
-import Markdown from 'vite-plugin-vue-markdown'
+import Markdown from 'unplugin-vue-markdown/vite'
 import Prism from 'markdown-it-prism'
 import LinkAttributes from 'markdown-it-link-attributes'
 
@@ -100,7 +100,7 @@ export default defineConfig({
     // see unocss.config.ts for config
     Unocss(),
 
-    // https://github.com/antfu/vite-plugin-vue-markdown
+    // https://github.com/unplugin/unplugin-vue-markdown
     Markdown({
       wrapperClasses: markdownWrapperClasses,
       headEnabled: true,

@@ -18,7 +18,6 @@ export function sleep(ms: number) {
 /**
  * 加载脚本
  * @param url 脚本链接
- * @returns
  */
 export async function getScript(url: string) {
   return new Promise((resolve, reject) => {
