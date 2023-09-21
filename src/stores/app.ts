@@ -10,6 +10,9 @@ export const useAppStore = defineStore('app', () => {
   // copy share
   const showCopiedDialog = ref(false)
 
+  // resume is full screen
+  const isFullscreen = ref(false)
+
   /**
    * 搜索关键字
    */
@@ -25,7 +28,19 @@ export const useAppStore = defineStore('app', () => {
     return `${window.location.origin}/resume?url=${curResume.value.url}`
   })
 
+  function toggleFullscreen() {
+    isFullscreen.value = !isFullscreen.value
+  }
+
+  // esc 退出全屏
+  const { Escape } = useMagicKeys()
+  watch(Escape, () => {
+    if (isFullscreen.value)
+      isFullscreen.value = false
+  })
+
   return {
+    isFullscreen,
     isPrinting,
     showToolbar,
     queryStr,
@@ -37,6 +52,7 @@ export const useAppStore = defineStore('app', () => {
     usedResumes,
     copiedResumeUrl,
 
+    toggleFullscreen,
     setNewResume(r: ResumeItem) {
       if (r.url) {
         if (!usedResumes.value.find(v => v.url === r.url))

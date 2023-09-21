@@ -3,16 +3,16 @@ const app = useAppStore()
 </script>
 
 <template>
-  <ToolBar />
+  <ToolBar v-show="!app.isFullscreen" />
 
   <main
     :class="{
-      'pt-$top-nav-height': !app.isPrinting,
+      'pt-$top-nav-height': !app.isPrinting && !app.isFullscreen,
+      'pb-$bottom-menu-height': !app.isFullscreen,
     }"
-    pb="$bottom-menu-height"
   >
     <router-view />
   </main>
 
-  <BottomMenu />
+  <BottomMenu v-show="!app.isFullscreen" />
 </template>
