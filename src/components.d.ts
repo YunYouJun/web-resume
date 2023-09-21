@@ -28,9 +28,11 @@ declare module 'vue' {
     ResumeOther: typeof import('./components/resume/Other.vue')['default']
     ResumeProject: typeof import('./components/resume/Project.vue')['default']
     ResumeSkill: typeof import('./components/resume/Skill.vue')['default']
+    ResumeWork: typeof import('./components/resume/Work.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     ToolBar: typeof import('./components/ToolBar.vue')['default']
+    WorkItem: typeof import('./components/work/Item.vue')['default']
     YlfBottomMenu: typeof import('./../node_modules/.pnpm/@yunlefun+vue-components@0.0.5-beta.4/node_modules/@yunlefun/vue-components/dist/runtime/components/YlfBottomMenu.vue')['default']
     YlfBottomMenuItem: typeof import('./../node_modules/.pnpm/@yunlefun+vue-components@0.0.5-beta.4/node_modules/@yunlefun/vue-components/dist/runtime/components/YlfBottomMenuItem.vue')['default']
   }

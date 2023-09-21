@@ -35,6 +35,7 @@ export interface Contact {
 interface BaseItem {
   /**
    * 图标
+   * @see https://icones.js.org/
    */
   icon: string
   /**
@@ -168,6 +169,13 @@ export interface ProjectSet {
   highlights?: string[]
 
   badges?: string[]
+}
+
+/**
+ * 工作经历
+ */
+export interface Work extends BaseItem {
+  sets: ProjectSet[]
 }
 
 /**

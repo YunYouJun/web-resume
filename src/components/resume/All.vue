@@ -5,6 +5,7 @@ import ResumeEducation from '~/components/resume/Education.vue'
 import ResumeProject from '~/components/resume/Project.vue'
 import ResumeCertificate from '~/components/resume/Certificate.vue'
 import ResumeSkill from '~/components/resume/Skill.vue'
+import ResumeWork from '~/components/resume/Work.vue'
 import ResumeOther from '~/components/resume/Other.vue'
 
 const props
@@ -17,6 +18,7 @@ const resumeComponents = [
   'project',
   'certificate',
   'skill',
+  'work',
   'other',
 ]
 
@@ -25,6 +27,7 @@ const resumeMap: Record<string, any> = {
   project: ResumeProject,
   certificate: ResumeCertificate,
   skill: ResumeSkill,
+  work: ResumeWork,
   other: ResumeOther,
 }
 

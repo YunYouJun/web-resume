@@ -27,10 +27,7 @@ onMounted(async () => {
     :open="set.open ?? true"
   >
     <summary>
-      <iconify-icon v-if="!set.logo.startsWith('http')" :icon="set.logo" />
-      <span v-else>
-        <img :src="set.logo" class="brand-favicon">
-      </span>
+      <iconify-icon :icon="set.logo" />
       <span class="project-name font-bold">
         {{ set.name }}
       </span>
@@ -88,7 +85,6 @@ onMounted(async () => {
         <li
           v-for="highlight in set.highlights"
           :key="highlight"
-          mb-1
           v-html="highlight"
         />
         <!-- {{ highlight }} -->
