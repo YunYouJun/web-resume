@@ -1,0 +1,1 @@
+#editor-container{width:100%;height:100%}.editor-page{overflow:hidden;height:calc(100vh - var(--top-nav-height) - var(--bottom-menu-height))}.preview-container{height:100%;border:1px solid var(--wr-c-border);padding:0;overflow:hidden}.resume-container,.editor-container{flex-grow:1;text-align:left}.resume-container{border-right:1px solid var(--wr-c-border)}
