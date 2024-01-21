@@ -3,7 +3,7 @@ basics:
   id: Suzumiya Haruhi
   # birth: "10-08"
   # avatar: https://s4.anilist.co/file/anilistcdn/character/medium/b251-I9jd3QatfZKA.jpg
-  bio: "我对普通的人类没有兴趣。你们之中要是有外星人、未来人、异世界的人、超能力者，就尽管来找我吧。"
+  bio: 我对普通的人类没有兴趣。你们之中要是有外星人、未来人、异世界的人、超能力者，就尽管来找我吧。
 
 contact:
   email:
@@ -28,18 +28,18 @@ education:
   title: 教育背景
   histories:
     - school: 县立北高校
-      icon: "ri:building-line"
-      start: "20xx 年 9 月"
-      end: "20xx 年 6 月"
-      grade: "GPA: 3.93，均分 92.3（专业第一）"
+      icon: 'ri:building-line'
+      start: 20xx 年 9 月
+      end: 20xx 年 6 月
+      grade: 'GPA: 3.93，均分 92.3（专业第一）'
       area: SOS 团
-      studyType: "高中"
+      studyType: 高中
       city: 日本，兵库县
     - school: 市立东中
-      icon: "ri:building-2-line"
-      start: "20xx 年 9 月"
-      end: "20xx 年 6 月"
-      grade: "GPA: 3.33（专业前 10%）， CET-6"
+      icon: 'ri:building-2-line'
+      start: 20xx 年 9 月
+      end: 20xx 年 6 月
+      grade: 'GPA: 3.33（专业前 10%）， CET-6'
       area: 计算机科学与技术
       studyType: 初中
       city: 日本，兵库县
@@ -51,9 +51,9 @@ project:
     - name: SOS 团
       logo: ri:cloud-line
       type: 组建社团
-      start: "20XX 年 5 月"
-      end: "至今"
-      url: "http://www.haruhi.tv/"
+      start: 20XX 年 5 月
+      end: 至今
+      url: 'http://www.haruhi.tv/'
       summary: 让世界变得更热闹的凉宫春日团
       keywords:
         - name: Html
@@ -72,9 +72,9 @@ project:
     - name: hexo-theme-yun
       logo: ri:cloud-line
       type: 博客主题，开源项目
-      start: "2019 年 5 月"
-      end: "至今"
-      url: "https://yun.yunyoujun.cn"
+      start: 2019 年 5 月
+      end: 至今
+      url: 'https://yun.yunyoujun.cn'
       summary: 一个简洁、优雅、快速的博客主题, <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/YunYouJun/hexo-theme-yun?style=social">
       keywords:
         - name: pug
@@ -95,26 +95,26 @@ project:
       logo: ri:robot-line
       type: 服务端，开源项目
       summary: 聊天机器人框架及 API SDK，能够熟练使用 TypeScript 开发，实现支持可扩展插件的项目架构
-      start: "2020 年 6 月"
-      end: "至今"
-      url: "https://github.com/YunYouJun/el-bot"
+      start: 2020 年 6 月
+      end: 至今
+      url: 'https://github.com/YunYouJun/el-bot'
       keywords:
         - name: TypeScript
           icon: simple-icons:typescript
-        - name: "Node.js"
+        - name: Node.js
           icon: simple-icons:node-dot-js
-        - name: "npm"
+        - name: npm
           icon: simple-icons:npm
-        - name: "mongodb"
+        - name: mongodb
           icon: simple-icons:mongodb
     - name: Element-Theme-Ink
       logo: ri:contrast-drop-2-line
       type: 前端主题，开源项目
-      start: "2018 年 2 月"
-      end: "2019 年 1 月"
+      start: 2018 年 2 月
+      end: 2019 年 1 月
       url: https://ink.elpsy.cn
       keywords:
-        - name: "Element"
+        - name: Element
           logo: https://ink.elpsy.cn/favicon.ico
         - name: Scss
           icon: simple-icons:sass
@@ -142,84 +142,84 @@ skill:
   sets:
     - title: 语言
       keywords:
-        - name: " "
+        - name: ' '
           icon: simple-icons:markdown
-        - name: " "
+        - name: ' '
           icon: simple-icons:html5
-        - name: " "
+        - name: ' '
           icon: simple-icons:css3
-        - name: " "
+        - name: ' '
           icon: simple-icons:javascript
-        - name: "TypeScript > "
+        - name: 'TypeScript > '
           icon: simple-icons:typescript
-        - name: "scss == "
+        - name: 'scss == '
           icon: simple-icons:sass
-        - name: "stylus == "
+        - name: 'stylus == '
           icon: simple-icons:stylus
-        - name: "Python，"
+        - name: Python，
           icon: simple-icons:python
-        - name: ""
+        - name: ''
           icon: simple-icons:php
-        - name: ""
+        - name: ''
           icon: simple-icons:cplusplus
     - title: 环境
       keywords:
-        - name: "macOS > "
+        - name: 'macOS > '
           icon: simple-icons:apple
-        - name: "Windows > "
+        - name: 'Windows > '
           icon: simple-icons:windows
-        - name: "Linux, "
+        - name: 'Linux, '
           icon: simple-icons:linux
-        - name: "Node.js, "
+        - name: 'Node.js, '
           icon: simple-icons:node-dot-js
-        - name: "npm, "
+        - name: 'npm, '
           icon: simple-icons:npm
-        - name: "Nginx, "
+        - name: 'Nginx, '
           icon: simple-icons:nginx
-        - name: "Mysql, "
+        - name: 'Mysql, '
           icon: simple-icons:mysql
-        - name: "MongoDB"
+        - name: MongoDB
           icon: simple-icons:mongodb
     - title: 工具
       keywords:
-        - name: "Vue.js, "
+        - name: 'Vue.js, '
           icon: simple-icons:vue-dot-js
-        - name: "Element, "
+        - name: 'Element, '
           logo: https://ink.elpsy.cn/favicon.ico
-        - name: "Vuetify, "
+        - name: 'Vuetify, '
           icon: simple-icons:vuetify
-        - name: "Nuxt, "
+        - name: 'Nuxt, '
           icon: simple-icons:nuxt-dot-js
-        - name: "NestJS, "
+        - name: 'NestJS, '
           icon: simple-icons:nestjs
-        - name: ""
+        - name: ''
           icon: simple-icons:bootstrap
-        - name: ""
+        - name: ''
           icon: simple-icons:three-dot-js
-        - name: ", "
+        - name: ', '
           icon: simple-icons:d3-dot-js
-        - name: "Gulp, "
+        - name: 'Gulp, '
           icon: simple-icons:gulp
         - icon: simple-icons:webpack
         - name: Vite
           icon: file-icons:vite
     - title: 软件
       keywords:
-        - name: "Visual Studio Code, "
+        - name: 'Visual Studio Code, '
           icon: simple-icons:visualstudiocode
-        - name: "Cocos Creator, "
+        - name: 'Cocos Creator, '
           icon: simple-icons:cocos
-        - name: ""
+        - name: ''
           icon: simple-icons:github
-        - name: "&"
+        - name: '&'
           icon: simple-icons:git
-        - name: "Bash || "
+        - name: 'Bash || '
           icon: ri:terminal-box-line
-        - name: ""
+        - name: ''
           icon: simple-icons:adobephotoshop
-        - name: ""
+        - name: ''
           icon: simple-icons:adobepremiere
-        - name: ""
+        - name: ''
           icon: simple-icons:adobeaftereffects
 
 certificate:

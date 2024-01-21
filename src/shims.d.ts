@@ -6,9 +6,8 @@ declare module '*.yml' {
   export default data
 }
 
-/* eslint-disable import/no-duplicates */
 declare module '*.vue' {
-  const component: DefineComponent<{}, {}, any>
+  const component: DefineComponent<object, object, any>
   export default component
 }
 
@@ -18,7 +17,6 @@ declare module '*.md' {
   export default component
 }
 
-/* eslint-enable import/no-duplicates */
 declare interface Window {
   // extend the window
   monaco: typeof m | undefined
