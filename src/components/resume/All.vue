@@ -53,6 +53,7 @@ const resumeArr = computed(() => {
       props: resume.value[type],
     })
   })
+
   return arr
 })
 </script>

@@ -2,7 +2,8 @@ import * as fs from 'node:fs'
 import * as path from 'node:path'
 
 import * as TJS from 'typescript-json-schema'
-import logger from './logger'
+
+import consola from 'consola'
 
 // optionally pass argument to schema generator
 const settings: TJS.PartialArgs = {
@@ -14,18 +15,30 @@ const compilerOptions: TJS.CompilerOptions = {
   strictNullChecks: true,
 }
 
+const __dirname = import.meta.dirname
+const resumeTypeFile = path.resolve(__dirname, '../src/types/resume.ts')
 const program = TJS.getProgramFromFiles(
-  [path.resolve('src/types/resume.ts')],
+  [
+    resumeTypeFile,
+  ],
   compilerOptions,
 )
 
 // We can either get the schema for one file and one type...
 const schema = TJS.generateSchema(program, 'ResumeInfo', settings)
 
+const targetResumeSchemaFile = path.resolve(__dirname, '../src/assets/schema/resume.schema.json')
 const formattedSchema = `${JSON.stringify(schema, null, 2)}\n`
+
 // write
 fs.writeFileSync(
-  'src/assets/schema/resume.schema.json',
+  targetResumeSchemaFile,
   formattedSchema,
 )
-logger.success('Generate resume schema successfully!')
+
+if (schema === null) {
+  consola.error('Generate schema failed!')
+}
+else {
+  consola.success('Generate schema successfully!')
+}

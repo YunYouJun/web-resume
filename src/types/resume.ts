@@ -36,11 +36,11 @@ export interface ResumeInfo {
    * 联系方式
    */
   contact: Contact
-  education: Education
-  skill: Skill
-  project: Project
+  education?: Education
+  skill?: Skill
+  project?: Project
+  certificate?: Certificate
   other?: Other
-  certificate: Certificate
   /**
    * 页脚
    */
