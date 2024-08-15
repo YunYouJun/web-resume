@@ -35,6 +35,13 @@ const user = useUserStore()
 
 <style lang="scss">
 .ylf-input {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 4px 8px;
+  outline: none;
+  width: 100%;
+  background-color: transparent;
+
   &-container {
     margin: 2rem 0;
   }
@@ -45,13 +52,6 @@ const user = useUserStore()
     margin-bottom: 8px;
     opacity: 0.8;
   }
-
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  padding: 4px 8px;
-  outline: none;
-  width: 100%;
-  background-color: transparent;
 
   &:focus {
     border-color: #000;

@@ -52,3 +52,9 @@ html.dark {
   --prism-line-highlight-background: #444444;
   --prism-selection-background: #444444;
 }
+
+.markdown-body {
+  ul {
+    list-style-type: disc;
+  }
+}

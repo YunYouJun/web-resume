@@ -9,7 +9,11 @@ title: About
 
 > Web 端可打印为 PDF 的简历
 
-- 使用 YAML 编写
+## 使用
+
+### 在线使用
+
+切换至 [编辑器](/editor) 页面，即可通过编写 YAML 在线编辑简历。
 
 ```yaml
 id: 云游君
@@ -37,11 +41,11 @@ contact:
     label: YunYouJun
 ```
 
-- 简洁至上：以 Markdown 为中心编写简历，基于 YAML 数据配置
-- Vue 驱动：使用 Vue 自定义组件
-- 高性能：为每个页面预渲染生成静态的 HTML，同时在页面被加载的时候，将作为 SPA 运行。
+- 简洁至上：以 Markdown 为中心编写简历，基于 YAML 数据配置。
+- 自定义：你仍然可以使用 Vue 自定义各个组件的样式。
+- 便捷：随时随地在线预览编辑，并打印 PDF。
 
-## 如何本地开发（热更新）
+### 本地开发（热更新）
 
 > You can use it with hot reload.
 
@@ -68,8 +72,8 @@ pnpm run resume
 
 ## FAQ
 
-- `i-xxx`: 走 UnoCSS CSS 图标，须添加 `safelist` 至 `unocss.config.ts` 中，可静态编译。
-- `xx:yyy`: 如 `ri:github-line`，走 Iconify 图标，使用全局 CDN 动态请求。
+- `i-xxx`: 使用 UnoCSS CSS 图标，须添加 `safelist` 至 `unocss.config.ts` 中，可静态编译。
+- `xx:yyy`: 如 `ri:github-line`，Iconify 在线图标，使用全局 CDN 动态请求。
 
 ## Other
 
