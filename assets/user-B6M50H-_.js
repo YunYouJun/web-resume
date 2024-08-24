@@ -1,0 +1,1 @@
+import{am as n,an as e,ao as s}from"./index-yVLxA3OL.js";const a=n("user",()=>{const o=e(`${s}:user-info`,{name:"",phone:"",email:""}),r=e(`${s}:settings`,{overrideInfo:!0});return{userInfo:o,settings:r}});export{a as u};
