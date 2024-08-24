@@ -40,20 +40,24 @@
       "description": "联系方式"
     },
     "education": {
+      "description": "教育背景",
       "$ref": "#/definitions/Education"
     },
     "skill": {
+      "description": "技能经验",
       "$ref": "#/definitions/Skill"
     },
     "project": {
+      "description": "项目经历",
       "$ref": "#/definitions/Project"
+    },
+    "certificate": {
+      "description": "奖项",
+      "$ref": "#/definitions/Certificate"
     },
     "other": {
       "description": "其他",
       "$ref": "#/definitions/Other"
-    },
-    "certificate": {
-      "$ref": "#/definitions/Certificate"
     },
     "footer": {
       "description": "页脚",
@@ -71,11 +75,7 @@
   },
   "required": [
     "basics",
-    "certificate",
-    "contact",
-    "education",
-    "project",
-    "skill"
+    "contact"
   ],
   "definitions": {
     "Contact": {
@@ -357,31 +357,6 @@
         "type"
       ]
     },
-    "Other": {
-      "description": "其他",
-      "type": "object",
-      "properties": {
-        "info": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "icon": {
-          "description": "图标",
-          "type": "string"
-        },
-        "title": {
-          "description": "标题",
-          "type": "string"
-        }
-      },
-      "required": [
-        "icon",
-        "info",
-        "title"
-      ]
-    },
     "Certificate": {
       "description": "奖项",
       "type": "object",
@@ -429,6 +404,31 @@
       "required": [
         "name",
         "time"
+      ]
+    },
+    "Other": {
+      "description": "其他",
+      "type": "object",
+      "properties": {
+        "info": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "icon": {
+          "description": "图标",
+          "type": "string"
+        },
+        "title": {
+          "description": "标题",
+          "type": "string"
+        }
+      },
+      "required": [
+        "icon",
+        "info",
+        "title"
       ]
     }
   },

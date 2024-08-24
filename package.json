@@ -23,7 +23,7 @@
     "build:ssg": "cross-env NODE_ENV=production vite-ssg build",
     "resume": "vite --host --open /local",
     "schema": "tsx scripts/schema.ts",
-    "prepare": "husky install",
+    "prepare": "rm -f public/schema/resume.schema.json && ln src/assets/schema/resume.schema.json public/schema/resume.schema.json && pnpm husky",
     "preview": "vite preview",
     "typecheck": "vue-tsc --noEmit",
     "test": "vitest",
