@@ -14,17 +14,18 @@ const name = computed(() => {
 <template>
   <div v-if="resume">
     <div v-if="resume.basics.avatar" class="flex justify-between items-center">
-      <span class="font-normal text-center text-4xl">
-        {{ name || 'Your Name' }}
-      </span>
-      <img :src="resume.basics.avatar" class="max-h-3cm max-w-3cm ">
+      <div class="font-normal flex flex-col gap-2">
+        <span class="text-4xl">{{ name || 'Your Name' }}</span>
+        <small text-xs>{{ resume.basics.label }}</small>
+      </div>
+      <img :src="resume.basics.avatar" class="max-h-3cm max-w-3cm">
     </div>
     <h1 v-else class="font-normal text-center text-4xl">
       {{ name || 'Your Name' }}
       <br>
       <small text-xs>{{ resume.basics.label }}</small>
     </h1>
-    <small v-if="resume.basics" class="flex justify-center">
+    <small class="flex justify-center">
       <span class="mx-1">{{ resume.basics.sex }}</span>
       <span class="mx-1">{{ resume.basics.birth }}</span>
       <span class="mx-1">{{ resume.basics.location }}</span>
