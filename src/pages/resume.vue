@@ -1,9 +1,9 @@
 <script setup lang="ts">
+import type { ResumeInfo } from '../types'
 import yaml from 'js-yaml'
 import { useRoute } from 'vue-router'
-import type { ResumeInfo } from '../types'
-import { fetchText } from '~/utils'
 import { useEditorStore } from '~/stores/editor'
+import { fetchText } from '~/utils'
 
 const editorStore = useEditorStore()
 

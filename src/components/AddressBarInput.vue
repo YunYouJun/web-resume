@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { computed, ref } from 'vue'
+import type { ResumeItem } from '~/types'
 import {
   Combobox,
   ComboboxButton,
@@ -8,9 +8,9 @@ import {
   ComboboxOptions,
   TransitionRoot,
 } from '@headlessui/vue'
-import { fetchText } from '~/utils'
+import { computed, ref } from 'vue'
 
-import type { ResumeItem } from '~/types'
+import { fetchText } from '~/utils'
 
 const app = useAppStore()
 const editor = useEditorStore()

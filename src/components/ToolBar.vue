@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import { isDark, toggleDark } from '~/composables'
-
 import pkg from '~/../package.json'
-import 'vue-about-me/style.css'
+
+import { isDark, toggleDark } from '~/composables'
 import { useAppStore } from '~/stores/app'
+import 'vue-about-me/style.css'
 
 const { t, availableLocales, locale } = useI18n()
 

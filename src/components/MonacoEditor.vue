@@ -2,9 +2,9 @@
 import type * as m from 'monaco-editor'
 import { isDark } from '~/composables'
 
-import { useEditorStore } from '~/stores/editor'
-
 import setupMonaco from '~/monaco/setup'
+
+import { useEditorStore } from '~/stores/editor'
 
 import { isClient } from '~/utils'
 

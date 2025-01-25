@@ -1,7 +1,7 @@
-@import './var.scss';
-@import './reset.scss';
-@import './markdown.scss';
-@import './resume.scss';
+@use './var.scss';
+@use './reset.scss';
+@use './markdown.scss';
+@use './resume.scss';
 
 a {
   display: inline-block;

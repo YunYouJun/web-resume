@@ -1,6 +1,6 @@
+import type { ResumeItem } from '~/types'
 import { isClient } from '@vueuse/core'
 import { acceptHMRUpdate, defineStore } from 'pinia'
-import type { ResumeItem } from '~/types'
 import { namespace, resumeExamples } from '~/utils'
 
 export const useAppStore = defineStore('app', () => {

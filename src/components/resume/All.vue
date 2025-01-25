@@ -1,12 +1,12 @@
 <script lang="ts" setup>
 import type { ResumeInfo } from '~/types'
 
-import ResumeEducation from '~/components/resume/Education.vue'
-import ResumeProject from '~/components/resume/Project.vue'
 import ResumeCertificate from '~/components/resume/Certificate.vue'
+import ResumeEducation from '~/components/resume/Education.vue'
+import ResumeOther from '~/components/resume/Other.vue'
+import ResumeProject from '~/components/resume/Project.vue'
 import ResumeSkill from '~/components/resume/Skill.vue'
 import ResumeWork from '~/components/resume/Work.vue'
-import ResumeOther from '~/components/resume/Other.vue'
 
 const props
   = defineProps<{

@@ -1,21 +1,22 @@
 import path from 'node:path'
-import { defineConfig } from 'vite'
-
-import Vue from '@vitejs/plugin-vue'
-import Pages from 'vite-plugin-pages'
-import Layouts from 'vite-plugin-vue-layouts'
-import { VitePWA } from 'vite-plugin-pwa'
 import VueI18n from '@intlify/unplugin-vue-i18n/vite'
-import Components from 'unplugin-vue-components/vite'
-import AutoImport from 'unplugin-auto-import/vite'
-import Unocss from 'unocss/vite'
-
-import Markdown from 'unplugin-vue-markdown/vite'
-import Prism from 'markdown-it-prism'
-import LinkAttributes from 'markdown-it-link-attributes'
 
 import Yaml from '@rollup/plugin-yaml'
+import Vue from '@vitejs/plugin-vue'
 import { componentsDir } from '@yunlefun/vue-components'
+import LinkAttributes from 'markdown-it-link-attributes'
+import Prism from 'markdown-it-prism'
+import Unocss from 'unocss/vite'
+import AutoImport from 'unplugin-auto-import/vite'
+import Components from 'unplugin-vue-components/vite'
+
+import Markdown from 'unplugin-vue-markdown/vite'
+import VueRouter from 'unplugin-vue-router/vite'
+import { defineConfig } from 'vite'
+
+import { VitePWA } from 'vite-plugin-pwa'
+import Layouts from 'vite-plugin-vue-layouts'
+import generateSitemap from 'vite-ssg-sitemap'
 import { prefix as monacoPrefix } from './src/monaco'
 
 const markdownWrapperClasses = 'markdown-body max-w-900px m-auto text-left px-4'
@@ -58,9 +59,10 @@ export default defineConfig({
       },
     }),
 
-    // https://github.com/hannoeru/vite-plugin-pages
-    Pages({
-      extensions: ['vue', 'md'],
+    // https://github.com/posva/unplugin-vue-router
+    VueRouter({
+      extensions: ['.vue', '.md'],
+      dts: 'src/typed-router.d.ts',
     }),
 
     // https://github.com/JohnCampionJr/vite-plugin-vue-layouts
@@ -137,6 +139,9 @@ export default defineConfig({
           },
         ],
       },
+      workbox: {
+        maximumFileSizeToCacheInBytes: 4000000,
+      },
     }),
 
     // https://github.com/intlify/bundle-tools/tree/main/packages/vite-plugin-vue-i18n
@@ -156,10 +161,22 @@ export default defineConfig({
   ssgOptions: {
     script: 'async',
     formatting: 'minify',
+    beastiesOptions: {
+      reduceInlineStyles: false,
+    },
+    onFinished() {
+      generateSitemap()
+    },
   },
 
   ssr: {
     // TODO: workaround until they support native ESM
     noExternal: ['workbox-window', /vue-i18n/],
+  },
+
+  optimizeDeps: {
+    include: [
+
+    ],
   },
 })
