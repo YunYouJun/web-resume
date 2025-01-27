@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-const props = defineProps({
-  icon: String,
-  title: String,
-})
+const props = defineProps<{
+  icon?: string
+  title: string
+}>()
 
 const { icon, title } = toRefs(props)
 </script>
@@ -10,8 +10,10 @@ const { icon, title } = toRefs(props)
 <template>
   <div>
     <h2 class="text-2xl font-medium">
-      <iconify-icon :icon="icon" class="title-icon" />
-      {{ title }}
+      <iconify-icon v-if="icon" :icon="icon" class="title-icon" />
+      <span>
+        {{ title }}
+      </span>
     </h2>
     <hr>
   </div>

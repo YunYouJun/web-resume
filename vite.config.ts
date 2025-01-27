@@ -15,6 +15,7 @@ import VueRouter from 'unplugin-vue-router/vite'
 import { defineConfig } from 'vite'
 
 import { VitePWA } from 'vite-plugin-pwa'
+import VueDevTools from 'vite-plugin-vue-devtools'
 import Layouts from 'vite-plugin-vue-layouts'
 import generateSitemap from 'vite-ssg-sitemap'
 import { prefix as monacoPrefix } from './src/monaco'
@@ -155,6 +156,9 @@ export default defineConfig({
       // avoid conflict with i18n yml
       exclude: 'locales/*.yml',
     }),
+
+    // https://github.com/webfansplz/vite-plugin-vue-devtools
+    VueDevTools(),
   ],
 
   // https://github.com/antfu/vite-ssg
@@ -176,7 +180,9 @@ export default defineConfig({
 
   optimizeDeps: {
     include: [
-
+      'ajv',
+      'js-yaml',
+      'monaco-editor',
     ],
   },
 })

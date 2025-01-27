@@ -30,6 +30,13 @@ export interface ResumeInfo {
     birth?: string
     location?: string
     avatar?: string
+    /**
+     * 年龄
+     *
+     * @example
+     * 18
+     */
+    age?: number | string
   }
 
   /**

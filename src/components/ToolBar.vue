@@ -74,5 +74,15 @@ const showLocal = ref(import.meta.env.DEV || false)
     >
       <div i-ri-github-line />
     </a>
+
+    <a
+      class="icon-btn"
+      rel="noreferrer"
+      :href="pkg.docs"
+      target="_blank"
+      title="关于"
+    >
+      <div i-ri-book-2-line />
+    </a>
   </nav>
 </template>

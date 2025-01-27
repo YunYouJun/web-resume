@@ -25,10 +25,11 @@ const name = computed(() => {
       <br>
       <small text-xs>{{ resume.basics.label }}</small>
     </h1>
-    <small class="flex justify-center">
-      <span class="mx-1">{{ resume.basics.sex }}</span>
-      <span class="mx-1">{{ resume.basics.birth }}</span>
-      <span class="mx-1">{{ resume.basics.location }}</span>
+    <small class="flex justify-center mt-2 wr-basic-info text-xs">
+      <span v-if="resume.basics.age">{{ resume.basics.age }}</span>
+      <span v-if="resume.basics.sex">{{ resume.basics.sex }}</span>
+      <span v-if="resume.basics.birth">{{ resume.basics.birth }}</span>
+      <span v-if="resume.basics.location">{{ resume.basics.location }}</span>
     </small>
     <ul
       class="my-4 text-center list-none"
@@ -63,3 +64,19 @@ const name = computed(() => {
     </ul>
   </div>
 </template>
+
+<style lang="scss">
+.wr-basic-info {
+  line-height: 1;
+  gap: 8px;
+
+  span {
+    padding-right: 8px;
+    border-right: 1px solid rgba(0, 0, 0, 0.3);
+
+    &:last-child {
+      border-right: none;
+    }
+  }
+}
+</style>

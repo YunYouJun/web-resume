@@ -29,6 +29,13 @@
         },
         "avatar": {
           "type": "string"
+        },
+        "age": {
+          "description": "年龄",
+          "type": [
+            "string",
+            "number"
+          ]
         }
       },
       "required": [
