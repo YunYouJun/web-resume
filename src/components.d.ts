@@ -28,6 +28,7 @@ declare module 'vue' {
     ResumeOther: typeof import('./components/resume/Other.vue')['default']
     ResumeProject: typeof import('./components/resume/Project.vue')['default']
     ResumeSkill: typeof import('./components/resume/Skill.vue')['default']
+    ResumeTemplate: typeof import('./components/ResumeTemplate.vue')['default']
     ResumeWork: typeof import('./components/resume/Work.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

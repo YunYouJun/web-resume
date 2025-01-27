@@ -33,7 +33,8 @@ const name = computed(() => {
     </small>
     <ul
       class="my-4 text-center list-none"
-      flex justify="center" items="center"
+      flex="~ wrap"
+      justify="center" items="center"
       text="0.9em"
     >
       <li

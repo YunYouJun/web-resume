@@ -11,6 +11,7 @@ const { t } = useI18n()
     <h1 class="text-6xl font-light leading-normal">
       {{ props.msg }}
     </h1>
-    <small text-base op="60">{{ t('home.description') }}</small>
+    <small text-base op="60">
+      {{ t('home.description') }}</small>
   </div>
 </template>

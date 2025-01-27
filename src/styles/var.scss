@@ -4,6 +4,15 @@
 }
 
 :root {
+  --ylf-c-primary: dodgerblue;
+}
+
+:root {
+  --wr-c-bg: white;
+  --wr-c-bg-soft: #f9f9f9;
+
+  --wr-c-resume-bg: white;
+
   --wr-c-text: #121212;
   --wr-c-link: #0078e7;
   --wr-c-border: black;
@@ -13,6 +22,10 @@
 
 .dark {
   --wr-c-bg: #121212;
+  --wr-c-bg-soft: #1a1a1a;
+
+  --wr-c-resume-bg: #1a1a1a;
+
   --wr-c-text: #f3f4f6;
   --wr-c-link: dodgerblue;
   --wr-c-border: white;

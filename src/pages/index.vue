@@ -1,41 +1,35 @@
-<script lang="ts" setup>
-import pkg from '~/../package.json'
+<script setup lang="ts">
+import type { ResumeInfo } from '../types'
+import yaml from 'js-yaml'
+// @ts-expect-error yml
+import localResume from '~/assets/resume/local.resume.yml'
+import { useAppStore } from '~/stores/app'
+import { useEditorStore } from '~/stores/editor'
+import { fetchText } from '~/utils'
 
-// import { isDark } from '~/composables'
-// useHead({
-//   script: [{
-//     src: 'https://cdn.jsdelivr.net/npm/wc-github-corners@0.1.5',
-//     type: 'module',
-//   }],
-// })
+const resume = ref<ResumeInfo>(localResume)
+const route = useRoute()
+
+const app = useAppStore()
+
+const editorStore = useEditorStore()
+onBeforeMount(async () => {
+  let text = editorStore.resumeText || ''
+  if (route.query.url)
+    text = await fetchText(route.query.url as string)
+
+  resume.value = yaml.load(text) as ResumeInfo
+})
+
+onMounted(() => {
+  app.curResume = {
+    title: 'Local',
+    url: 'https://raw.githubusercontent.com/YunYouJun/web-resume/main/src/assets/resume/local.resume.yml',
+    href: 'https://github.com/YunYouJun/web-resume/blob/main/src/assets/resume/local.resume.yml',
+  }
+})
 </script>
 
 <template>
-  <!-- <github-corners :reverse="isDark || null" :url="pkg.repository.url" blank /> -->
-  <div i-ri-file-text-line inline-block text-9xl />
-  <HelloResume my="6" msg="Web Resume" />
-
-  <RouterLink to="/editor" class="resume-btn text-3xl rounded-full" my="6" p="x-8 y-4">
-    Get Started | 开始 →
-  </RouterLink>
-  <a
-    class="resume-btn text-2xl" my="6"
-    :href="pkg.repository.url"
-    target="_blank"
-    inline-flex justify="center" items="center"
-  >
-    <div i-ri-github-line />
-    <span ml="2">GitHub</span>
-  </a>
+  <resume-all v-if="resume" :resume="resume" />
 </template>
-
-<route lang="yaml">
-meta:
-  layout: home
-</route>
-
-<style>
-.resume-logo {
-  width: 200px;
-}
-</style>

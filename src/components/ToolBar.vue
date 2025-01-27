@@ -22,8 +22,6 @@ useEventListener('beforeprint', () => {
 useEventListener('afterprint', () => {
   app.isPrinting = false
 })
-
-const showLocal = ref(import.meta.env.DEV || false)
 </script>
 
 <template>
@@ -40,10 +38,6 @@ const showLocal = ref(import.meta.env.DEV || false)
       <div v-if="app.showToolbar" i-ri-pushpin-line text="orange" />
       <div v-else i-ri-pushpin-2-line />
     </button>
-
-    <router-link v-if="showLocal" class="icon-btn" to="/local" :title="t('button.local')">
-      <div i-ri-device-line />
-    </router-link>
 
     <button class="icon-btn" @click="user.settings.overrideInfo = !user.settings.overrideInfo">
       <div v-if="user.settings.overrideInfo" i-ri-eye-line />

@@ -61,7 +61,7 @@ pnpm run resume
 
 Custom `src/assets/resume/local.resume.yml` (Hot Reload)
 
-> View `http://localhost:3000/local`
+> View `http://localhost:3000/`
 > You can use vscode with yaml validate.
 
 ##### Google Analytics

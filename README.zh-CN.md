@@ -44,7 +44,6 @@ pnpm run resume
 #### Command
 
 - 预览: `pnpm dev` (`http://localhost:3000/`)
-- 预览简历：`pnpm resume`
 - 构建: `pnpm build`
 
 #### Custom
@@ -53,7 +52,7 @@ pnpm run resume
 
 自定义 `src/assets/resume/local.resume.yml` 的简历文件，支持热加载。
 
-> 本地热加载页面，请进入 `http://localhost:3000/local`
+> 本地热加载页面，请进入 `http://localhost:3000`
 > 使用 VSCode 还可以有本地 YAML 格式校验哦～
 
 ##### Google Analytics

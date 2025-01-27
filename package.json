@@ -17,18 +17,18 @@
     "type": "git"
   },
   "scripts": {
-    "dev": "vite --host",
+    "dev": "vite --host --open",
     "lint": "eslint .",
     "serve": "vite preview",
     "build": "cross-env NODE_ENV=production vite build",
     "build:ssg": "cross-env NODE_ENV=production vite-ssg build",
-    "resume": "vite --host --open /local",
     "schema": "tsx scripts/schema.ts",
     "prepare": "rm -f public/schema/resume.schema.json && ln src/assets/schema/resume.schema.json public/schema/resume.schema.json && pnpm husky",
     "preview": "vite preview",
     "typecheck": "vue-tsc --noEmit",
-    "test": "vitest",
-    "test:unit": "vitest"
+    "e2e": "playwright test",
+    "e2e:ui": "playwright test --ui",
+    "e2e:report": "playwright show-report"
   },
   "dependencies": {
     "@vueuse/core": "^12.5.0",
@@ -48,6 +48,7 @@
     "vue-router": "^4.5.0"
   },
   "devDependencies": {
+    "@advjs/gui": "^0.0.7",
     "@antfu/eslint-config": "^4.1.0",
     "@gtm-support/vue-gtm": "^3.1.0",
     "@headlessui/vue": "^1.7.23",
