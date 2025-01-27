@@ -54,6 +54,7 @@
     "@iconify-json/mdi": "^1.2.3",
     "@iconify-json/ri": "^1.2.5",
     "@intlify/unplugin-vue-i18n": "^6.0.3",
+    "@playwright/test": "^1.50.0",
     "@rollup/plugin-yaml": "^4.1.2",
     "@types/js-yaml": "^4.0.9",
     "@types/markdown-it-link-attributes": "^3.0.5",
