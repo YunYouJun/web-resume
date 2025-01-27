@@ -27,13 +27,14 @@ async function shareResume() {
         <div i-ri-arrow-right-line hover:i-ri-arrow-right-fill />
       </button>
 
-      <RouterLink
+      <a
         class="input-bar-icon-btn"
-        :to="getPreviewUrl(app.curResume.url)"
+        :href="getPreviewUrl(app.curResume.url)"
         :title="t('button.see_resume')"
+        target="_blank"
       >
         <div i-ri-slideshow-4-line hover:i-ri-slideshow-4-fill />
-      </RouterLink>
+      </a>
 
       <button
         class="input-bar-icon-btn"

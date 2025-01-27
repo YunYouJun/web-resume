@@ -7,12 +7,16 @@ import { useAppStore } from '~/stores/app'
 import { useEditorStore } from '~/stores/editor'
 import { fetchText } from '~/utils'
 
-const resume = ref<ResumeInfo>(localResume)
+const app = useAppStore()
+const editorStore = useEditorStore()
+
+/**
+ * 开发环境使用本地简历数据
+ * 生产环境使用编辑器中的简历数据
+ */
+const resume = ref<ResumeInfo>(import.meta.env.DEV ? localResume : editorStore.resumeJson)
 const route = useRoute()
 
-const app = useAppStore()
-
-const editorStore = useEditorStore()
 onBeforeMount(async () => {
   let text = editorStore.resumeText || ''
   if (route.query.url) {

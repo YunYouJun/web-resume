@@ -9,7 +9,7 @@ button:
   toggle_langs: 切换语言
   # custom
   see_yaml: 查看 YAML
-  see_resume: 查看简历
+  see_resume: 预览简历
 not-found: 未找到页面
 
 home:

@@ -51,9 +51,16 @@ export function overrideResume(resumeInfo: ResumeInfo, userInfo: UserInfo) {
 /**
  * 获取预览链接
  */
-export function getPreviewUrl(url: string) {
+export function getPreviewUrl(url: string, type: 'url' | 'route' = 'url') {
   const previewUrl = new URL('/', window.location.origin)
   previewUrl.searchParams.append('url', url)
   previewUrl.searchParams.append('mode', 'preview')
-  return previewUrl.toString()
+
+  switch (type) {
+    case 'route':
+      return previewUrl.pathname + previewUrl.search
+    case 'url':
+    default:
+      return previewUrl.toString()
+  }
 }
