@@ -1,0 +1,1 @@
+import{aj as o,ak as e,an as s}from"./index-BejVI0v1.js";const a=o("user",()=>{const r=e(`${s}:user-info`,{name:"",phone:"",email:""}),n=e(`${s}:settings`,{overrideInfo:!0});return{userInfo:r,settings:n}});export{a as u};
