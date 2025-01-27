@@ -26,8 +26,4 @@ export interface TemplateItem {
    * 标签
    */
   tags?: string[]
-  /**
-   * 预览链接
-   */
-  previewUrl?: string
 }

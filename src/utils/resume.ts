@@ -47,3 +47,13 @@ export function overrideResume(resumeInfo: ResumeInfo, userInfo: UserInfo) {
   }
   return resumeInfo
 }
+
+/**
+ * 获取预览链接
+ */
+export function getPreviewUrl(url: string) {
+  const previewUrl = new URL('/', window.location.origin)
+  previewUrl.searchParams.append('url', url)
+  previewUrl.searchParams.append('mode', 'preview')
+  return previewUrl.toString()
+}

@@ -15,17 +15,16 @@ const app = useAppStore()
 const editorStore = useEditorStore()
 onBeforeMount(async () => {
   let text = editorStore.resumeText || ''
-  if (route.query.url)
+  if (route.query.url) {
     text = await fetchText(route.query.url as string)
-
-  resume.value = yaml.load(text) as ResumeInfo
+    resume.value = yaml.load(text) as ResumeInfo
+  }
 })
 
 onMounted(() => {
-  app.curResume = {
-    title: 'Local',
-    url: 'https://raw.githubusercontent.com/YunYouJun/web-resume/main/src/assets/resume/local.resume.yml',
-    href: 'https://github.com/YunYouJun/web-resume/blob/main/src/assets/resume/local.resume.yml',
+  if (route.query.mode === 'preview') {
+    app.showToolbar = false
+    app.isFullscreen = true
   }
 })
 </script>

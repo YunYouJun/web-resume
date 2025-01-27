@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import pkg from '~/../package.json'
 
-import { isDark, toggleDark } from '~/composables'
+// import { isDark, toggleDark } from '~/composables'
 import { useAppStore } from '~/stores/app'
 import 'vue-about-me/style.css'
 
@@ -46,10 +46,10 @@ useEventListener('afterprint', () => {
 
     <AddressBar />
 
-    <a class="icon-btn" :title="t('button.toggle_dark')" @click="() => { toggleDark() }">
+    <!-- <a class="icon-btn" :title="t('button.toggle_dark')" @click="() => { toggleDark() }">
       <div v-if="isDark" i-ri-moon-line />
       <div v-else i-ri-sun-line />
-    </a>
+    </a> -->
 
     <a
       class="icon-btn transform" :class="

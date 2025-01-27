@@ -26,9 +26,9 @@
 
 #### Preview
 
-View `https://web-resume.yunyoujun.cn/#/resume?url=` + `Your Resume File URL`.
+View `https://web-resume.yunyoujun.cn/#/?url=` + `Your Resume File URL`.
 
-For example: `https://web-resume.yunyoujun.cn/#/resume?url=https://fastly.jsdelivr.net/gh/YunYouJun/web-resume/src/assets/resume/local.resume.yml`.
+For example: `https://web-resume.yunyoujun.cn/#/?url=https://fastly.jsdelivr.net/gh/YunYouJun/web-resume/src/assets/resume/local.resume.yml`.
 
 #### Edit
 

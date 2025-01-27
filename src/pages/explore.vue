@@ -8,7 +8,6 @@ const templates = ref<TemplateItem[]>([
     name: '工作简历-极简风格',
     description: '极简风格的工作简历，样式参考自 billryan/resume',
     tags: ['work', 'minimal'],
-    previewUrl: '/',
   },
   {
     type: 'date',

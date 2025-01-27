@@ -26,6 +26,16 @@
 
   ul {
     list-style-type: disc;
+    list-style-position: inside;
+
+    li {
+      padding-left: 16px;
+
+      > span {
+        position: relative;
+        left: -6px;
+      }
+    }
   }
 
   .brand-favicon {
@@ -37,6 +47,10 @@
   details {
     outline: none;
     cursor: pointer;
+  }
+
+  summary {
+    margin: 10px 0;
   }
 }
 

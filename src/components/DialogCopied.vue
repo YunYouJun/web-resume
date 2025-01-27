@@ -58,7 +58,7 @@ const isOpen = computed(() => app.showCopiedDialog)
                 拷贝成功！
               </DialogTitle>
               <div class="mt-2">
-                <p class="text-xs text-gray-500">
+                <p class="text-xs text-gray-500 break-all">
                   {{ app.copiedResumeUrl }}
                 </p>
               </div>

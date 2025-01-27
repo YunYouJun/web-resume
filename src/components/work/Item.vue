@@ -91,7 +91,7 @@ onMounted(async () => {
       </ul>
     </div>
   </details>
-  <hr last:hidden class="mx-3">
+  <hr last:hidden>
 </template>
 
 <style lang="scss">

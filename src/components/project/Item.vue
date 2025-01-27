@@ -89,13 +89,14 @@ onMounted(async () => {
           v-for="highlight in set.highlights"
           :key="highlight"
           mb-1
-          v-html="highlight"
-        />
+        >
+          <span v-html="highlight" />
+        </li>
         <!-- {{ highlight }} -->
       </ul>
     </div>
   </details>
-  <hr last:hidden class="mx-3">
+  <hr last:hidden>
 </template>
 
 <style lang="scss">

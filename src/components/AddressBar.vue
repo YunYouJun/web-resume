@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import { getPreviewUrl } from '~/utils'
+
 const app = useAppStore()
 const editor = useEditorStore()
 
@@ -25,7 +27,11 @@ async function shareResume() {
         <div i-ri-arrow-right-line hover:i-ri-arrow-right-fill />
       </button>
 
-      <RouterLink class="input-bar-icon-btn" :to="`/resume?url=${app.curResume.url}`" :title="t('button.see_resume')">
+      <RouterLink
+        class="input-bar-icon-btn"
+        :to="getPreviewUrl(app.curResume.url)"
+        :title="t('button.see_resume')"
+      >
         <div i-ri-slideshow-4-line hover:i-ri-slideshow-4-fill />
       </RouterLink>
 

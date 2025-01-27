@@ -57,6 +57,25 @@ project:
   icon: ri:folders-line
   title: 项目经历
   sets:
+    - name: 腾讯 WXG 基础产品部
+      logo: ri:wechat-line
+      type: 前端开发，微信红包封面
+      start: 2024 年 5 月
+      end: 至今
+      # open: false
+      summary: 负责微信红包封面相关业务开发
+      keywords:
+        - name: Vue
+          icon: simple-icons:vuedotjs
+        - name: Webpack
+          icon: simple-icons:webpack
+        - name: Vite
+          icon: file-icons:vite
+        - name: TypeScript
+          icon: simple-icons:typescript
+      highlights:
+        - 业务开发：负责微信红包封面相关业务开发，包括红包封面开放平台、审核台、小程序、领取页、Node 中间层等。
+        - 效率提升：根据项目需求，开发 WeUI 图标库、Mockery（数据 Mock）等工具库，提升项目开发效率。
     - name: 蚂蚁集团 支付宝 体验技术部
       logo: ri:alipay-line
       type: 前端工程师
@@ -84,13 +103,6 @@ project:
         - 拥有支付宝端内流量第二的 H5 Hybrid 应用与微信/支付宝小程序 + AR 开发经验。
         - 了解图形学基础，能够实现图形互动玩法、动画状态机与轻量 3D 交互场景，如蚂蚁森林徽章、小鸡公仔 3D 模型展示等。
         - 实习 2021.7：蚂蚁森林神奇动物徽章旋转动画、蚂蚁新村模块开发、负责蚂蚁森林五周年前端开发、Unity To Web 工具建设
-    - name: 腾讯 CSIG 智慧出行
-      logo: ri:qq-line
-      type: 实习，前端开发，汽车云大数据平台画像业务开发
-      start: 2021 年 5 月
-      end: 2021 年 7 月
-      # open: false
-      summary: 独立进行腾讯云汽车大数据中后台及图表开发，React + Tea，拥有大型平台业务开发经验。
     - name: 其他
       logo: ri:github-line
       type: 业余开源项目
@@ -219,7 +231,7 @@ other:
   info:
     - 热衷开源，关注前沿，擅长实践沉淀，想用技术为日常带来微小美好的改变，拥有 PC 端/移动端 适配与高可用开发经验。
     - 有良好的产品思维，个人业余项目小空调、做菜等项目访问量破千万，被人民日报、半月谈、人民网等媒体采访转发。
-    - 积极尝试 AI 相关应用，有 AIGC 相关项目（蚂蚁庄园小鸡日记、B站塞尔达武器合成）开发及个人 IP LoRA 落地经验。
+    # - 积极尝试 AI 相关应用，有 AIGC 相关项目（蚂蚁庄园小鸡日记、B站塞尔达武器合成）开发及个人 IP LoRA 落地经验。
     # - 爱好科幻，中国科普作协会员，曾获科普中国科普科幻青年之星、上海市幻想节科幻创作大赛一等奖
     # - 为人热心，曾前往甘肃武威支教，全国大学生百强暑期优秀实践团队
 

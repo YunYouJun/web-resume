@@ -1,7 +1,7 @@
 import type { ResumeItem } from '~/types'
 import { isClient } from '@vueuse/core'
 import { acceptHMRUpdate, defineStore } from 'pinia'
-import { namespace, resumeExamples } from '~/utils'
+import { getPreviewUrl, namespace, resumeExamples } from '~/utils'
 
 export const useAppStore = defineStore('app', () => {
   const isPrinting = ref(false)
@@ -25,7 +25,7 @@ export const useAppStore = defineStore('app', () => {
   const copiedResumeUrl = computed(() => {
     if (!isClient)
       return ''
-    return `${window.location.origin}/resume?url=${curResume.value.url}`
+    return getPreviewUrl(curResume.value.url)
   })
 
   function toggleFullscreen() {
