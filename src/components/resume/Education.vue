@@ -2,7 +2,9 @@
 import type { Education } from '~/types/base'
 import IconifyIcon from '../IconifyIcon.vue'
 
-withDefaults(defineProps<{ education: Education | null }>(), {
+withDefaults(defineProps<{
+  education?: Education | null
+}>(), {
   education: null,
 })
 </script>

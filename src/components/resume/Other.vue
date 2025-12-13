@@ -1,7 +1,9 @@
 <script lang="ts" setup>
 import type { Other } from '~/types/base'
 
-withDefaults(defineProps<{ other: Other | null }>(), {
+withDefaults(defineProps<{
+  other?: Other | null
+}>(), {
   other: null,
 })
 </script>

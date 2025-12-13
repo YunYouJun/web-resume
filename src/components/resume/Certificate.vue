@@ -1,7 +1,9 @@
 <script lang="ts" setup>
 import type { Certificate } from '~/types/base'
 
-withDefaults(defineProps<{ certificate: Certificate | null }>(), {
+withDefaults(defineProps<{
+  certificate?: Certificate | null
+}>(), {
   certificate: null,
 })
 </script>

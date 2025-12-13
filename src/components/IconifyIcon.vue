@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 const props = withDefaults(
   defineProps<{
-    icon: string
+    icon?: string
   }>(),
   {
     icon: 'ri:question-mark',

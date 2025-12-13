@@ -18,7 +18,7 @@ import 'uno.css'
 export const createApp = ViteSSG(
   App,
   {
-    routes: setupLayouts(routes),
+    routes: setupLayouts([...routes]),
     base: import.meta.env.BASE_URL,
   },
   (ctx) => {

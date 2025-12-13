@@ -1,3 +1,4 @@
+import type { Plugin } from 'vite'
 import path from 'node:path'
 import VueI18n from '@intlify/unplugin-vue-i18n/vite'
 
@@ -155,7 +156,7 @@ export default defineConfig({
     Yaml({
       // avoid conflict with i18n yml
       exclude: 'locales/*.yml',
-    }),
+    }) as Plugin,
 
     // https://github.com/webfansplz/vite-plugin-vue-devtools
     VueDevTools(),
