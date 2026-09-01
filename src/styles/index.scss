@@ -21,8 +21,18 @@ html {
   background-color: var(--wr-c-bg-soft);
 }
 
+.app-shell-content {
+  padding-left: var(--side-nav-width);
+}
+
 #nprogress {
   pointer-events: none;
+}
+
+@media print {
+  .app-shell-content {
+    padding-left: 0;
+  }
 }
 
 #nprogress .bar {

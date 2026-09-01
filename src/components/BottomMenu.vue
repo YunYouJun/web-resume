@@ -54,17 +54,18 @@ const items = computed(() => [
 .bottom-menu {
   position: fixed;
   z-index: var(--bottom-menu-z-index);
-  right: 0;
+  top: var(--top-nav-height);
   bottom: 0;
   left: 0;
+  box-sizing: border-box;
   display: grid;
-  height: var(--bottom-menu-height);
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  align-items: start;
-  border-top: 1px solid rgb(127 127 127 / 18%);
-  padding: 5px max(8px, env(safe-area-inset-right)) env(safe-area-inset-bottom) max(8px, env(safe-area-inset-left));
+  width: var(--side-nav-width);
+  grid-auto-rows: min-content;
+  align-content: start;
+  border-right: 1px solid rgb(127 127 127 / 18%);
+  padding: 12px 8px;
   background: color-mix(in srgb, var(--wr-c-bg), transparent 3%);
-  box-shadow: 0 -8px 24px rgb(0 0 0 / 8%);
+  box-shadow: 8px 0 24px rgb(0 0 0 / 6%);
   backdrop-filter: blur(16px);
 }
 
@@ -72,8 +73,8 @@ const items = computed(() => [
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 44px;
-  min-height: 50px;
+  min-width: 56px;
+  min-height: 58px;
   flex-direction: column;
   gap: 2px;
   border-radius: 10px;
@@ -94,6 +95,28 @@ const items = computed(() => [
   &:focus-visible {
     outline: 2px solid var(--wr-c-link);
     outline-offset: -2px;
+  }
+}
+
+@media (max-width: 767px) {
+  .bottom-menu {
+    top: auto;
+    right: 0;
+    width: auto;
+    height: var(--bottom-menu-height);
+    grid-auto-rows: auto;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    align-content: normal;
+    align-items: start;
+    border-top: 1px solid rgb(127 127 127 / 18%);
+    border-right: 0;
+    padding: 5px max(8px, env(safe-area-inset-right)) env(safe-area-inset-bottom) max(8px, env(safe-area-inset-left));
+    box-shadow: 0 -8px 24px rgb(0 0 0 / 8%);
+  }
+
+  .bottom-menu__item {
+    min-width: 44px;
+    min-height: 50px;
   }
 }
 

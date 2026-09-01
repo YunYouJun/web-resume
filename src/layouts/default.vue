@@ -7,6 +7,7 @@ const app = useAppStore()
 
   <main
     :class="{
+      'app-shell-content': !app.isFullscreen,
       'pt-$top-nav-height': !app.isPrinting && !app.isFullscreen,
       'pb-$bottom-menu-height': !app.isFullscreen,
     }"

@@ -138,6 +138,29 @@ test('fits mobile widths, exposes More commands, and switches at the desktop bre
   // Leave room for engines that reserve scrollbar width inside the CSS viewport.
   await page.setViewportSize({ width: 800, height: 900 })
   await expect(page.getByRole('menubar')).toBeVisible()
+  const sideNavBox = await page.getByRole('navigation', { name: '主导航' }).boundingBox()
+  const editorLinkBox = await page.getByRole('link', { name: '编辑器' }).boundingBox()
+  const homeLinkBox = await homeLink.boundingBox()
+  expect(sideNavBox).not.toBeNull()
+  expect(homeLinkBox).not.toBeNull()
+  expect(editorLinkBox).not.toBeNull()
+  expect(sideNavBox!.x).toBe(0)
+  expect(sideNavBox!.y).toBe(104)
+  expect(sideNavBox!.width).toBe(76)
+  expect(homeLinkBox!.x).toBe(editorLinkBox!.x)
+  expect(homeLinkBox!.y).toBeLessThan(editorLinkBox!.y)
+  await expect(page.locator('main')).toHaveCSS('padding-left', '76px')
+  expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(
+    await page.evaluate(() => document.documentElement.clientWidth),
+  )
+})
+
+test('keeps the desktop side navigation clear of the home layout', async ({ page }) => {
+  await page.setViewportSize({ width: 800, height: 900 })
+  await page.goto('/about')
+
+  await expect(page.getByRole('navigation', { name: '主导航' })).toBeVisible()
+  await expect(page.locator('main')).toHaveCSS('padding-left', '92px')
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(
     await page.evaluate(() => document.documentElement.clientWidth),
   )
