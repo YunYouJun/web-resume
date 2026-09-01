@@ -54,6 +54,9 @@ watch(() => app.isPrinting, (val) => {
 
         <button
           v-if="!app.isPrinting"
+          type="button"
+          class="editor-fullscreen-button"
+          :aria-label="$t(isFullscreen ? 'command.exit_fullscreen' : 'command.fullscreen_editor')"
           transition
           :class="isFullscreen ? 'fixed' : 'absolute'"
           top-2 right-2 p="2" op="60"
@@ -87,6 +90,9 @@ watch(() => app.isPrinting, (val) => {
 
     <button
       v-if="!app.isPrinting"
+      type="button"
+      class="editor-fullscreen-button"
+      :aria-label="$t('command.exit_fullscreen')"
       transition
       absolute
       top-2 right-2 p="2" op="60"
@@ -102,7 +108,20 @@ watch(() => app.isPrinting, (val) => {
 <style lang="scss">
 .editor-page {
   overflow: hidden;
-  height: calc(100vh - var(--top-nav-height) - var(--bottom-menu-height));
+  height: calc(100dvh - var(--top-nav-height) - var(--bottom-menu-height));
+}
+
+.editor-fullscreen-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+
+  &:focus-visible {
+    outline: 2px solid var(--wr-c-link);
+    outline-offset: 2px;
+  }
 }
 
 .preview-container {

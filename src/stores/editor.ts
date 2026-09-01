@@ -97,16 +97,36 @@ export const useEditorStore = defineStore('editor', () => {
     setResumeText,
 
     async goToResume(resume: ResumeItem) {
-      app.curResume = resume
+      const url = resume.url.trim()
+      if (!url)
+        return false
 
-      const resumeExample = await fetchText(app.curResume.url)
-      const prefix = `# ${t('editor.name')}\n`
-      const txt = prefix + resumeExample
-      codeEditor.value?.setValue(txt)
+      app.isResumeLoading = true
+      app.resumeLoadError = ''
+
+      try {
+        const resumeText = await fetchText(url)
+        const nextResume = { ...resume, url }
+        const prefix = `# ${t('editor.name')}\n`
+        const text = prefix + resumeText
+
+        app.curResume = nextResume
+        app.setNewResume(nextResume)
+        this.setResumeText(text)
+        codeEditor.value?.setValue(text)
+        return true
+      }
+      catch (error) {
+        app.resumeLoadError = error instanceof Error ? error.message : String(error)
+        return false
+      }
+      finally {
+        app.isResumeLoading = false
+      }
     },
 
     async reset() {
-      this.goToResume(resumeExamples[0])
+      return this.goToResume(resumeExamples[0])
     },
   }
 })

@@ -4,7 +4,6 @@ import VueI18n from '@intlify/unplugin-vue-i18n/vite'
 
 import Yaml from '@rollup/plugin-yaml'
 import Vue from '@vitejs/plugin-vue'
-import { componentsDir } from '@yunlefun/vue-components'
 import LinkAttributes from 'markdown-it-link-attributes'
 import Prism from 'markdown-it-prism'
 import Unocss from 'unocss/vite'
@@ -90,7 +89,7 @@ export default defineConfig({
     // https://github.com/antfu/vite-plugin-components
     Components({
       // allow auto load markdown components under `./src/components/`
-      dirs: ['src/components', componentsDir],
+      dirs: ['src/components'],
       extensions: ['vue', 'md'],
 
       // allow auto import and register components used in markdown

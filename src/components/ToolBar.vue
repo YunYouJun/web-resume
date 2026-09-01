@@ -1,24 +1,18 @@
 <script lang="ts" setup>
-import pkg from '~/../package.json'
-
-// import { isDark, toggleDark } from '~/composables'
-import { useAppStore } from '~/stores/app'
-import 'vue-about-me/style.css'
-
-const { t, availableLocales, locale } = useI18n()
-
-function toggleLocales() {
-  // change to some real logic
-  const locales = availableLocales
-  locale.value = locales[(locales.indexOf(locale.value) + 1) % locales.length]
-}
+import { ToolbarButton, ToolbarRoot, ToolbarSeparator } from 'reka-ui'
+import { useResumeCommands } from '~/commands'
 
 const app = useAppStore()
-const user = useUserStore()
+const editor = useEditorStore()
+const { execute } = useResumeCommands()
+const { t } = useI18n()
+
+const currentResumeLabel = computed(() => app.curResume.title || app.curResume.url || t('toolbar.current_resume'))
 
 useEventListener('beforeprint', () => {
   app.isPrinting = true
 })
+
 useEventListener('afterprint', () => {
   app.isPrinting = false
 })
@@ -26,57 +20,179 @@ useEventListener('afterprint', () => {
 
 <template>
   <nav
-    fixed top-0 inset-x-0
-    :class="(!app.isPrinting && app.showToolbar) ? 'opacity-100' : 'opacity-0'"
-    class="rounded m-auto left-0 shadow-md transition hover:opacity-100"
-    bg="light-200 dark:dark-200" p="2"
-    flex="~" justify="center"
-    w="full"
-    z="$top-nav-z-index"
+    v-if="!app.isPrinting && app.showToolbar"
+    class="app-toolbar"
+    :aria-label="t('toolbar.navigation')"
   >
-    <button class="icon-btn" @click="app.showToolbar = !app.showToolbar">
-      <div v-if="app.showToolbar" i-ri-pushpin-line text="orange" />
-      <div v-else i-ri-pushpin-2-line />
-    </button>
+    <div class="app-toolbar__desktop">
+      <AppMenubar />
+      <AddressBar />
+      <ToolbarRoot class="app-toolbar__utility" :aria-label="t('toolbar.utility_actions')">
+        <ToolbarButton
+          type="button"
+          class="command-button command-button--quiet app-toolbar__command-trigger"
+          @click="execute('app.commands')"
+        >
+          <span i-ri-search-line aria-hidden="true" />
+          <span>{{ t('toolbar.open_commands') }}</span>
+          <kbd>Mod ⇧ P</kbd>
+        </ToolbarButton>
+        <AppMoreMenu />
+      </ToolbarRoot>
+    </div>
 
-    <button class="icon-btn" @click="user.settings.overrideInfo = !user.settings.overrideInfo">
-      <div v-if="user.settings.overrideInfo" i-ri-eye-line />
-      <div v-else i-ri-eye-off-line />
-    </button>
-
-    <AddressBar />
-
-    <!-- <a class="icon-btn" :title="t('button.toggle_dark')" @click="() => { toggleDark() }">
-      <div v-if="isDark" i-ri-moon-line />
-      <div v-else i-ri-sun-line />
-    </a> -->
-
-    <a
-      class="icon-btn transform" :class="
-        locale !== 'zh-CN' ? '-rotate-y-180' : ''
-      " :title="t('button.toggle_langs')" @click="toggleLocales"
-    >
-      <div i-ri-translate />
-    </a>
-
-    <a
-      class="icon-btn"
-      rel="noreferrer"
-      :href="pkg.repository.url"
-      target="_blank"
-      title="GitHub"
-    >
-      <div i-ri-github-line />
-    </a>
-
-    <a
-      class="icon-btn"
-      rel="noreferrer"
-      :href="pkg.docs"
-      target="_blank"
-      title="关于"
-    >
-      <div i-ri-book-2-line />
-    </a>
+    <div class="app-toolbar__mobile">
+      <button
+        type="button"
+        class="app-toolbar__source"
+        :aria-label="t('command.load_resume')"
+        @click="execute('resume.load')"
+      >
+        <span i-ri-file-user-line aria-hidden="true" />
+        <span>
+          <small>{{ t('toolbar.current_resume') }}</small>
+          <strong>{{ currentResumeLabel }}</strong>
+        </span>
+      </button>
+      <ToolbarRoot class="app-toolbar__mobile-actions" :aria-label="t('toolbar.primary_actions')">
+        <ToolbarButton
+          type="button"
+          class="command-button"
+          :disabled="!app.curResume.url"
+          :aria-label="t('command.preview_resume')"
+          @click="execute('resume.preview')"
+        >
+          <span i-ri-slideshow-4-line aria-hidden="true" />
+        </ToolbarButton>
+        <ToolbarSeparator class="command-separator" />
+        <ToolbarButton
+          type="button"
+          class="command-button command-button--primary app-toolbar__export"
+          :disabled="!editor.resumeJson"
+          @click="execute('resume.print')"
+        >
+          <span i-ri-printer-line aria-hidden="true" />
+          <span>{{ t('command.export_pdf') }}</span>
+        </ToolbarButton>
+        <AppMoreMenu />
+      </ToolbarRoot>
+    </div>
   </nav>
 </template>
+
+<style lang="scss" scoped>
+.app-toolbar {
+  position: fixed;
+  z-index: var(--top-nav-z-index);
+  top: 0;
+  right: 0;
+  left: 0;
+  min-height: var(--top-nav-height);
+  border-bottom: 1px solid rgb(127 127 127 / 18%);
+  padding: 9px 12px;
+  background: color-mix(in srgb, var(--wr-c-bg), transparent 4%);
+  box-shadow: 0 6px 24px rgb(0 0 0 / 8%);
+  backdrop-filter: blur(16px);
+}
+
+.app-toolbar__desktop {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: min(1500px, 100%);
+  margin: 0 auto;
+}
+
+.app-toolbar__utility,
+.app-toolbar__mobile-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.app-toolbar__command-trigger kbd {
+  border: 1px solid rgb(127 127 127 / 22%);
+  border-radius: 5px;
+  padding: 2px 5px;
+  color: rgb(127 127 127);
+  font-size: 10px;
+}
+
+.app-toolbar__mobile {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .app-toolbar {
+    padding: 8px;
+  }
+
+  .app-toolbar__desktop {
+    display: none;
+  }
+
+  .app-toolbar__mobile {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .app-toolbar__source {
+    display: grid;
+    flex: 1;
+    min-width: 0;
+    min-height: 44px;
+    grid-template-columns: 28px minmax(0, 1fr);
+    align-items: center;
+    gap: 8px;
+    border-radius: 10px;
+    padding: 4px 8px;
+    color: inherit;
+    text-align: left;
+
+    &:focus-visible {
+      outline: 2px solid var(--wr-c-link);
+      outline-offset: 2px;
+    }
+
+    > span:last-child {
+      display: flex;
+      min-width: 0;
+      flex-direction: column;
+    }
+
+    small {
+      color: rgb(127 127 127);
+      font-size: 10px;
+      font-weight: 400;
+    }
+
+    strong {
+      overflow: hidden;
+      font-size: 12px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  .app-toolbar__mobile-actions {
+    gap: 0;
+  }
+
+  .app-toolbar__export {
+    padding: 0 10px;
+    font-size: 12px;
+  }
+
+  .command-separator {
+    margin: 0;
+  }
+}
+
+@media (max-width: 390px) {
+  .app-toolbar__export span:last-child {
+    display: none;
+  }
+}
+</style>

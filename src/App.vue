@@ -16,7 +16,10 @@ useHead({
 
 <template>
   <router-view />
-  <DialogCopied />
+  <AppCommandPalette />
+  <ResumeSourceDialog />
+  <OnboardingDialog />
+  <AppToasts />
 </template>
 
 <style lang="scss">

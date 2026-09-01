@@ -1,6 +1,7 @@
 button:
   about: 关于
   back: 返回
+  close: 关闭
   editor: 编辑器
   go: 确定
   home: 首页
@@ -24,3 +25,77 @@ noun:
 
 editor:
   name: 在线编辑你的简历吧！
+
+navigation:
+  explore: 发现
+  primary: 主导航
+  profile: 我的
+
+toolbar:
+  app_menu: 应用菜单
+  current_resume: 当前简历
+  more: 更多
+  open_commands: 命令
+  primary_actions: 简历操作
+  navigation: 简历工具栏
+  utility_actions: 辅助操作
+
+command:
+  copy_share_link: 复制分享链接
+  editor_only: 请先进入编辑器
+  exit_fullscreen: 退出全屏
+  examples: 示例简历
+  export_pdf: 导出 PDF
+  file: 文件
+  format_yaml: 格式化 YAML
+  fullscreen_editor: 全屏编辑
+  help: 帮助
+  load_resume: 加载简历
+  no_results: 没有找到相关命令
+  open_commands: 搜索命令
+  open_docs: 使用文档
+  open_editor: 打开编辑器
+  open_editor_commands: 打开编辑器命令面板
+  open_guide: 新手引导
+  override_info: 使用我的资料覆盖简历信息
+  preview_resume: 打开纯净预览
+  remove_recent: 删除最近记录
+  restore_example: 恢复示例简历
+  search_placeholder: 输入命令或搜索…
+  search_label: 搜索命令
+  toggle_language: 切换语言
+  undo: 撤销
+  undo_restore: 撤销恢复示例
+  view: 视图
+  group:
+    edit: 编辑
+    help: 帮助
+    output: 输出
+    recent: 最近使用
+    start: 开始
+    view: 查看
+
+resume_source:
+  description: 粘贴 YAML 地址，或从最近使用和示例中选择。
+  error: 无法加载简历：{message}
+  label: 简历 YAML 地址
+  loading: 正在加载…
+  title: 选择简历来源
+
+onboarding:
+  description: 从已有 YAML、示例简历或在线编辑器开始。
+  edit_description: 在浏览器中编辑 YAML，并实时检查简历效果。
+  edit_title: 打开编辑器
+  example_description: 先用内置示例了解格式和打印效果。
+  example_title: 试用示例
+  source_description: 使用公开或受支持的简历 YAML 地址。
+  source_title: 粘贴 YAML 地址
+  title: 三步开始制作简历
+
+toast:
+  example_restored: 已恢复示例简历
+  link_copied: 分享链接已复制
+  notification: 通知
+  print_guide_description: 请在浏览器打印窗口中选择“另存为 PDF”。
+  print_guide_title: 即将打开打印窗口
+  restore_undone: 已撤销恢复操作

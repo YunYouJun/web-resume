@@ -3,7 +3,7 @@ const app = useAppStore()
 </script>
 
 <template>
-  <ToolBar v-show="!app.isFullscreen" />
+  <ToolBar v-if="!app.isFullscreen" />
 
   <main
     :class="{
@@ -14,5 +14,5 @@ const app = useAppStore()
     <router-view />
   </main>
 
-  <BottomMenu v-show="!app.isFullscreen" />
+  <BottomMenu v-if="!app.isFullscreen" />
 </template>

@@ -6,8 +6,16 @@ import type { ResumeInfo, ResumeItem } from '~/types'
  * @param url
  */
 export async function fetchText(url: string) {
-  const txt = await fetch(url).then(res => res.text())
-  return txt
+  const response = await fetch(url)
+  if (!response.ok)
+    throw new Error(`HTTP ${response.status}`)
+
+  const text = await response.text()
+  const contentType = response.headers.get('content-type') || ''
+  if (contentType.includes('text/html') || /^\s*<!doctype html/i.test(text))
+    throw new Error('The resume URL returned HTML instead of YAML')
+
+  return text
 }
 
 export const resumeExamples: ResumeItem[] = [

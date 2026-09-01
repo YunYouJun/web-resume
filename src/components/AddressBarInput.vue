@@ -4,162 +4,128 @@ import {
   Combobox,
   ComboboxButton,
   ComboboxInput,
+  ComboboxLabel,
   ComboboxOption,
   ComboboxOptions,
   TransitionRoot,
 } from '@headlessui/vue'
-import { computed, ref } from 'vue'
+import { resumeExamples } from '~/utils'
 
-import { fetchText } from '~/utils'
+const emit = defineEmits<{
+  loaded: []
+}>()
 
 const app = useAppStore()
 const editor = useEditorStore()
+const { t } = useI18n()
 
-async function onEnterUrl() {
-  if (app.curResume.url) {
-    const text = await fetchText(app.curResume.url)
-    editor.setResumeText(text)
-  }
+const draftUrl = ref(app.curResume.url)
+const selectedResume = ref<ResumeItem | null>({ ...app.curResume })
+
+function displayValue() {
+  return draftUrl.value
 }
 
-const selectedResume = ref(app.usedResumes[0])
-
-function onChange(e: Event & {
-  target: HTMLInputElement
-}) {
-  app.queryStr = e.target?.value
+function onInputChange(event: Event) {
+  draftUrl.value = (event.target as HTMLInputElement).value
 }
 
-/**
- * @description 过滤后的简历列表
- */
+watch(() => app.curResume.url, (url) => {
+  draftUrl.value = url
+})
+
 const filteredResume = computed<ResumeItem[]>(() => {
-  if (!app.queryStr)
-    return app.usedResumes.slice(1)
+  const query = draftUrl.value.trim().toLowerCase().replace(/\s+/g, '')
+  if (!query)
+    return app.usedResumes.filter(resume => resume.url)
 
-  return [{ url: app.queryStr }].concat(app.usedResumes.filter((r) => {
-    let inTitle = false
-
-    const simpleQueryStr = app.queryStr.toLowerCase().replace(/\s+/g, '')
-
-    if (r.title) {
-      inTitle = r.title
-        .toLowerCase()
-        .replace(/\s+/g, '')
-        .includes(simpleQueryStr)
-    }
-
-    return r.url
-      .toLowerCase()
-      .replace(/\s+/g, '')
-      .includes(simpleQueryStr) || inTitle
-  }))
+  return app.usedResumes.filter((resume) => {
+    const title = resume.title?.toLowerCase().replace(/\s+/g, '') || ''
+    const url = resume.url.toLowerCase().replace(/\s+/g, '')
+    return title.includes(query) || url.includes(query)
+  })
 })
 
-function displayValue(resume: any) {
-  if (resume && resume.url)
-    return resume.url
-
-  return app.curResume.url
+async function load(resume: ResumeItem = { url: draftUrl.value }) {
+  const loaded = await editor.goToResume(resume)
+  if (loaded) {
+    draftUrl.value = app.curResume.url
+    emit('loaded')
+  }
+  return loaded
 }
 
-/**
- * @description 监听简历选择
- */
-watch(selectedResume, () => {
-  app.setNewResume(selectedResume.value)
-  editor.goToResume(selectedResume.value)
+watch(selectedResume, async (resume) => {
+  if (!resume)
+    return
+  draftUrl.value = resume.url
+  await load(resume)
 })
+
+defineExpose({ load })
 </script>
 
 <template>
-  <Combobox v-model="selectedResume">
-    <div w="full" relative>
-      <div
-        class="relative w-full cursor-default overflow-hidden text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-teal-300 sm:text-sm"
-      >
+  <Combobox v-model="selectedResume" nullable>
+    <div class="resume-source-input">
+      <ComboboxLabel class="sr-only">
+        {{ t('resume_source.label') }}
+      </ComboboxLabel>
+      <div class="resume-source-input__field">
         <ComboboxInput
-          class="w-full border-none py-2 pl-9 pr-18 text-sm leading-5 focus:ring-0 outline-none focus:(border-blue-500 border-solid)) dark:border-gray-700"
+          class="resume-source-input__control"
           :display-value="displayValue"
-          border-1px
-          inline-flex justify="center" items="center"
-          bg="gray-200 dark:warm-gray-800" rounded-full
-          w="full"
-          text="sm gray-700 dark:light-200"
-          @change="onChange"
-          @enter="onEnterUrl"
+          :placeholder="t('home.address_placeholder')"
+          :aria-label="t('resume_source.label')"
+          autocomplete="url"
+          @change="onInputChange"
+          @keydown.enter.prevent="load()"
         />
         <ComboboxButton
-          class="absolute inset-y-0 left-3 flex items-center pr-2"
+          class="resume-source-input__history"
+          :aria-label="t('command.group.recent')"
         >
-          <div
-            i-ri-eye-line
-            class="text-gray-400"
-            aria-hidden="true"
-          />
+          <div i-ri-history-line aria-hidden="true" />
         </ComboboxButton>
       </div>
+
       <TransitionRoot
         leave="transition ease-in duration-100"
         leave-from="opacity-100"
         leave-to="opacity-0"
-        @after-leave="app.queryStr = ''"
       >
-        <ComboboxOptions
-          z-999
-          bg="white dark:gray-700"
-          class="absolute mt-1 max-h-60 w-full overflow-auto rounded-md  py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm"
-        >
+        <ComboboxOptions class="resume-source-input__options">
           <div
-            v-if="filteredResume.length === 0 && app.queryStr !== ''"
-            class="relative cursor-default select-none py-2 px-4 text-gray-700 dark:white"
+            v-if="filteredResume.length === 0"
+            class="resume-source-input__empty"
           >
-            Nothing found.
+            {{ t('not-found') }}
           </div>
 
           <ComboboxOption
             v-for="resume in filteredResume"
             :key="resume.url"
-            v-slot="{ selected, active }"
+            v-slot="{ active }"
             as="template"
             :value="resume"
           >
             <li
-              flex
-              class="relative cursor-default select-none py-2 pl-4 pr-4"
-              :class="{
-                'bg-blue-600 text-white': active,
-                'text-gray-900 dark:text-light-200': !active,
-              }"
+              class="resume-source-input__option"
+              :class="{ 'is-active': active }"
             >
-              <span
-                v-if="resume.title"
-                :class="{ 'font-medium': selected, 'font-normal': !selected }"
-              >{{ resume.title }}</span>
-              <span v-if="resume.title" mx="2">-</span>
-              <span class="block truncate" op="80">
-                {{ resume.url }}
+              <span class="resume-source-input__option-text">
+                <strong v-if="resume.title">{{ resume.title }}</strong>
+                <span>{{ resume.url }}</span>
               </span>
-              <span
-                v-if="selected"
-                class="absolute inset-y-0 right-3 flex items-center pl-3"
-                :class="{ 'text-white': active, 'text-teal-600': !active }"
+              <button
+                v-if="!resumeExamples.some(example => example.url === resume.url)"
+                type="button"
+                class="resume-source-input__remove"
+                :aria-label="`${t('command.remove_recent')}: ${resume.title || resume.url}`"
+                @click.stop.prevent="app.removeResume(resume)"
               >
-                <div i-ri-check-line class="h-5 w-5" aria-hidden="true" />
-              </span>
-
-              <span
-                v-if="active"
-                class="absolute inset-y-0 right-8 p-1"
-                :class="{ 'text-white': active }"
-                inline-flex justify="center" items="center"
-                op="80"
-                cursor="pointer"
-              >
-                <div hover="bg-gray" rounded-full inline-flex justify="center" p="1" @click="app.removeResume(resume)">
-                  <div i-ri-close-line aria-hidden="true" />
-                </div>
-              </span>
+                <div i-ri-close-line aria-hidden="true" />
+              </button>
             </li>
           </ComboboxOption>
         </ComboboxOptions>
@@ -167,3 +133,95 @@ watch(selectedResume, () => {
     </div>
   </Combobox>
 </template>
+
+<style lang="scss" scoped>
+.resume-source-input {
+  position: relative;
+  width: 100%;
+}
+
+.resume-source-input__field {
+  position: relative;
+}
+
+.resume-source-input__control {
+  width: 100%;
+  min-height: 44px;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  padding: 0 44px 0 14px;
+  color: var(--wr-c-text);
+  background: var(--wr-c-bg-soft);
+  outline: none;
+
+  &:focus-visible {
+    border-color: var(--wr-c-link);
+    box-shadow: 0 0 0 3px rgb(0 120 231 / 18%);
+  }
+}
+
+.resume-source-input__history,
+.resume-source-input__remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  min-height: 36px;
+  border-radius: 9px;
+}
+
+.resume-source-input__history {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+}
+
+.resume-source-input__options {
+  position: absolute;
+  z-index: var(--overlay-z-index);
+  top: calc(100% + 6px);
+  width: 100%;
+  max-height: min(320px, 50vh);
+  overflow-y: auto;
+  border: 1px solid rgb(127 127 127 / 20%);
+  border-radius: 12px;
+  padding: 6px;
+  background: var(--wr-c-bg);
+  box-shadow: 0 16px 40px rgb(0 0 0 / 16%);
+}
+
+.resume-source-input__empty {
+  padding: 14px;
+  color: rgb(127 127 127);
+}
+
+.resume-source-input__option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  border-radius: 8px;
+  padding: 7px 8px 7px 12px;
+  cursor: pointer;
+
+  &.is-active {
+    color: white;
+    background: var(--wr-c-link);
+  }
+}
+
+.resume-source-input__option-text {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  flex-direction: column;
+
+  span {
+    overflow: hidden;
+    font-size: 12px;
+    opacity: 0.72;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+</style>

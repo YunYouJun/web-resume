@@ -1,74 +1,90 @@
 <script lang="ts" setup>
-import { getPreviewUrl } from '~/utils'
+import { ToolbarButton, ToolbarRoot, ToolbarSeparator } from 'reka-ui'
+import { useResumeCommands } from '~/commands'
 
+const input = ref<{ load: () => Promise<boolean> }>()
 const app = useAppStore()
 const editor = useEditorStore()
-
+const { execute } = useResumeCommands()
 const { t } = useI18n()
 
-const { copy, copied } = useClipboard({ source: app.copiedResumeUrl })
-
-async function shareResume() {
-  await copy()
-  if (copied.value)
-    app.showCopiedDialog = true
-}
-
-function printResume() {
-  window.print()
+async function loadDraft() {
+  await input.value?.load()
 }
 </script>
 
 <template>
-  <div class="inline-flex" flex="grow" px="1" relative>
-    <AddressBarInput />
-    <div absolute top-0 bottom-0 right-4 flex justify="center" items="center">
-      <button
-        class="input-bar-icon-btn"
-        title="预览"
-        @click="editor.goToResume(app.curResume)"
+  <form class="address-bar" @submit.prevent="loadDraft">
+    <AddressBarInput ref="input" />
+    <ToolbarRoot
+      class="address-bar__actions"
+      :aria-label="t('toolbar.primary_actions')"
+    >
+      <ToolbarButton
+        type="submit"
+        class="command-button command-button--quiet"
+        :disabled="app.isResumeLoading"
       >
-        <div i-ri-arrow-right-line hover:i-ri-arrow-right-fill />
-      </button>
-
-      <a
-        class="input-bar-icon-btn"
-        :href="getPreviewUrl(app.curResume.url)"
-        :title="t('button.see_resume')"
-        target="_blank"
+        <div :class="app.isResumeLoading ? 'i-ri-loader-4-line animate-spin' : 'i-ri-download-cloud-2-line'" aria-hidden="true" />
+        <span>{{ app.isResumeLoading ? t('resume_source.loading') : t('command.load_resume') }}</span>
+      </ToolbarButton>
+      <ToolbarSeparator class="command-separator" />
+      <ToolbarButton
+        class="command-button command-button--quiet"
+        type="button"
+        :disabled="!app.curResume.url"
+        @click="execute('resume.preview')"
       >
-        <div i-ri-slideshow-4-line hover:i-ri-slideshow-4-fill />
-      </a>
-
-      <button
-        class="input-bar-icon-btn"
-        :title="t('button.export_pdf')"
-        @click="printResume"
+        <div i-ri-slideshow-4-line aria-hidden="true" />
+        <span>{{ t('command.preview_resume') }}</span>
+      </ToolbarButton>
+      <ToolbarButton
+        class="command-button command-button--primary"
+        type="button"
+        :disabled="!editor.resumeJson"
+        @click="execute('resume.print')"
       >
-        <div i-ri-printer-line hover:i-ri-printer-fill />
-      </button>
-
-      <button
-        class="input-bar-icon-btn"
-        title="重置"
-        @click="editor.reset()"
-      >
-        <div i-ri-eraser-line hover:i-ri-eraser-fill />
-      </button>
-
-      <button class="input-bar-icon-btn" title="分享" @click="shareResume">
-        <div i-ri-share-forward-line hover:i-ri-share-forward-fill />
-      </button>
-    </div>
-  </div>
+        <div i-ri-printer-line aria-hidden="true" />
+        <span>{{ t('command.export_pdf') }}</span>
+      </ToolbarButton>
+    </ToolbarRoot>
+    <p v-if="app.resumeLoadError" class="address-bar__error" role="alert">
+      {{ t('resume_source.error', { message: app.resumeLoadError }) }}
+    </p>
+  </form>
 </template>
 
-<style lang="scss">
-.input-bar-icon-btn {
-  @apply inline-flex justify-center items-center p-6px rounded-full bg-gray-200 dark:bg-warm-gray-800 dark:text-gray-200 hover:(dark:text-gray-200);
+<style lang="scss" scoped>
+.address-bar {
+  position: relative;
+  display: grid;
+  flex: 1;
+  grid-template-columns: minmax(220px, 1fr) auto;
+  gap: 8px;
+  min-width: 0;
+}
 
-  div {
-    display: inline-flex;
+.address-bar__actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.address-bar__error {
+  position: absolute;
+  top: calc(100% + 7px);
+  left: 0;
+  max-width: min(560px, 90vw);
+  border-radius: 8px;
+  padding: 7px 10px;
+  color: #b91c1c;
+  background: #fef2f2;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 12%);
+}
+
+@media (max-width: 1100px) {
+  .command-button--quiet span {
+    display: none;
   }
 }
 </style>
