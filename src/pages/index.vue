@@ -20,7 +20,13 @@ const route = useRoute()
 onBeforeMount(async () => {
   let text = editorStore.resumeText || ''
   if (route.query.url) {
-    text = await fetchText(route.query.url as string)
+    const url = route.query.url as string
+    const resumeItem = { url }
+
+    app.curResume = resumeItem
+    app.setNewResume(resumeItem)
+
+    text = await fetchText(url)
     resume.value = yaml.load(text) as ResumeInfo
   }
 })

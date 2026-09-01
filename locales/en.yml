@@ -10,6 +10,7 @@ button:
   # custom
   see_yaml: See Yaml
   see_resume: See Resume
+  export_pdf: Export PDF
 
 not-found: Not found
 

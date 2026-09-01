@@ -10,7 +10,7 @@ import { fetchText, isClient, namespace, overrideResume, resumeExamples } from '
 
 import { useAppStore } from './app'
 
-const ajv = new Ajv()
+const ajv = new Ajv({ allowUnionTypes: true })
 const validate = ajv.compile(resumeSchema)
 
 export const useEditorStore = defineStore('editor', () => {

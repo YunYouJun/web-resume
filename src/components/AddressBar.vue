@@ -13,6 +13,10 @@ async function shareResume() {
   if (copied.value)
     app.showCopiedDialog = true
 }
+
+function printResume() {
+  window.print()
+}
 </script>
 
 <template>
@@ -35,6 +39,14 @@ async function shareResume() {
       >
         <div i-ri-slideshow-4-line hover:i-ri-slideshow-4-fill />
       </a>
+
+      <button
+        class="input-bar-icon-btn"
+        :title="t('button.export_pdf')"
+        @click="printResume"
+      >
+        <div i-ri-printer-line hover:i-ri-printer-fill />
+      </button>
 
       <button
         class="input-bar-icon-btn"
