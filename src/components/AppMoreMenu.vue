@@ -13,10 +13,19 @@ import {
 } from 'reka-ui'
 import { useResumeCommands } from '~/commands'
 
+const props = withDefaults(defineProps<{
+  compact?: boolean
+  includePreview?: boolean
+}>(), {
+  compact: false,
+  includePreview: false,
+})
+
 const { execute, find } = useResumeCommands()
 const { t } = useI18n()
 
 const commands = computed(() => [
+  ...(props.includePreview ? ['resume.preview'] : []),
   'app.commands',
   'resume.share',
   'resume.restore-example',
@@ -24,6 +33,7 @@ const commands = computed(() => [
   'help.docs',
   'help.language',
 ].map(find).filter(Boolean) as ResumeCommand[])
+const helpStartIndex = computed(() => props.includePreview ? 4 : 3)
 const overrideCommand = computed(() => find('view.override-info'))
 
 function select(command: ResumeCommand) {
@@ -36,13 +46,13 @@ function select(command: ResumeCommand) {
     <ToolbarButton as-child>
       <DropdownMenuTrigger class="command-button command-button--quiet">
         <div i-ri-more-2-fill aria-hidden="true" />
-        <span>{{ t('toolbar.more') }}</span>
+        <span :class="{ 'sr-only': props.compact }">{{ t('toolbar.more') }}</span>
       </DropdownMenuTrigger>
     </ToolbarButton>
     <DropdownMenuPortal>
       <DropdownMenuContent class="app-menu-content" :side-offset="8" align="end">
         <template v-for="(command, index) in commands" :key="command.id">
-          <DropdownMenuSeparator v-if="index === 3" class="app-menu-separator" />
+          <DropdownMenuSeparator v-if="index === helpStartIndex" class="app-menu-separator" />
           <DropdownMenuItem
             class="app-menu-item"
             :disabled="!command.enabled"

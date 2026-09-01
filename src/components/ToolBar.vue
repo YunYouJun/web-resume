@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ToolbarButton, ToolbarRoot, ToolbarSeparator } from 'reka-ui'
+import { ToolbarButton, ToolbarRoot } from 'reka-ui'
 import { useResumeCommands } from '~/commands'
 
 const app = useAppStore()
@@ -56,13 +56,19 @@ useEventListener('afterprint', () => {
     </div>
 
     <div class="app-toolbar__mobile">
+      <RouterLink
+        to="/"
+        class="app-toolbar__mobile-brand"
+        :aria-label="`Web Resume · ${t('button.home')}`"
+      >
+        <img src="/img/icons/web-resume-mark.svg" alt="">
+      </RouterLink>
       <button
         type="button"
         class="app-toolbar__source"
         :aria-label="t('command.load_resume')"
         @click="execute('resume.load')"
       >
-        <span i-ri-file-user-line aria-hidden="true" />
         <span>
           <small>{{ t('toolbar.current_resume') }}</small>
           <strong>{{ currentResumeLabel }}</strong>
@@ -71,24 +77,15 @@ useEventListener('afterprint', () => {
       <ToolbarRoot class="app-toolbar__mobile-actions" :aria-label="t('toolbar.primary_actions')">
         <ToolbarButton
           type="button"
-          class="command-button"
-          :disabled="!app.curResume.url"
-          :aria-label="t('command.preview_resume')"
-          @click="execute('resume.preview')"
-        >
-          <span i-ri-slideshow-4-line aria-hidden="true" />
-        </ToolbarButton>
-        <ToolbarSeparator class="command-separator" />
-        <ToolbarButton
-          type="button"
           class="command-button command-button--primary app-toolbar__export"
           :disabled="!editor.resumeJson"
+          :aria-label="t('command.export_pdf')"
           @click="execute('resume.print')"
         >
           <span i-ri-printer-line aria-hidden="true" />
           <span>{{ t('command.export_pdf') }}</span>
         </ToolbarButton>
-        <AppMoreMenu />
+        <AppMoreMenu compact include-preview />
       </ToolbarRoot>
     </div>
   </nav>
@@ -206,14 +203,36 @@ useEventListener('afterprint', () => {
     gap: var(--wr-toolbar-group-gap);
   }
 
+  .app-toolbar__mobile-brand {
+    display: inline-flex;
+    width: var(--wr-control-size);
+    height: var(--wr-control-size);
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 var(--wr-control-size);
+    border-radius: var(--wr-control-radius);
+
+    img {
+      width: 24px;
+      height: 24px;
+    }
+
+    &:hover {
+      background: rgb(127 127 127 / 10%);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--wr-c-link);
+      outline-offset: 2px;
+    }
+  }
+
   .app-toolbar__source {
-    display: grid;
+    display: flex;
     flex: 1;
     min-width: 0;
     min-height: var(--wr-control-size);
-    grid-template-columns: 28px minmax(0, 1fr);
     align-items: center;
-    gap: var(--wr-control-content-gap);
     border-radius: var(--wr-control-radius);
     padding: var(--wr-space-1) var(--wr-space-2);
     color: inherit;
@@ -224,7 +243,7 @@ useEventListener('afterprint', () => {
       outline-offset: 2px;
     }
 
-    > span:last-child {
+    > span {
       display: flex;
       min-width: 0;
       flex-direction: column;

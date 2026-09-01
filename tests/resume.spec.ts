@@ -121,7 +121,7 @@ test('fits mobile widths, exposes More commands, and switches at the desktop bre
     }))
     expect(dimensions.scrollWidth).toBe(dimensions.clientWidth)
 
-    const touchTargets = await page.locator('.app-toolbar__mobile button, .bottom-menu__item').evaluateAll(elements => (
+    const touchTargets = await page.locator('.app-toolbar__mobile button, .app-toolbar__mobile > a, .bottom-menu__item').evaluateAll(elements => (
       elements.filter(element => element.getClientRects().length).map((element) => {
         const rect = element.getBoundingClientRect()
         return { height: rect.height, width: rect.width }
@@ -138,7 +138,13 @@ test('fits mobile widths, exposes More commands, and switches at the desktop bre
   }
 
   await expect(page.getByRole('menubar')).toBeHidden()
+  const mobileBrand = page.getByRole('link', { name: 'Web Resume · 首页' })
+  await expect(mobileBrand).toBeVisible()
+  await mobileBrand.click()
+  await expect(page).toHaveURL('/')
+
   await page.getByRole('button', { name: '更多' }).click()
+  await expect(page.getByRole('menuitem', { name: '打开纯净预览' })).toBeVisible()
   await expect(page.getByRole('menuitem', { name: /搜索命令/ })).toBeVisible()
   await page.getByRole('menuitem', { name: /搜索命令/ }).click()
   const palette = page.getByRole('dialog', { name: '搜索命令' })
