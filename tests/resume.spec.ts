@@ -53,6 +53,12 @@ test('keeps a shared resume URL in the toolbar and clean preview', async ({ page
 test('supports Menubar, Toolbar, command search, and guarded shortcuts', async ({ page }) => {
   await openResume(page)
 
+  const menubarBox = await page.getByRole('menubar').boundingBox()
+  const addressBarBox = await page.getByRole('combobox', { name: '简历 YAML 地址' }).boundingBox()
+  expect(menubarBox).not.toBeNull()
+  expect(addressBarBox).not.toBeNull()
+  expect(menubarBox!.y + menubarBox!.height).toBeLessThan(addressBarBox!.y)
+
   const fileMenu = page.getByRole('menuitem', { name: '文件', exact: true })
   const viewMenu = page.getByRole('menuitem', { name: '视图', exact: true })
   await fileMenu.focus()

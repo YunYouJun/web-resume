@@ -25,20 +25,25 @@ useEventListener('afterprint', () => {
     :aria-label="t('toolbar.navigation')"
   >
     <div class="app-toolbar__desktop">
-      <AppMenubar />
-      <AddressBar />
-      <ToolbarRoot class="app-toolbar__utility" :aria-label="t('toolbar.utility_actions')">
-        <ToolbarButton
-          type="button"
-          class="command-button command-button--quiet app-toolbar__command-trigger"
-          @click="execute('app.commands')"
-        >
-          <span i-ri-search-line aria-hidden="true" />
-          <span>{{ t('toolbar.open_commands') }}</span>
-          <kbd>Mod ⇧ P</kbd>
-        </ToolbarButton>
-        <AppMoreMenu />
-      </ToolbarRoot>
+      <div class="app-toolbar__menubar-row">
+        <AppMenubar />
+      </div>
+
+      <div class="app-toolbar__actions-row">
+        <AddressBar />
+        <ToolbarRoot class="app-toolbar__utility" :aria-label="t('toolbar.utility_actions')">
+          <ToolbarButton
+            type="button"
+            class="command-button command-button--quiet app-toolbar__command-trigger"
+            @click="execute('app.commands')"
+          >
+            <span i-ri-search-line aria-hidden="true" />
+            <span>{{ t('toolbar.open_commands') }}</span>
+            <kbd>Mod ⇧ P</kbd>
+          </ToolbarButton>
+          <AppMoreMenu />
+        </ToolbarRoot>
+      </div>
     </div>
 
     <div class="app-toolbar__mobile">
@@ -89,7 +94,7 @@ useEventListener('afterprint', () => {
   left: 0;
   min-height: var(--top-nav-height);
   border-bottom: 1px solid rgb(127 127 127 / 18%);
-  padding: 9px 12px;
+  padding: 6px 12px 8px;
   background: color-mix(in srgb, var(--wr-c-bg), transparent 4%);
   box-shadow: 0 6px 24px rgb(0 0 0 / 8%);
   backdrop-filter: blur(16px);
@@ -97,10 +102,27 @@ useEventListener('afterprint', () => {
 
 .app-toolbar__desktop {
   display: flex;
-  align-items: center;
-  gap: 10px;
+  flex-direction: column;
+  gap: 6px;
   width: min(1500px, 100%);
   margin: 0 auto;
+}
+
+.app-toolbar__menubar-row,
+.app-toolbar__actions-row {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.app-toolbar__menubar-row {
+  min-height: 32px;
+  border-bottom: 1px solid rgb(127 127 127 / 12%);
+  padding: 0 2px 5px;
+}
+
+.app-toolbar__actions-row {
+  gap: 10px;
 }
 
 .app-toolbar__utility,
@@ -187,6 +209,12 @@ useEventListener('afterprint', () => {
 
   .command-separator {
     margin: 0;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 900px) {
+  .app-toolbar__command-trigger kbd {
+    display: none;
   }
 }
 

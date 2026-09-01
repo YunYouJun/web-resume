@@ -1,6 +1,12 @@
 :root {
-  --top-nav-height: 64px;
+  --top-nav-height: 104px;
   --bottom-menu-height: calc(60px + env(safe-area-inset-bottom));
+}
+
+@media (max-width: 767px) {
+  :root {
+    --top-nav-height: 64px;
+  }
 }
 
 :root {

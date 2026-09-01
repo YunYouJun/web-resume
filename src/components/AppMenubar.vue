@@ -156,10 +156,10 @@ function select(command: ResumeCommand) {
 }
 
 .app-menubar__trigger {
-  min-height: 40px;
-  border-radius: 9px;
-  padding: 0 10px;
-  font-size: 14px;
+  min-height: 32px;
+  border-radius: 7px;
+  padding: 0 9px;
+  font-size: 13px;
 
   &:hover,
   &[data-state='open'],
