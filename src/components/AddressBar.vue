@@ -60,14 +60,14 @@ async function loadDraft() {
   display: grid;
   flex: 1;
   grid-template-columns: minmax(220px, 1fr) auto;
-  gap: 8px;
+  gap: var(--wr-toolbar-group-gap);
   min-width: 0;
 }
 
 .address-bar__actions {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: var(--wr-toolbar-control-gap);
 }
 
 .address-bar__error {

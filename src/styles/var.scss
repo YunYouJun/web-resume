@@ -2,6 +2,17 @@
   --top-nav-height: 104px;
   --bottom-menu-height: 0px;
   --side-nav-width: 76px;
+
+  // Shared control and toolbar tokens
+  --wr-space-1: 4px;
+  --wr-space-2: 8px;
+  --wr-space-3: 12px;
+  --wr-control-size: 44px;
+  --wr-control-radius: 12px;
+  --wr-control-content-gap: var(--wr-space-2);
+  --wr-control-padding-inline: var(--wr-space-3);
+  --wr-toolbar-control-gap: var(--wr-space-2);
+  --wr-toolbar-group-gap: var(--wr-space-3);
 }
 
 @media (max-width: 767px) {

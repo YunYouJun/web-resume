@@ -121,6 +121,13 @@ test('fits mobile widths, exposes More commands, and switches at the desktop bre
       })
     ))
     expect(touchTargets.every(rect => rect.height >= 44 && rect.width >= 44)).toBe(true)
+
+    const mobileActionGaps = await page.locator('.app-toolbar__mobile-actions .command-button').evaluateAll((buttons) => {
+      const rects = buttons.filter(button => button.getClientRects().length).map(button => button.getBoundingClientRect())
+      return rects.slice(1).map((rect, index) => rect.left - rects[index].right)
+    })
+    await expect(page.locator('.app-toolbar__mobile-actions')).toHaveCSS('gap', '8px')
+    expect(mobileActionGaps.every(gap => gap >= 7.5)).toBe(true)
   }
 
   await expect(page.getByRole('menubar')).toBeHidden()

@@ -122,14 +122,14 @@ useEventListener('afterprint', () => {
 }
 
 .app-toolbar__actions-row {
-  gap: 10px;
+  gap: var(--wr-toolbar-group-gap);
 }
 
 .app-toolbar__utility,
 .app-toolbar__mobile-actions {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: var(--wr-toolbar-control-gap);
   flex-shrink: 0;
 }
 
@@ -157,19 +157,19 @@ useEventListener('afterprint', () => {
   .app-toolbar__mobile {
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: var(--wr-toolbar-group-gap);
   }
 
   .app-toolbar__source {
     display: grid;
     flex: 1;
     min-width: 0;
-    min-height: 44px;
+    min-height: var(--wr-control-size);
     grid-template-columns: 28px minmax(0, 1fr);
     align-items: center;
-    gap: 8px;
-    border-radius: 10px;
-    padding: 4px 8px;
+    gap: var(--wr-control-content-gap);
+    border-radius: var(--wr-control-radius);
+    padding: var(--wr-space-1) var(--wr-space-2);
     color: inherit;
     text-align: left;
 
@@ -198,12 +198,8 @@ useEventListener('afterprint', () => {
     }
   }
 
-  .app-toolbar__mobile-actions {
-    gap: 0;
-  }
-
   .app-toolbar__export {
-    padding: 0 10px;
+    padding: 0 var(--wr-control-padding-inline);
     font-size: 12px;
   }
 

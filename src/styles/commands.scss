@@ -2,12 +2,12 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 7px;
-  min-width: 44px;
-  min-height: 44px;
+  gap: var(--wr-control-content-gap);
+  min-width: var(--wr-control-size);
+  min-height: var(--wr-control-size);
   border: 1px solid transparent;
-  border-radius: 11px;
-  padding: 0 12px;
+  border-radius: var(--wr-control-radius);
+  padding: 0 var(--wr-control-padding-inline);
   color: var(--wr-c-text);
   font: inherit;
   white-space: nowrap;
@@ -59,7 +59,7 @@
 .command-separator {
   width: 1px;
   height: 24px;
-  margin: 0 2px;
+  margin: 0 var(--wr-space-1);
   background: rgb(127 127 127 / 22%);
 }
 

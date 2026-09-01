@@ -146,9 +146,9 @@ defineExpose({ load })
 
 .resume-source-input__control {
   width: 100%;
-  min-height: 44px;
+  min-height: var(--wr-control-size);
   border: 1px solid transparent;
-  border-radius: 12px;
+  border-radius: var(--wr-control-radius);
   padding: 0 44px 0 14px;
   color: var(--wr-c-text);
   background: var(--wr-c-bg-soft);
