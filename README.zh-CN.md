@@ -72,6 +72,14 @@ app.use(VueGtag, {
 
 > 可自定义缩放比例，测试 78% 左右（自己试试咯）可以一页输出。
 
+也可以通过 CLI 自动导出：
+
+```bash
+pnpm export:pdf -- --input ./public/resume/suzumiya.resume.yml --output ./resume.pdf
+```
+
+输入支持本地 YAML 和 HTTP(S) URL。访问 Cloudflare Access 保护的 URL 时，通过环境变量提供 `CF_ACCESS_CLIENT_ID` 和 `CF_ACCESS_CLIENT_SECRET`。
+
 ## Ref
 
 整体样式布局，参考自 LaTeX 简历模版 [billryan/resume](https://github.com/billryan/resume/tree/zh_CN)。

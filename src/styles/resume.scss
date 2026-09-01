@@ -60,6 +60,18 @@
   }
 }
 
+@media print {
+  .resume {
+    h2 {
+      break-after: avoid-page;
+    }
+
+    details {
+      break-inside: avoid-page;
+    }
+  }
+}
+
 // components
 .resume-btn {
   cursor: pointer;

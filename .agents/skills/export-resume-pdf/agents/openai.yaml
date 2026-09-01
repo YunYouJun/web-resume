@@ -1,0 +1,5 @@
+# eslint-disable yaml/plain-scalar
+interface:
+  display_name: 'Export Resume PDF'
+  short_description: 'Export and visually verify web-resume PDFs'
+  default_prompt: 'Use $export-resume-pdf to export this resume YAML as a verified PDF.'

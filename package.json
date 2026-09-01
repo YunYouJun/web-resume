@@ -21,6 +21,7 @@
   },
   "scripts": {
     "dev": "vite --host --open",
+    "export:pdf": "tsx scripts/export-pdf.ts",
     "lint": "eslint .",
     "serve": "vite preview",
     "build": "cross-env NODE_ENV=production vite build",

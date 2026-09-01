@@ -79,6 +79,14 @@ app.use(VueGtag, {
 
 Use Chrome to right-click to print and select `Save as PDF`.
 
+You can also export a local YAML file or HTTP(S) URL with the CLI:
+
+```bash
+pnpm export:pdf -- --input ./public/resume/suzumiya.resume.yml --output ./resume.pdf
+```
+
+For a Cloudflare Access-protected URL, provide `CF_ACCESS_CLIENT_ID` and `CF_ACCESS_CLIENT_SECRET` as environment variables.
+
 > You can customize the zoom ratio, test about 78% (try it yourself), and you can output on one page.
 
 ## Ref
