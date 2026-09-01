@@ -23,7 +23,7 @@ import { prefix as monacoPrefix } from './src/monaco'
 const markdownWrapperClasses = 'markdown-body max-w-900px m-auto text-left px-4'
 
 // https://vitejs.dev/config/
-export default defineConfig({
+export default defineConfig(({ isSsrBuild }) => ({
   resolve: {
     alias: {
       '~/': `${path.resolve(__dirname, 'src')}/`,
@@ -34,16 +34,18 @@ export default defineConfig({
     rollupOptions: {
       output: {
         inlineDynamicImports: false,
-        manualChunks: {
-          // as a chunk to load error (KeyCode is undefined)
-          monaco: ['monaco-editor'],
-          editorWorker: [`${monacoPrefix}/editor/editor.worker`],
-          // jsonWorker: [`${monacoPrefix}/language/json/json.worker`],
-          // cssWorker: [`${monacoPrefix}/language/css/css.worker`],
-          // htmlWorker: [`${monacoPrefix}/language/html/html.worker`],
-          // tsWorker: [`${monacoPrefix}/language/typescript/ts.worker`],
-          yamlWorker: ['monaco-yaml/yaml.worker'],
-        },
+        manualChunks: isSsrBuild
+          ? undefined
+          : {
+              // as a chunk to load error (KeyCode is undefined)
+              monaco: ['monaco-editor'],
+              editorWorker: [`${monacoPrefix}/editor/editor.worker`],
+              // jsonWorker: [`${monacoPrefix}/language/json/json.worker`],
+              // cssWorker: [`${monacoPrefix}/language/css/css.worker`],
+              // htmlWorker: [`${monacoPrefix}/language/html/html.worker`],
+              // tsWorker: [`${monacoPrefix}/language/typescript/ts.worker`],
+              yamlWorker: ['monaco-yaml/yaml.worker'],
+            },
       },
     },
   },
@@ -131,8 +133,15 @@ export default defineConfig({
         'robots.txt',
       ],
       manifest: {
+        id: '/',
         name: 'Web Resume',
         short_name: 'Web Resume',
+        description: '从 YAML 生成、编辑并导出 PDF 简历。',
+        lang: 'zh-CN',
+        start_url: '/',
+        scope: '/',
+        display: 'standalone',
+        categories: ['productivity', 'utilities'],
         theme_color: '#0078e7',
         background_color: '#f9f9f9',
         icons: [
@@ -201,4 +210,4 @@ export default defineConfig({
       'monaco-editor',
     ],
   },
-})
+}))

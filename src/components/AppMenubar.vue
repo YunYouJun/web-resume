@@ -21,7 +21,7 @@ const recentCommands = computed(() => commands.value.filter(command => command.i
 const exampleCommands = computed(() => commands.value.filter(command => command.id.startsWith('resume.example:')))
 const fileCommands = computed(() => ['resume.load', 'resume.restore-example', 'resume.share', 'resume.print'].map(find).filter(Boolean) as ResumeCommand[])
 const viewCommands = computed(() => ['resume.preview', 'view.fullscreen'].map(find).filter(Boolean) as ResumeCommand[])
-const helpCommands = computed(() => ['help.onboarding', 'help.docs', 'help.github', 'help.language'].map(find).filter(Boolean) as ResumeCommand[])
+const helpCommands = computed(() => ['help.onboarding', 'help.docs', 'help.support', 'help.privacy', 'help.github', 'help.language'].map(find).filter(Boolean) as ResumeCommand[])
 const overrideCommand = computed(() => find('view.override-info'))
 
 function select(command: ResumeCommand) {

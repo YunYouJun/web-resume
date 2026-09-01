@@ -109,6 +109,52 @@ test('shows the print guide and then opens the print flow', async ({ page }) => 
   await expect(page.getByRole('navigation', { name: '简历工具栏' })).toHaveCount(0, { timeout: 3_000 })
 })
 
+test('guides YunLeFun app users to export in the system browser', async ({ page }) => {
+  await page.addInitScript(() => {
+    let copiedUrl = ''
+    Object.defineProperty(window, 'ylf', {
+      configurable: true,
+      value: { inYunleApp: true },
+    })
+    Object.defineProperty(navigator, 'clipboard', {
+      configurable: true,
+      value: {
+        writeText: async (value: string) => {
+          copiedUrl = value
+        },
+      },
+    })
+    Object.defineProperty(window, '__getCopiedUrl', {
+      configurable: true,
+      value: () => copiedUrl,
+    })
+    window.print = () => {
+      throw new Error('window.print should not run inside YunLeFun')
+    }
+  })
+  await openResume(page)
+
+  await page.getByRole('button', { name: '导出 PDF' }).click()
+
+  await expect(page.getByText('请在系统浏览器中导出', { exact: true })).toBeVisible()
+  await expect(page.getByText('导出链接已复制。请从右上角“更多”选择“系统浏览器打开”，粘贴链接后再次导出。', { exact: true })).toBeVisible()
+  const copiedUrl = await page.evaluate(() => (window as typeof window & { __getCopiedUrl: () => string }).__getCopiedUrl())
+  expect(copiedUrl).toContain(`url=${encodeURIComponent(resumeUrl)}`)
+  await expect(page.getByRole('navigation', { name: '简历工具栏' })).toBeVisible()
+})
+
+test('publishes accessible privacy and support routes', async ({ page }) => {
+  await page.goto('/privacy')
+  await expect(page.getByRole('heading', { level: 1, name: '隐私政策' })).toBeVisible()
+  await expect(page.getByRole('heading', { level: 2, name: '我们处理哪些数据' })).toBeVisible()
+
+  await page.getByRole('link', { name: '帮助与支持' }).last().click()
+  await expect(page).toHaveURL('/support')
+  await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(0)
+  await expect(page.getByRole('heading', { level: 1, name: '帮助与支持' })).toBeVisible()
+  await expect(page.getByRole('link', { name: 'GitHub Issues' })).toBeVisible()
+})
+
 test('fits mobile widths, exposes More commands, and switches at the desktop breakpoint', async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 800 })
   await openResume(page)
@@ -146,6 +192,8 @@ test('fits mobile widths, exposes More commands, and switches at the desktop bre
   await page.getByRole('button', { name: '更多' }).click()
   await expect(page.getByRole('menuitem', { name: '打开纯净预览' })).toBeVisible()
   await expect(page.getByRole('menuitem', { name: /搜索命令/ })).toBeVisible()
+  await expect(page.getByRole('menuitem', { name: '帮助与支持' })).toBeVisible()
+  await expect(page.getByRole('menuitem', { name: '隐私政策' })).toBeVisible()
   await page.getByRole('menuitem', { name: /搜索命令/ }).click()
   const palette = page.getByRole('dialog', { name: '搜索命令' })
   await expect(palette).toBeVisible()

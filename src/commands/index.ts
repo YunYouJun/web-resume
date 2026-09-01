@@ -24,6 +24,44 @@ export function useResumeCommands(): ResumeCommands {
     window.open(url, '_blank', 'noopener,noreferrer')
   }
 
+  function isYunLeFunAppBrowser() {
+    return window.ylf?.inYunleApp === true
+  }
+
+  async function exportResume() {
+    if (isYunLeFunAppBrowser()) {
+      let copied = false
+      try {
+        await navigator.clipboard.writeText(window.location.href)
+        copied = true
+      }
+      catch {
+        // Clipboard access may be unavailable in older host versions. The
+        // native title-bar menu still provides the system-browser action.
+      }
+
+      app.showToast({
+        description: t(copied
+          ? 'toast.in_app_print_copied_description'
+          : 'toast.in_app_print_description'),
+        title: t('toast.in_app_print_title'),
+      })
+      return
+    }
+
+    if (!app.hasSeenPrintGuide) {
+      app.hasSeenPrintGuide = true
+      app.showToast({
+        description: t('toast.print_guide_description'),
+        title: t('toast.print_guide_title'),
+      })
+      window.setTimeout(() => window.print(), 650)
+    }
+    else {
+      window.print()
+    }
+  }
+
   function toggleLocale() {
     const locales = availableLocales
     locale.value = locales[(locales.indexOf(locale.value) + 1) % locales.length]
@@ -83,19 +121,7 @@ export function useResumeCommands(): ResumeCommands {
         label: t('command.export_pdf'),
         menu: 'file',
         shortcut: 'Mod+P',
-        run: () => {
-          if (!app.hasSeenPrintGuide) {
-            app.hasSeenPrintGuide = true
-            app.showToast({
-              description: t('toast.print_guide_description'),
-              title: t('toast.print_guide_title'),
-            })
-            window.setTimeout(() => window.print(), 650)
-          }
-          else {
-            window.print()
-          }
-        },
+        run: exportResume,
       },
       {
         enabled: Boolean(app.curResume.url),
@@ -230,6 +256,30 @@ export function useResumeCommands(): ResumeCommands {
         label: t('command.open_docs'),
         menu: 'help',
         run: () => openExternal(pkg.docs),
+      },
+      {
+        enabled: true,
+        group: 'help',
+        icon: 'i-ri-customer-service-2-line',
+        id: 'help.support',
+        keywords: ['support', 'help', 'issue', '反馈', '支持', '问题'],
+        label: t('command.open_support'),
+        menu: 'help',
+        run: async () => {
+          await router.push('/support')
+        },
+      },
+      {
+        enabled: true,
+        group: 'help',
+        icon: 'i-ri-shield-check-line',
+        id: 'help.privacy',
+        keywords: ['privacy', 'data', 'policy', '隐私', '数据'],
+        label: t('command.open_privacy'),
+        menu: 'help',
+        run: async () => {
+          await router.push('/privacy')
+        },
       },
       {
         enabled: true,

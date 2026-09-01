@@ -51,9 +51,23 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
+    '/privacy': RouteRecordInfo<
+      '/privacy',
+      '/privacy',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
     '/resume': RouteRecordInfo<
       '/resume',
       '/resume',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/support': RouteRecordInfo<
+      '/support',
+      '/support',
       Record<never, never>,
       Record<never, never>,
       | never
@@ -102,9 +116,21 @@ declare module 'vue-router/auto-routes' {
       views:
         | never
     }
+    'src/pages/privacy.vue': {
+      routes:
+        | '/privacy'
+      views:
+        | never
+    }
     'src/pages/resume.vue': {
       routes:
         | '/resume'
+      views:
+        | never
+    }
+    'src/pages/support.vue': {
+      routes:
+        | '/support'
       views:
         | never
     }

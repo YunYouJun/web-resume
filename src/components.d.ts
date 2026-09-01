@@ -23,6 +23,7 @@ declare module 'vue' {
     CertificateItem: typeof import('./components/certificate/Item.vue')['default']
     HelloResume: typeof import('./components/HelloResume.vue')['default']
     IconifyIcon: typeof import('./components/IconifyIcon.vue')['default']
+    InfoPageShell: typeof import('./components/InfoPageShell.vue')['default']
     MonacoEditor: typeof import('./components/MonacoEditor.vue')['default']
     OnboardingDialog: typeof import('./components/OnboardingDialog.vue')['default']
     OnboardingSteps: typeof import('./components/OnboardingSteps.vue')['default']

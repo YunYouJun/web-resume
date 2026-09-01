@@ -31,6 +31,8 @@ const commands = computed(() => [
   'resume.restore-example',
   'help.onboarding',
   'help.docs',
+  'help.support',
+  'help.privacy',
   'help.language',
 ].map(find).filter(Boolean) as ResumeCommand[])
 const helpStartIndex = computed(() => props.includePreview ? 4 : 3)

@@ -6,7 +6,14 @@ import { useHead } from '@vueuse/head'
 // they will be rendered correctly in the html results with vite-ssg
 useHead({
   title: 'Web Resume',
-  meta: [{ name: 'description', content: 'Web 简历' }],
+  htmlAttrs: { lang: 'zh-CN' },
+  meta: [
+    { name: 'application-name', content: 'Web Resume' },
+    { name: 'description', content: '从 YAML 生成、编辑并导出 PDF 简历。' },
+    { property: 'og:title', content: 'Web Resume' },
+    { property: 'og:description', content: '从 YAML 生成、编辑并导出 PDF 简历。' },
+    { property: 'og:type', content: 'website' },
+  ],
   script: [{
     // iconify icon cdn
     src: 'https://code.iconify.design/2/2.1.2/iconify.min.js',

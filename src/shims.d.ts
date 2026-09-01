@@ -17,15 +17,14 @@ declare module '*.md' {
   export default component
 }
 
-declare interface Window {
-  // extend the window
-  monaco: typeof m | undefined
-  MonacoEnvironment: Environment
-}
-
 declare global {
+  interface YunLeFunHostBridge {
+    inYunleApp?: boolean
+  }
+
   interface Window {
     monaco: typeof m | undefined
     MonacoEnvironment: Environment
+    ylf?: YunLeFunHostBridge
   }
 }

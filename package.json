@@ -10,11 +10,14 @@
     "email": "me@yunyoujun.cn",
     "name": "YunYouJun"
   },
-  "homepage": "https://web-resume.yunyoujun.cn",
+  "homepage": "https://resume.elpsy.cn",
   "docs": "https://docs.yunyoujun.cn/projects/web-resume.html",
   "repository": {
     "url": "https://github.com/YunYouJun/web-resume",
     "type": "git"
+  },
+  "bugs": {
+    "url": "https://github.com/YunYouJun/web-resume/issues"
   },
   "engines": {
     "node": ">=22.12.0"
@@ -24,8 +27,9 @@
     "export:pdf": "tsx scripts/export-pdf.ts",
     "lint": "eslint .",
     "serve": "vite preview",
-    "build": "cross-env NODE_ENV=production vite build",
-    "build:ssg": "cross-env NODE_ENV=production vite-ssg build",
+    "build": "cross-env NODE_ENV=production vite-ssg build",
+    "build:spa": "cross-env NODE_ENV=production vite build",
+    "build:ssg": "pnpm build",
     "schema": "tsx scripts/schema.ts",
     "prepare": "rm -f public/schema/resume.schema.json && ln src/assets/schema/resume.schema.json public/schema/resume.schema.json && pnpm husky",
     "preview": "vite preview",

@@ -58,6 +58,8 @@ command:
   open_editor: Open editor
   open_editor_commands: Open editor command palette
   open_guide: Getting started
+  open_privacy: Privacy policy
+  open_support: Help and support
   override_info: Use my profile to replace resume contact info
   preview_resume: Open clean preview
   remove_recent: Remove recent item
@@ -97,6 +99,9 @@ toast:
   example_restored: Example resume restored
   link_copied: Share link copied
   notification: Notification
+  in_app_print_copied_description: The export link is copied. Choose “Open in system browser” from the top-right More menu, paste the link, and export again.
+  in_app_print_description: Choose “Open in system browser” from the top-right More menu, then export the PDF again.
+  in_app_print_title: Export in your system browser
   print_guide_description: Choose “Save as PDF” in your browser print dialog.
   print_guide_title: Opening the print dialog
   restore_undone: Restore undone

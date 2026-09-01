@@ -57,6 +57,8 @@ command:
   open_editor: 打开编辑器
   open_editor_commands: 打开编辑器命令面板
   open_guide: 新手引导
+  open_privacy: 隐私政策
+  open_support: 帮助与支持
   override_info: 使用我的资料覆盖简历信息
   preview_resume: 打开纯净预览
   remove_recent: 删除最近记录
@@ -96,6 +98,9 @@ toast:
   example_restored: 已恢复示例简历
   link_copied: 分享链接已复制
   notification: 通知
+  in_app_print_copied_description: 导出链接已复制。请从右上角“更多”选择“系统浏览器打开”，粘贴链接后再次导出。
+  in_app_print_description: 请从右上角“更多”选择“系统浏览器打开”，然后再次导出 PDF。
+  in_app_print_title: 请在系统浏览器中导出
   print_guide_description: 请在浏览器打印窗口中选择“另存为 PDF”。
   print_guide_title: 即将打开打印窗口
   restore_undone: 已撤销恢复操作
