@@ -54,10 +54,17 @@ test('supports Menubar, Toolbar, command search, and guarded shortcuts', async (
   await openResume(page)
 
   const menubarBox = await page.getByRole('menubar').boundingBox()
+  const brandLink = page.getByRole('link', { name: 'Web Resume · 首页' })
+  const brandBox = await brandLink.boundingBox()
   const addressBarBox = await page.getByRole('combobox', { name: '简历 YAML 地址' }).boundingBox()
   expect(menubarBox).not.toBeNull()
+  expect(brandBox).not.toBeNull()
   expect(addressBarBox).not.toBeNull()
+  expect(brandBox!.x + brandBox!.width).toBeLessThan(menubarBox!.x)
   expect(menubarBox!.y + menubarBox!.height).toBeLessThan(addressBarBox!.y)
+
+  await brandLink.click()
+  await expect(page).toHaveURL('/')
 
   const fileMenu = page.getByRole('menuitem', { name: '文件', exact: true })
   const viewMenu = page.getByRole('menuitem', { name: '视图', exact: true })
@@ -139,7 +146,7 @@ test('fits mobile widths, exposes More commands, and switches at the desktop bre
   await expect(palette).toHaveCSS('width', '375px')
   await page.getByRole('combobox', { name: '搜索命令' }).press('Escape')
 
-  const homeLink = page.getByRole('link', { name: '首页' })
+  const homeLink = page.getByRole('link', { name: '首页', exact: true })
   await expect(homeLink).toHaveAttribute('aria-current', 'page')
 
   // Leave room for engines that reserve scrollbar width inside the CSS viewport.

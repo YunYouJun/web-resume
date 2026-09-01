@@ -122,21 +122,37 @@ export default defineConfig({
 
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.svg', 'robots.txt', 'safari-pinned-tab.svg'],
+      includeAssets: [
+        'favicon.ico',
+        'img/icons/apple-touch-icon-180x180.png',
+        'img/icons/favicon-32x32.png',
+        'img/icons/safari-pinned-tab.svg',
+        'img/icons/web-resume-mark.svg',
+        'robots.txt',
+      ],
       manifest: {
         name: 'Web Resume',
-        short_name: 'resume',
-        theme_color: '#4DBA87',
+        short_name: 'Web Resume',
+        theme_color: '#0078e7',
+        background_color: '#f9f9f9',
         icons: [
           {
             src: './img/icons/android-chrome-192x192.png',
             sizes: '192x192',
             type: 'image/png',
+            purpose: 'any',
           },
           {
             src: './img/icons/android-chrome-512x512.png',
             sizes: '512x512',
             type: 'image/png',
+            purpose: 'any',
+          },
+          {
+            src: './img/icons/maskable-512x512.png',
+            sizes: '512x512',
+            type: 'image/png',
+            purpose: 'maskable',
           },
         ],
       },

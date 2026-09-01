@@ -26,6 +26,15 @@ useEventListener('afterprint', () => {
   >
     <div class="app-toolbar__desktop">
       <div class="app-toolbar__menubar-row">
+        <RouterLink
+          to="/"
+          class="app-toolbar__brand"
+          :aria-label="`Web Resume · ${t('button.home')}`"
+        >
+          <img src="/img/icons/web-resume-mark.svg" alt="">
+          <span>Web Resume</span>
+        </RouterLink>
+        <span class="app-toolbar__brand-separator" aria-hidden="true" />
         <AppMenubar />
       </div>
 
@@ -116,9 +125,46 @@ useEventListener('afterprint', () => {
 }
 
 .app-toolbar__menubar-row {
+  gap: var(--wr-space-2);
   min-height: 32px;
   border-bottom: 1px solid rgb(127 127 127 / 12%);
   padding: 0 2px 5px;
+}
+
+.app-toolbar__brand {
+  display: inline-flex;
+  min-height: 32px;
+  align-items: center;
+  gap: var(--wr-space-2);
+  border-radius: 7px;
+  padding: 0 var(--wr-space-2);
+  color: inherit;
+  font-size: 13px;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+
+  img {
+    width: 22px;
+    height: 22px;
+    flex: 0 0 auto;
+  }
+
+  &:hover {
+    background: rgb(127 127 127 / 10%);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--wr-c-link);
+    outline-offset: 2px;
+  }
+}
+
+.app-toolbar__brand-separator {
+  width: 1px;
+  height: 18px;
+  flex: 0 0 auto;
+  background: rgb(127 127 127 / 20%);
 }
 
 .app-toolbar__actions-row {
@@ -209,6 +255,10 @@ useEventListener('afterprint', () => {
 }
 
 @media (min-width: 768px) and (max-width: 900px) {
+  .app-toolbar__brand span {
+    display: none;
+  }
+
   .app-toolbar__command-trigger kbd {
     display: none;
   }
