@@ -51,6 +51,13 @@
   color: white;
   background: var(--wr-c-link);
 
+  &:disabled,
+  &[data-disabled] {
+    border-color: rgb(127 127 127 / 18%);
+    color: rgb(100 100 100);
+    background: rgb(127 127 127 / 12%);
+  }
+
   &:hover:not(:disabled) {
     background: color-mix(in srgb, var(--wr-c-link), black 12%);
   }

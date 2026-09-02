@@ -128,6 +128,7 @@ export default defineConfig(({ isSsrBuild }) => ({
         'favicon.ico',
         'img/icons/apple-touch-icon-180x180.png',
         'img/icons/favicon-32x32.png',
+        'img/icons/favicon.svg',
         'img/icons/safari-pinned-tab.svg',
         'img/icons/web-resume-mark.svg',
         'robots.txt',
@@ -142,8 +143,8 @@ export default defineConfig(({ isSsrBuild }) => ({
         scope: '/',
         display: 'standalone',
         categories: ['productivity', 'utilities'],
-        theme_color: '#0078e7',
-        background_color: '#f9f9f9',
+        theme_color: '#f4f5ef',
+        background_color: '#f4f5ef',
         icons: [
           {
             src: './img/icons/android-chrome-192x192.png',

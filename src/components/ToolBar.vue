@@ -157,6 +157,11 @@ useEventListener('afterprint', () => {
   }
 }
 
+:global(.dark) .app-toolbar__brand img,
+:global(.dark) .app-toolbar__mobile-brand img {
+  filter: invert(1);
+}
+
 .app-toolbar__brand-separator {
   width: 1px;
   height: 18px;

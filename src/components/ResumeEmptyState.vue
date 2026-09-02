@@ -40,10 +40,11 @@ const { t } = useI18n()
   justify-content: center;
   width: 56px;
   height: 56px;
+  border: 1px solid color-mix(in srgb, var(--wr-c-link), transparent 78%);
   border-radius: 17px;
-  color: white;
+  color: var(--wr-c-link);
   font-size: 26px;
-  background: var(--wr-c-link);
-  box-shadow: 0 12px 30px color-mix(in srgb, var(--wr-c-link), transparent 64%);
+  background: var(--wr-c-brand-surface);
+  box-shadow: 0 12px 30px rgb(0 0 0 / 9%);
 }
 </style>

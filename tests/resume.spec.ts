@@ -23,6 +23,21 @@ test('guides a first-time visitor through loading an example', async ({ page }) 
   await expect(page.getByRole('button', { name: '导出 PDF' })).toBeEnabled()
 })
 
+test('uses a neutral interface mark and warm app icon surface', async ({ page }) => {
+  const mark = await readFile('public/img/icons/web-resume-mark.svg', 'utf8')
+  const appIcon = await readFile('public/img/icons/web-resume-app-icon.svg', 'utf8')
+
+  expect(mark).toContain('#1d1d1f')
+  expect(mark).not.toContain('#0078e7')
+  expect(appIcon).toContain('#f4f5ef')
+  expect(appIcon).toContain('#0078e7')
+  expect(appIcon).not.toContain('linearGradient')
+
+  await page.goto('/')
+  await expect(page.locator('.resume-empty-state__mark')).toHaveCSS('background-color', 'rgb(244, 245, 239)')
+  await expect(page.getByRole('button', { name: '导出 PDF' })).toHaveCSS('background-color', 'rgba(127, 127, 127, 0.12)')
+})
+
 test('loads the URL currently typed in the address bar on Enter', async ({ page }) => {
   await openResume(page)
   const typedUrl = '/resume/suzumiya.resume.yml?source=typed-entry'

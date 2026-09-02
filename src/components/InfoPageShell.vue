@@ -75,6 +75,10 @@ const { t } = useI18n()
   }
 }
 
+.dark .info-page__brand img {
+  filter: invert(1);
+}
+
 .info-page__kicker {
   margin: 0 0 8px;
   color: var(--wr-c-link);
