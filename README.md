@@ -26,9 +26,9 @@
 
 #### Preview
 
-View `https://resume.elpsy.cn/?url=` + `Your Resume File URL`.
+View `https://resume.yunle.fun/?url=` + `Your Resume File URL`.
 
-For example: `https://resume.elpsy.cn/?url=https://fastly.jsdelivr.net/gh/YunYouJun/web-resume/src/assets/resume/local.resume.yml`.
+For example: `https://resume.yunle.fun/?url=https://fastly.jsdelivr.net/gh/YunYouJun/web-resume/src/assets/resume/local.resume.yml`.
 
 #### Edit
 
