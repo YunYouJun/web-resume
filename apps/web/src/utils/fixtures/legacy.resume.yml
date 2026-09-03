@@ -1,0 +1,59 @@
+basics:
+  name: 云游君
+  bio: All at sea.
+  location: 上海
+contact:
+  email:
+    href: mailto:me@example.com
+    icon: ri:mail-line
+    label: me@example.com
+  phone:
+    href: tel:10086
+    icon: ri:smartphone-line
+    label: '10086'
+  blog:
+    href: https://example.com
+    icon: ri:earth-line
+    label: Example
+education:
+  icon: ri:graduation-cap-line
+  title: 教育背景
+  histories:
+    - school: 示例大学
+      start: 2018 年 9 月
+      end: 2022 年 6 月
+      grade: GPA 4.0
+      area: 计算机科学
+      studyType: 本科
+      city: 上海
+project:
+  icon: ri:folders-line
+  title: 项目经历
+  sets:
+    - name: Web Resume
+      logo: ri:file-user-line
+      type: 开源项目
+      start: 2020 年
+      end: 至今
+      keywords:
+        - name: Vue
+          icon: simple-icons:vuedotjs
+skill:
+  icon: ri:flask-line
+  title: 技能
+  sets:
+    - title: 工程
+      keywords:
+        - name: TypeScript
+certificate:
+  icon: ri:award-line
+  title: 奖项
+  histories:
+    - name: 示例奖项
+      place: 示例组织
+      time: 2020-2022
+other:
+  icon: ri:information-line
+  title: 其他
+  info:
+    - 保留旧格式兼容。

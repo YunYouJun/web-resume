@@ -14,6 +14,10 @@ dist-ssr
 *.local
 
 # local env files
+.env
+.env.*
+!.env.example
+!**/.env.example
 .env.local
 .env.*.local
 
@@ -36,6 +40,14 @@ yarn-error.log*
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+/apps/web/test-results/
+/apps/web/playwright-report/
+/apps/web/blob-report/
+/apps/web/playwright/.cache/
+
+# Coverage
+/coverage/
+/apps/web/coverage/
 
 # Generated resume artifacts
 /output/pdf/

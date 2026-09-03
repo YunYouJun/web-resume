@@ -1,0 +1,113 @@
+# JSON Resume compatible document
+$schema: >-
+  https://raw.githubusercontent.com/jsonresume/jsonresume.org/54eba4131801b6b32aa947ce8a4fbef526800a08/packages/schema/schema.json
+basics:
+  email: yichuan@example.com
+  label: 高级软件工程师
+  name: 陈一川
+  phone: 138 0000 0000
+  summary: 关注复杂系统的可维护性、性能与开发者体验，习惯用可观测数据推动工程决策。
+  url: https://example.com/yichuan
+  profiles:
+    - network: github
+      url: https://github.com/example
+      username: github.com/example
+education:
+  - area: 软件工程
+    endDate: 2018-06
+    institution: 东海大学
+    score: GPA 3.5 · 专业前 20%
+    startDate: 2014-09
+    studyType: 本科
+work:
+  - summary: 负责交易平台前端架构、性能治理与工程效率建设。
+    highlights:
+      - 将核心页面的交互就绪时间降低 38%，并建立持续性能预算。
+      - 设计模块边界与迁移方案，将跨团队重复代码减少约 30%。
+      - 搭建发布观测面板，使回滚定位时间从小时级缩短至分钟级。
+    keywords:
+      - TypeScript
+      - Vue
+      - Node.js
+    name: 星河科技
+    startDate: 2022-07
+    position: 高级软件工程师
+  - summary: 参与企业协作产品的 Web 与桌面端研发。
+    endDate: 2022-06
+    highlights:
+      - 负责离线同步与大列表渲染，支持十万级记录流畅浏览。
+      - 推动组件测试与代码审查规范落地，降低线上回归频率。
+    name: 山岚网络
+    startDate: 2018-07
+    position: 前端工程师
+skills:
+  - keywords:
+      - TypeScript
+      - Vue
+      - React
+      - Node.js
+    name: 工程
+  - keywords:
+      - Web 性能
+      - 可观测性
+      - 架构设计
+    name: 方向
+x-web-resume:
+  sectionOrder:
+    - education
+    - work
+    - skills
+  sections:
+    education:
+      icon: ri:graduation-cap-line
+      items:
+        - city: 上海
+          icon: ri:building-line
+      title: 教育背景
+    work:
+      icon: ri:briefcase-4-line
+      items:
+        - end: 至今
+          keywordDetails:
+            - name: TypeScript
+              icon: simple-icons:typescript
+            - name: Vue
+              icon: simple-icons:vuedotjs
+            - name: Node.js
+              icon: simple-icons:nodedotjs
+          logo: ri:building-4-line
+        - logo: ri:cloud-line
+      title: 工作经历
+    skills:
+      icon: ri:code-box-line
+      items:
+        - keywordDetails:
+            - name: TypeScript
+              icon: simple-icons:typescript
+            - name: Vue
+              icon: simple-icons:vuedotjs
+            - name: React
+              icon: simple-icons:react
+            - name: Node.js
+              icon: simple-icons:nodedotjs
+        - keywordDetails:
+            - name: Web 性能
+              icon: ri:speed-up-line
+            - name: 可观测性
+              icon: ri:line-chart-line
+            - name: 架构设计
+              icon: ri:node-tree
+      title: 技术能力
+  version: 1
+  basics:
+    location: 深圳
+  contacts:
+    email:
+      icon: ri:mail-line
+    phone:
+      icon: ri:smartphone-line
+    blog:
+      icon: ri:earth-line
+      label: 技术笔记
+    github:
+      icon: ri:github-line

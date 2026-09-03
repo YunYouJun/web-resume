@@ -1,0 +1,103 @@
+# JSON Resume compatible document
+$schema: >-
+  https://raw.githubusercontent.com/jsonresume/jsonresume.org/54eba4131801b6b32aa947ce8a4fbef526800a08/packages/schema/schema.json
+basics:
+  email: gunan@example.com
+  label: 独立品牌与数字产品设计师
+  name: 顾南
+  phone: 预约项目后交换
+  summary: 用清晰的视觉系统和有温度的交互，帮助小团队把想法变成可识别的产品。
+  url: https://example.com/gunan
+education:
+  - area: 视觉传达设计
+    endDate: 2020-06
+    institution: 海湾艺术学院
+    score: GPA 3.7 · 专业前 15%
+    startDate: 2016-09
+    studyType: 本科
+projects:
+  - description: 为拥有三家门店的本地咖啡品牌建立一致、可扩展的视觉语言。
+    endDate: 2024-09
+    highlights:
+      - 完成品牌访谈、定位梳理、标识更新和包装应用规范。
+      - 建立门店物料模板，使日常设计交付周期缩短一半。
+    keywords:
+      - 品牌策略
+      - 包装设计
+      - 设计系统
+    name: 山海咖啡品牌更新
+    startDate: 2024-04
+    type: 品牌策略 · 视觉系统
+  - description: 设计活动发现、报名和会员内容体验，并参与前端验收。
+    endDate: 2024-02
+    highlights:
+      - 通过用户访谈和服务蓝图重构报名流程。
+      - 建立 42 个可复用组件，覆盖桌面与移动端界面。
+    name: 独立书店活动平台
+    startDate: 2023-07
+    type: 产品设计 · Web
+skills:
+  - keywords:
+      - 品牌系统
+      - UI / UX
+      - 动效原型
+    name: 专长
+  - keywords:
+      - Figma
+      - Illustrator
+      - After Effects
+    name: 工具
+x-web-resume:
+  sectionOrder:
+    - education
+    - projects
+    - skills
+  sections:
+    education:
+      icon: ri:graduation-cap-line
+      items:
+        - city: 厦门
+          icon: ri:building-line
+      title: 教育背景
+    projects:
+      icon: ri:palette-line
+      items:
+        - keywordDetails:
+            - name: 品牌策略
+              icon: ri:compass-3-line
+            - name: 包装设计
+              icon: ri:archive-line
+            - name: 设计系统
+              icon: ri:shapes-line
+          logo: ri:cup-line
+        - logo: ri:book-2-line
+      title: 精选项目
+    skills:
+      icon: ri:magic-line
+      items:
+        - keywordDetails:
+            - name: 品牌系统
+              icon: ri:palette-line
+            - name: UI / UX
+              icon: ri:cursor-line
+            - name: 动效原型
+              icon: ri:play-circle-line
+        - keywordDetails:
+            - name: Figma
+              icon: simple-icons:figma
+            - name: Illustrator
+              icon: simple-icons:adobeillustrator
+            - name: After Effects
+              icon: simple-icons:adobeaftereffects
+      title: 专长与工具
+  version: 1
+  basics:
+    location: 厦门 · 可远程
+  contacts:
+    email:
+      icon: ri:mail-line
+    phone:
+      icon: ri:smartphone-line
+    blog:
+      icon: ri:layout-masonry-line
+      label: 作品集

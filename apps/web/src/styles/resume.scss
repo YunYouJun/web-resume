@@ -1,0 +1,250 @@
+.text-kaiti {
+  font-family: '华文楷体', STKaiti, KaiTi, serif;
+  font-weight: 900;
+}
+
+.resume {
+  // Theme seam: templates consume semantic colors without owning a palette.
+  --resume-theme-accent: #0969da;
+  --resume-theme-strong: #1d1d1f;
+  --resume-theme-on-strong: white;
+  --resume-theme-divider: color-mix(in srgb, var(--resume-theme-accent), transparent 68%);
+  --resume-template-accent: var(--resume-theme-accent);
+
+  padding: 20px 50px;
+  font-size: 14px;
+
+  margin: auto;
+  max-width: 1200px;
+
+  background-color: var(--wr-c-resume-bg);
+
+  a {
+    color: var(--resume-theme-accent);
+  }
+
+  img {
+    display: inline-block;
+  }
+
+  h2 + hr {
+    margin: 5px auto;
+  }
+
+  ul {
+    list-style-type: disc;
+    list-style-position: inside;
+
+    li {
+      padding-left: 16px;
+
+      > span {
+        position: relative;
+        left: -6px;
+      }
+    }
+  }
+
+  .brand-favicon {
+    height: 18px;
+    padding-bottom: 2px;
+  }
+
+  summary,
+  details {
+    outline: none;
+    cursor: pointer;
+  }
+
+  summary {
+    margin: 10px 0;
+  }
+}
+
+.resume--sidebar {
+  display: grid;
+  grid-template-columns: minmax(190px, 27%) minmax(0, 1fr);
+  max-width: 1050px;
+  min-height: 100%;
+  border: 1px solid var(--resume-theme-divider);
+  padding: 0;
+
+  .resume__identity {
+    padding: 36px 24px;
+    color: var(--resume-theme-on-strong);
+    background: var(--resume-theme-strong);
+
+    h1 {
+      text-align: left;
+      font-size: 32px;
+      line-height: 1.15;
+    }
+
+    .wr-basic-info,
+    ul {
+      justify-content: flex-start;
+      text-align: left;
+    }
+
+    ul {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+
+      li {
+        margin: 0;
+        padding-left: 0;
+      }
+    }
+
+    a {
+      color: var(--resume-theme-on-strong);
+    }
+  }
+
+  .resume__content {
+    min-width: 0;
+    padding: 30px 36px;
+
+    h2 {
+      color: var(--resume-template-accent);
+      font-size: 21px;
+    }
+
+    h2 + hr {
+      border-color: var(--resume-theme-divider);
+    }
+  }
+}
+
+.resume--compact {
+  max-width: 900px;
+  padding: 24px 38px;
+  font-size: 12.5px;
+  line-height: 1.45;
+
+  .resume__identity {
+    border-bottom: 3px solid var(--resume-template-accent);
+
+    h1 {
+      text-align: left;
+      font-size: 30px;
+      line-height: 1.1;
+    }
+
+    .wr-basic-info,
+    ul {
+      justify-content: flex-start;
+      text-align: left;
+    }
+
+    ul {
+      margin: 10px 0;
+
+      li {
+        margin-left: 0;
+      }
+    }
+  }
+
+  .resume__content {
+    h2 {
+      margin-top: 10px;
+      color: var(--resume-template-accent);
+      font-size: 18px;
+    }
+
+    h2 + hr {
+      border-color: var(--resume-theme-divider);
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .resume {
+    padding: 20px;
+  }
+
+  .resume--sidebar {
+    display: block;
+    padding: 0;
+
+    .resume__identity {
+      padding: 24px 20px;
+
+      h1 {
+        font-size: 28px;
+      }
+
+      ul {
+        flex-direction: row;
+        align-items: center;
+        gap: 4px 10px;
+      }
+    }
+
+    .resume__content {
+      padding: 20px;
+    }
+  }
+
+  .resume--compact {
+    padding: 20px;
+  }
+}
+
+@media print {
+  .resume {
+    h2 {
+      break-after: avoid-page;
+    }
+
+    details {
+      break-inside: avoid-page;
+    }
+  }
+}
+
+// components
+.resume-btn {
+  cursor: pointer;
+  border: 2px solid var(--wr-btn-border-color);
+  border-radius: 2px;
+  padding: 0.5rem 1.5rem;
+  transition: 0.2s;
+  outline: none;
+
+  &:hover,
+  &:focus,
+  &.active {
+    color: var(--wr-btn-active-text-color);
+    background-color: var(--wr-btn-border-color);
+  }
+
+  &:active,
+  &:focus {
+    outline: none;
+  }
+
+  &.disabled {
+    --wr-btn-border-color: lightgray;
+    color: gray;
+    @apply cursor-not-allowed;
+
+    &:hover {
+      background-color: transparent;
+    }
+  }
+}
+
+.resume-input {
+  border-radius: 2px;
+  border: 1px solid var(--wr-btn-border-color);
+  width: 90%;
+  padding: 0.6rem 1rem;
+  background-color: transparent;
+
+  &:focus {
+    outline: none;
+  }
+}

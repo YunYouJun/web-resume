@@ -1,0 +1,270 @@
+button:
+  about: About
+  back: Back
+  close: Close
+  editor: Editor
+  go: GO
+  home: Home
+  local: Local
+  toggle_dark: Toggle dark mode
+  toggle_langs: Change languages
+  # custom
+  see_yaml: See Yaml
+  see_resume: See Resume
+  export_pdf: Export PDF
+
+not-found: Not found
+
+home:
+  description: Resume that can be printed as A4 PDF
+  address_placeholder: Yaml Online Address for Resume
+
+noun:
+  worker: Worker
+  suzimiya: Suzumiya Haruhi
+  example: Example
+
+editor:
+  name: Edit your resume online
+
+resume_editor:
+  drag_section: Drag “{title}” to reorder
+  move_down: Move “{title}” down
+  move_up: Move “{title}” up
+
+resume_migration:
+  cancel: Not now
+  confirm: Convert in editor
+  converted: Converted to JSON Resume; use editor undo to revert
+  description: Conversion uses standard JSON Resume fields and keeps icons, ordering, and other presentation data in x-web-resume. The YAML is not rewritten until you confirm.
+  legacy_detected: This resume uses the legacy format
+  no_warnings: No fields require manual review.
+  review: Review and convert
+  title: Convert to the standard format
+  warning_count: '{count} items need review after conversion'
+
+navigation:
+  explore: Explore
+  primary: Primary navigation
+  profile: Profile
+  settings: Settings
+
+toolbar:
+  app_menu: Application menu
+  current_resume: Current resume
+  more: More
+  open_commands: Commands
+  primary_actions: Resume actions
+  navigation: Resume toolbar
+  utility_actions: Utility actions
+
+command:
+  copy_share_link: Copy share link
+  convert_before_portable: Convert this legacy resume first
+  editor_only: Open the editor first
+  exit_fullscreen: Exit fullscreen
+  examples: Example resumes
+  export_pdf: Export PDF
+  export_portable: Export portable JSON Resume
+  file: File
+  format_yaml: Format YAML
+  fullscreen_editor: Fullscreen editor
+  help: Help
+  load_resume: Load resume
+  no_results: No matching commands
+  open_commands: Search commands
+  open_docs: Documentation
+  open_editor: Open editor
+  open_editor_commands: Open editor command palette
+  open_guide: Getting started
+  open_privacy: Privacy policy
+  open_settings: Open settings
+  open_support: Help and support
+  override_info: Use my profile to replace resume contact info
+  preview_resume: Open clean preview
+  remove_recent: Remove recent item
+  restore_example: Restore example resume
+  search_placeholder: Type a command or search…
+  search_label: Search commands
+  toggle_language: Change language
+  templates: Templates
+  undo: Undo
+  undo_restore: Undo example restore
+  use_template_named: Use {name} template
+  view: View
+  group:
+    edit: Edit
+    help: Help
+    output: Output
+    recent: Recent
+    settings: Settings
+    start: Start
+    view: View
+
+settings:
+  title: Settings
+  description: Adjust Web Resume's interface and defaults for this browser.
+  local_notice: Settings stay in this browser and are not written to your resume or share links.
+  appearance:
+    title: Appearance and language
+    description: Choose the interface theme and display language.
+    theme: Interface theme
+    theme_description: System mode responds automatically to your device appearance.
+    language: Interface language
+    language_description: Change the language used by menus, buttons, and help text.
+  themes:
+    system: System
+    light: Light
+    dark: Dark
+  languages:
+    zh_cn: 简体中文
+    en: English
+  resume:
+    title: Resume defaults
+    description: Prefer these display options when opening a resume.
+    template: Default template
+    template_description: This changes the layout without modifying YAML content.
+  privacy:
+    title: Local profile and privacy
+    description: Control whether local profile details replace contact information from the resume.
+    override_info: Use the name, phone, and email saved under Profile
+    override_info_description: Turn this off to always show the original contact details from the YAML file.
+    edit_profile: Edit profile
+    view_privacy: View privacy policy
+
+resume_source:
+  description: Paste a YAML URL, or choose a recent or example resume.
+  error: 'Could not load resume: {message}'
+  label: Resume YAML URL
+  loading: Loading…
+  recent_description: Switch quickly between resumes you've loaded
+  recent_title: Recent resumes
+  title: Choose a resume source
+  untitled: Untitled resume
+
+onboarding:
+  description: Start from an existing YAML file, an example, or the online editor.
+  edit_description: Edit YAML in the browser and review the result live.
+  edit_title: Open editor
+  example_description: Explore the format and print flow with a built-in example.
+  example_title: Try an example
+  source_description: Use a public or supported resume YAML URL.
+  source_title: Paste YAML URL
+  title: Build your resume in three steps
+
+template_market:
+  title: Resume templates
+  description: Choose sample data first, then compare every template with the same content. Templates change layout without rewriting your resume.
+  data_label: Preview data
+  data_current: Current resume
+  data_current_description: Compare templates using the content you have already loaded or edited.
+  data_select: Select preview data
+  data_view_yaml: View YAML
+  data_groups:
+    universal: General
+    career: Career
+    student: Student
+    creator: Creator
+    playful: Playful
+  layout_title: Filter templates
+  layout_description: Narrow templates by purpose, then choose according to their layout traits.
+  category_label: Template purpose
+  categories:
+    all: All
+    universal: General
+    professional: Professional
+    creative: Creative
+  item_count: '{count} items'
+  result_status: Showing {count} templates
+  preview_label: '{template} template preview using {data} data'
+  tags_label: Features
+  actions:
+    preview: Preview
+    preview_named: Preview the {name} template
+    use_template: Use template
+    use_template_named: Use the {name} template
+  replace_confirm:
+    title: Use preset data?
+    description: Opening this template will replace your edited content with “{name}”. The template itself does not modify data.
+    cancel: Keep current resume
+    confirm: Use preset data
+  errors:
+    example_not_found: The preset data in this link could not be found. It may have been moved or removed.
+    return_to_templates: Return to templates
+    template_fallback_title: Default template applied
+    template_fallback_description: The template in this link does not exist, so Clear Classic is being used instead.
+  templates:
+    classic:
+      name: Clear Classic
+      description: A stable structure and direct reading order for most applications and printed resumes.
+    sidebar:
+      name: Professional Sidebar
+      description: Separates identity from experience with a distinctive layout for portfolio-led resumes.
+    compact:
+      name: Compact One-page
+      description: Reduces whitespace and raises information density when you need to control page count.
+  examples:
+    neutral:
+      name: General demo data
+      description: Balanced, role-neutral content for comparing every template fairly.
+    engineer:
+      name: Software engineer
+      description: Senior-role data focused on outcomes, systems experience, and technical skills.
+    product:
+      name: Product manager
+      description: Highlights business problems, product strategy, collaboration, and measurable results.
+    suzumiya:
+      name: Suzumiya Haruhi
+      description: A complete and playful example that demonstrates all major fields.
+      notice: Fictional character · fan-made demo content
+    developer:
+      name: Open-source Developer
+      description: Shows open-source projects, community collaboration, and long-term creator work.
+    graduate:
+      name: New Graduate
+      description: Prioritizes education, course projects, and campus outcomes over years of employment.
+    intern:
+      name: Internship Applicant
+      description: Supports a first internship application with coursework, personal projects, and learning ability.
+    designer:
+      name: Independent Designer
+      description: Presents creative process and outcomes through brand and digital product work.
+    personal:
+      name: Personal Profile
+      description: Organizes interests, routines, and expectations to show non-job uses of the resume structure.
+  tags:
+    ats_friendly: ATS friendly
+    balanced: Balanced
+    campus: Campus
+    complete: Complete fields
+    dense: High density
+    distinctive: Distinctive
+    experienced: Experienced
+    interests: Interests
+    internship: Internship-led
+    metrics: Measurable outcomes
+    open_source: Open source
+    personalized: Personal expression
+    playful: Playful
+    portfolio: Portfolio
+    product_strategy: Product strategy
+    profile: Profile
+    projects: Project-led
+    single_column: Single column
+    single_page: One-page first
+    skills_first: Skills first
+    two_column: Two column
+    universal: Universal
+    visual_story: Visual storytelling
+
+toast:
+  example_restored: Example resume restored
+  link_copied: Share link copied
+  notification: Notification
+  in_app_print_copied_description: The export link is copied. Choose “Open in system browser” from the top-right More menu, paste the link, and export again.
+  in_app_print_description: Choose “Open in system browser” from the top-right More menu, then export the PDF again.
+  in_app_print_title: Export in your system browser
+  print_guide_description: Choose “Save as PDF” in your browser print dialog.
+  print_guide_title: Opening the print dialog
+  portable_exported: Portable JSON Resume downloaded
+  restore_undone: Restore undone

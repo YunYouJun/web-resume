@@ -1,0 +1,103 @@
+# JSON Resume compatible document
+$schema: >-
+  https://raw.githubusercontent.com/jsonresume/jsonresume.org/54eba4131801b6b32aa947ce8a4fbef526800a08/packages/schema/schema.json
+basics:
+  email: hello@example.com
+  label: 城市生活体验官
+  name: 陈晴
+  phone: 联系方式交换后可见
+  summary: 喜欢散步、看展、做饭，也期待认识愿意认真分享生活的人。
+  url: https://example.com/qing
+projects:
+  - description: 用步行认识城市，收藏安静的小店、公园和展览。
+    highlights:
+      - 每月整理一条适合慢慢走的城市路线。
+      - 喜欢拍普通但有温度的生活片段。
+    keywords:
+      - 摄影
+      - 建筑
+      - 咖啡
+    name: 周末城市漫游
+    startDate: '2021'
+    type: 长期兴趣
+  - description: 研究简单、健康，又适合一起吃的家常菜。
+    highlights:
+      - 擅长番茄炖牛腩和巴斯克蛋糕。
+      - 愿意认真洗碗，也接受轮班制度。
+    keywords:
+      - 川菜
+      - 烘焙
+    name: 家庭料理实验室
+    startDate: '2023'
+    type: 快乐实践
+skills:
+  - keywords:
+      - 独立电影
+      - 徒步
+      - 猫
+    name: 喜欢
+  - keywords:
+      - 日语
+      - 陶艺
+    name: 最近在学
+x-web-resume:
+  sectionOrder:
+    - projects
+    - skills
+    - other
+  sections:
+    projects:
+      icon: ri:sparkling-line
+      items:
+        - end: 至今
+          keywordDetails:
+            - name: 摄影
+              icon: ri:camera-line
+            - name: 建筑
+              icon: ri:building-4-line
+            - name: 咖啡
+              icon: ri:cup-line
+          logo: ri:walk-line
+        - end: 至今
+          keywordDetails:
+            - name: 川菜
+              icon: ri:fire-line
+            - name: 烘焙
+              icon: ri:cake-3-line
+          logo: ri:restaurant-2-line
+      title: 我的日常
+    skills:
+      icon: ri:heart-3-line
+      items:
+        - keywordDetails:
+            - name: 独立电影
+              icon: ri:movie-2-line
+            - name: 徒步
+              icon: ri:footprint-line
+            - name: 猫
+              icon: ri:bear-smile-line
+        - keywordDetails:
+            - name: 日语
+              icon: ri:translate-2
+            - name: 陶艺
+              icon: ri:plant-line
+      title: 兴趣坐标
+  version: 1
+  basics:
+    location: 成都
+    age: 28
+    birth: 双子座
+  contacts:
+    email:
+      icon: ri:mail-line
+    phone:
+      icon: ri:smartphone-line
+    blog:
+      icon: ri:camera-3-line
+      label: 生活相册
+  other:
+    icon: ri:chat-smile-3-line
+    title: 希望认识
+    info:
+      - 真诚、稳定，有自己的兴趣，也愿意理解彼此的节奏。
+      - 可以从一起散步或喝杯咖啡开始，不需要刻意表演完美。

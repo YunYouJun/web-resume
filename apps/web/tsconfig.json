@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "jsx": "preserve",
+    "lib": ["DOM", "ESNext"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "paths": {
+      "~/*": ["./src/*"]
+    },
+    "resolveJsonModule": true,
+    "types": [
+      "vite/client",
+      "vite-plugin-pwa/client",
+      "unplugin-vue-router/client"
+    ],
+    "strict": true,
+    "strictNullChecks": true,
+    "noUnusedLocals": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true
+  },
+  "exclude": ["dist", "node_modules"]
+}

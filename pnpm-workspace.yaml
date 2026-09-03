@@ -1,0 +1,6 @@
+packages:
+  - apps/*
+  - docs
+
+overrides:
+  dompurify: 3.4.14

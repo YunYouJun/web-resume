@@ -1,0 +1,269 @@
+button:
+  about: 关于
+  back: 返回
+  close: 关闭
+  editor: 编辑器
+  go: 确定
+  home: 首页
+  local: 本地
+  toggle_dark: 切换深色模式
+  toggle_langs: 切换语言
+  # custom
+  see_yaml: 查看 YAML
+  see_resume: 预览简历
+  export_pdf: 导出 PDF
+not-found: 未找到页面
+
+home:
+  description: 可以被打印成 A4 PDF 的简历
+  address_placeholder: 简历线上 Yaml 地址
+
+noun:
+  worker: 打工人
+  suzimiya: 凉宫春日
+  example: 示例
+
+editor:
+  name: 在线编辑你的简历吧！
+
+resume_editor:
+  drag_section: 拖拽“{title}”调整位置
+  move_down: 下移“{title}”
+  move_up: 上移“{title}”
+
+resume_migration:
+  cancel: 暂不转换
+  confirm: 转换并写回编辑器
+  converted: 已转换为 JSON Resume 结构，可使用编辑器撤销
+  description: 转换会采用 JSON Resume 标准字段，并把图标、排序等展示信息保存在 x-web-resume。原 YAML 不会在你确认前被改写。
+  legacy_detected: 当前使用旧版数据格式
+  no_warnings: 未发现需要人工检查的字段。
+  review: 检查并转换
+  title: 转换为标准结构
+  warning_count: 转换完成后有 {count} 项需要检查
+
+navigation:
+  explore: 发现
+  primary: 主导航
+  profile: 我的
+  settings: 设置
+
+toolbar:
+  app_menu: 应用菜单
+  current_resume: 当前简历
+  more: 更多
+  open_commands: 命令
+  primary_actions: 简历操作
+  navigation: 简历工具栏
+  utility_actions: 辅助操作
+
+command:
+  copy_share_link: 复制分享链接
+  convert_before_portable: 请先转换这份旧版简历
+  editor_only: 请先进入编辑器
+  exit_fullscreen: 退出全屏
+  examples: 示例简历
+  export_pdf: 导出 PDF
+  export_portable: 导出标准 JSON Resume
+  file: 文件
+  format_yaml: 格式化 YAML
+  fullscreen_editor: 全屏编辑
+  help: 帮助
+  load_resume: 加载简历
+  no_results: 没有找到相关命令
+  open_commands: 搜索命令
+  open_docs: 使用文档
+  open_editor: 打开编辑器
+  open_editor_commands: 打开编辑器命令面板
+  open_guide: 新手引导
+  open_privacy: 隐私政策
+  open_settings: 打开设置
+  open_support: 帮助与支持
+  override_info: 使用我的资料覆盖简历信息
+  preview_resume: 打开纯净预览
+  remove_recent: 删除最近记录
+  restore_example: 恢复示例简历
+  search_placeholder: 输入命令或搜索…
+  search_label: 搜索命令
+  toggle_language: 切换语言
+  templates: 模板
+  undo: 撤销
+  undo_restore: 撤销恢复示例
+  use_template_named: 使用{name}模板
+  view: 视图
+  group:
+    edit: 编辑
+    help: 帮助
+    output: 输出
+    recent: 最近使用
+    settings: 设置
+    start: 开始
+    view: 查看
+
+settings:
+  title: 设置
+  description: 调整 Web Resume 在此浏览器中的界面与默认偏好。
+  local_notice: 设置只保存在当前浏览器，不会写入简历或分享链接。
+  appearance:
+    title: 外观与语言
+    description: 选择界面主题和显示语言。
+    theme: 界面主题
+    theme_description: 跟随系统会自动响应设备的深浅色设置。
+    language: 界面语言
+    language_description: 更改菜单、按钮和帮助文字的语言。
+  themes:
+    system: 跟随系统
+    light: 浅色
+    dark: 深色
+  languages:
+    zh_cn: 简体中文
+    en: English
+  resume:
+    title: 简历默认值
+    description: 新打开简历时优先采用这些显示偏好。
+    template: 默认模板
+    template_description: 只改变版式，不会修改 YAML 内容。
+  privacy:
+    title: 本地资料与隐私
+    description: 控制本地个人资料是否覆盖简历中的联系信息。
+    override_info: 使用“我的”页面保存的姓名、电话和邮箱
+    override_info_description: 关闭后始终显示 YAML 文件中的原始联系信息。
+    edit_profile: 编辑我的资料
+    view_privacy: 查看隐私政策
+
+resume_source:
+  description: 粘贴 YAML 地址，或从最近使用和示例中选择。
+  error: 无法加载简历：{message}
+  label: 简历 YAML 地址
+  loading: 正在加载…
+  recent_description: 快速切换已加载过的简历
+  recent_title: 最近使用
+  title: 选择简历来源
+  untitled: 未命名简历
+
+onboarding:
+  description: 从已有 YAML、示例简历或在线编辑器开始。
+  edit_description: 在浏览器中编辑 YAML，并实时检查简历效果。
+  edit_title: 打开编辑器
+  example_description: 先用内置示例了解格式和打印效果。
+  example_title: 试用示例
+  source_description: 使用公开或受支持的简历 YAML 地址。
+  source_title: 粘贴 YAML 地址
+  title: 三步开始制作简历
+
+template_market:
+  title: 简历模板
+  description: 先选择一组演示数据，再用相同内容比较不同模板。模板只改变版式，不会改写你的简历内容。
+  data_label: 预览数据
+  data_current: 当前简历
+  data_current_description: 使用你已经载入或编辑的内容比较模板。
+  data_select: 选择预览数据
+  data_view_yaml: 查看 YAML
+  data_groups:
+    universal: 通用
+    career: 职业
+    student: 学生
+    creator: 创作者
+    playful: 趣味
+  layout_title: 筛选模板
+  layout_description: 按用途快速缩小范围，再根据布局特点选择模板。
+  category_label: 模板用途
+  categories:
+    all: 全部
+    universal: 通用
+    professional: 专业
+    creative: 创意
+  item_count: '{count} 项'
+  result_status: 当前显示 {count} 个模板
+  preview_label: '{template}模板使用{data}的数据预览'
+  tags_label: 特点
+  actions:
+    preview: 预览
+    preview_named: 预览{name}模板
+    use_template: 使用模板
+    use_template_named: 使用{name}模板
+  replace_confirm:
+    title: 使用预置数据？
+    description: 打开该模板将以“{name}”替换当前已编辑的内容。模板本身不会修改数据。
+    cancel: 保留当前简历
+    confirm: 使用预置数据
+  errors:
+    example_not_found: 找不到链接指定的预置数据。它可能已被移动或删除。
+    return_to_templates: 返回模板库
+    template_fallback_title: 已使用默认模板
+    template_fallback_description: 链接指定的模板不存在，已改用清晰经典模板。
+  templates:
+    classic:
+      name: 清晰经典
+      description: 结构稳定、阅读顺序直接，适合大多数求职和打印场景。
+    sidebar:
+      name: 专业侧栏
+      description: 将身份信息与正文分区展示，视觉鲜明，适合作品与经历并重的简历。
+    compact:
+      name: 紧凑单页
+      description: 减少留白并提高信息密度，适合经历较多且希望控制页数的用户。
+  examples:
+    neutral:
+      name: 通用演示数据
+      description: 信息量均衡、不偏向具体职业，适合公平比较所有模板。
+    engineer:
+      name: 软件工程师
+      description: 以工作成果、系统经验和技术能力为主的资深岗位数据。
+    product:
+      name: 产品经理
+      description: 强调业务问题、产品策略、协作过程和量化结果。
+    suzumiya:
+      name: 凉宫春日
+      description: 内容完整又有趣，适合快速了解所有主要字段的写法。
+      notice: 虚构角色 · 同人演示内容
+    developer:
+      name: 开源开发者
+      description: 展示开源项目、社区协作与创作者长期积累。
+    graduate:
+      name: 应届学生
+      description: 以教育、课程项目和校园成果为主，弱化工作年限要求。
+    intern:
+      name: 实习申请者
+      description: 用课程基础、个人项目和学习能力支撑第一段实习申请。
+    designer:
+      name: 独立设计师
+      description: 通过品牌与数字产品案例展示创作方法和作品成果。
+    personal:
+      name: 个人档案
+      description: 用兴趣、日常和期待组织内容，展示简历结构在非求职场景的可能性。
+  tags:
+    ats_friendly: ATS 友好
+    balanced: 信息均衡
+    campus: 校园经历
+    complete: 字段完整
+    dense: 高信息密度
+    distinctive: 视觉鲜明
+    experienced: 资深经历
+    interests: 兴趣生活
+    internship: 实习导向
+    metrics: 数据成果
+    open_source: 开源项目
+    personalized: 个性表达
+    playful: 趣味示例
+    portfolio: 作品集
+    product_strategy: 产品策略
+    profile: 个人介绍
+    projects: 项目导向
+    single_column: 单栏
+    single_page: 单页优先
+    skills_first: 技能优先
+    two_column: 双栏
+    universal: 通用
+    visual_story: 视觉叙事
+
+toast:
+  example_restored: 已恢复示例简历
+  link_copied: 分享链接已复制
+  notification: 通知
+  in_app_print_copied_description: 导出链接已复制。请从右上角“更多”选择“系统浏览器打开”，粘贴链接后再次导出。
+  in_app_print_description: 请从右上角“更多”选择“系统浏览器打开”，然后再次导出 PDF。
+  in_app_print_title: 请在系统浏览器中导出
+  print_guide_description: 请在浏览器打印窗口中选择“另存为 PDF”。
+  print_guide_title: 即将打开打印窗口
+  portable_exported: 已下载标准 JSON Resume
+  restore_undone: 已撤销恢复操作

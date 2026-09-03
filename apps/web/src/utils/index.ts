@@ -1,0 +1,35 @@
+export * from './resume'
+export * from './resume-content'
+export const isClient = typeof window !== 'undefined'
+export const namespace = 'web-resume'
+
+/**
+ * 是否为生产环境
+ */
+export const isProd = import.meta.env.PROD
+
+/**
+ * 休眠函数
+ * @param ms
+ */
+export function sleep(ms: number) {
+  return new Promise(resolve => setTimeout(resolve, ms, true))
+}
+
+/**
+ * 加载脚本
+ * @param url 脚本链接
+ */
+export async function getScript(url: string) {
+  return new Promise((resolve, reject) => {
+    const script = document.createElement('script')
+    script.onload = () => {
+      resolve(true)
+    }
+    script.onerror = () => {
+      reject(new Error('Script 加载失败'))
+    }
+    script.src = url
+    document.body.appendChild(script)
+  })
+}
