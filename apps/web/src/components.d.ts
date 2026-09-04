@@ -21,6 +21,7 @@ declare module 'vue' {
     BaseTitle: typeof import('./components/base/Title.vue')['default']
     BottomMenu: typeof import('./components/BottomMenu.vue')['default']
     CertificateItem: typeof import('./components/certificate/Item.vue')['default']
+    CloudAccountButton: typeof import('./components/CloudAccountButton.vue')['default']
     HelloResume: typeof import('./components/HelloResume.vue')['default']
     IconifyIcon: typeof import('./components/IconifyIcon.vue')['default']
     InfoPageShell: typeof import('./components/InfoPageShell.vue')['default']

@@ -49,6 +49,50 @@ navigation:
   profile: Profile
   settings: Settings
 
+cloud:
+  account: YunLeFun account
+  account_button: Account
+  autosave_help: After the first save, edits sync 2 seconds after you stop typing. Invalid drafts are preserved and clearly marked.
+  cancel: Cancel
+  clear_confirm: Clear resumes, profile details, and interface settings from this device? Cloud resumes will not be deleted.
+  clear_device: Clear device data
+  connected: YunLeFun account connected
+  connecting: Connecting…
+  confirm_clear: Clear now
+  drive_badge: YunLeFun Drive
+  email: Email
+  first_save: Save the current resume as a new cloud file
+  invalid_draft: Draft needs fixes
+  kicker: Account & sync
+  local_badge: This device
+  local_description: These fields only replace the resume preview in this browser. They are not uploaded with cloud resumes or written into share links.
+  local_only: Profile details and device preferences stay local
+  local_profile: Local profile
+  login: Sign in with YunLeFun
+  login_description: Sign in to keep multiple portable YAML resumes in your Drive storage and sync them across devices.
+  login_title: Connect your account for cloud sync
+  logout: Sign out
+  manage_account: Manage account and cloud resumes
+  move_to_trash: Move “{name}” to trash
+  name: Name
+  name_placeholder: e.g. Frontend engineer resume
+  no_resumes: No cloud resumes yet. Name the current content to make its first save.
+  override_off: Override off
+  override_on: Overriding resume
+  page_description: Local profile details stay on this device. When signed in, only resume YAML and required file metadata are stored in your YunLeFun Drive space.
+  page_title: Profile
+  phone: Phone
+  purge_after: Permanently removed after {date}
+  refresh: Refresh
+  restore: Restore
+  resumes: Web Resume
+  save_new: Create and save
+  saved_at: Synced at {date}
+  saving: Saving to Drive…
+  storage: Drive usage
+  trash: Trash ({count})
+  valid: Valid
+
 toolbar:
   app_menu: Application menu
   current_resume: Current resume
@@ -133,6 +177,7 @@ settings:
     view_privacy: View privacy policy
 
 resume_source:
+  cloud_description: Open from your Drive
   description: Paste a YAML URL, or choose a recent or example resume.
   error: 'Could not load resume: {message}'
   label: Resume YAML URL

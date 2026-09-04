@@ -36,6 +36,7 @@ useEventListener('afterprint', () => {
         </RouterLink>
         <span class="app-toolbar__brand-separator" aria-hidden="true" />
         <AppMenubar />
+        <CloudAccountButton />
       </div>
 
       <div class="app-toolbar__actions-row">

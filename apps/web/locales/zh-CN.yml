@@ -48,6 +48,50 @@ navigation:
   profile: 我的
   settings: 设置
 
+cloud:
+  account: 云乐坊账号
+  account_button: 账号
+  autosave_help: 首次保存后，编辑内容会在停止输入 2 秒后自动同步；无效草稿也会保留并标记。
+  cancel: 取消
+  clear_confirm: 确定清除这台设备上的简历、个人资料和界面设置吗？云端简历不会删除。
+  clear_device: 清除本机数据
+  connected: 已连接云乐坊账号
+  connecting: 正在连接…
+  confirm_clear: 确认清除
+  drive_badge: 云乐坊云盘
+  email: 邮箱
+  first_save: 将当前简历另存到云端
+  invalid_draft: 待修正草稿
+  kicker: Account & sync
+  local_badge: 仅本机
+  local_description: 这些字段只会在当前浏览器覆盖简历预览，不会上传到云端简历，也不会写入分享链接。
+  local_only: 个人资料与设备偏好仅保存在本机
+  local_profile: 本地个人资料
+  login: 使用云乐坊账号登录
+  login_description: 登录后可在自己的云盘空间保存多份可移植 YAML 简历，并在设备间自动同步。
+  login_title: 连接账号，开启云同步
+  logout: 退出登录
+  manage_account: 管理账号与云端简历
+  move_to_trash: 将“{name}”移到回收站
+  name: 姓名
+  name_placeholder: 例如：前端工程师简历
+  no_resumes: 还没有云端简历。为当前内容命名并首次保存吧。
+  override_off: 已停用覆盖
+  override_on: 正在覆盖
+  page_description: 本地资料留在设备上；登录后，只有简历 YAML 与必要的文件元数据会保存到你的云乐坊云盘空间。
+  page_title: 我的
+  phone: 电话
+  purge_after: 将于 {date} 后自动清理
+  refresh: 刷新
+  restore: 恢复
+  resumes: Web Resume
+  save_new: 新建并保存
+  saved_at: 已于 {date} 同步
+  saving: 正在保存到云盘…
+  storage: 云盘用量
+  trash: 回收站（{count}）
+  valid: 格式有效
+
 toolbar:
   app_menu: 应用菜单
   current_resume: 当前简历
@@ -132,6 +176,7 @@ settings:
     view_privacy: 查看隐私政策
 
 resume_source:
+  cloud_description: 从你的云盘打开
   description: 粘贴 YAML 地址，或从最近使用和示例中选择。
   error: 无法加载简历：{message}
   label: 简历 YAML 地址

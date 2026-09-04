@@ -19,6 +19,7 @@
   - YAML validation, providing field validation and type hinting (Maybe you need install [vscode-yaml](https://github.com/redhat-developer/vscode-yaml))
 - PWA
 - Free to use web icons
+- Optional YunLeFun account and multi-resume Drive sync (feature-gated on the main site)
 
 ## Usage
 
@@ -112,9 +113,7 @@ Styles refer to LaTeX resume template [billryan/resume](https://github.com/billr
 
 See the [JSON Resume compatibility assessment](./docs/zh/reference/json-resume-compatibility.md) for the current field mapping, gaps, and incremental migration strategy.
 
-## Roadmap
-
-- [ ] Integrate `@yunlefun/sso` for optional accounts and cross-device resume sync. Until then, profile and editor data remain local to the browser.
+See [Account and cloud sync](./docs/guide/cloud-sync.md) for autosave, conflict copies, and data boundaries.
 
 ## Sponsors
 

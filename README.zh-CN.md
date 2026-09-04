@@ -19,6 +19,7 @@
   - YAML 验证，提供字段验证和类型提示（你可能需要安装 [vscode-yaml](https://github.com/redhat-developer/vscode-yaml) 插件）
 - PWA
 - 自由使用 Web 图标
+- 可选云乐坊账号登录与云盘多简历同步（主站功能开关控制）
 
 ## Usage
 
@@ -103,9 +104,7 @@ pnpm migrate:resume -- --input ./resume.yml --output ./resume.v0.4.yml
 
 与 JSON Resume 当前规范的字段映射、差异和渐进兼容方案见 [JSON Resume 兼容性评估](./docs/zh/reference/json-resume-compatibility.md)。
 
-## 后续计划
-
-- [ ] 集成 `@yunlefun/sso`，提供可选账号与跨设备简历同步；完成前，用户资料和编辑内容仍只保存在当前浏览器。
+账号与云同步的行为、冲突副本和数据边界见[云同步说明](./docs/zh/guide/cloud-sync.md)。
 
 ## Sponsors
 

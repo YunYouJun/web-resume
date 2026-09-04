@@ -22,6 +22,7 @@ export default defineConfig({
       themeConfig: {
         nav: [
           { text: 'Guide', link: '/guide/' },
+          { text: 'Cloud sync', link: '/guide/cloud-sync' },
           { text: 'Migration', link: '/migrations/v0.4-json-resume' },
           { text: 'Web Resume', link: 'https://resume.yunle.fun' },
         ],
@@ -31,6 +32,7 @@ export default defineConfig({
               text: 'Guide',
               items: [
                 { text: 'User Guide', link: '/guide/' },
+                { text: 'Account and cloud sync', link: '/guide/cloud-sync' },
               ],
             },
           ],
@@ -73,6 +75,7 @@ export default defineConfig({
       themeConfig: {
         nav: [
           { text: '使用指南', link: '/zh/guide/' },
+          { text: '云同步', link: '/zh/guide/cloud-sync' },
           { text: '迁移', link: '/zh/migrations/v0.4-json-resume' },
           { text: 'Web Resume', link: 'https://resume.yunle.fun' },
         ],
@@ -82,6 +85,7 @@ export default defineConfig({
               text: '指南',
               items: [
                 { text: '使用手册', link: '/zh/guide/' },
+                { text: '账号与云同步', link: '/zh/guide/cloud-sync' },
               ],
             },
             {

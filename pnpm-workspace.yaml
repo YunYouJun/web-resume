@@ -1,6 +1,15 @@
+minimumReleaseAge: 0
+shamefullyHoist: true
+
 packages:
   - apps/*
   - docs
 
 overrides:
   dompurify: 3.4.14
+
+allowBuilds:
+  '@parcel/watcher': true
+  core-js-pure: false
+  esbuild: true
+  vue-demi: true

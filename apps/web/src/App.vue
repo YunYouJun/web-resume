@@ -2,12 +2,18 @@
 import { useHead } from '@unhead/vue'
 import { isClient, useStorage } from '@vueuse/core'
 import { isDark } from '~/composables'
+import { useCloudStore } from '~/stores/cloud'
 import { namespace } from '~/utils'
 
 type SupportedLocale = 'en' | 'zh-CN'
 
 const { availableLocales, locale } = useI18n()
+const cloud = useCloudStore()
 const storedLocale = useStorage<SupportedLocale>(`${namespace}:locale`, 'zh-CN')
+
+onMounted(() => {
+  void cloud.bootstrap()
+})
 
 watch(storedLocale, (value) => {
   if (availableLocales.includes(value) && locale.value !== value)
