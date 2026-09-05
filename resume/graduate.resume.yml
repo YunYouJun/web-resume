@@ -1,0 +1,125 @@
+# JSON Resume compatible document
+$schema: >-
+  https://raw.githubusercontent.com/jsonresume/jsonresume.org/54eba4131801b6b32aa947ce8a4fbef526800a08/packages/schema/schema.json
+basics:
+  email: linxia@example.com
+  label: 2026 届产品设计专业学生
+  name: 林夏
+  phone: 138 0000 0000
+  summary: 关注数字产品、信息设计与真实用户体验。
+  url: https://example.com/linxia
+education:
+  - area: 产品设计
+    endDate: 2026-06
+    institution: 江南大学
+    score: GPA 3.8 · 专业前 10%
+    startDate: 2022-09
+    studyType: 本科
+projects:
+  - description: 帮助行动不便的师生规划更可靠的校园通行路线。
+    endDate: 2025-06
+    highlights:
+      - 访谈 12 位师生并完成 3 轮现场路线观察。
+      - 搭建交互原型，通过测试将任务完成率提升至 92%。
+    keywords:
+      - 用户研究
+      - Figma
+      - 可用性测试
+    name: 校园无障碍地图
+    startDate: 2025-03
+    type: 服务设计 · 课程项目
+  - description: 让校内闲置物品发布、沟通和交付更轻量。
+    endDate: 2025-01
+    highlights:
+      - 负责信息架构、核心交易流程与组件规范。
+      - 与开发同学协作完成可运行原型和设计验收。
+    keywords:
+      - 信息架构
+      - 设计系统
+    name: 旧物交换小程序
+    startDate: 2024-10
+    type: UI/UX · 团队项目
+skills:
+  - keywords:
+      - Figma
+      - Photoshop
+      - After Effects
+    name: 设计
+  - keywords:
+      - 用户访谈
+      - 原型测试
+      - 数据分析
+    name: 方法
+awards:
+  - awarder: 上海
+    date: '2025'
+    title: 全国大学生设计竞赛 · 华东赛区二等奖
+  - awarder: 江南大学
+    date: '2024'
+    title: 学院一等奖学金
+x-web-resume:
+  sectionOrder:
+    - education
+    - projects
+    - skills
+    - awards
+  sections:
+    education:
+      icon: ri:graduation-cap-line
+      items:
+        - city: 无锡
+          icon: ri:building-line
+      title: 教育背景
+    projects:
+      icon: ri:folders-line
+      items:
+        - keywordDetails:
+            - name: 用户研究
+              icon: ri:user-search-line
+            - name: Figma
+              icon: simple-icons:figma
+            - name: 可用性测试
+              icon: ri:test-tube-line
+          logo: ri:map-2-line
+        - keywordDetails:
+            - name: 信息架构
+              icon: ri:node-tree
+            - name: 设计系统
+              icon: ri:palette-line
+          logo: ri:recycle-line
+      title: 项目经历
+    skills:
+      icon: ri:flask-line
+      items:
+        - keywordDetails:
+            - name: Figma
+              icon: simple-icons:figma
+            - name: Photoshop
+              icon: simple-icons:adobephotoshop
+            - name: After Effects
+              icon: simple-icons:adobeaftereffects
+        - keywordDetails:
+            - name: 用户访谈
+              icon: ri:chat-3-line
+            - name: 原型测试
+              icon: ri:cursor-line
+            - name: 数据分析
+              icon: ri:bar-chart-line
+      title: 技能与工具
+    awards:
+      icon: ri:award-line
+      items:
+        - {}
+        - {}
+      title: 奖项与活动
+  version: 1
+  basics:
+    location: 杭州
+  contacts:
+    email:
+      icon: ri:mail-line
+    phone:
+      icon: ri:smartphone-line
+    blog:
+      icon: ri:earth-line
+      label: Portfolio

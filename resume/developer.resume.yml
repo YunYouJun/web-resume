@@ -1,0 +1,129 @@
+# JSON Resume compatible document
+$schema: >-
+  https://raw.githubusercontent.com/jsonresume/jsonresume.org/54eba4131801b6b32aa947ce8a4fbef526800a08/packages/schema/schema.json
+basics:
+  email: lin.zhiyao@example.com
+  label: 前端工程师 · 开源开发者
+  name: 林知遥
+  phone: 138 0000 0000
+  summary: 用产品思维和工程能力，把有趣的想法做成可靠的工具。
+  url: https://example.com
+  profiles:
+    - network: github
+      url: https://example.com/profiles/lin-zhiyao
+      username: lin-zhiyao
+education:
+  - area: 计算机应用技术
+    endDate: 2022-06
+    institution: 示例大学
+    score: GPA 3.93 · 专业第一
+    startDate: 2019-09
+    studyType: 硕士
+projects:
+  - description: 使用 YAML 生成、编辑并导出 PDF 简历的开源工具。
+    highlights:
+      - 设计可分享的简历数据结构与实时预览工作流。
+      - 完善响应式、无障碍和 PDF 导出体验。
+    keywords:
+      - Vue
+      - TypeScript
+      - Vite
+    name: Resume Studio
+    startDate: '2020'
+    type: 产品设计与前端开发
+    url: https://example.com/projects/resume-studio
+  - description: 面向创作者的下一代静态博客框架。
+    highlights:
+      - 负责核心架构、主题生态与社区协作。
+      - 将常用能力沉淀为清晰、可配置的模块。
+    keywords:
+      - Vue
+      - Vite
+      - Markdown
+    name: Static Notes
+    startDate: '2022'
+    type: 开源博客框架
+    url: https://example.com/projects/static-notes
+skills:
+  - keywords:
+      - TypeScript
+      - Vue
+      - Node.js
+    name: 开发
+  - keywords:
+      - 产品设计
+      - 无障碍
+      - 开源协作
+    name: 关注
+x-web-resume:
+  sectionOrder:
+    - education
+    - projects
+    - skills
+    - other
+  sections:
+    education:
+      icon: ri:graduation-cap-line
+      items:
+        - city: 北京
+          icon: ri:building-line
+      title: 教育背景
+    projects:
+      icon: ri:folders-line
+      items:
+        - end: 至今
+          keywordDetails:
+            - name: Vue
+              icon: simple-icons:vuedotjs
+            - name: TypeScript
+              icon: simple-icons:typescript
+            - name: Vite
+              icon: file-icons:vite
+          logo: ri:file-user-line
+        - end: 至今
+          keywordDetails:
+            - name: Vue
+              icon: simple-icons:vuedotjs
+            - name: Vite
+              icon: file-icons:vite
+            - name: Markdown
+              icon: simple-icons:markdown
+          logo: ri:article-line
+      title: 工作与项目
+    skills:
+      icon: ri:flask-line
+      items:
+        - keywordDetails:
+            - name: TypeScript
+              icon: simple-icons:typescript
+            - name: Vue
+              icon: simple-icons:vuedotjs
+            - name: Node.js
+              icon: simple-icons:nodedotjs
+        - keywordDetails:
+            - name: 产品设计
+              icon: ri:layout-line
+            - name: 无障碍
+              icon: ri:accessibility-line
+            - name: 开源协作
+              icon: ri:github-line
+      title: 技能经验
+  version: 1
+  basics:
+    location: 上海
+  contacts:
+    email:
+      icon: ri:mail-line
+    phone:
+      icon: ri:smartphone-line
+    blog:
+      icon: ri:earth-line
+      label: example.com
+    github:
+      icon: ri:github-line
+  other:
+    icon: ri:information-line
+    title: 关于我
+    info:
+      - 喜欢让复杂工具变得简单、清晰并且真正可用。
+      - 长期维护开源项目，也乐于记录和分享实践经验。
