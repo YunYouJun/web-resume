@@ -37,3 +37,9 @@ The only registered development origin is `https://resume.yunle.localhost:3455`,
 ## Rollback
 
 Disable `YLF_CLOUD_API_ENABLED` first to close the same-origin proxy, then disable `NUXT_WEB_RESUME_ENABLED`. A later frontend build may set `VITE_YLF_CLOUD_ENABLED=false` to hide the UI. Keep the Registry entry, metadata collection, private objects, and sweeper in place so existing user data remains recoverable; rollback must not delete cloud resumes.
+
+## Account-only rollout
+
+Set `VITE_YLF_LOGIN_ENABLED=true` in the production Pages build and `NUXT_WEB_RESUME_LOGIN_ENABLED=true` in Drive. Keep the cloud storage flags disabled. Deploy `workers/wrangler.toml` for the main domain: the Worker handles `/api/*` directly before proxying static assets to `resume.elpsy.cn`, preserving the registered Origin. Mirror API flags remain off. Verify anonymous session requests return 401 and document requests return 404.
+
+For the local Apps iOS simulator, sign in to a test account, open `https://resume.yunle.fun/user` in the host web view, and exercise consent, cancellation, session reload, and logout. Signing in must not upload a resume or replace local contact details.

@@ -1,0 +1,11 @@
+name = "web-resume"
+main = "main-domain.js"
+account_id = "1c4b352e9e5f7d5655da259e1404ca80"
+compatibility_date = "2026-09-02"
+
+[vars]
+YLF_LOGIN_API_ENABLED = "true"
+YLF_CLOUD_API_ENABLED = "false"
+
+[observability]
+enabled = true

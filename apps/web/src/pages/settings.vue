@@ -5,7 +5,6 @@ import { colorScheme } from '~/composables'
 import { resumeTemplates } from '~/data/resume-catalog'
 
 const app = useAppStore()
-const user = useUserStore()
 const { locale, t } = useI18n()
 
 const themes: Array<{ icon: string, id: ColorSchemePreference }> = [
@@ -129,23 +128,6 @@ useHead({
             </h2>
             <p>{{ t('settings.privacy.description') }}</p>
           </div>
-        </div>
-
-        <div class="settings-field">
-          <label class="settings-field__copy" for="settings-override-info">
-            <strong>{{ t('settings.privacy.override_info') }}</strong>
-            <span id="settings-override-description">{{ t('settings.privacy.override_info_description') }}</span>
-          </label>
-          <label class="settings-switch">
-            <input
-              id="settings-override-info"
-              v-model="user.settings.overrideInfo"
-              type="checkbox"
-              role="switch"
-              aria-describedby="settings-override-description"
-            >
-            <span aria-hidden="true" />
-          </label>
         </div>
 
         <div class="settings-card__actions">
@@ -340,56 +322,6 @@ useHead({
   box-shadow: 0 1px 5px rgb(0 0 0 / 10%);
 }
 
-.settings-switch {
-  position: relative;
-  display: inline-flex;
-  width: 46px;
-  height: 28px;
-  flex: 0 0 auto;
-  cursor: pointer;
-
-  input {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    opacity: 0;
-
-    &:checked + span {
-      border-color: var(--wr-c-link);
-      background: var(--wr-c-link);
-
-      &::after {
-        transform: translateX(18px);
-      }
-    }
-
-    &:focus-visible + span {
-      outline: 2px solid var(--wr-c-link);
-      outline-offset: 2px;
-    }
-  }
-
-  > span {
-    width: 100%;
-    border: 1px solid rgb(127 127 127 / 25%);
-    border-radius: 999px;
-    background: rgb(127 127 127 / 20%);
-    transition: background-color 150ms ease, border-color 150ms ease;
-
-    &::after {
-      display: block;
-      width: 22px;
-      height: 22px;
-      margin: 2px;
-      border-radius: 50%;
-      background: white;
-      box-shadow: 0 1px 4px rgb(0 0 0 / 24%);
-      content: '';
-      transition: transform 150ms ease;
-    }
-  }
-}
-
 .settings-card__actions {
   display: flex;
   flex-wrap: wrap;
@@ -464,11 +396,6 @@ useHead({
     min-width: 0;
     min-height: 44px;
     padding: 0 6px;
-  }
-
-  .settings-switch {
-    width: 46px;
-    height: 28px;
   }
 
   .settings-card__actions {

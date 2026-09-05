@@ -47,6 +47,115 @@ async function runCloudAction(action: () => Promise<unknown>) {
     </header>
 
     <div class="profile-page__grid">
+      <section v-if="cloud.config.loginEnabled" class="profile-card profile-card--cloud">
+        <template v-if="!cloud.isAuthenticated">
+          <div class="cloud-empty">
+            <span class="cloud-empty__icon" i-ri-cloud-line aria-hidden="true" />
+            <p>{{ t('cloud.account') }}</p>
+            <h2>{{ t('cloud.login_title') }}</h2>
+            <span>{{ t('cloud.login_description') }}</span>
+            <button type="button" class="command-button command-button--primary" :disabled="cloud.status === 'loading'" @click="cloud.login">
+              <span v-if="cloud.status === 'loading'" i-ri-loader-4-line animate-spin aria-hidden="true" />
+              <span v-else i-ri-login-box-line aria-hidden="true" />
+              {{ cloud.status === 'loading' ? t('cloud.connecting') : t('cloud.login') }}
+            </button>
+            <p v-if="cloud.errorMessage" class="cloud-error" role="alert">
+              {{ cloud.errorMessage }}
+            </p>
+          </div>
+        </template>
+
+        <template v-else>
+          <div class="profile-card__heading cloud-identity">
+            <div>
+              <p>{{ t('cloud.account') }}</p>
+              <h2>{{ cloud.session?.user.name || cloud.session?.user.handle || t('cloud.account') }}</h2>
+              <span>{{ cloud.session?.user.handle ? `@${cloud.session.user.handle}` : t('cloud.connected') }}</span>
+            </div>
+            <button type="button" class="profile-link" @click="runCloudAction(cloud.logout)">
+              {{ t('cloud.logout') }}
+            </button>
+          </div>
+
+          <p v-if="!cloud.config.enabled" class="profile-card__description">
+            {{ t('cloud.sync_unavailable') }}
+          </p>
+          <template v-else>
+            <div v-if="cloud.quota" class="cloud-quota">
+              <div>
+                <span>{{ t('cloud.storage') }}</span>
+                <strong>{{ formatBytes(cloud.quota.usedBytes) }} / {{ formatBytes(cloud.quota.quotaBytes) }}</strong>
+              </div>
+              <progress :value="cloud.quota.usedBytes" :max="cloud.quota.quotaBytes" />
+            </div>
+
+            <form class="cloud-new" @submit.prevent="saveAsNew">
+              <label for="cloud-resume-name">{{ t('cloud.first_save') }}</label>
+              <div>
+                <input id="cloud-resume-name" v-model="newResumeName" :placeholder="t('cloud.name_placeholder')" maxlength="140">
+                <button type="submit" class="command-button command-button--primary" :disabled="!newResumeName.trim() || cloud.status === 'saving'">
+                  <span i-ri-save-3-line aria-hidden="true" />
+                  {{ t('cloud.save_new') }}
+                </button>
+              </div>
+              <small>{{ t('cloud.autosave_help') }}</small>
+            </form>
+
+            <div class="cloud-list-heading">
+              <h3>{{ t('cloud.resumes') }}</h3>
+              <button type="button" class="profile-link" @click="runCloudAction(cloud.loadDocuments)">
+                {{ t('cloud.refresh') }}
+              </button>
+            </div>
+            <div v-if="cloud.documents.length" class="cloud-list">
+              <article v-for="document in cloud.documents" :key="document._id" :class="{ 'cloud-document--active': cloud.activeBinding?.documentId === document._id }" class="cloud-document">
+                <button type="button" class="cloud-document__main" @click="runCloudAction(() => cloud.openDocument(document._id))">
+                  <span i-ri-file-text-line aria-hidden="true" />
+                  <span>
+                    <strong>{{ document.name }}</strong>
+                    <small>{{ formatDate(document.updatedAt) }} · {{ document.validationStatus === 'valid' ? t('cloud.valid') : t('cloud.invalid_draft') }}</small>
+                  </span>
+                </button>
+                <button type="button" class="profile-link profile-link--danger" :aria-label="t('cloud.move_to_trash', { name: document.name })" @click="runCloudAction(() => cloud.trashDocument(document._id))">
+                  <span i-ri-delete-bin-line aria-hidden="true" />
+                </button>
+              </article>
+            </div>
+            <p v-else class="cloud-list-empty">
+              {{ t('cloud.no_resumes') }}
+            </p>
+
+            <details v-if="cloud.trashedDocuments.length" class="cloud-trash">
+              <summary>{{ t('cloud.trash', { count: cloud.trashedDocuments.length }) }}</summary>
+              <article v-for="document in cloud.trashedDocuments" :key="document._id" class="cloud-document">
+                <span class="cloud-document__main">
+                  <span i-ri-delete-bin-line aria-hidden="true" />
+                  <span>
+                    <strong>{{ document.name }}</strong>
+                    <small>{{ t('cloud.purge_after', { date: formatDate(document.purgeAfter) }) }}</small>
+                  </span>
+                </span>
+                <button type="button" class="profile-link" @click="runCloudAction(() => cloud.restoreDocument(document._id))">
+                  {{ t('cloud.restore') }}
+                </button>
+              </article>
+            </details>
+
+            <p v-if="cloud.status === 'saving'" class="cloud-status" role="status">
+              <span i-ri-loader-4-line animate-spin aria-hidden="true" /> {{ t('cloud.saving') }}
+            </p>
+            <p v-else-if="cloud.lastSavedAt" class="cloud-status">
+              <span i-ri-checkbox-circle-line aria-hidden="true" /> {{ t('cloud.saved_at', { date: formatDate(cloud.lastSavedAt) }) }}
+            </p>
+            <p v-if="cloud.errorMessage" class="cloud-error" role="alert">
+              {{ cloud.errorMessage }}
+            </p>
+          </template>
+          <p v-if="!cloud.config.enabled && cloud.errorMessage" class="cloud-error" role="alert">
+            {{ cloud.errorMessage }}
+          </p>
+        </template>
+      </section>
       <section class="profile-card profile-card--local">
         <div class="profile-card__heading">
           <div>
@@ -95,108 +204,6 @@ async function runCloudAction(action: () => Promise<unknown>) {
           </span>
         </div>
       </section>
-
-      <section v-if="cloud.config.enabled" class="profile-card profile-card--cloud">
-        <template v-if="!cloud.isAuthenticated">
-          <div class="cloud-empty">
-            <span class="cloud-empty__icon" i-ri-cloud-line aria-hidden="true" />
-            <p>{{ t('cloud.drive_badge') }}</p>
-            <h2>{{ t('cloud.login_title') }}</h2>
-            <span>{{ t('cloud.login_description') }}</span>
-            <button type="button" class="command-button command-button--primary" :disabled="cloud.status === 'loading'" @click="cloud.login">
-              <span v-if="cloud.status === 'loading'" i-ri-loader-4-line animate-spin aria-hidden="true" />
-              <span v-else i-ri-login-box-line aria-hidden="true" />
-              {{ cloud.status === 'loading' ? t('cloud.connecting') : t('cloud.login') }}
-            </button>
-            <p v-if="cloud.errorMessage" class="cloud-error" role="alert">
-              {{ cloud.errorMessage }}
-            </p>
-          </div>
-        </template>
-
-        <template v-else>
-          <div class="profile-card__heading cloud-identity">
-            <div>
-              <p>{{ t('cloud.drive_badge') }}</p>
-              <h2>{{ cloud.session?.user.name || cloud.session?.user.handle || t('cloud.account') }}</h2>
-              <span>{{ cloud.session?.user.handle ? `@${cloud.session.user.handle}` : t('cloud.connected') }}</span>
-            </div>
-            <button type="button" class="profile-link" @click="runCloudAction(cloud.logout)">
-              {{ t('cloud.logout') }}
-            </button>
-          </div>
-
-          <div v-if="cloud.quota" class="cloud-quota">
-            <div>
-              <span>{{ t('cloud.storage') }}</span>
-              <strong>{{ formatBytes(cloud.quota.usedBytes) }} / {{ formatBytes(cloud.quota.quotaBytes) }}</strong>
-            </div>
-            <progress :value="cloud.quota.usedBytes" :max="cloud.quota.quotaBytes" />
-          </div>
-
-          <form class="cloud-new" @submit.prevent="saveAsNew">
-            <label for="cloud-resume-name">{{ t('cloud.first_save') }}</label>
-            <div>
-              <input id="cloud-resume-name" v-model="newResumeName" :placeholder="t('cloud.name_placeholder')" maxlength="140">
-              <button type="submit" class="command-button command-button--primary" :disabled="!newResumeName.trim() || cloud.status === 'saving'">
-                <span i-ri-save-3-line aria-hidden="true" />
-                {{ t('cloud.save_new') }}
-              </button>
-            </div>
-            <small>{{ t('cloud.autosave_help') }}</small>
-          </form>
-
-          <div class="cloud-list-heading">
-            <h3>{{ t('cloud.resumes') }}</h3>
-            <button type="button" class="profile-link" @click="runCloudAction(cloud.loadDocuments)">
-              {{ t('cloud.refresh') }}
-            </button>
-          </div>
-          <div v-if="cloud.documents.length" class="cloud-list">
-            <article v-for="document in cloud.documents" :key="document._id" :class="{ 'cloud-document--active': cloud.activeBinding?.documentId === document._id }" class="cloud-document">
-              <button type="button" class="cloud-document__main" @click="runCloudAction(() => cloud.openDocument(document._id))">
-                <span i-ri-file-text-line aria-hidden="true" />
-                <span>
-                  <strong>{{ document.name }}</strong>
-                  <small>{{ formatDate(document.updatedAt) }} · {{ document.validationStatus === 'valid' ? t('cloud.valid') : t('cloud.invalid_draft') }}</small>
-                </span>
-              </button>
-              <button type="button" class="profile-link profile-link--danger" :aria-label="t('cloud.move_to_trash', { name: document.name })" @click="runCloudAction(() => cloud.trashDocument(document._id))">
-                <span i-ri-delete-bin-line aria-hidden="true" />
-              </button>
-            </article>
-          </div>
-          <p v-else class="cloud-list-empty">
-            {{ t('cloud.no_resumes') }}
-          </p>
-
-          <details v-if="cloud.trashedDocuments.length" class="cloud-trash">
-            <summary>{{ t('cloud.trash', { count: cloud.trashedDocuments.length }) }}</summary>
-            <article v-for="document in cloud.trashedDocuments" :key="document._id" class="cloud-document">
-              <span class="cloud-document__main">
-                <span i-ri-delete-bin-line aria-hidden="true" />
-                <span>
-                  <strong>{{ document.name }}</strong>
-                  <small>{{ t('cloud.purge_after', { date: formatDate(document.purgeAfter) }) }}</small>
-                </span>
-              </span>
-              <button type="button" class="profile-link" @click="runCloudAction(() => cloud.restoreDocument(document._id))">
-                {{ t('cloud.restore') }}
-              </button>
-            </article>
-          </details>
-
-          <p v-if="cloud.status === 'saving'" class="cloud-status" role="status">
-            <span i-ri-loader-4-line animate-spin aria-hidden="true" /> {{ t('cloud.saving') }}
-          </p>
-          <p v-else-if="cloud.lastSavedAt" class="cloud-status">
-            <span i-ri-checkbox-circle-line aria-hidden="true" /> {{ t('cloud.saved_at', { date: formatDate(cloud.lastSavedAt) }) }}
-          </p>
-          <p v-if="cloud.errorMessage" class="cloud-error" role="alert">
-            {{ cloud.errorMessage }}
-          </p>
-        </template>
-      </section>
     </div>
   </div>
 </template>
@@ -237,7 +244,7 @@ async function runCloudAction(action: () => Promise<unknown>) {
 
 .profile-page__grid {
   display: grid;
-  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  grid-template-columns: minmax(0, 1fr);
   align-items: start;
   gap: 18px;
 }

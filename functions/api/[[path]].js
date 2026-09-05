@@ -16,11 +16,14 @@ const ROUTES = [
 ]
 
 export async function onRequest(context) {
-  if (context.env.YLF_CLOUD_API_ENABLED !== 'true')
-    return jsonError(404, 'Cloud sync is unavailable')
-
   const incomingUrl = new URL(context.request.url)
   const path = incomingUrl.pathname.replace(/^\/api/, '') || '/'
+  const isSessionRoute = path === '/session' || path.startsWith('/session/')
+  const enabled = isSessionRoute
+    ? (context.env.YLF_LOGIN_API_ENABLED ?? context.env.YLF_CLOUD_API_ENABLED) === 'true'
+    : context.env.YLF_CLOUD_API_ENABLED === 'true'
+  if (!enabled)
+    return jsonError(404, isSessionRoute ? 'Account login is unavailable' : 'Cloud sync is unavailable')
   if (!ROUTES.some(route => route.method === context.request.method && route.pattern.test(path)))
     return jsonError(404, 'Cloud API route was not found')
 

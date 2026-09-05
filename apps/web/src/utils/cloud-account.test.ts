@@ -1,7 +1,21 @@
-import { describe, expect, it } from 'vitest'
-import { isSupportedWebResumeOrigin, readApiMessage, readCloudSession } from './cloud-account'
+import { afterEach, describe, expect, it, vi } from 'vitest'
+import { getWebResumeCloudConfig, isSupportedWebResumeOrigin, readApiMessage, readCloudSession } from './cloud-account'
+
+afterEach(() => {
+  vi.unstubAllEnvs()
+  vi.unstubAllGlobals()
+})
 
 describe('cloud account response parsing', () => {
+  it('enables main-domain login separately from cloud sync and keeps mirrors local', () => {
+    vi.stubEnv('VITE_YLF_LOGIN_ENABLED', 'true')
+    vi.stubEnv('VITE_YLF_CLOUD_ENABLED', 'false')
+    vi.stubGlobal('window', { location: { origin: 'https://resume.yunle.fun' } })
+    expect(getWebResumeCloudConfig()).toMatchObject({ loginEnabled: true, enabled: false })
+    vi.stubGlobal('window', { location: { origin: 'https://resume.elpsy.cn' } })
+    expect(getWebResumeCloudConfig()).toMatchObject({ loginEnabled: false, enabled: false })
+  })
+
   it('enables login only on the registered production and development origins', () => {
     expect(isSupportedWebResumeOrigin('https://resume.yunle.fun')).toBe(true)
     expect(isSupportedWebResumeOrigin('https://resume.yunle.localhost:3455')).toBe(true)

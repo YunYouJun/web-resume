@@ -12,6 +12,21 @@ function context(path: string, init: RequestInit = {}, enabled = true) {
 }
 
 describe('cloud API proxy boundary', () => {
+  it('allows login independently while storage stays disabled', async () => {
+    const fetchMock = vi.fn(async () => Response.json({ session: null }))
+    vi.stubGlobal('fetch', fetchMock)
+    const requestContext = context('/api/session/login', {
+      method: 'POST',
+      headers: { origin: 'https://resume.yunle.fun' },
+      body: '{}',
+    }, false)
+    const env = { ...requestContext.env, YLF_LOGIN_API_ENABLED: 'true' }
+    await expect(onRequest({ ...requestContext, env })).resolves.toMatchObject({ status: 200 })
+    expect(fetchMock).toHaveBeenCalledOnce()
+    await expect(onRequest({ ...context('/api/documents', {}, false), env })).resolves.toMatchObject({ status: 404 })
+    expect(fetchMock).toHaveBeenCalledOnce()
+  })
+
   it('fails closed while the rollout flag is disabled', async () => {
     const response = await onRequest(context('/api/session', {}, false))
     expect(response.status).toBe(404)

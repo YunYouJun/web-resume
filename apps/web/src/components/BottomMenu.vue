@@ -99,6 +99,14 @@ const settingsItem = computed(() => ({
   color: rgb(100 100 100);
   font-size: 11px;
   text-decoration: none;
+  transition: background-color 150ms ease, color 150ms ease;
+
+  @media (hover: hover) {
+    &:hover:not([aria-current='page']) {
+      color: var(--wr-c-text);
+      background: rgb(127 127 127 / 10%);
+    }
+  }
 
   > span:first-child {
     font-size: 20px;

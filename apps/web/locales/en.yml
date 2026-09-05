@@ -50,6 +50,7 @@ navigation:
   settings: Settings
 
 cloud:
+  sync_unavailable: Account connected. Cloud resumes are not available yet. You can still edit, import, and export locally.
   account: YunLeFun account
   account_button: Account
   autosave_help: After the first save, edits sync 2 seconds after you stop typing. Invalid drafts are preserved and clearly marked.
@@ -63,14 +64,14 @@ cloud:
   email: Email
   first_save: Save the current resume as a new cloud file
   invalid_draft: Draft needs fixes
-  kicker: Account & sync
+  kicker: Account & profile
   local_badge: This device
   local_description: These fields only replace the resume preview in this browser. They are not uploaded with cloud resumes or written into share links.
   local_only: Profile details and device preferences stay local
   local_profile: Local profile
   login: Sign in with YunLeFun
-  login_description: Sign in to keep multiple portable YAML resumes in your Drive storage and sync them across devices.
-  login_title: Connect your account for cloud sync
+  login_description: Sign in with YunLeFun. Local editing, importing, and exporting are always available.
+  login_title: Connect your YunLeFun account
   logout: Sign out
   manage_account: Manage account and cloud resumes
   move_to_trash: Move “{name}” to trash
@@ -79,8 +80,8 @@ cloud:
   no_resumes: No cloud resumes yet. Name the current content to make its first save.
   override_off: Override off
   override_on: Overriding resume
-  page_description: Local profile details stay on this device. When signed in, only resume YAML and required file metadata are stored in your YunLeFun Drive space.
-  page_title: Profile
+  page_description: Your account and resume contact details are separate. Signing in does not upload local resumes or replace your name, phone, or email.
+  page_title: Account & profile
   phone: Phone
   purge_after: Permanently removed after {date}
   refresh: Refresh
@@ -170,10 +171,10 @@ settings:
     template_description: This changes the layout without modifying YAML content.
   privacy:
     title: Local profile and privacy
-    description: Control whether local profile details replace contact information from the resume.
+    description: Manage your account, local contact details, and profile override under Profile.
     override_info: Use the name, phone, and email saved under Profile
     override_info_description: Turn this off to always show the original contact details from the YAML file.
-    edit_profile: Edit profile
+    edit_profile: Manage profile
     view_privacy: View privacy policy
 
 resume_source:

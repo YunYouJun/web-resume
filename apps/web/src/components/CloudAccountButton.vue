@@ -20,7 +20,7 @@ const safeAvatarUrl = computed(() => {
 </script>
 
 <template>
-  <div v-if="cloud.config.enabled" class="cloud-account">
+  <div v-if="cloud.config.loginEnabled" class="cloud-account">
     <RouterLink
       v-if="cloud.isAuthenticated"
       to="/user"

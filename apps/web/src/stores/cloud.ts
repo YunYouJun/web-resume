@@ -43,7 +43,7 @@ export const useCloudStore = defineStore('cloud', () => {
   const documents = ref<CloudResumeDocument[]>([])
   const trashedDocuments = ref<CloudResumeDocument[]>([])
   const quota = ref<CloudStorageQuota>()
-  const status = ref<CloudSyncStatus>(config.enabled ? 'loading' : 'disabled')
+  const status = ref<CloudSyncStatus>(config.loginEnabled ? 'loading' : 'disabled')
   const errorMessage = ref('')
   const lastSavedAt = ref<number>()
   const conflictCreated = ref(false)
@@ -69,7 +69,7 @@ export const useCloudStore = defineStore('cloud', () => {
   )
 
   async function bootstrap() {
-    if (!config.enabled || initialized)
+    if (!config.loginEnabled || initialized)
       return
     initialized = true
     status.value = 'loading'
@@ -81,7 +81,8 @@ export const useCloudStore = defineStore('cloud', () => {
         return
       }
       await refreshCsrf()
-      await loadDocuments()
+      if (config.enabled)
+        await loadDocuments()
       status.value = 'ready'
     }
     catch (error) {
@@ -91,7 +92,7 @@ export const useCloudStore = defineStore('cloud', () => {
   }
 
   async function login() {
-    if (!config.enabled)
+    if (!config.loginEnabled)
       return
     status.value = 'loading'
     errorMessage.value = ''
@@ -101,7 +102,8 @@ export const useCloudStore = defineStore('cloud', () => {
         return
       session.value = nextSession
       await refreshCsrf()
-      await loadDocuments()
+      if (config.enabled)
+        await loadDocuments()
       status.value = 'ready'
     }
     catch (error) {

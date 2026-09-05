@@ -27,6 +27,7 @@ export interface WebResumeCloudConfig {
   apiBase: string
   cloudbaseEnvId: string
   enabled: boolean
+  loginEnabled: boolean
   ssoClientId: string
   ssoExchangeUrl: string
   ssoOrigin: string
@@ -48,6 +49,7 @@ export function getWebResumeCloudConfig(): WebResumeCloudConfig {
     apiBase: String(import.meta.env.VITE_YLF_CLOUD_API_BASE || '/api').replace(/\/$/, ''),
     cloudbaseEnvId: import.meta.env.VITE_YLF_CLOUDBASE_ENV_ID || DEFAULT_CLOUDBASE_ENV_ID,
     enabled: import.meta.env.VITE_YLF_CLOUD_ENABLED === 'true' && isSupportedWebResumeOrigin(origin),
+    loginEnabled: (import.meta.env.VITE_YLF_LOGIN_ENABLED ?? import.meta.env.VITE_YLF_CLOUD_ENABLED) === 'true' && isSupportedWebResumeOrigin(origin),
     ssoClientId: import.meta.env.VITE_YLF_SSO_CLIENT_ID || 'web-resume-web',
     ssoExchangeUrl: import.meta.env.VITE_YLF_SSO_EXCHANGE_URL || DEFAULT_SSO_EXCHANGE_URL,
     ssoOrigin: import.meta.env.VITE_YLF_SSO_ORIGIN || DEFAULT_SSO_ORIGIN,

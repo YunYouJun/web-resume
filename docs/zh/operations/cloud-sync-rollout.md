@@ -2,6 +2,24 @@
 
 云同步横跨三个仓库，并由两个独立开关控制。在后端依赖和 SSO Client Registry 全部就绪前，必须保持关闭状态。
 
+## 仅开启账号登录
+
+账号会话与云简历分开发布：
+
+- Pages 生产构建设置 `VITE_YLF_LOGIN_ENABLED=true`、`VITE_YLF_CLOUD_ENABLED=false`。
+- Drive 设置 `NUXT_WEB_RESUME_LOGIN_ENABLED=true`，云简历开关 `NUXT_WEB_RESUME_ENABLED` 保持关闭。
+- 主域实际由 Cloudflare Worker `web-resume` 转发静态资源到 `resume.elpsy.cn`。使用仓库 `workers/wrangler.toml` 发布 Worker；它直接处理 `/api/*`，保留 `resume.yunle.fun` 的 Origin，并使用 `YLF_LOGIN_API_ENABLED=true`、`YLF_CLOUD_API_ENABLED=false`。
+- 镜像 Pages 的 API 开关保持关闭；域名白名单让相同构建在镜像站仍不显示登录。
+- 匿名 `/api/session` 应返回 401，`/api/documents` 应返回 404。登录不会自动上传简历，也不会覆盖本地联系资料。
+
+### apps.yunle.fun 模拟器验收
+
+1. 启动本地云乐坊 iOS 模拟器应用，登录测试账号。
+2. 在应用内打开 `https://resume.yunle.fun/user`，点击“使用云乐坊账号登录”。必须在宿主内嵌浏览器打开，而不是系统 Safari。
+3. 应出现带 Web Resume 名称及来源的宿主授权确认；确认后页面显示账号，刷新后仍保持会话。
+4. 取消应回到可重试状态；未登录宿主应先引导登录，再返回授权。账号资料不得覆盖本地姓名、电话和邮箱。
+5. 本地开发仅使用已注册的 `https://resume.yunle.localhost:3455`；开发后端 Origin 也需精确匹配，不要为了模拟器添加通配域名或绕过证书校验。
+
 ## 范围与生产配置
 
 | 项目 | 生产值 |

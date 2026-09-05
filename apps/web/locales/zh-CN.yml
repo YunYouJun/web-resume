@@ -49,6 +49,7 @@ navigation:
   settings: 设置
 
 cloud:
+  sync_unavailable: 账号已连接。云简历暂未开放，你仍可在本地编辑、导入和导出。
   account: 云乐坊账号
   account_button: 账号
   autosave_help: 首次保存后，编辑内容会在停止输入 2 秒后自动同步；无效草稿也会保留并标记。
@@ -62,14 +63,14 @@ cloud:
   email: 邮箱
   first_save: 将当前简历另存到云端
   invalid_draft: 待修正草稿
-  kicker: Account & sync
+  kicker: Account & profile
   local_badge: 仅本机
   local_description: 这些字段只会在当前浏览器覆盖简历预览，不会上传到云端简历，也不会写入分享链接。
   local_only: 个人资料与设备偏好仅保存在本机
   local_profile: 本地个人资料
   login: 使用云乐坊账号登录
-  login_description: 登录后可在自己的云盘空间保存多份可移植 YAML 简历，并在设备间自动同步。
-  login_title: 连接账号，开启云同步
+  login_description: 使用云乐坊账号登录；本地编辑、导入和导出始终可用。
+  login_title: 连接云乐坊账号
   logout: 退出登录
   manage_account: 管理账号与云端简历
   move_to_trash: 将“{name}”移到回收站
@@ -78,8 +79,8 @@ cloud:
   no_resumes: 还没有云端简历。为当前内容命名并首次保存吧。
   override_off: 已停用覆盖
   override_on: 正在覆盖
-  page_description: 本地资料留在设备上；登录后，只有简历 YAML 与必要的文件元数据会保存到你的云乐坊云盘空间。
-  page_title: 我的
+  page_description: 账号与简历联系资料独立管理。登录不会上传本地简历，也不会覆盖姓名、电话或邮箱。
+  page_title: 账号与资料
   phone: 电话
   purge_after: 将于 {date} 后自动清理
   refresh: 刷新
@@ -169,10 +170,10 @@ settings:
     template_description: 只改变版式，不会修改 YAML 内容。
   privacy:
     title: 本地资料与隐私
-    description: 控制本地个人资料是否覆盖简历中的联系信息。
+    description: 账号、本地联系资料和资料覆盖选项统一在“我的”中管理。
     override_info: 使用“我的”页面保存的姓名、电话和邮箱
     override_info_description: 关闭后始终显示 YAML 文件中的原始联系信息。
-    edit_profile: 编辑我的资料
+    edit_profile: 管理个人资料
     view_privacy: 查看隐私政策
 
 resume_source:
