@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import { getWebResumeCloudConfig, isSupportedWebResumeOrigin, readApiMessage, readCloudSession } from './cloud-account'
+import { cloudAccountProfile, getWebResumeCloudConfig, isSupportedWebResumeOrigin, readApiMessage, readCloudSession, restoreCloudAccountProfile } from './cloud-account'
 
 afterEach(() => {
   vi.unstubAllEnvs()
@@ -56,5 +56,29 @@ describe('cloud account response parsing', () => {
   it('returns only documented API error fields', () => {
     expect(readApiMessage({ statusMessage: 'safe' })).toBe('safe')
     expect(readApiMessage({ internal: 'secret' })).toBeUndefined()
+  })
+})
+
+describe('account display profile restoration', () => {
+  const session = { id: 'server-session', user: { uid: 'user-1', accountStatus: 'active' as const, phoneVerified: true } }
+  const cached = { uid: 'user-1', name: 'Yun', handle: 'yun', id: 'untrusted', phoneVerified: false }
+
+  it('restores display fields only after the server confirms the same account', () => {
+    expect(restoreCloudAccountProfile(session, cached)).toEqual({
+      ...session,
+      user: { ...session.user, name: 'Yun', handle: 'yun' },
+    })
+    expect(restoreCloudAccountProfile(undefined, cached)).toBeUndefined()
+    expect(restoreCloudAccountProfile(session, { ...cached, uid: 'someone-else' })).toEqual(session)
+  })
+
+  it('keeps fresh profile fields and discards invalid cached fields', () => {
+    const fresh = { ...session, user: { ...session.user, name: 'Updated' } }
+    expect(restoreCloudAccountProfile(fresh, { ...cached, handle: 123 })).toEqual(fresh)
+  })
+
+  it('persists presentation fields only and clears them without a session', () => {
+    expect(cloudAccountProfile(restoreCloudAccountProfile(session, cached))).toEqual({ uid: 'user-1', name: 'Yun', handle: 'yun' })
+    expect(cloudAccountProfile(undefined)).toBeNull()
   })
 })

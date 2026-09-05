@@ -5,15 +5,17 @@ import type {
   CloudStorageQuota,
   CloudSyncStatus,
 } from '~/types'
-import { useStorage, watchDebounced } from '@vueuse/core'
+import { StorageSerializers, useStorage, watchDebounced } from '@vueuse/core'
 import { acceptHMRUpdate, defineStore, skipHydrate } from 'pinia'
 import { namespace } from '~/utils'
 import {
   beginWebResumeLogin,
+  cloudAccountProfile,
   consumeWebResumeLogin,
   getWebResumeCloudConfig,
   readApiMessage,
   readCloudSession,
+  restoreCloudAccountProfile,
 } from '~/utils/cloud-account'
 
 interface DocumentsResponse {
@@ -40,6 +42,12 @@ export const useCloudStore = defineStore('cloud', () => {
   const config = getWebResumeCloudConfig()
 
   const session = ref<CloudSession>()
+  const accountProfile = useStorage<ReturnType<typeof cloudAccountProfile>>(`${namespace}:account-profile`, null, undefined, { serializer: StorageSerializers.object })
+
+  function setSession(nextSession: CloudSession | undefined) {
+    session.value = restoreCloudAccountProfile(nextSession, accountProfile.value)
+    accountProfile.value = cloudAccountProfile(session.value)
+  }
   const documents = ref<CloudResumeDocument[]>([])
   const trashedDocuments = ref<CloudResumeDocument[]>([])
   const quota = ref<CloudStorageQuota>()
@@ -75,7 +83,7 @@ export const useCloudStore = defineStore('cloud', () => {
     status.value = 'loading'
     errorMessage.value = ''
     try {
-      session.value = await consumeWebResumeLogin(config) ?? await fetchSession()
+      setSession(await consumeWebResumeLogin(config) ?? await fetchSession())
       if (!session.value) {
         status.value = 'anonymous'
         return
@@ -100,7 +108,7 @@ export const useCloudStore = defineStore('cloud', () => {
       const nextSession = await beginWebResumeLogin(config)
       if (!nextSession)
         return
-      session.value = nextSession
+      setSession(nextSession)
       await refreshCsrf()
       if (config.enabled)
         await loadDocuments()
@@ -118,7 +126,7 @@ export const useCloudStore = defineStore('cloud', () => {
     errorMessage.value = ''
     try {
       await cloudRequest('/session', { method: 'DELETE' }, true)
-      session.value = undefined
+      setSession(undefined)
       documents.value = []
       trashedDocuments.value = []
       quota.value = undefined
@@ -346,7 +354,7 @@ export const useCloudStore = defineStore('cloud', () => {
       return cloudRequest<T>(path, init, mutation, true)
     }
     if (response.status === 401) {
-      session.value = undefined
+      setSession(undefined)
       status.value = 'anonymous'
     }
     const payload: unknown = response.status === 204 ? null : await response.json().catch(() => null)

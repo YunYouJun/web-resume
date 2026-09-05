@@ -183,3 +183,25 @@ function createMemoryStorage(): SimpleStorage {
 function isRecord(value: unknown): value is Record<string, unknown> {
   return value !== null && typeof value === 'object' && !Array.isArray(value)
 }
+
+export type CloudAccountProfile = Pick<CloudSession['user'], 'uid' | 'name' | 'handle' | 'avatarUrl'>
+
+/** Presentation cache only: a server-confirmed session is required before restoring it. */
+export function restoreCloudAccountProfile(session: CloudSession | undefined, cached: unknown): CloudSession | undefined {
+  if (!session || !isRecord(cached) || cached.uid !== session.user.uid)
+    return session
+  const user = { ...session.user }
+  for (const field of ['name', 'handle', 'avatarUrl'] as const) {
+    if (user[field] === undefined && typeof cached[field] === 'string')
+      user[field] = cached[field]
+  }
+  return { ...session, user }
+}
+
+/** Never persist session identifiers, credentials, or authorization flags. */
+export function cloudAccountProfile(session: CloudSession | undefined): CloudAccountProfile | null {
+  if (!session)
+    return null
+  const { uid, name, handle, avatarUrl } = session.user
+  return { uid, name, handle, avatarUrl }
+}
