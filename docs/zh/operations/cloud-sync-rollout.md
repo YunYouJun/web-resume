@@ -9,6 +9,7 @@
 - Pages 生产构建设置 `VITE_YLF_LOGIN_ENABLED=true`、`VITE_YLF_CLOUD_ENABLED=false`。
 - Drive 设置 `NUXT_WEB_RESUME_LOGIN_ENABLED=true`，云简历开关 `NUXT_WEB_RESUME_ENABLED` 保持关闭。
 - 主域实际由 Cloudflare Worker `web-resume` 转发静态资源到 `resume.elpsy.cn`。使用仓库 `workers/wrangler.toml` 发布 Worker；它直接处理 `/api/*`，保留 `resume.yunle.fun` 的 Origin，并使用 `YLF_LOGIN_API_ENABLED=true`、`YLF_CLOUD_API_ENABLED=false`。
+- Cloudflare 为 `https://drive.yunle.fun/api/v1/web-resume/*` 配置 SSL `strict` Page Rule；否则 zone 的 Flexible SSL 会使 Worker 回源 HTTP，与 Drive 的 HTTPS 跳转形成循环。不要通过跟随重定向或关闭证书验证解决。
 - 镜像 Pages 的 API 开关保持关闭；域名白名单让相同构建在镜像站仍不显示登录。
 - 匿名 `/api/session` 应返回 401，`/api/documents` 应返回 404。登录不会自动上传简历，也不会覆盖本地联系资料。
 

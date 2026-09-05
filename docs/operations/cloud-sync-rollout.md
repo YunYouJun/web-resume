@@ -43,3 +43,5 @@ Disable `YLF_CLOUD_API_ENABLED` first to close the same-origin proxy, then disab
 Set `VITE_YLF_LOGIN_ENABLED=true` in the production Pages build and `NUXT_WEB_RESUME_LOGIN_ENABLED=true` in Drive. Keep the cloud storage flags disabled. Deploy `workers/wrangler.toml` for the main domain: the Worker handles `/api/*` directly before proxying static assets to `resume.elpsy.cn`, preserving the registered Origin. Mirror API flags remain off. Verify anonymous session requests return 401 and document requests return 404.
 
 For the local Apps iOS simulator, sign in to a test account, open `https://resume.yunle.fun/user` in the host web view, and exercise consent, cancellation, session reload, and logout. Signing in must not upload a resume or replace local contact details.
+
+The Cloudflare Page Rule for `https://drive.yunle.fun/api/v1/web-resume/*` must set SSL to `strict`. The zone-level Flexible setting otherwise causes an HTTP-to-HTTPS redirect loop on Worker subrequests. Keep certificate validation enabled.
