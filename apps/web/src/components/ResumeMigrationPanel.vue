@@ -127,11 +127,6 @@ function convert() {
     gap: 12px;
   }
 
-  h2 {
-    margin: 0;
-    font-size: 22px;
-  }
-
   > p {
     margin: 14px 0;
     color: var(--wr-c-text);
@@ -192,9 +187,6 @@ function convert() {
     justify-content: center;
   }
 
-  .resume-migration-dialog {
-    padding: 18px;
-  }
 }
 
 @media print {
