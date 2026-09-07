@@ -96,8 +96,8 @@ const settingsItem = computed(() => ({
   min-height: 58px;
   flex-direction: column;
   gap: 2px;
-  border-radius: 10px;
-  color: rgb(100 100 100);
+  border-radius: var(--wr-control-radius);
+  color: var(--wr-c-text-muted);
   font-size: 11px;
   text-decoration: none;
   transition: background-color 150ms ease, color 150ms ease;
@@ -105,7 +105,7 @@ const settingsItem = computed(() => ({
   @media (hover: hover) {
     &:hover:not([aria-current='page']) {
       color: var(--wr-c-text);
-      background: rgb(127 127 127 / 10%);
+      background: var(--wr-c-hover);
     }
   }
 
@@ -116,7 +116,11 @@ const settingsItem = computed(() => ({
   &[aria-current='page'] {
     color: var(--wr-c-link);
     font-weight: 700;
-    background: color-mix(in srgb, var(--wr-c-link), transparent 92%);
+    background: var(--wr-c-selected);
+  }
+
+  &:active {
+    background: var(--wr-c-pressed);
   }
 
   &:focus-visible {

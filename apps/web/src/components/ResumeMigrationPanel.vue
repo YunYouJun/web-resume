@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import type { ResumeMigrationWarning } from '~/types'
+import { AlertDialogContent, AlertDialogDescription, AlertDialogOverlay, AlertDialogPortal, AlertDialogRoot, AlertDialogTitle } from 'reka-ui'
 
 const editor = useEditorStore()
 const app = useAppStore()
@@ -7,14 +8,11 @@ const { t } = useI18n()
 
 const isOpen = ref(false)
 const warnings = ref<ResumeMigrationWarning[]>([])
-const dialog = ref<HTMLElement>()
 const trigger = ref<HTMLButtonElement>()
 
 async function reviewMigration() {
   warnings.value = editor.previewJsonResumeConversion()
   isOpen.value = true
-  await nextTick()
-  dialog.value?.focus()
 }
 
 async function close() {
@@ -45,37 +43,27 @@ function convert() {
     </button>
   </aside>
 
-  <Teleport to="body">
-    <div
-      v-if="isOpen"
-      class="resume-migration-overlay"
-      role="presentation"
-      @click.self="close"
-      @keydown.esc="close"
-    >
-      <section
-        ref="dialog"
-        class="resume-migration-dialog"
-        role="alertdialog"
-        aria-modal="true"
-        aria-labelledby="resume-migration-title"
-        tabindex="-1"
-      >
+  <AlertDialogRoot v-model:open="isOpen">
+    <AlertDialogPortal>
+      <AlertDialogOverlay class="app-dialog-overlay" />
+      <AlertDialogContent class="app-dialog-content resume-migration-dialog" @close-auto-focus.prevent="trigger?.focus()">
         <header>
           <div>
             <p class="resume-migration-dialog__eyebrow">
               JSON Resume
             </p>
-            <h2 id="resume-migration-title">
+            <AlertDialogTitle class="app-dialog-title">
               {{ t('resume_migration.title') }}
-            </h2>
+            </AlertDialogTitle>
           </div>
-          <button type="button" class="resume-migration-dialog__close" :aria-label="t('button.close')" @click="close">
+          <button type="button" class="command-button" :aria-label="t('button.close')" @click="close">
             <span i-ri-close-line aria-hidden="true" />
           </button>
         </header>
 
-        <p>{{ t('resume_migration.description') }}</p>
+        <AlertDialogDescription class="app-dialog-description">
+          {{ t('resume_migration.description') }}
+        </AlertDialogDescription>
 
         <div v-if="warnings.length" class="resume-migration-warnings">
           <strong>{{ t('resume_migration.warning_count', { count: warnings.length }) }}</strong>
@@ -92,16 +80,16 @@ function convert() {
         </p>
 
         <footer>
-          <button type="button" class="resume-migration-button resume-migration-button--secondary" @click="close">
+          <button type="button" class="command-button command-button--quiet" @click="close">
             {{ t('resume_migration.cancel') }}
           </button>
-          <button type="button" class="resume-migration-button resume-migration-button--primary" @click="convert">
+          <button type="button" class="command-button command-button--primary" @click="convert">
             {{ t('resume_migration.confirm') }}
           </button>
         </footer>
-      </section>
-    </div>
-  </Teleport>
+      </AlertDialogContent>
+    </AlertDialogPortal>
+  </AlertDialogRoot>
 </template>
 
 <style lang="scss" scoped>
@@ -130,27 +118,7 @@ function convert() {
   }
 }
 
-.resume-migration-overlay {
-  position: fixed;
-  z-index: 300;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  padding: 20px;
-  background: rgb(0 0 0 / 48%);
-}
-
 .resume-migration-dialog {
-  width: min(620px, 100%);
-  max-height: min(720px, calc(100dvh - 40px));
-  overflow: auto;
-  border: 1px solid var(--wr-c-border);
-  border-radius: 16px;
-  padding: 24px;
-  color: var(--wr-c-text);
-  background: var(--wr-c-bg);
-  box-shadow: 0 22px 70px rgb(0 0 0 / 24%);
-
   header,
   footer {
     display: flex;
@@ -185,15 +153,6 @@ function convert() {
   text-transform: uppercase;
 }
 
-.resume-migration-dialog__close {
-  display: grid;
-  width: 36px;
-  height: 36px;
-  place-items: center;
-  border-radius: 50%;
-  background: var(--wr-c-bg-soft);
-}
-
 .resume-migration-warnings {
   border-radius: 10px;
   padding: 14px;
@@ -225,22 +184,6 @@ function convert() {
   color: #15803d !important;
 }
 
-.resume-migration-button {
-  min-height: 40px;
-  border-radius: 8px;
-  padding: 0 15px;
-  font-weight: 600;
-}
-
-.resume-migration-button--secondary {
-  border: 1px solid var(--wr-c-border);
-}
-
-.resume-migration-button--primary {
-  color: white;
-  background: var(--wr-c-link);
-}
-
 @media (max-width: 640px) {
   .resume-migration-banner {
     right: 10px;
@@ -255,8 +198,7 @@ function convert() {
 }
 
 @media print {
-  .resume-migration-banner,
-  .resume-migration-overlay {
+  .resume-migration-banner {
     display: none;
   }
 }

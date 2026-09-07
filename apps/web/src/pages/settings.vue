@@ -84,7 +84,7 @@ useHead({
             <strong>{{ t('settings.appearance.language') }}</strong>
             <span>{{ t('settings.appearance.language_description') }}</span>
           </label>
-          <select id="settings-language" v-model="locale" class="settings-select">
+          <select id="settings-language" v-model="locale" class="wr-field-control settings-select">
             <option value="zh-CN">
               {{ t('settings.languages.zh_cn') }}
             </option>
@@ -111,7 +111,7 @@ useHead({
             <strong>{{ t('settings.resume.template') }}</strong>
             <span>{{ t('settings.resume.template_description') }}</span>
           </label>
-          <select id="settings-template" v-model="selectedTemplate" class="settings-select">
+          <select id="settings-template" v-model="selectedTemplate" class="wr-field-control settings-select">
             <option v-for="template in resumeTemplates" :key="template.id" :value="template.id">
               {{ t(template.nameKey) }}
             </option>
@@ -131,11 +131,11 @@ useHead({
         </div>
 
         <div class="settings-card__actions">
-          <RouterLink class="settings-link" to="/user">
+          <RouterLink class="command-button command-button--quiet" to="/user">
             <span i-ri-user-line aria-hidden="true" />
             <span>{{ t('settings.privacy.edit_profile') }}</span>
           </RouterLink>
-          <RouterLink class="settings-link" to="/privacy">
+          <RouterLink class="command-button command-button--quiet" to="/privacy">
             <span i-ri-shield-check-line aria-hidden="true" />
             <span>{{ t('settings.privacy.view_privacy') }}</span>
           </RouterLink>
@@ -165,7 +165,7 @@ useHead({
 
   > p:not(.settings-page__kicker) {
     margin: 12px 0 0;
-    color: rgb(100 100 100);
+    color: var(--wr-c-text-muted);
     font-size: 16px;
   }
 }
@@ -199,9 +199,9 @@ useHead({
 .settings-card {
   overflow: hidden;
   border: 1px solid rgb(127 127 127 / 20%);
-  border-radius: 16px;
+  border-radius: var(--wr-radius-surface);
   background: var(--wr-c-bg);
-  box-shadow: 0 10px 34px rgb(0 0 0 / 5%);
+  box-shadow: var(--wr-shadow-surface);
 }
 
 .settings-card__heading {
@@ -218,7 +218,7 @@ useHead({
 
   p {
     margin: 5px 0 0;
-    color: rgb(110 110 110);
+    color: var(--wr-c-text-muted);
     font-size: 13px;
     line-height: 1.5;
   }
@@ -258,28 +258,15 @@ useHead({
   }
 
   span {
-    color: rgb(110 110 110);
+    color: var(--wr-c-text-muted);
     font-size: 12px;
     line-height: 1.45;
   }
 }
 
 .settings-select {
+  width: auto;
   min-width: 180px;
-  min-height: 40px;
-  border: 1px solid rgb(127 127 127 / 25%);
-  border-radius: var(--wr-control-radius);
-  padding: 0 34px 0 11px;
-  color: var(--wr-c-text);
-  font: inherit;
-  font-size: 13px;
-  background: var(--wr-c-bg);
-
-  &:focus-visible {
-    border-color: var(--wr-c-link);
-    outline: 2px solid color-mix(in srgb, var(--wr-c-link), transparent 55%);
-    outline-offset: 1px;
-  }
 }
 
 .settings-segment {
@@ -288,7 +275,7 @@ useHead({
   gap: 3px;
   border-radius: 11px;
   padding: 3px;
-  background: rgb(127 127 127 / 10%);
+  background: var(--wr-c-hover);
 }
 
 .settings-segment__option {
@@ -318,7 +305,8 @@ useHead({
 }
 
 .settings-segment__option--selected {
-  background: var(--wr-c-bg);
+  color: var(--wr-c-link);
+  background: var(--wr-c-selected);
   box-shadow: 0 1px 5px rgb(0 0 0 / 10%);
 }
 
@@ -328,35 +316,6 @@ useHead({
   gap: var(--wr-space-2);
   border-top: 1px solid rgb(127 127 127 / 14%);
   padding: 14px 20px 18px;
-}
-
-.settings-link {
-  display: inline-flex;
-  min-height: 40px;
-  align-items: center;
-  gap: 7px;
-  border: 1px solid rgb(127 127 127 / 20%);
-  border-radius: var(--wr-control-radius);
-  padding: 0 11px;
-  color: inherit;
-  font-size: 13px;
-  font-weight: 650;
-  text-decoration: none;
-
-  &:hover {
-    background: rgb(127 127 127 / 9%);
-  }
-
-  &:focus-visible {
-    outline: 2px solid var(--wr-c-link);
-    outline-offset: 2px;
-  }
-}
-
-:global(.dark) .settings-page__header > p:not(.settings-page__kicker),
-:global(.dark) .settings-card__heading p,
-:global(.dark) .settings-field__copy span {
-  color: rgb(175 175 175);
 }
 
 @media (max-width: 767px) {
@@ -369,7 +328,7 @@ useHead({
   }
 
   .settings-card {
-    border-radius: 14px;
+    border-radius: var(--wr-radius-surface);
   }
 
   .settings-card__heading {
@@ -400,10 +359,6 @@ useHead({
 
   .settings-card__actions {
     padding: 14px 16px 17px;
-  }
-
-  .settings-link {
-    min-height: 44px;
   }
 }
 </style>

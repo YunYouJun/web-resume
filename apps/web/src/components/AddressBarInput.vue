@@ -76,7 +76,7 @@ defineExpose({ load })
       </ComboboxLabel>
       <div class="resume-source-input__field">
         <ComboboxInput
-          class="resume-source-input__control"
+          class="wr-field-control resume-source-input__control"
           :display-value="displayValue"
           :placeholder="t('home.address_placeholder')"
           :aria-label="t('resume_source.label')"
@@ -85,7 +85,7 @@ defineExpose({ load })
           @keydown.enter.prevent="load()"
         />
         <ComboboxButton
-          class="resume-source-input__history"
+          class="command-button resume-source-input__history"
           :aria-label="t('command.group.recent')"
         >
           <div i-ri-history-line aria-hidden="true" />
@@ -139,7 +139,7 @@ defineExpose({ load })
               <button
                 v-if="!resumeExamples.some(example => example.url === resume.url)"
                 type="button"
-                class="resume-source-input__remove"
+                class="command-button resume-source-input__remove"
                 :aria-label="`${t('command.remove_recent')}: ${resume.title || resume.url}`"
                 @click.stop.prevent="app.removeResume(resume)"
               >
@@ -164,19 +164,7 @@ defineExpose({ load })
 }
 
 .resume-source-input__control {
-  width: 100%;
-  min-height: var(--wr-control-size);
-  border: 1px solid transparent;
-  border-radius: var(--wr-control-radius);
-  padding: 0 44px 0 14px;
-  color: var(--wr-c-text);
-  background: var(--wr-c-bg-soft);
-  outline: none;
-
-  &:focus-visible {
-    border-color: var(--wr-c-link);
-    box-shadow: 0 0 0 3px rgb(0 120 231 / 18%);
-  }
+  padding-right: calc(var(--wr-control-size) + 12px);
 }
 
 .resume-source-input__history,
@@ -184,8 +172,8 @@ defineExpose({ load })
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 36px;
-  min-height: 36px;
+  min-width: var(--wr-control-size);
+  min-height: var(--wr-control-size);
   border-radius: 9px;
 }
 
@@ -227,7 +215,7 @@ defineExpose({ load })
 
   span {
     overflow: hidden;
-    color: rgb(127 127 127);
+    color: var(--wr-c-text-muted);
     font-size: 11px;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -236,7 +224,7 @@ defineExpose({ load })
 
 .resume-source-input__empty {
   padding: 10px;
-  color: rgb(127 127 127);
+  color: var(--wr-c-text-muted);
   font-size: 12px;
 }
 
@@ -251,7 +239,7 @@ defineExpose({ load })
   cursor: pointer;
 
   &.is-active {
-    background: rgb(127 127 127 / 10%);
+    background: var(--wr-c-hover);
   }
 
   &.is-selected {

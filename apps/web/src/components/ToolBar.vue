@@ -94,6 +94,7 @@ useEventListener('afterprint', () => {
 
 <style lang="scss" scoped>
 .app-toolbar {
+  --wr-field-size: var(--wr-control-size);
   position: fixed;
   z-index: var(--top-nav-z-index);
   top: 0;
@@ -105,6 +106,10 @@ useEventListener('afterprint', () => {
   background: color-mix(in srgb, var(--wr-c-bg), transparent 4%);
   box-shadow: 0 6px 24px rgb(0 0 0 / 8%);
   backdrop-filter: blur(16px);
+}
+
+.app-toolbar :deep(.wr-field-control) {
+  padding-block: 0;
 }
 
 .app-toolbar__desktop {

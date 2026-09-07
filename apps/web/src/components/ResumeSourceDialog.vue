@@ -50,6 +50,7 @@ async function openCloudResume(documentId: string) {
             type="submit"
             class="command-button command-button--primary"
             :disabled="app.isResumeLoading"
+            :aria-busy="app.isResumeLoading"
           >
             <span :class="app.isResumeLoading ? 'i-ri-loader-4-line animate-spin' : 'i-ri-download-cloud-2-line'" aria-hidden="true" />
             {{ app.isResumeLoading ? t('resume_source.loading') : t('command.load_resume') }}
@@ -92,8 +93,8 @@ async function openCloudResume(documentId: string) {
   margin: 12px 0 0;
   border-radius: 9px;
   padding: 9px 11px;
-  color: #b91c1c;
-  background: #fef2f2;
+  color: var(--wr-c-danger);
+  background: var(--wr-c-danger-soft);
 }
 
 .resume-source-dialog__cloud {
@@ -111,7 +112,7 @@ async function openCloudResume(documentId: string) {
 
   header span,
   button small {
-    color: rgb(127 127 127);
+    color: var(--wr-c-text-muted);
     font-size: 11px;
   }
 
@@ -131,7 +132,7 @@ async function openCloudResume(documentId: string) {
     cursor: pointer;
 
     &:hover {
-      background: rgb(127 127 127 / 10%);
+      background: var(--wr-c-hover);
     }
   }
 }

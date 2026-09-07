@@ -54,7 +54,7 @@ async function runCloudAction(action: () => Promise<unknown>) {
             <p>{{ t('cloud.account') }}</p>
             <h2>{{ t('cloud.login_title') }}</h2>
             <span>{{ t('cloud.login_description') }}</span>
-            <button type="button" class="command-button command-button--primary" :disabled="cloud.status === 'loading'" @click="cloud.login">
+            <button type="button" class="command-button command-button--primary" :disabled="cloud.status === 'loading'" :aria-busy="cloud.status === 'loading'" @click="cloud.login">
               <span v-if="cloud.status === 'loading'" i-ri-loader-4-line animate-spin aria-hidden="true" />
               <span v-else i-ri-login-box-line aria-hidden="true" />
               {{ cloud.status === 'loading' ? t('cloud.connecting') : t('cloud.login') }}
@@ -72,7 +72,7 @@ async function runCloudAction(action: () => Promise<unknown>) {
               <h2>{{ cloud.session?.user.name || cloud.session?.user.handle || t('cloud.account') }}</h2>
               <span>{{ cloud.session?.user.handle ? `@${cloud.session.user.handle}` : t('cloud.connected') }}</span>
             </div>
-            <button type="button" class="profile-link" @click="runCloudAction(cloud.logout)">
+            <button type="button" class="command-button" @click="runCloudAction(cloud.logout)">
               {{ t('cloud.logout') }}
             </button>
           </div>
@@ -92,8 +92,8 @@ async function runCloudAction(action: () => Promise<unknown>) {
             <form class="cloud-new" @submit.prevent="saveAsNew">
               <label for="cloud-resume-name">{{ t('cloud.first_save') }}</label>
               <div>
-                <input id="cloud-resume-name" v-model="newResumeName" :placeholder="t('cloud.name_placeholder')" maxlength="140">
-                <button type="submit" class="command-button command-button--primary" :disabled="!newResumeName.trim() || cloud.status === 'saving'">
+                <input id="cloud-resume-name" v-model="newResumeName" class="wr-field-control" :placeholder="t('cloud.name_placeholder')" maxlength="140">
+                <button type="submit" class="command-button command-button--primary" :disabled="!newResumeName.trim() || cloud.status === 'saving'" :aria-busy="cloud.status === 'saving'">
                   <span i-ri-save-3-line aria-hidden="true" />
                   {{ t('cloud.save_new') }}
                 </button>
@@ -103,7 +103,7 @@ async function runCloudAction(action: () => Promise<unknown>) {
 
             <div class="cloud-list-heading">
               <h3>{{ t('cloud.resumes') }}</h3>
-              <button type="button" class="profile-link" @click="runCloudAction(cloud.loadDocuments)">
+              <button type="button" class="command-button" @click="runCloudAction(cloud.loadDocuments)">
                 {{ t('cloud.refresh') }}
               </button>
             </div>
@@ -116,7 +116,7 @@ async function runCloudAction(action: () => Promise<unknown>) {
                     <small>{{ formatDate(document.updatedAt) }} · {{ document.validationStatus === 'valid' ? t('cloud.valid') : t('cloud.invalid_draft') }}</small>
                   </span>
                 </button>
-                <button type="button" class="profile-link profile-link--danger" :aria-label="t('cloud.move_to_trash', { name: document.name })" @click="runCloudAction(() => cloud.trashDocument(document._id))">
+                <button type="button" class="command-button command-button--danger" :aria-label="t('cloud.move_to_trash', { name: document.name })" @click="runCloudAction(() => cloud.trashDocument(document._id))">
                   <span i-ri-delete-bin-line aria-hidden="true" />
                 </button>
               </article>
@@ -135,7 +135,7 @@ async function runCloudAction(action: () => Promise<unknown>) {
                     <small>{{ t('cloud.purge_after', { date: formatDate(document.purgeAfter) }) }}</small>
                   </span>
                 </span>
-                <button type="button" class="profile-link" @click="runCloudAction(() => cloud.restoreDocument(document._id))">
+                <button type="button" class="command-button" @click="runCloudAction(() => cloud.restoreDocument(document._id))">
                   {{ t('cloud.restore') }}
                 </button>
               </article>
@@ -164,7 +164,7 @@ async function runCloudAction(action: () => Promise<unknown>) {
           </div>
           <button
             type="button"
-            class="profile-switch"
+            class="command-button command-button--quiet"
             :aria-pressed="user.settings.overrideInfo"
             @click="user.settings.overrideInfo = !user.settings.overrideInfo"
           >
@@ -180,27 +180,27 @@ async function runCloudAction(action: () => Promise<unknown>) {
         <div class="profile-fields">
           <label>
             <span>{{ t('cloud.name') }}</span>
-            <input v-model="user.userInfo.name" autocomplete="name">
+            <input v-model="user.userInfo.name" class="wr-field-control" autocomplete="name">
           </label>
           <label>
             <span>{{ t('cloud.phone') }}</span>
-            <input v-model="user.userInfo.phone" type="tel" autocomplete="tel">
+            <input v-model="user.userInfo.phone" class="wr-field-control" type="tel" autocomplete="tel">
           </label>
           <label>
             <span>{{ t('cloud.email') }}</span>
-            <input v-model="user.userInfo.email" type="email" autocomplete="email">
+            <input v-model="user.userInfo.email" class="wr-field-control" type="email" autocomplete="email">
           </label>
         </div>
 
         <div class="profile-card__footer">
           <span v-if="!confirmClear">{{ t('cloud.local_only') }}</span>
           <span v-else>{{ t('cloud.clear_confirm') }}</span>
-          <button v-if="!confirmClear" type="button" class="profile-link profile-link--danger" @click="confirmClear = true">
+          <button v-if="!confirmClear" type="button" class="command-button command-button--danger" @click="confirmClear = true">
             {{ t('cloud.clear_device') }}
           </button>
           <span v-else class="profile-card__confirm-actions">
-            <button type="button" class="profile-link" @click="confirmClear = false">{{ t('cloud.cancel') }}</button>
-            <button type="button" class="profile-link profile-link--danger" @click="cloud.clearDeviceData">{{ t('cloud.confirm_clear') }}</button>
+            <button type="button" class="command-button" @click="confirmClear = false">{{ t('cloud.cancel') }}</button>
+            <button type="button" class="command-button command-button--danger" @click="cloud.clearDeviceData">{{ t('cloud.confirm_clear') }}</button>
           </span>
         </div>
       </section>
@@ -237,7 +237,7 @@ async function runCloudAction(action: () => Promise<unknown>) {
     display: block;
     max-width: 680px;
     margin-top: 10px;
-    color: rgb(100 100 100);
+    color: var(--wr-c-text-muted);
     line-height: 1.6;
   }
 }
@@ -251,10 +251,10 @@ async function runCloudAction(action: () => Promise<unknown>) {
 
 .profile-card {
   border: 1px solid rgb(127 127 127 / 20%);
-  border-radius: 18px;
+  border-radius: var(--wr-radius-surface);
   padding: 22px;
   background: var(--wr-c-bg);
-  box-shadow: 0 16px 50px rgb(0 0 0 / 6%);
+  box-shadow: var(--wr-shadow-surface);
 }
 
 .profile-card:only-child {
@@ -270,7 +270,7 @@ async function runCloudAction(action: () => Promise<unknown>) {
 
   p {
     margin: 0 0 4px;
-    color: rgb(127 127 127);
+    color: var(--wr-c-text-muted);
     font-size: 11px;
     font-weight: 800;
     letter-spacing: 0.08em;
@@ -283,49 +283,16 @@ async function runCloudAction(action: () => Promise<unknown>) {
   }
 
   span {
-    color: rgb(127 127 127);
+    color: var(--wr-c-text-muted);
     font-size: 12px;
   }
 }
 
 .profile-card__description {
   margin: 12px 0 22px;
-  color: rgb(100 100 100);
+  color: var(--wr-c-text-muted);
   font-size: 13px;
   line-height: 1.6;
-}
-
-.profile-switch,
-.profile-link {
-  display: inline-flex;
-  min-height: 32px;
-  align-items: center;
-  gap: 6px;
-  border: 0;
-  border-radius: 8px;
-  padding: 5px 8px;
-  color: var(--wr-c-link);
-  background: transparent;
-  font: inherit;
-  font-size: 12px;
-  cursor: pointer;
-
-  &:hover {
-    background: rgb(127 127 127 / 10%);
-  }
-
-  &:focus-visible {
-    outline: 2px solid var(--wr-c-link);
-  }
-}
-
-.profile-switch {
-  border: 1px solid rgb(127 127 127 / 18%);
-  color: inherit;
-}
-
-.profile-link--danger {
-  color: #dc2626;
 }
 
 .profile-fields {
@@ -335,27 +302,9 @@ async function runCloudAction(action: () => Promise<unknown>) {
   label > span {
     display: block;
     margin-bottom: 6px;
-    color: rgb(100 100 100);
+    color: var(--wr-c-text-muted);
     font-size: 12px;
     font-weight: 700;
-  }
-}
-
-.profile-fields input,
-.cloud-new input {
-  box-sizing: border-box;
-  width: 100%;
-  min-height: 42px;
-  border: 1px solid rgb(127 127 127 / 24%);
-  border-radius: 10px;
-  padding: 8px 11px;
-  color: inherit;
-  background: var(--wr-c-bg-soft);
-  font: inherit;
-
-  &:focus {
-    border-color: var(--wr-c-link);
-    outline: 2px solid color-mix(in srgb, var(--wr-c-link), transparent 72%);
   }
 }
 
@@ -367,7 +316,7 @@ async function runCloudAction(action: () => Promise<unknown>) {
   margin-top: 22px;
   border-top: 1px solid rgb(127 127 127 / 14%);
   padding-top: 14px;
-  color: rgb(127 127 127);
+  color: var(--wr-c-text-muted);
   font-size: 12px;
 }
 
@@ -401,7 +350,7 @@ async function runCloudAction(action: () => Promise<unknown>) {
   > span:not(.cloud-empty__icon) {
     max-width: 420px;
     margin: 10px 0 22px;
-    color: rgb(100 100 100);
+    color: var(--wr-c-text-muted);
     font-size: 13px;
     line-height: 1.6;
   }
@@ -413,7 +362,7 @@ async function runCloudAction(action: () => Promise<unknown>) {
   height: 54px;
   align-items: center;
   justify-content: center;
-  border-radius: 16px;
+  border-radius: var(--wr-radius-surface);
   color: var(--wr-c-link);
   background: color-mix(in srgb, var(--wr-c-link), transparent 91%);
   font-size: 30px;
@@ -441,7 +390,7 @@ async function runCloudAction(action: () => Promise<unknown>) {
 
 .cloud-new {
   border: 1px solid rgb(127 127 127 / 16%);
-  border-radius: 14px;
+  border-radius: var(--wr-radius-surface);
   padding: 14px;
 
   > label {
@@ -460,7 +409,7 @@ async function runCloudAction(action: () => Promise<unknown>) {
   small {
     display: block;
     margin-top: 8px;
-    color: rgb(127 127 127);
+    color: var(--wr-c-text-muted);
     line-height: 1.5;
   }
 }
@@ -534,7 +483,7 @@ async function runCloudAction(action: () => Promise<unknown>) {
 
   small {
     margin-top: 2px;
-    color: rgb(127 127 127);
+    color: var(--wr-c-text-muted);
     font-size: 11px;
   }
 }
@@ -542,7 +491,7 @@ async function runCloudAction(action: () => Promise<unknown>) {
 .cloud-list-empty,
 .cloud-status,
 .cloud-error {
-  color: rgb(127 127 127);
+  color: var(--wr-c-text-muted);
   font-size: 12px;
 }
 
@@ -552,14 +501,14 @@ async function runCloudAction(action: () => Promise<unknown>) {
   padding-top: 12px;
 
   summary {
-    color: rgb(100 100 100);
+    color: var(--wr-c-text-muted);
     font-size: 12px;
     cursor: pointer;
   }
 }
 
 .cloud-error {
-  color: #dc2626;
+  color: var(--wr-c-danger);
 }
 
 @media (max-width: 900px) {
@@ -574,7 +523,7 @@ async function runCloudAction(action: () => Promise<unknown>) {
   }
 
   .profile-card {
-    border-radius: 15px;
+    border-radius: var(--wr-radius-surface);
     padding: 17px;
   }
 

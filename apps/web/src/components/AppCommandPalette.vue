@@ -148,7 +148,7 @@ useEventListener('keydown', onGlobalKeydown)
     <DialogPortal>
       <DialogOverlay class="app-dialog-overlay" />
       <DialogContent
-        class="command-palette"
+        class="app-dialog-content command-palette"
         @close-auto-focus="onCloseAutoFocus"
       >
         <DialogTitle class="sr-only">
@@ -168,7 +168,9 @@ useEventListener('keydown', onGlobalKeydown)
               :placeholder="t('command.search_placeholder')"
               :aria-label="t('command.search_label')"
             />
-            <kbd>Esc</kbd>
+            <DialogClose class="command-button" :aria-label="t('button.close')">
+              <span i-ri-close-line aria-hidden="true" />
+            </DialogClose>
           </div>
           <ComboboxContent
             class="command-palette__content"
@@ -205,10 +207,6 @@ useEventListener('keydown', onGlobalKeydown)
             </ComboboxViewport>
           </ComboboxContent>
         </ComboboxRoot>
-
-        <DialogClose class="sr-only">
-          {{ t('button.close') }}
-        </DialogClose>
       </DialogContent>
     </DialogPortal>
   </DialogRoot>
@@ -216,18 +214,8 @@ useEventListener('keydown', onGlobalKeydown)
 
 <style lang="scss">
 .command-palette {
-  position: fixed;
-  z-index: calc(var(--overlay-z-index) + 1);
-  top: min(18vh, 150px);
-  left: 50%;
-  width: min(680px, calc(100vw - 32px));
-  overflow: hidden;
-  border: 1px solid rgb(127 127 127 / 24%);
-  border-radius: 18px;
-  color: var(--wr-c-text);
-  background: var(--wr-c-bg);
-  box-shadow: 0 28px 90px rgb(0 0 0 / 32%);
-  transform: translateX(-50%);
+  width: min(680px, calc(100vw - 32px - var(--wr-safe-area-left) - var(--wr-safe-area-right)));
+  padding: 0;
 }
 
 .command-palette__search {
@@ -240,7 +228,7 @@ useEventListener('keydown', onGlobalKeydown)
   padding: 0 16px;
 
   > [aria-hidden='true'] {
-    color: rgb(127 127 127);
+    color: var(--wr-c-text-muted);
     font-size: 20px;
   }
 
@@ -248,7 +236,7 @@ useEventListener('keydown', onGlobalKeydown)
     border: 1px solid rgb(127 127 127 / 20%);
     border-radius: 6px;
     padding: 3px 6px;
-    color: rgb(127 127 127);
+    color: var(--wr-c-text-muted);
     font-size: 11px;
   }
 }
@@ -278,7 +266,7 @@ useEventListener('keydown', onGlobalKeydown)
 .command-palette__group-label {
   display: block;
   padding: 10px 10px 6px;
-  color: rgb(127 127 127);
+  color: var(--wr-c-text-muted);
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -297,13 +285,13 @@ useEventListener('keydown', onGlobalKeydown)
   cursor: pointer;
 
   &[data-highlighted] {
-    color: white;
-    background: var(--wr-c-link);
+    color: var(--wr-c-link);
+    background: var(--wr-c-selected);
   }
 
   &[data-disabled] {
     cursor: not-allowed;
-    opacity: 0.42;
+    opacity: var(--wr-disabled-opacity);
   }
 
   kbd {
@@ -319,7 +307,7 @@ useEventListener('keydown', onGlobalKeydown)
   width: 36px;
   height: 36px;
   border-radius: 9px;
-  background: rgb(127 127 127 / 10%);
+  background: var(--wr-c-hover);
 }
 
 .command-palette__item-copy {
@@ -340,7 +328,7 @@ useEventListener('keydown', onGlobalKeydown)
 .command-palette__empty {
   margin: 0;
   padding: 36px 12px;
-  color: rgb(127 127 127);
+  color: var(--wr-c-text-muted);
   text-align: center;
 }
 
@@ -350,8 +338,8 @@ useEventListener('keydown', onGlobalKeydown)
     bottom: 0;
     left: 0;
     width: 100%;
-    max-height: 92dvh;
-    border-radius: 20px 20px 0 0;
+    max-height: min(88dvh, 760px);
+    border-radius: var(--wr-radius-dialog) var(--wr-radius-dialog) 0 0;
     padding-bottom: var(--wr-safe-area-bottom);
     transform: none;
   }

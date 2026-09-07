@@ -8,7 +8,7 @@
   --wr-tabbar-padding: 6px;
   --wr-tabbar-item-height: 50px;
 
-  --top-nav-height: calc(96px + var(--wr-safe-area-top));
+  --top-nav-height: calc(104px + var(--wr-safe-area-top));
   --bottom-menu-height: var(--wr-safe-area-bottom);
   --side-nav-width: calc(76px + var(--wr-safe-area-left));
 
@@ -16,6 +16,20 @@
   --wr-space-1: 4px;
   --wr-space-2: 8px;
   --wr-space-3: 12px;
+  --wr-radius-surface: 16px;
+  --wr-radius-dialog: 20px;
+  --wr-field-size: 44px;
+  --wr-c-text-muted: #666;
+  --wr-c-divider: rgb(127 127 127 / 22%);
+  --wr-c-hover: rgb(127 127 127 / 10%);
+  --wr-c-pressed: rgb(127 127 127 / 18%);
+  --wr-c-selected: color-mix(in srgb, var(--wr-c-link), transparent 90%);
+  --wr-c-danger: #b91c1c;
+  --wr-c-danger-soft: #fef2f2;
+  --wr-focus-ring: 0 0 0 3px color-mix(in srgb, var(--wr-c-link), transparent 75%);
+  --wr-shadow-surface: 0 10px 34px rgb(0 0 0 / 5%);
+  --wr-shadow-overlay: 0 24px 70px rgb(0 0 0 / 24%);
+  --wr-disabled-opacity: 0.45;
   --wr-control-size: 36px;
   --wr-control-radius: 10px;
   --wr-control-font-size: 13px;
@@ -55,6 +69,9 @@
 }
 
 .dark {
+  --wr-c-text-muted: #b0b0b0;
+  --wr-c-danger: #fca5a5;
+  --wr-c-danger-soft: #391c1c;
   --wr-c-bg: #121212;
   --wr-c-bg-soft: #1a1a1a;
 
