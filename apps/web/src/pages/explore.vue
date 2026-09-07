@@ -587,7 +587,7 @@ onMounted(() => {
 
 @media (max-width: 600px) {
   .template-market {
-    padding: 28px 16px calc(36px + env(safe-area-inset-bottom));
+    padding: 28px 16px calc(36px + var(--wr-safe-area-bottom));
   }
 
   .template-market__intro {

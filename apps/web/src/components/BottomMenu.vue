@@ -77,10 +77,11 @@ const settingsItem = computed(() => ({
   width: var(--side-nav-width);
   flex-direction: column;
   border-right: 1px solid rgb(127 127 127 / 18%);
-  padding: 12px 8px;
+  padding: 12px 8px max(12px, var(--wr-safe-area-bottom)) calc(8px + var(--wr-safe-area-left));
   background: color-mix(in srgb, var(--wr-c-bg), transparent 3%);
   box-shadow: 8px 0 24px rgb(0 0 0 / 6%);
   backdrop-filter: blur(16px);
+  overflow-y: auto;
 }
 
 .bottom-menu__settings {
@@ -124,6 +125,12 @@ const settingsItem = computed(() => ({
   }
 }
 
+@media (min-width: 768px) and (max-height: 500px) {
+  .bottom-menu__item {
+    min-height: 44px;
+  }
+}
+
 @media (max-width: 767px) {
   .bottom-menu {
     top: auto;
@@ -137,7 +144,7 @@ const settingsItem = computed(() => ({
     align-items: start;
     border-top: 1px solid rgb(127 127 127 / 18%);
     border-right: 0;
-    padding: 5px max(8px, env(safe-area-inset-right)) env(safe-area-inset-bottom) max(8px, env(safe-area-inset-left));
+    padding: var(--wr-tabbar-padding) max(8px, var(--wr-safe-area-right)) calc(var(--wr-tabbar-padding) + var(--wr-safe-area-bottom)) max(8px, var(--wr-safe-area-left));
     box-shadow: 0 -8px 24px rgb(0 0 0 / 8%);
   }
 
@@ -147,7 +154,7 @@ const settingsItem = computed(() => ({
 
   .bottom-menu__item {
     min-width: 44px;
-    min-height: 50px;
+    min-height: var(--wr-tabbar-item-height);
   }
 }
 

@@ -1,7 +1,16 @@
 :root {
-  --top-nav-height: 96px;
-  --bottom-menu-height: 0px;
-  --side-nav-width: 76px;
+  // The viewport owns safe areas. Hosts may override the standard inset variables.
+  --wr-safe-area-top: var(--safe-area-inset-top, env(safe-area-inset-top, 0px));
+  --wr-safe-area-right: var(--safe-area-inset-right, env(safe-area-inset-right, 0px));
+  --wr-safe-area-bottom: var(--safe-area-inset-bottom, env(safe-area-inset-bottom, 0px));
+  --wr-safe-area-left: var(--safe-area-inset-left, env(safe-area-inset-left, 0px));
+  --wr-tabbar-content-height: 64px;
+  --wr-tabbar-padding: 6px;
+  --wr-tabbar-item-height: 50px;
+
+  --top-nav-height: calc(96px + var(--wr-safe-area-top));
+  --bottom-menu-height: var(--wr-safe-area-bottom);
+  --side-nav-width: calc(76px + var(--wr-safe-area-left));
 
   // Shared control and toolbar tokens
   --wr-space-1: 4px;
@@ -18,8 +27,8 @@
 
 @media (max-width: 767px) {
   :root {
-    --top-nav-height: 64px;
-    --bottom-menu-height: calc(60px + env(safe-area-inset-bottom));
+    --top-nav-height: calc(64px + var(--wr-safe-area-top));
+    --bottom-menu-height: calc(var(--wr-tabbar-content-height) + var(--wr-safe-area-bottom));
     --side-nav-width: 0px;
     --wr-control-size: 44px;
     --wr-control-radius: 12px;

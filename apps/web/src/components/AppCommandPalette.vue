@@ -352,12 +352,12 @@ useEventListener('keydown', onGlobalKeydown)
     width: 100%;
     max-height: 92dvh;
     border-radius: 20px 20px 0 0;
-    padding-bottom: env(safe-area-inset-bottom);
+    padding-bottom: var(--wr-safe-area-bottom);
     transform: none;
   }
 
   .command-palette__viewport {
-    max-height: calc(82dvh - 58px - env(safe-area-inset-bottom));
+    max-height: calc(82dvh - 58px - var(--wr-safe-area-bottom));
   }
 }
 </style>

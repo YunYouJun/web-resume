@@ -22,7 +22,8 @@ html {
 }
 
 .app-shell-content {
-  padding-left: var(--side-nav-width);
+  padding-left: max(var(--side-nav-width), var(--wr-safe-area-left));
+  padding-right: var(--wr-safe-area-right);
 }
 
 #nprogress {
@@ -32,6 +33,7 @@ html {
 @media print {
   .app-shell-content {
     padding-left: 0;
+    padding-right: 0;
   }
 }
 

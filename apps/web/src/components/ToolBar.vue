@@ -101,7 +101,7 @@ useEventListener('afterprint', () => {
   left: 0;
   min-height: var(--top-nav-height);
   border-bottom: 1px solid rgb(127 127 127 / 18%);
-  padding: 6px 12px 8px;
+  padding: calc(6px + var(--wr-safe-area-top)) max(12px, var(--wr-safe-area-right)) 8px max(12px, var(--wr-safe-area-left));
   background: color-mix(in srgb, var(--wr-c-bg), transparent 4%);
   box-shadow: 0 6px 24px rgb(0 0 0 / 8%);
   backdrop-filter: blur(16px);
@@ -195,7 +195,7 @@ useEventListener('afterprint', () => {
 
 @media (max-width: 767px) {
   .app-toolbar {
-    padding: 8px;
+    padding: calc(8px + var(--wr-safe-area-top)) max(8px, var(--wr-safe-area-right)) 8px max(8px, var(--wr-safe-area-left));
   }
 
   .app-toolbar__desktop {

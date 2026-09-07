@@ -38,6 +38,7 @@ useHead(computed(() => ({
   title: 'Web Resume',
   htmlAttrs: { lang: locale.value },
   meta: [
+    { name: 'viewport', content: 'width=device-width, initial-scale=1.0, viewport-fit=cover' },
     { name: 'application-name', content: 'Web Resume' },
     { name: 'description', content: '从 YAML 生成、编辑并导出 PDF 简历。' },
     { property: 'og:title', content: 'Web Resume' },
