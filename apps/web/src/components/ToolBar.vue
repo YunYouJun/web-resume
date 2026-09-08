@@ -190,7 +190,7 @@ useEventListener('afterprint', () => {
   border: 1px solid rgb(127 127 127 / 22%);
   border-radius: 5px;
   padding: 2px 5px;
-  color: rgb(127 127 127);
+  color: var(--wr-c-text-muted);
   font-size: 10px;
 }
 
@@ -260,7 +260,7 @@ useEventListener('afterprint', () => {
     }
 
     small {
-      color: rgb(127 127 127);
+      color: var(--wr-c-text-muted);
       font-size: 10px;
       font-weight: 400;
     }

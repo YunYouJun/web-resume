@@ -1,3 +1,5 @@
+// Monaco is pinned to 0.52.2: monaco-yaml 5.5.1 uses the pre-0.55 Worker API.
+// Run tests/yaml-worker.spec.ts before upgrading either dependency.
 // import resumeSchema from '../../public/schema/resume.schema.json'
 
 // a magic way to fix vite worker with monaco-yaml

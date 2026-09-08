@@ -106,7 +106,7 @@ async function select(commandId: string) {
   gap: 4px;
 
   span {
-    color: rgb(127 127 127);
+    color: var(--wr-c-text-muted);
     font-size: 13px;
     line-height: 1.4;
   }

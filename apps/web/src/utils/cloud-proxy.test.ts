@@ -27,6 +27,24 @@ describe('cloud API proxy boundary', () => {
     expect(fetchMock).toHaveBeenCalledOnce()
   })
 
+  it('returns an anonymous session without weakening protected routes', async () => {
+    vi.stubGlobal('fetch', vi.fn(async () => Response.json({ message: 'Unauthorized' }, {
+      status: 401,
+      headers: { 'set-cookie': 'session=; Max-Age=0; Secure; HttpOnly; Path=/' },
+    })))
+    const response = await onRequest(context('/api/session'))
+    expect(response.status).toBe(200)
+    expect(await response.json()).toEqual({ session: null })
+    expect(response.headers.get('cache-control')).toBe('no-store')
+    expect(response.headers.get('set-cookie')).toContain('Max-Age=0')
+    for (const path of ['/api/documents', '/api/session/csrf'])
+      await expect(onRequest(context(path))).resolves.toMatchObject({ status: 401 })
+    await expect(onRequest(context('/api/session/login', {
+      method: 'POST',
+      headers: { origin: 'https://resume.yunle.fun' },
+    }))).resolves.toMatchObject({ status: 401 })
+  })
+
   it('fails closed while the rollout flag is disabled', async () => {
     const response = await onRequest(context('/api/session', {}, false))
     expect(response.status).toBe(404)

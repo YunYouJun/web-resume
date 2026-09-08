@@ -61,6 +61,12 @@ export async function onRequest(context) {
     })
     copyResponseHeader(upstream.headers, responseHeaders, 'content-type')
     copyResponseHeader(upstream.headers, responseHeaders, 'set-cookie')
+    // Session discovery is public: an absent/expired session is a normal state.
+    // Protected operations must keep their upstream authentication failures.
+    if (context.request.method === 'GET' && path === '/session' && upstream.status === 401) {
+      await upstream.body?.cancel()
+      return Response.json({ session: null }, { headers: responseHeaders })
+    }
     return new Response(upstream.body, {
       headers: responseHeaders,
       status: upstream.status,

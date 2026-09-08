@@ -29,7 +29,7 @@ const { t } = useI18n()
 
   > p {
     margin: 0;
-    color: rgb(127 127 127);
+    color: var(--wr-c-text-muted);
     line-height: 1.55;
   }
 }

@@ -48,6 +48,7 @@ useHead(computed(() => ({
   script: [{
     // iconify icon cdn
     src: 'https://code.iconify.design/2/2.1.2/iconify.min.js',
+    defer: true,
   }],
 })))
 </script>

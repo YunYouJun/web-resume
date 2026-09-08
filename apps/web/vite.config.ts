@@ -17,7 +17,6 @@ import { defineConfig } from 'vite'
 import { VitePWA } from 'vite-plugin-pwa'
 import VueDevTools from 'vite-plugin-vue-devtools'
 import generateSitemap from 'vite-ssg-sitemap'
-import { prefix as monacoPrefix } from './src/monaco/index'
 
 const markdownWrapperClasses = 'markdown-body max-w-900px m-auto text-left px-4'
 
@@ -30,20 +29,19 @@ export default defineConfig(({ isSsrBuild }) => ({
   },
 
   build: {
+    sourcemap: true,
     rollupOptions: {
       output: {
         inlineDynamicImports: false,
+        // Keep shared dependencies outside Monaco so the app shell stays lazy.
+        onlyExplicitManualChunks: true,
         manualChunks: isSsrBuild
           ? undefined
-          : {
-              // as a chunk to load error (KeyCode is undefined)
-              monaco: ['monaco-editor'],
-              editorWorker: [`${monacoPrefix}/editor/editor.worker`],
-              // jsonWorker: [`${monacoPrefix}/language/json/json.worker`],
-              // cssWorker: [`${monacoPrefix}/language/css/css.worker`],
-              // htmlWorker: [`${monacoPrefix}/language/html/html.worker`],
-              // tsWorker: [`${monacoPrefix}/language/typescript/ts.worker`],
-              yamlWorker: ['monaco-yaml/yaml.worker'],
+          : (id) => {
+              if (id.includes('vite/preload-helper'))
+                return 'preload-helper'
+              if (id.includes('/monaco-editor/'))
+                return 'monaco'
             },
       },
     },
@@ -165,7 +163,17 @@ export default defineConfig(({ isSsrBuild }) => ({
         ],
       },
       workbox: {
-        maximumFileSizeToCacheInBytes: 8000000,
+        // Cache editor resources only after use, rather than on first visit.
+        globIgnores: ['**/monaco-*.js', '**/monaco-*.css', '**/*worker*.js', '**/*Worker*.js', '**/*.map'],
+        runtimeCaching: [{
+          urlPattern: /\/assets\/.*(?:monaco-|worker|Worker).*\.(?:js|css)$/,
+          handler: 'CacheFirst',
+          options: {
+            cacheName: 'resume-editor-assets',
+            expiration: { maxEntries: 20, maxAgeSeconds: 60 * 60 * 24 * 30 },
+            cacheableResponse: { statuses: [200] },
+          },
+        }],
         navigateFallbackDenylist: [/^\/docs(?:\/|$)/],
       },
     }),

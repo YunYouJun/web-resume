@@ -6,6 +6,9 @@ import {
   resolveResumeTemplateId,
 } from '~/data/resume-catalog'
 
+// The empty start screen does not need the resume renderer or HTML sanitizer.
+const ResumeAll = defineAsyncComponent(() => import('~/components/resume/All.vue'))
+
 const app = useAppStore()
 const editor = useEditorStore()
 const route = useRoute()

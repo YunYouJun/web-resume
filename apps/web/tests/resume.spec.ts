@@ -51,7 +51,7 @@ test('reorders resume sections from the visual editor and updates YAML', async (
   })).toBe(true)
 })
 
-test('reviews, converts, and undoes a legacy resume migration', async ({ browserName, page }) => {
+test('reviews, converts, and undoes a legacy resume migration', async ({ page }) => {
   const legacyResume = await readFile(new URL('../src/utils/fixtures/legacy.resume.yml', import.meta.url), 'utf8')
   await page.route('**/legacy-test.resume.yml', route => route.fulfill({ body: legacyResume, contentType: 'text/yaml' }))
   await page.goto(`/?url=${encodeURIComponent('/legacy-test.resume.yml')}`)
@@ -82,7 +82,8 @@ test('reviews, converts, and undoes a legacy resume migration', async ({ browser
   })).toBe(true)
 
   await page.locator('.monaco-editor').click()
-  await page.keyboard.press(browserName === 'webkit' ? 'Meta+Z' : 'Control+Z')
+  const undoShortcut = await page.evaluate(() => /Mac|iPhone|iPad/.test(navigator.platform) ? 'Meta+Z' : 'Control+Z')
+  await page.keyboard.press(undoShortcut)
   await expect(migrationStatus).toBeVisible()
 })
 
