@@ -21,7 +21,7 @@ const { t } = useI18n()
 
 const recentCommands = computed(() => commands.value.filter(command => command.id.startsWith('resume.recent:')))
 const exampleCommands = computed(() => commands.value.filter(command => command.id.startsWith('resume.example:')))
-const fileCommands = computed(() => ['resume.load', 'resume.restore-example', 'resume.share', 'resume.export-portable', 'resume.print'].map(find).filter(Boolean) as ResumeCommand[])
+const fileCommands = computed(() => ['resume.load', 'resume.restore-example', 'resume.share', 'resume.share-content', 'resume.export-html', 'resume.export-portable', 'resume.print'].map(find).filter(Boolean) as ResumeCommand[])
 const settingsCommand = computed(() => find('navigate.settings'))
 const viewCommands = computed(() => ['resume.preview', 'view.fullscreen'].map(find).filter(Boolean) as ResumeCommand[])
 const templateCommands = computed(() => commands.value.filter(command => command.id.startsWith('resume.template:')))

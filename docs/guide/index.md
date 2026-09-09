@@ -90,7 +90,35 @@ The profile override can replace the name, phone number, and email shown in a lo
 
 ### Share a preview
 
-Choose **File → Copy share link**. The link contains the source URL or built-in example ID, selected template, and preview mode. It does not contain your unsaved editor text or browser-local profile. To share edits, first publish the updated YAML at an accessible URL and load that URL.
+Choose **File → Copy share link**. The link contains the source URL or built-in example ID, selected template, and preview mode. It does not contain your unsaved editor text or browser-local profile. To share edits using this option, publish the updated YAML at an accessible URL and load it, or use the current-content option below.
+
+### Share the current editor content
+
+Choose **File → Copy current content link** to share the current YAML without uploading a file. The selected template is preserved and recipients see a clean preview without overwriting their local drafts. Data lives in the `#resume=` URL fragment, which is not sent in HTTP requests. It is not encrypted: anyone with the full link can read the resume.
+
+Local profile overrides are excluded. YAML is limited to 48 KiB; messaging apps may truncate long links, so use source links for larger resumes.
+
+### Export standalone HTML for GitHub Pages
+
+From the home page or editor, choose **File → Export standalone HTML**. The downloaded file includes the displayed resume (including enabled profile overrides) and template styles, without editor controls or application scripts.
+
+1. Rename the download to `index.html` and add it to your publishing repository.
+2. In GitHub **Settings → Pages**, select the publishing branch and directory.
+3. Open the published Pages URL. You do not need to deploy the Web Resume application.
+
+External photos, images, and fonts retain their original URLs and are not embedded. Keep those resources available and review contact details before publishing.
+
+### Photos and templates
+
+Set `basics.image` to a photo URL in JSON Resume, or `basics.avatar` in legacy YAML. HTTPS URLs and site-relative image paths are supported:
+
+```yaml
+basics:
+  name: Lin Zhixing
+  image: https://example.com/photo.jpg
+```
+
+Classic, Compact, and Sidebar layouts all support photos. Select them through **View → Templates** or the template library. Dark/light settings apply to the app interface; standalone HTML uses a light page suitable for printing.
 
 ### Convert an older resume
 

@@ -110,6 +110,9 @@ command:
   exit_fullscreen: Exit fullscreen
   examples: Example resumes
   export_pdf: Export PDF
+  export_html: Export standalone HTML
+  share_content: Copy current content link
+  share_content_description: Contains current YAML. Anyone with the link can read it; local profile overrides are excluded.
   export_portable: Export portable JSON Resume
   file: File
   format_yaml: Format YAML
@@ -305,6 +308,7 @@ template_market:
 
 toast:
   example_restored: Example resume restored
+  content_share_failed: Copy failed. Allow clipboard access and keep YAML below 48 KiB; use a source link for larger resumes.
   link_copied: Share link copied
   notification: Notification
   in_app_print_copied_description: The export link is copied. Choose “Open in system browser” from the top-right More menu, paste the link, and export again.

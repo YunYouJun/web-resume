@@ -83,7 +83,7 @@ function convert() {
           <button type="button" class="command-button command-button--quiet" @click="close">
             {{ t('resume_migration.cancel') }}
           </button>
-          <button type="button" class="command-button command-button--primary" @click="convert">
+          <button type="button" class="command-button command-button--primary" :disabled="!editor.codeEditor" @click="convert">
             {{ t('resume_migration.confirm') }}
           </button>
         </footer>
