@@ -27,8 +27,8 @@ const safeAvatarUrl = computed(() => {
       class="command-button command-button--quiet cloud-account__button"
       :aria-label="t('cloud.manage_account')"
     >
-      <img v-if="safeAvatarUrl" :src="safeAvatarUrl" alt="" referrerpolicy="no-referrer">
-      <span v-else i-ri-user-3-line aria-hidden="true" />
+      <img v-if="safeAvatarUrl" class="cloud-account__avatar" :src="safeAvatarUrl" alt="" referrerpolicy="no-referrer">
+      <span v-else class="cloud-account__icon" i-ri-user-3-line aria-hidden="true" />
       <span class="cloud-account__label">{{ label }}</span>
       <span class="cloud-account__status" :class="`cloud-account__status--${cloud.status}`" aria-hidden="true" />
     </RouterLink>
@@ -40,7 +40,7 @@ const safeAvatarUrl = computed(() => {
       :aria-busy="cloud.status === 'loading'"
       @click="cloud.login"
     >
-      <span :class="cloud.status === 'loading' ? 'i-ri-loader-4-line animate-spin' : 'i-ri-user-3-line'" aria-hidden="true" />
+      <span class="cloud-account__icon" :class="cloud.status === 'loading' ? 'i-ri-loader-4-line animate-spin' : 'i-ri-user-3-line'" aria-hidden="true" />
       <span>{{ cloud.status === 'loading' ? t('cloud.connecting') : t('cloud.login') }}</span>
     </button>
   </div>
@@ -51,22 +51,22 @@ const safeAvatarUrl = computed(() => {
   margin-left: auto;
 }
 
-.cloud-account__button {
-  img,
-  > span:first-child {
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    font-size: 18px;
-  }
+.cloud-account__avatar,
+.cloud-account__icon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+}
 
-  > span:first-child {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background: rgb(127 127 127 / 10%);
-  }
+.cloud-account__avatar {
+  border-radius: 50%;
+  object-fit: cover;
+  background: rgb(127 127 127 / 10%);
+}
 
+.cloud-account__icon {
+  color: inherit;
+  background-color: currentColor;
 }
 
 .cloud-account__label {
