@@ -156,7 +156,7 @@ useHead({
           <div class="settings-palettes" role="radiogroup" aria-labelledby="settings-palette-label">
             <label v-for="palette in appearanceOptions.palette" :key="palette" class="settings-segment__option" :class="{ 'settings-segment__option--selected': app.resumeAppearance.palette === palette }">
               <input type="radio" name="resume-palette" :value="palette" :checked="app.resumeAppearance.palette === palette" @change="updateAppearance('palette', palette)">
-              <span class="settings-palette-dot" :style="{ backgroundColor: resumePalettes[palette].accent }" aria-hidden="true" />
+              <span class="settings-palette-dot" :style="{ backgroundColor: resumePalettes[palette].heading }" aria-hidden="true" />
               <span>{{ t(`settings.resume.options.${palette}`) }}</span>
             </label>
           </div>

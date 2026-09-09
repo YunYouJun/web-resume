@@ -92,7 +92,7 @@ The profile override can replace the name, phone number, and email shown in a lo
 
 In **Settings → Resume defaults**, combine any of the three templates with:
 
-- **Colors**: Blue, Forest, Plum or Slate, applied to headings, links and the sidebar.
+- **Colors**: Classic black preserves the original black headings and blue links by default; Forest, Plum and Slate remain available.
 - **Font**: modern sans serif or classic serif, using local fonts without extra downloads.
 - **Content spacing**: comfortable or compact section and paragraph spacing.
 - **Photo shape**: square, rounded or circle, with centered cropping. Set the photo URL in `basics.image` (`basics.avatar` for legacy YAML).
