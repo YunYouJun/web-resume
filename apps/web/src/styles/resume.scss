@@ -248,3 +248,74 @@
     outline: none;
   }
 }
+
+// These attributes and inline palette tokens also travel with standalone HTML.
+.resume[data-font='sans'] {
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.resume[data-font='serif'] {
+  font-family: 'Noto Serif CJK SC', 'Songti SC', SimSun, Georgia, serif;
+}
+
+.resume[data-font] h2 {
+  font-family: inherit;
+}
+
+.resume[data-density='dense'] {
+  line-height: 1.4;
+
+  .resume-section h2 {
+    margin-top: 10px;
+    margin-bottom: 4px;
+  }
+
+  summary {
+    margin: 6px 0;
+  }
+
+  .resume__identity ul {
+    margin-top: 8px;
+    margin-bottom: 8px;
+  }
+}
+
+.resume-photo {
+  width: 88px;
+  height: 104px;
+  max-width: 3cm;
+  flex: 0 0 auto;
+  object-fit: cover;
+  object-position: center;
+}
+
+.resume[data-photo='rounded'] .resume-photo {
+  border-radius: 14px;
+}
+
+.resume[data-photo='circle'] .resume-photo {
+  height: 88px;
+  border-radius: 50%;
+}
+
+@media print {
+  .resume {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+}
+
+.resume .resume__content h2 {
+  color: var(--resume-template-accent);
+}
+
+.resume-heading {
+  gap: 16px;
+
+  > div { min-width: 0; overflow-wrap: anywhere; }
+}
+
+.resume--sidebar .resume-heading {
+  flex-direction: column-reverse;
+  align-items: flex-start;
+}

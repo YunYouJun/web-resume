@@ -176,7 +176,7 @@ export function useResumeCommands(): ResumeCommands {
         menu: 'file',
         run: async () => {
           try {
-            const link = createResumeContentLink(editor.resumeText, window.location.origin, app.resumeTemplateId)
+            const link = createResumeContentLink(editor.resumeText, window.location.origin, app.resumeTemplateId, app.resumeAppearance)
             await navigator.clipboard.writeText(link)
             app.showToast({ title: t('toast.link_copied'), description: t('command.share_content_description') })
           }

@@ -6,6 +6,7 @@ import {
   resolveResumeExampleId,
   resolveResumeTemplateId,
 } from '~/data/resume-catalog'
+import { appearanceOptions, resolveResumeAppearance } from '~/utils/resume-appearance'
 import { readResumeDocument } from '~/utils/resume-format'
 import { readResumeContentLink } from '~/utils/resume-share'
 
@@ -33,6 +34,10 @@ const sharedResume = computed(() => {
 })
 const resume = computed(() => sharedResume.value ? sharedResume.value.resume : editor.resumeJson)
 const isPreview = computed(() => sharedResume.value !== undefined || route.query.mode === 'preview')
+const appearance = computed(() => {
+  const hasAppearance = Object.keys(appearanceOptions).some(key => route.query[key] !== undefined)
+  return resolveResumeAppearance(isPreview.value || hasAppearance ? route.query : app.resumeAppearance)
+})
 const templateId = computed(() => resolveResumeTemplateId(route.query.template || app.resumeTemplateId))
 
 function firstQueryValue(value: unknown) {
@@ -112,7 +117,7 @@ onBeforeUnmount(() => {
       </RouterLink>
     </div>
   </div>
-  <ResumeAll v-else-if="resume" :resume="resume" :template-id="templateId" />
+  <ResumeAll v-else-if="resume" :resume="resume" :template-id="templateId" :appearance="appearance" />
   <ResumeEmptyState v-else-if="!isPreview" />
 </template>
 

@@ -1,11 +1,42 @@
 <script lang="ts" setup>
 import type { ColorSchemePreference } from '~/composables'
-import type { ResumeTemplateId } from '~/types'
+import type { ResumeInfo, ResumeTemplateId } from '~/types'
 import { colorScheme } from '~/composables'
 import { resumeTemplates } from '~/data/resume-catalog'
+import { appearanceOptions, defaultResumeAppearance, resolveResumeAppearance, resumePalettes } from '~/utils/resume-appearance'
 
 const app = useAppStore()
+const editor = useEditorStore()
+const ResumeAll = defineAsyncComponent(() => import('~/components/resume/All.vue'))
+const detailOptions = ['font', 'density', 'photo'] as const
+
+function updateAppearance(key: keyof typeof appearanceOptions, value: string) {
+  app.resumeAppearance = resolveResumeAppearance({ ...app.resumeAppearance, [key]: value })
+}
+
+function resetAppearance() {
+  app.resumeAppearance = { ...defaultResumeAppearance }
+}
+
 const { locale, t } = useI18n()
+
+const previewResume = computed<ResumeInfo>(() => editor.resumeJson || {
+  basics: {
+    name: t('settings.resume.sample_name'),
+    label: t('settings.resume.sample_role'),
+    avatar: '/img/resume-photo-placeholder.svg',
+  },
+  contact: {
+    email: { icon: 'ri:mail-line', label: 'hello@example.com', href: 'mailto:hello@example.com' },
+    phone: { icon: 'ri:phone-line', label: '138 0000 0000', href: 'tel:13800000000' },
+    blog: { icon: 'ri:global-line', label: 'Portfolio', href: 'https://example.com' },
+  },
+  other: {
+    icon: 'ri:lightbulb-line',
+    title: t('settings.resume.sample_section'),
+    info: [t('settings.resume.sample_line_one'), t('settings.resume.sample_line_two')],
+  },
+})
 
 const themes: Array<{ icon: string, id: ColorSchemePreference }> = [
   { icon: 'i-ri-computer-line', id: 'system' },
@@ -116,6 +147,47 @@ useHead({
               {{ t(template.nameKey) }}
             </option>
           </select>
+        </div>
+        <div class="settings-field">
+          <div class="settings-field__copy">
+            <strong id="settings-palette-label">{{ t('settings.resume.palette') }}</strong>
+            <span>{{ t('settings.resume.palette_description') }}</span>
+          </div>
+          <div class="settings-palettes" role="radiogroup" aria-labelledby="settings-palette-label">
+            <label v-for="palette in appearanceOptions.palette" :key="palette" class="settings-segment__option" :class="{ 'settings-segment__option--selected': app.resumeAppearance.palette === palette }">
+              <input type="radio" name="resume-palette" :value="palette" :checked="app.resumeAppearance.palette === palette" @change="updateAppearance('palette', palette)">
+              <span class="settings-palette-dot" :style="{ backgroundColor: resumePalettes[palette].accent }" aria-hidden="true" />
+              <span>{{ t(`settings.resume.options.${palette}`) }}</span>
+            </label>
+          </div>
+        </div>
+        <div v-for="key in detailOptions" :key="key" class="settings-field">
+          <label class="settings-field__copy" :for="`settings-resume-${key}`">
+            <strong>{{ t(`settings.resume.${key}`) }}</strong>
+          </label>
+          <select :id="`settings-resume-${key}`" class="wr-field-control settings-select" :value="app.resumeAppearance[key]" @change="updateAppearance(key, ($event.target as HTMLSelectElement).value)">
+            <option v-for="option in appearanceOptions[key]" :key="option" :value="option">
+              {{ t(`settings.resume.options.${option}`) }}
+            </option>
+          </select>
+        </div>
+        <div class="settings-field">
+          <p class="settings-field__copy">
+            {{ t('settings.resume.sharing_notice') }}
+          </p>
+          <button type="button" class="command-button command-button--quiet" @click="resetAppearance">
+            {{ t('settings.resume.reset') }}
+          </button>
+        </div>
+        <div class="settings-resume-preview" role="region" :aria-label="t('settings.resume.preview')">
+          <div class="settings-resume-preview__heading">
+            <strong>{{ t('settings.resume.preview') }}</strong>
+            <span>{{ t(editor.resumeJson ? 'settings.resume.current_preview' : 'settings.resume.sample_preview') }}</span>
+          </div>
+          <div class="settings-resume-preview__canvas" inert aria-hidden="true">
+            <ResumeAll :resume="previewResume" :template-id="app.resumeTemplateId" />
+          </div>
+          <p>{{ t('settings.resume.photo_help') }}</p>
         </div>
       </section>
 
@@ -265,6 +337,13 @@ useHead({
 }
 
 .settings-select {
+  appearance: none;
+  min-height: 44px;
+  padding-right: 32px;
+  background-image: linear-gradient(45deg, transparent 50%, var(--wr-c-text-muted) 50%), linear-gradient(135deg, var(--wr-c-text-muted) 50%, transparent 50%);
+  background-position: calc(100% - 16px) 50%, calc(100% - 11px) 50%;
+  background-size: 5px 5px;
+  background-repeat: no-repeat;
   width: auto;
   min-width: 180px;
 }
@@ -360,5 +439,58 @@ useHead({
   .settings-card__actions {
     padding: 14px 16px 17px;
   }
+}
+.settings-field > .command-button {
+  min-height: 44px;
+  flex-shrink: 0;
+}
+
+.settings-palettes {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+
+  .settings-segment__option { min-width: 74px; min-height: 44px; }
+}
+
+.settings-palette-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.settings-resume-preview {
+  border-top: 1px solid rgb(127 127 127 / 24%);
+  padding: 20px;
+  background: var(--wr-c-hover);
+
+  > p { margin: 12px 0 0; color: var(--wr-c-text-muted); font-size: 12px; }
+}
+
+.settings-resume-preview__heading {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 14px;
+
+  span { font-size: 12px; color: var(--wr-c-text-muted); }
+}
+
+.settings-resume-preview__canvas {
+  max-height: 480px;
+  overflow: auto;
+  border: 1px solid rgb(127 127 127 / 24%);
+  border-radius: 8px;
+  background: white;
+  color: #1d1d1f;
+
+  :deep(.resume) { --wr-c-resume-bg: white; }
+}
+
+@media (max-width: 767px) {
+  .settings-palettes { grid-template-columns: repeat(2, 1fr); }
+  .settings-resume-preview { padding: 16px; }
 }
 </style>
