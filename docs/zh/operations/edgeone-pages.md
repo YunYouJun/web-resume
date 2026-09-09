@@ -15,6 +15,6 @@
 
 ## 发布验证与回滚
 
-合并前验证 EdgeOne 预览部署成功；合并后确认生产部署对应最新提交，再发布 `workers/wrangler.toml`。检查两个域名的首页资源版本、`/settings`、`/docs/`，以及主域 `/api/session` 返回 JSON、`/api/documents` 保持关闭。
+合并前运行完整构建、类型检查及代理测试；若项目启用了预览分支，也应验证 EdgeOne 预览部署。当前项目只自动部署 `main`，合并后必须确认生产部署成功且对应最新提交，再发布 `workers/wrangler.toml`。检查两个域名的首页资源版本、`/settings`、`/docs/`，以及主域 `/api/session` 返回 JSON、`/api/documents` 保持关闭。
 
 EdgeOne 可切回之前成功的部署。若页面源站不可用，也可将 Worker 的 `ASSET_ORIGIN` 恢复为 `https://resume.elpsy.cn` 并重新发布；不要变更 API 开关或删除用户数据。
