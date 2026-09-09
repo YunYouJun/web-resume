@@ -6,6 +6,7 @@
 .resume {
   // Theme seam: templates consume semantic colors without owning a palette.
   --resume-theme-accent: #0969da;
+  --resume-theme-heading: #000000;
   --resume-theme-strong: #1d1d1f;
   --resume-theme-on-strong: white;
   --resume-theme-divider: color-mix(in srgb, var(--resume-theme-accent), transparent 68%);
@@ -107,7 +108,7 @@
     padding: 30px 36px;
 
     h2 {
-      color: var(--resume-template-accent);
+      color: var(--resume-theme-heading);
       font-size: 21px;
     }
 
@@ -150,7 +151,7 @@
   .resume__content {
     h2 {
       margin-top: 10px;
-      color: var(--resume-template-accent);
+      color: var(--resume-theme-heading);
       font-size: 18px;
     }
 
@@ -306,7 +307,7 @@
 }
 
 .resume .resume__content h2 {
-  color: var(--resume-template-accent);
+  color: var(--resume-theme-heading);
 }
 
 .resume-heading {

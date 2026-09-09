@@ -14,10 +14,10 @@ export const defaultResumeAppearance: ResumeAppearance = {
 }
 
 export const resumePalettes = {
-  blue: { accent: '#0969da', strong: '#1d1d1f' },
-  forest: { accent: '#166448', strong: '#163b30' },
-  plum: { accent: '#783c78', strong: '#3e2540' },
-  slate: { accent: '#475569', strong: '#253044' },
+  blue: { heading: '#000000', accent: '#0969da', strong: '#1d1d1f' },
+  forest: { heading: '#166448', accent: '#166448', strong: '#163b30' },
+  plum: { heading: '#783c78', accent: '#783c78', strong: '#3e2540' },
+  slate: { heading: '#475569', accent: '#475569', strong: '#253044' },
 }
 
 export function resolveResumeAppearance(value: unknown): ResumeAppearance {
@@ -39,6 +39,7 @@ export function resumeAppearanceStyle(appearance: ResumeAppearance) {
   const palette = resumePalettes[resolved.palette]
   return {
     '--resume-theme-accent': palette.accent,
+    '--resume-theme-heading': palette.heading,
     '--resume-theme-strong': palette.strong,
   }
 }
