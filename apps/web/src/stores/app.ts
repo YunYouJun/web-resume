@@ -3,6 +3,7 @@ import { isClient } from '@vueuse/core'
 import { acceptHMRUpdate, defineStore, skipHydrate } from 'pinia'
 import { defaultResumeTemplateId, resolveResumeTemplateId } from '~/data/resume-catalog'
 import { getPreviewUrl, namespace, resumeExamples } from '~/utils'
+import { defaultResumeAppearance, resolveResumeAppearance } from '~/utils/resume-appearance'
 
 export const useAppStore = defineStore('app', () => {
   const isPrinting = ref(false)
@@ -43,6 +44,9 @@ export const useAppStore = defineStore('app', () => {
   const resumeTemplateId = skipHydrate(useStorage<ResumeTemplateId>(`${namespace}:resume-template`, defaultResumeTemplateId))
   resumeTemplateId.value = resolveResumeTemplateId(resumeTemplateId.value)
 
+  const resumeAppearance = skipHydrate(useStorage(`${namespace}:resume-appearance`, { ...defaultResumeAppearance }))
+  resumeAppearance.value = resolveResumeAppearance(resumeAppearance.value)
+
   const usedResumes = skipHydrate(useStorage<ResumeItem[]>(`${namespace}:used-resumes`, [{ url: '' }].concat(resumeExamples)))
   resumeExamples.forEach((example) => {
     if (!usedResumes.value.some(resume => resume.url === example.url))
@@ -52,7 +56,7 @@ export const useAppStore = defineStore('app', () => {
   const copiedResumeUrl = computed(() => {
     if (!isClient)
       return ''
-    return getPreviewUrl(curResume.value, 'url', resumeTemplateId.value)
+    return getPreviewUrl(curResume.value, 'url', resumeTemplateId.value, resumeAppearance.value)
   })
 
   function toggleFullscreen() {
@@ -77,6 +81,7 @@ export const useAppStore = defineStore('app', () => {
 
     overrideResumeText,
     resumeTemplateId,
+    resumeAppearance,
 
     curResume,
     usedResumes,

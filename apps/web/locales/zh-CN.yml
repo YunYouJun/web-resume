@@ -151,7 +151,7 @@ command:
 settings:
   title: 设置
   description: 调整 Web Resume 在此浏览器中的界面与默认偏好。
-  local_notice: 设置只保存在当前浏览器，不会写入简历或分享链接。
+  local_notice: 界面偏好保存在本机；简历配色与样式会随分享链接传递。
   appearance:
     title: 外观与语言
     description: 选择界面主题和显示语言。
@@ -171,6 +171,34 @@ settings:
     description: 新打开简历时优先采用这些显示偏好。
     template: 默认模板
     template_description: 只改变版式，不会修改 YAML 内容。
+    palette: 简历配色
+    palette_description: 深色强调色兼顾屏幕阅读与打印。
+    font: 简历字体
+    density: 内容间距
+    photo: 照片形状
+    sharing_notice: 样式会保留在分享链接、HTML 和 PDF 中，不修改 YAML。
+    reset: 重置配色与样式
+    preview: 简历外观预览
+    current_preview: 使用当前简历 · 调整后即时更新
+    sample_preview: 示例内容 · 不会写入你的简历
+    photo_help: 照片地址使用 YAML 的 basics.image（旧版为 basics.avatar）。字体使用设备本地字体，跨设备可能略有差异。
+    sample_name: 林知行
+    sample_role: 产品设计与工程
+    sample_section: 专业亮点
+    sample_line_one: 用清晰的层次展示经历，让重要信息更容易被发现。
+    sample_line_two: 选择适合自己的配色、字体与留白。
+    options:
+      blue: 经典蓝
+      forest: 森林绿
+      plum: 梅子紫
+      slate: 石墨灰
+      sans: 现代无衬线
+      serif: 典雅衬线
+      comfortable: 舒展
+      dense: 紧凑
+      square: 方角
+      rounded: 圆角
+      circle: 圆形
   privacy:
     title: 本地资料与隐私
     description: 账号、本地联系资料和资料覆盖选项统一在“我的”中管理。

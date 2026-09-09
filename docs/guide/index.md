@@ -88,6 +88,21 @@ Choose a template from **View → Templates**, or configure it on the Settings p
 
 The profile override can replace the name, phone number, and email shown in a loaded resume. This profile stays in the current browser and is applied only when the override is enabled. It does not modify the YAML source.
 
+### Customize resume appearance
+
+In **Settings → Resume defaults**, combine any of the three templates with:
+
+- **Colors**: Blue, Forest, Plum or Slate, applied to headings, links and the sidebar.
+- **Font**: modern sans serif or classic serif, using local fonts without extra downloads.
+- **Content spacing**: comfortable or compact section and paragraph spacing.
+- **Photo shape**: square, rounded or circle, with centered cropping. Set the photo URL in `basics.image` (`basics.avatar` for legacy YAML).
+
+The preview updates instantly using your current resume, or a sample when no resume is loaded. It never changes your draft. **Reset colors and styles** restores the default styling while keeping your selected template.
+
+Preferences stay on this device and do not rewrite YAML. Clean previews, both share-link formats, standalone HTML and browser print/PDF preserve the selected styles. Opening a shared link does not overwrite the recipient's appearance preferences. Older links without appearance settings and invalid parameters use default styles.
+
+Local font fallbacks may produce slightly different glyphs and pagination on different devices. Check the exported result before publishing.
+
 ### Share a preview
 
 Choose **File → Copy share link**. The link contains the source URL or built-in example ID, selected template, and preview mode. It does not contain your unsaved editor text or browser-local profile. To share edits using this option, publish the updated YAML at an accessible URL and load it, or use the current-content option below.

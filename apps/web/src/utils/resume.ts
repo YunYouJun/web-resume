@@ -1,11 +1,13 @@
 import type { UserInfo } from 'web-resume/config'
+import type { ResumeAppearance } from './resume-appearance'
 import type { ResumeInfo, ResumeItem, ResumeSection, ResumeTemplateId } from '~/types'
-
 import {
   defaultResumeTemplateId,
   getResumeRoute,
   getResumeRouteSource,
 } from '~/data/resume-catalog'
+
+import { applyResumeAppearanceToUrl } from './resume-appearance'
 
 export { resumeExamples } from '~/data/resume-catalog'
 
@@ -115,13 +117,16 @@ export function overrideResume(resumeInfo: ResumeInfo, userInfo: UserInfo) {
 /**
  * 获取预览链接
  */
-export function getPreviewUrl(source: ResumeItem | string, type: 'url' | 'route' = 'url', template: ResumeTemplateId = defaultResumeTemplateId) {
+export function getPreviewUrl(source: ResumeItem | string, type: 'url' | 'route' = 'url', template: ResumeTemplateId = defaultResumeTemplateId, appearance?: ResumeAppearance) {
   const route = getResumeRoute(
     template,
     typeof source === 'string' ? { type: 'url', url: source } : getResumeRouteSource(source),
     'preview',
   )
   const previewUrl = new URL(route, window.location.origin)
+
+  if (appearance)
+    applyResumeAppearanceToUrl(previewUrl, appearance)
 
   switch (type) {
     case 'route':

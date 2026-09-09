@@ -152,7 +152,7 @@ command:
 settings:
   title: Settings
   description: Adjust Web Resume's interface and defaults for this browser.
-  local_notice: Settings stay in this browser and are not written to your resume or share links.
+  local_notice: Interface preferences stay on this device; resume colors and styles travel with share links.
   appearance:
     title: Appearance and language
     description: Choose the interface theme and display language.
@@ -172,6 +172,34 @@ settings:
     description: Prefer these display options when opening a resume.
     template: Default template
     template_description: This changes the layout without modifying YAML content.
+    palette: Resume colors
+    palette_description: Dark accents designed for reading and printing.
+    font: Resume font
+    density: Content spacing
+    photo: Photo shape
+    sharing_notice: Styles travel with links, HTML and PDF without changing YAML.
+    reset: Reset colors and styles
+    preview: Resume appearance preview
+    current_preview: Current resume · updates instantly
+    sample_preview: Sample content · does not change your resume
+    photo_help: Set basics.image in YAML (basics.avatar for legacy resumes). Fonts use local fallbacks and may vary between devices.
+    sample_name: Lin Zhixing
+    sample_role: Product design and engineering
+    sample_section: Professional highlights
+    sample_line_one: Give experience a clear hierarchy so important details stand out.
+    sample_line_two: Choose your colors, typography and spacing.
+    options:
+      blue: Blue
+      forest: Forest
+      plum: Plum
+      slate: Slate
+      sans: Modern sans serif
+      serif: Classic serif
+      comfortable: Comfortable
+      dense: Compact
+      square: Square
+      rounded: Rounded
+      circle: Circle
   privacy:
     title: Local profile and privacy
     description: Manage your account, local contact details, and profile override under Profile.

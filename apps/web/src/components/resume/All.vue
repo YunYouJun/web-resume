@@ -1,7 +1,8 @@
 <script lang="ts" setup>
 import type { ResumeInfo, ResumeSection, ResumeTemplateId } from '~/types'
-
+import type { ResumeAppearance } from '~/utils/resume-appearance'
 import ResumeCertificate from '~/components/resume/Certificate.vue'
+
 import ResumeEducation from '~/components/resume/Education.vue'
 import ResumeInterests from '~/components/resume/Interests.vue'
 import ResumeLanguages from '~/components/resume/Languages.vue'
@@ -12,9 +13,11 @@ import ResumeReferences from '~/components/resume/References.vue'
 import ResumeSkill from '~/components/resume/Skill.vue'
 import ResumeVolunteer from '~/components/resume/Volunteer.vue'
 import ResumeWork from '~/components/resume/Work.vue'
+import { resolveResumeAppearance, resumeAppearanceStyle } from '~/utils/resume-appearance'
 
 const props
   = defineProps<{
+    appearance?: ResumeAppearance
     editable?: boolean
     resume: ResumeInfo
     templateId?: ResumeTemplateId
@@ -25,6 +28,7 @@ const emit = defineEmits<{
 }>()
 
 const app = useAppStore()
+const resolvedAppearance = computed(() => resolveResumeAppearance(props.appearance || app.resumeAppearance))
 const resolvedTemplateId = computed(() => props.templateId || app.resumeTemplateId)
 
 const resumeComponents: ResumeSection[] = [
@@ -131,7 +135,11 @@ function finishDragging() {
     class="resume"
     :class="`resume--${resolvedTemplateId}`"
     :data-template="resolvedTemplateId"
-    data-theme="default"
+    :data-theme="resolvedAppearance.palette"
+    :data-font="resolvedAppearance.font"
+    :data-density="resolvedAppearance.density"
+    :data-photo="resolvedAppearance.photo"
+    :style="resumeAppearanceStyle(resolvedAppearance)"
   >
     <div class="resume__identity">
       <resume-header :resume="resume" />

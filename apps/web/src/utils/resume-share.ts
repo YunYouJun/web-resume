@@ -1,10 +1,12 @@
+import type { ResumeAppearance } from './resume-appearance'
 import type { ResumeTemplateId } from '~/types'
+import { applyResumeAppearanceToUrl } from './resume-appearance'
 
 // Keep accidental image/base64 pastes from producing unmanageable URLs.
 export const maxSharedResumeBytes = 48 * 1024
 const prefix = '#resume='
 
-export function createResumeContentLink(text: string, origin: string, template: ResumeTemplateId) {
+export function createResumeContentLink(text: string, origin: string, template: ResumeTemplateId, appearance?: ResumeAppearance) {
   const bytes = new TextEncoder().encode(text)
   if (bytes.length > maxSharedResumeBytes)
     throw new Error('Resume exceeds the 48 KiB share-link limit')
@@ -15,6 +17,8 @@ export function createResumeContentLink(text: string, origin: string, template: 
   const url = new URL('/', origin)
   url.searchParams.set('mode', 'preview')
   url.searchParams.set('template', template)
+  if (appearance)
+    applyResumeAppearanceToUrl(url, appearance)
   url.hash = `resume=${encoded}`
   return url.toString()
 }
