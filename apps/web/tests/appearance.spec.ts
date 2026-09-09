@@ -1,6 +1,9 @@
 import { readFile } from 'node:fs/promises'
 import { expect, test } from '@playwright/test'
 
+// Keep the PWA from bypassing the network fixtures in this appearance test.
+test.use({ serviceWorkers: 'block' })
+
 const customized = { palette: 'forest', font: 'serif', density: 'dense', photo: 'circle' }
 
 test('customizes appearance, persists it, shares it and exports the same styles', async ({ page, context, browser, browserName }) => {
@@ -11,9 +14,10 @@ test('customizes appearance, persists it, shares it and exports the same styles'
       writeText: async (text: string) => { (window as any).__copiedLink = text },
     } })
   })
-  await page.route(/^https:\/\/api\.(iconify\.design|simplesvg\.com|unisvg\.com)\//, (route) => {
+  await context.route(/^https:\/\/api\.(iconify\.design|simplesvg\.com|unisvg\.com)\//, (route) => {
     const url = new URL(route.request().url())
-    return route.fulfill({ json: { prefix: url.pathname.slice(1).replace('.json', ''), icons: {}, not_found: url.searchParams.get('icons')?.split(',') || [] }, headers: { 'Access-Control-Allow-Origin': '*' } })
+    const icons = Object.fromEntries((url.searchParams.get('icons')?.split(',') || []).map(name => [name, { body: '<path d="M2 2h12v12H2z"/>' }]))
+    return route.fulfill({ json: { prefix: url.pathname.slice(1).replace('.json', ''), icons, width: 16, height: 16 }, headers: { 'Access-Control-Allow-Origin': '*' } })
   })
   await page.goto('/?example=neutral')
   await expect(page.getByRole('heading', { level: 1 })).toContainText('林知行')
