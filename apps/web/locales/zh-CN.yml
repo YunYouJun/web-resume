@@ -109,6 +109,9 @@ command:
   exit_fullscreen: 退出全屏
   examples: 示例简历
   export_pdf: 导出 PDF
+  export_html: 导出独立 HTML
+  share_content: 复制当前内容链接
+  share_content_description: 链接包含当前 YAML，任何获得链接的人均可读取；不包含本机个人信息覆盖。
   export_portable: 导出标准 JSON Resume
   file: 文件
   format_yaml: 格式化 YAML
@@ -304,6 +307,7 @@ template_market:
 
 toast:
   example_restored: 已恢复示例简历
+  content_share_failed: 复制失败：请允许剪贴板访问，且 YAML 内容不能超过 48 KiB。较大简历请使用源文件链接分享。
   link_copied: 分享链接已复制
   notification: 通知
   in_app_print_copied_description: 导出链接已复制。请从右上角“更多”选择“系统浏览器打开”，粘贴链接后再次导出。

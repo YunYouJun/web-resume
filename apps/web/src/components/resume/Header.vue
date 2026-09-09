@@ -16,10 +16,12 @@ const name = computed(() => {
   <div v-if="resume">
     <div v-if="resume.basics.avatar" class="flex justify-between items-center">
       <div class="font-normal flex flex-col gap-2">
-        <span class="text-4xl">{{ name || 'Your Name' }}</span>
+        <h1 class="text-4xl font-normal m-0">
+          {{ name || 'Your Name' }}
+        </h1>
         <small text-xs>{{ resume.basics.label }}</small>
       </div>
-      <img :src="sanitizeResumeImageSource(resume.basics.avatar)" class="max-h-3cm max-w-3cm">
+      <img :src="sanitizeResumeImageSource(resume.basics.avatar)" class="max-h-3cm max-w-3cm" :alt="name || 'Your Name'">
     </div>
     <h1 v-else class="font-normal text-center text-4xl">
       {{ name || 'Your Name' }}

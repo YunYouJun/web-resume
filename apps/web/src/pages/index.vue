@@ -1,10 +1,13 @@
 <script setup lang="ts">
+import * as yaml from 'js-yaml'
 import {
   getResumeExample,
   isResumeTemplateId,
   resolveResumeExampleId,
   resolveResumeTemplateId,
 } from '~/data/resume-catalog'
+import { readResumeDocument } from '~/utils/resume-format'
+import { readResumeContentLink } from '~/utils/resume-share'
 
 // The empty start screen does not need the resume renderer or HTML sanitizer.
 const ResumeAll = defineAsyncComponent(() => import('~/components/resume/All.vue'))
@@ -14,8 +17,22 @@ const editor = useEditorStore()
 const route = useRoute()
 const { t } = useI18n()
 
-const resume = computed(() => editor.resumeJson)
-const isPreview = computed(() => route.query.mode === 'preview')
+const sharedResume = computed(() => {
+  try {
+    const text = readResumeContentLink(route.hash)
+    if (text === undefined)
+      return undefined
+    const result = readResumeDocument(yaml.load(text))
+    if (!result.valid || !result.renderResume)
+      throw new Error(result.errors[0] || 'Invalid resume')
+    return { resume: result.renderResume, error: '' }
+  }
+  catch (error) {
+    return { resume: undefined, error: error instanceof Error ? error.message : String(error) }
+  }
+})
+const resume = computed(() => sharedResume.value ? sharedResume.value.resume : editor.resumeJson)
+const isPreview = computed(() => sharedResume.value !== undefined || route.query.mode === 'preview')
 const templateId = computed(() => resolveResumeTemplateId(route.query.template || app.resumeTemplateId))
 
 function firstQueryValue(value: unknown) {
@@ -28,6 +45,8 @@ watch(templateId, (value) => {
 
 async function loadRouteSource() {
   app.resumeLoadError = ''
+  if (sharedResume.value)
+    return
 
   if (route.query.example !== undefined) {
     const exampleId = resolveResumeExampleId(route.query.example)
@@ -68,7 +87,7 @@ onBeforeMount(async () => {
 
 onMounted(notifyTemplateFallback)
 
-watch(() => [route.query.example, route.query.url], loadRouteSource)
+watch(() => [route.query.example, route.query.url, route.hash], loadRouteSource)
 watch(() => route.query.template, notifyTemplateFallback)
 
 onBeforeUnmount(() => {
@@ -84,10 +103,10 @@ onBeforeUnmount(() => {
     <span i-ri-loader-4-line class="animate-spin" aria-hidden="true" />
     <span>{{ t('resume_source.loading') }}</span>
   </div>
-  <div v-else-if="app.resumeLoadError" class="resume-load-state resume-load-state--error" role="alert">
+  <div v-else-if="sharedResume?.error || app.resumeLoadError" class="resume-load-state resume-load-state--error" role="alert">
     <span i-ri-error-warning-line aria-hidden="true" />
     <div>
-      <span>{{ t('resume_source.error', { message: app.resumeLoadError }) }}</span>
+      <span>{{ t('resume_source.error', { message: sharedResume?.error || app.resumeLoadError }) }}</span>
       <RouterLink v-if="!isPreview" class="resume-load-state__link" to="/explore">
         {{ t('template_market.errors.return_to_templates') }}
       </RouterLink>

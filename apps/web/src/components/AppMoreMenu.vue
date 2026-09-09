@@ -31,6 +31,8 @@ const commands = computed(() => [
   ...(props.includePreview ? ['resume.preview'] : []),
   'app.commands',
   'resume.share',
+  'resume.share-content',
+  'resume.export-html',
   'resume.export-portable',
   'resume.restore-example',
   'navigate.settings',
@@ -40,7 +42,7 @@ const commands = computed(() => [
   'help.privacy',
   'help.language',
 ].map(find).filter(Boolean) as ResumeCommand[])
-const helpStartIndex = computed(() => props.includePreview ? 6 : 5)
+const helpStartIndex = computed(() => commands.value.findIndex(command => command.id === 'help.onboarding'))
 const overrideCommand = computed(() => find('view.override-info'))
 const templateCommands = computed(() => allCommands.value.filter(command => command.id.startsWith('resume.template:')))
 

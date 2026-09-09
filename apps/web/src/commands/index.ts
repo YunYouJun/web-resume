@@ -6,6 +6,7 @@ import * as yaml from 'js-yaml'
 import { resumeTemplates } from '~/data/resume-catalog'
 import { resumeExamples } from '~/utils'
 import { createPortableJsonResume } from '~/utils/resume-format'
+import { createResumeContentLink } from '~/utils/resume-share'
 import pkg from '../../package.json'
 
 export * from './types'
@@ -79,6 +80,20 @@ export function useResumeCommands(): ResumeCommands {
     app.showToast({ title: t('toast.portable_exported') })
   }
 
+  async function exportHtmlResume() {
+    const resume = document.querySelector<HTMLElement>('main .resume')
+    if (!resume)
+      return
+    const { createResumeHtml } = await import('~/utils/resume-html')
+    const name = editor.resumeJson?.basics.name || 'resume'
+    const href = URL.createObjectURL(new Blob([createResumeHtml(resume, name)], { type: 'text/html;charset=utf-8' }))
+    const link = document.createElement('a')
+    link.href = href
+    link.download = `${name.replace(/[^\p{L}\p{N}]+/gu, '-')}.html`
+    link.click()
+    window.setTimeout(() => URL.revokeObjectURL(href), 0)
+  }
+
   function toggleLocale() {
     const locales = availableLocales
     locale.value = locales[(locales.indexOf(locale.value) + 1) % locales.length]
@@ -139,6 +154,36 @@ export function useResumeCommands(): ResumeCommands {
         menu: 'file',
         shortcut: 'Mod+P',
         run: exportResume,
+      },
+      {
+        enabled: Boolean(editor.resumeJson) && ['/', '/editor'].includes(route.path),
+        group: 'output',
+        icon: 'i-ri-html5-line',
+        id: 'resume.export-html',
+        keywords: ['html', 'github', 'pages', '导出', '网页'],
+        label: t('command.export_html'),
+        menu: 'file',
+        run: exportHtmlResume,
+      },
+      {
+        enabled: Boolean(editor.resumeJson) && editor.resumeValidationErrors.length === 0,
+        group: 'output',
+        icon: 'i-ri-link',
+        id: 'resume.share-content',
+        description: t('command.share_content_description'),
+        keywords: ['share', 'link', '分享', '内容'],
+        label: t('command.share_content'),
+        menu: 'file',
+        run: async () => {
+          try {
+            const link = createResumeContentLink(editor.resumeText, window.location.origin, app.resumeTemplateId)
+            await navigator.clipboard.writeText(link)
+            app.showToast({ title: t('toast.link_copied'), description: t('command.share_content_description') })
+          }
+          catch {
+            app.showToast({ title: t('toast.content_share_failed') })
+          }
+        },
       },
       {
         description: editor.resumeFormat === 'legacy' ? t('command.convert_before_portable') : undefined,

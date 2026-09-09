@@ -157,6 +157,10 @@ export const useEditorStore = defineStore('editor', () => {
   }
 
   function convertToJsonResume() {
+    // Conversion must enter Monaco's undo stack, including during lazy startup.
+    if (!codeEditor.value?.getModel())
+      return false
+
     const conversion = prepareJsonResumeConversion()
     if (!conversion)
       return false
