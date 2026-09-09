@@ -1,0 +1,329 @@
+# JSON Resume compatible document
+$schema: >-
+  https://raw.githubusercontent.com/jsonresume/jsonresume.org/54eba4131801b6b32aa947ce8a4fbef526800a08/packages/schema/schema.json
+basics:
+  email: sos@example.com
+  name: 凉宫春日
+  phone: 166 6666 6666
+  summary: 我对普通的人类没有兴趣。你们之中要是有外星人、未来人、异世界的人、超能力者，就尽管来找我吧。
+  url: http://www.haruhi.tv/
+  profiles:
+    - network: github
+      url: https://example.com/profiles/sos-brigade
+      username: sos-brigade
+education:
+  - area: SOS 团
+    institution: 县立北高校
+    score: 'GPA: 3.93，均分 92.3（专业第一）'
+    studyType: 高中
+  - area: 计算机科学与技术
+    institution: 市立东中
+    score: 'GPA: 3.33（专业前 10%）， CET-6'
+    studyType: 初中
+volunteer:
+  - organization: SOS 团
+    position: 组建社团
+    summary: 让世界变得更热闹的凉宫春日团
+    highlights:
+      - 以优秀的组织能力组建社团，并找寻到优秀的部员
+      - 指使部下 阿虚 开发 SOS 团官网，获得千万级 PV
+      - 组织团员开展丰富的合宿活动，破解谜题
+      - 成功拍摄大卖电影「朝比奈实玖瑠的冒险」
+    url: http://www.haruhi.tv/
+projects:
+  - description: 一个简洁、优雅、快速的博客主题。
+    highlights:
+      - 使用 pug 与 stylus 进行主题模版开发，熟练使用 CSS3 与 ES6 新特性实现自定义动画与样式
+      - 对 SEO、可访问性与加载速度进行优化，Chrome Lighthouse 测试 SEO/Accessibility/Best Practices 100，Performance 95
+      - 将通用功能抽取为可配置的内容，并为其编写多语言文件与中英文文档
+    keywords:
+      - pug
+      - stylus
+      - Hexo
+      - JavaScript
+      - yaml
+    name: hexo-theme-yun
+    startDate: 2019-05
+    type: 博客主题，开源项目
+    url: https://yun.yunyoujun.cn
+  - description: 聊天机器人框架及 API SDK，能够熟练使用 TypeScript 开发，实现支持可扩展插件的项目架构
+    keywords:
+      - TypeScript
+      - Node.js
+      - npm
+      - mongodb
+    name: el-bot & mirai-ts
+    startDate: 2020-06
+    type: 服务端，开源项目
+    url: https://github.com/YunYouJun/el-bot
+  - description: 一款极简风格的 Element 主题，使用 Scss 进行编写，Gulp 构建工作流，压缩打包分发至 npm。
+    endDate: 2019-01
+    keywords:
+      - Element
+      - Scss
+      - Css
+      - Gulp
+      - Vue.js
+      - npm
+    name: Element-Theme-Ink
+    startDate: 2018-02
+    type: 前端主题，开源项目
+    url: https://ink.elpsy.cn
+  - highlights:
+      - 曾为 element-ui, element-plus, vitepress 等项目积极贡献 PR，并业余开源一些前端项目。
+    name: 其他
+    startDate: 2017-01
+    type: 业余开源项目
+    url: https://github.com/YunYouJun
+skills:
+  - keywords:
+      - ' '
+      - ' '
+      - ' '
+      - ' '
+      - 'TypeScript > '
+      - 'scss == '
+      - 'stylus == '
+      - Python，
+      - ''
+      - ''
+    name: 语言
+  - keywords:
+      - 'macOS > '
+      - 'Windows > '
+      - 'Linux, '
+      - 'Node.js, '
+      - 'npm, '
+      - 'Nginx, '
+      - 'Mysql, '
+      - MongoDB
+    name: 环境
+  - keywords:
+      - 'Vue.js, '
+      - 'Element, '
+      - 'Vuetify, '
+      - 'Nuxt, '
+      - 'NestJS, '
+      - ''
+      - ''
+      - ', '
+      - 'Gulp, '
+      - Vite
+    name: 工具
+  - keywords:
+      - 'Visual Studio Code, '
+      - 'Cocos Creator, '
+      - ''
+      - '&'
+      - 'Bash || '
+      - ''
+      - ''
+      - ''
+    name: 软件
+awards:
+  - awarder: 神户
+    date: '2008'
+    title: 第11回神户动画大赏的电视动画部门大奖
+  - awarder: 神户
+    date: '2008'
+    title: 第11回神户动画大赏的主题曲奖
+  - awarder: 东京
+    date: '2007'
+    title: 2007年东京动画Awards授予的电视动画部门优秀作品赏
+  - awarder: 线上
+    date: '2006'
+    title: 获得ARC Awards 2006最佳动画、最佳喜剧、最佳男女主角等六项奖
+x-web-resume:
+  sectionOrder:
+    - education
+    - volunteer
+    - projects
+    - skills
+    - awards
+    - other
+  sections:
+    education:
+      icon: fa:graduation-cap
+      items:
+        - city: 日本，兵库县
+          end: 20xx 年 6 月
+          icon: ri:building-line
+          start: 20xx 年 9 月
+        - city: 日本，兵库县
+          end: 20xx 年 6 月
+          icon: ri:building-2-line
+          start: 20xx 年 9 月
+      title: 教育背景
+    projects:
+      icon: ri:folders-line
+      items:
+        - end: 至今
+          keywordDetails:
+            - name: pug
+              icon: simple-icons:pug
+            - name: stylus
+              icon: simple-icons:stylus
+            - name: Hexo
+              icon: simple-icons:hexo
+            - name: JavaScript
+              icon: simple-icons:javascript
+            - name: yaml
+              icon: file-icons:yaml
+          logo: ri:cloud-line
+        - end: 至今
+          keywordDetails:
+            - name: TypeScript
+              icon: simple-icons:typescript
+            - name: Node.js
+              icon: simple-icons:node-dot-js
+            - name: npm
+              icon: simple-icons:npm
+            - name: mongodb
+              icon: simple-icons:mongodb
+          logo: ri:robot-line
+        - keywordDetails:
+            - name: Element
+              icon: simple-icons:element
+            - name: Scss
+              icon: simple-icons:sass
+            - name: Css
+              icon: simple-icons:css3
+            - name: Gulp
+              icon: simple-icons:gulp
+            - name: Vue.js
+              icon: simple-icons:vue-dot-js
+            - name: npm
+              icon: simple-icons:npm
+          logo: ri:contrast-drop-2-line
+        - end: 至今
+          logo: ri:github-line
+      title: 项目经历
+    volunteer:
+      icon: ri:hand-heart-line
+      items:
+        - end: 至今
+          keywordDetails:
+            - name: Html
+              icon: simple-icons:html5
+            - name: Css
+              icon: simple-icons:css3
+            - name: JavaScript
+              icon: simple-icons:javascript
+            - name: yaml
+              icon: file-icons:yaml
+          logo: ri:cloud-line
+          start: 20XX 年 5 月
+      title: 社团经历
+    skills:
+      icon: ri:flask-line
+      items:
+        - keywordDetails:
+            - name: ' '
+              icon: simple-icons:markdown
+            - name: ' '
+              icon: simple-icons:html5
+            - name: ' '
+              icon: simple-icons:css3
+            - name: ' '
+              icon: simple-icons:javascript
+            - name: 'TypeScript > '
+              icon: simple-icons:typescript
+            - name: 'scss == '
+              icon: simple-icons:sass
+            - name: 'stylus == '
+              icon: simple-icons:stylus
+            - name: Python，
+              icon: simple-icons:python
+            - name: ''
+              icon: simple-icons:php
+            - name: ''
+              icon: simple-icons:cplusplus
+        - keywordDetails:
+            - name: 'macOS > '
+              icon: simple-icons:apple
+            - name: 'Windows > '
+              icon: simple-icons:windows
+            - name: 'Linux, '
+              icon: simple-icons:linux
+            - name: 'Node.js, '
+              icon: simple-icons:node-dot-js
+            - name: 'npm, '
+              icon: simple-icons:npm
+            - name: 'Nginx, '
+              icon: simple-icons:nginx
+            - name: 'Mysql, '
+              icon: simple-icons:mysql
+            - name: MongoDB
+              icon: simple-icons:mongodb
+        - keywordDetails:
+            - name: 'Vue.js, '
+              icon: simple-icons:vue-dot-js
+            - name: 'Element, '
+              icon: simple-icons:element
+            - name: 'Vuetify, '
+              icon: simple-icons:vuetify
+            - name: 'Nuxt, '
+              icon: simple-icons:nuxt-dot-js
+            - name: 'NestJS, '
+              icon: simple-icons:nestjs
+            - name: ''
+              icon: simple-icons:bootstrap
+            - name: ''
+              icon: simple-icons:three-dot-js
+            - name: ', '
+              icon: simple-icons:d3-dot-js
+            - name: 'Gulp, '
+              icon: simple-icons:gulp
+            - icon: simple-icons:webpack
+            - name: Vite
+              icon: file-icons:vite
+        - keywordDetails:
+            - name: 'Visual Studio Code, '
+              icon: simple-icons:visualstudiocode
+            - name: 'Cocos Creator, '
+              icon: simple-icons:cocos
+            - name: ''
+              icon: simple-icons:github
+            - name: '&'
+              icon: simple-icons:git
+            - name: 'Bash || '
+              icon: ri:terminal-box-line
+            - name: ''
+              icon: simple-icons:adobephotoshop
+            - name: ''
+              icon: simple-icons:adobepremiere
+            - name: ''
+              icon: simple-icons:adobeaftereffects
+      title: 技能经验
+    awards:
+      icon: ri:award-line
+      items:
+        - {}
+        - {}
+        - {}
+        - {}
+      title: 奖项表彰
+  version: 1
+  basics:
+    location: 日本，兵库县
+    age: 16岁
+    birth: 10-08
+  contacts:
+    email:
+      icon: ri:mail-line
+    phone:
+      icon: ri:smartphone-line
+    blog:
+      icon: ri:earth-line
+    github:
+      icon: ri:github-line
+  other:
+    icon: ri:information-line
+    title: 其他
+    info:
+      - DVD在日本国内的累计销量超过80万张
+      - 英文版DVD在美国每卷卖出8万套以上
+      - 我对普通的人类没有兴趣。你们之中要是有外星人、未来人、异世界的人、超能力者，就尽管来找我吧。
+      - 我对普通的 996 公司没有兴趣，假如你们当中有假期多，下班早，工资高，又有趣的公司，就尽管来找我吧，完毕！
+      - 守望先锋金属选手，又菜又爱玩。
+      - 我编不下去了……

@@ -1,0 +1,104 @@
+# JSON Resume compatible document
+$schema: >-
+  https://raw.githubusercontent.com/jsonresume/jsonresume.org/54eba4131801b6b32aa947ce8a4fbef526800a08/packages/schema/schema.json
+basics:
+  email: xuyan@example.com
+  label: B2B 产品经理
+  name: 许言
+  phone: 138 0000 0000
+  summary: 关注复杂业务中的用户价值、增长效率与产品可持续性。
+  url: https://example.com/xuyan
+education:
+  - area: 信息系统与信息管理
+    endDate: 2019-06
+    institution: 华北大学
+    score: GPA 3.6 · 专业前 15%
+    startDate: 2015-09
+    studyType: 本科
+work:
+  - summary: 从零搭建客户健康度、服务工单与续约协作能力。
+    highlights:
+      - 访谈 32 家企业客户，建立客户生命周期和关键任务模型。
+      - 上线健康度预警后，高风险客户识别提前 21 天。
+      - 推动销售、交付和客服统一流程，续约协作耗时降低 35%。
+    keywords:
+      - 产品策略
+      - 数据分析
+      - B2B
+    name: 企业客户成功平台
+    startDate: 2022-04
+    position: 产品负责人
+  - summary: 将高频实施需求沉淀为客户可自助完成的配置工具。
+    endDate: 2022-03
+    highlights:
+      - 明确北极星指标与分阶段路线图，半年覆盖 68% 高频场景。
+      - 通过任务引导和错误诊断将配置成功率提升至 91%。
+    name: 自助配置中心
+    startDate: 2020-08
+    position: 核心产品经理
+skills:
+  - keywords:
+      - 用户研究
+      - 指标体系
+      - 路线图
+    name: 方法
+  - keywords:
+      - Figma
+      - SQL
+      - Jira
+    name: 工具
+x-web-resume:
+  sectionOrder:
+    - education
+    - work
+    - skills
+  sections:
+    education:
+      icon: ri:graduation-cap-line
+      items:
+        - city: 北京
+          icon: ri:building-line
+      title: 教育背景
+    work:
+      icon: ri:briefcase-4-line
+      items:
+        - end: 至今
+          keywordDetails:
+            - name: 产品策略
+              icon: ri:compass-3-line
+            - name: 数据分析
+              icon: ri:bar-chart-box-line
+            - name: B2B
+              icon: ri:building-2-line
+          logo: ri:customer-service-2-line
+        - logo: ri:settings-4-line
+      title: 产品经历
+    skills:
+      icon: ri:flask-line
+      items:
+        - keywordDetails:
+            - name: 用户研究
+              icon: ri:user-search-line
+            - name: 指标体系
+              icon: ri:line-chart-line
+            - name: 路线图
+              icon: ri:road-map-line
+        - keywordDetails:
+            - name: Figma
+              icon: simple-icons:figma
+            - name: SQL
+              icon: ri:database-2-line
+            - name: Jira
+              icon: simple-icons:jira
+      title: 产品能力
+  version: 1
+  basics:
+    location: 北京
+  contacts:
+    email:
+      icon: ri:mail-line
+    phone:
+      icon: ri:smartphone-line
+    blog:
+      icon: ri:earth-line
+      label: 产品案例集

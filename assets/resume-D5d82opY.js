@@ -1,0 +1,2 @@
+import{d as r,i as a,aB as n,k as u,o as c,c as i,a as t}from"./app-CwohQ4cL.js";import"./preload-helper-BXl3LOEh.js";const l={class:"w-full h-50 justify-center items-center",flex:"~ col gap-4"},f=r({__name:"resume",setup(p){const s=a(),o=n();return u(()=>{setTimeout(()=>{o.push({path:"/",query:s.query})},1e3)}),(d,e)=>(c(),i("div",l,[...e[0]||(e[0]=[t("div",{class:"op-80"}," 重定向至首页 ",-1),t("div",null," Redirecting... ",-1)])]))}});export{f as default};
+//# sourceMappingURL=resume-D5d82opY.js.map

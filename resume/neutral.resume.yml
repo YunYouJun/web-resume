@@ -1,0 +1,110 @@
+# JSON Resume compatible document
+$schema: >-
+  https://raw.githubusercontent.com/jsonresume/jsonresume.org/54eba4131801b6b32aa947ce8a4fbef526800a08/packages/schema/schema.json
+basics:
+  email: hello@example.com
+  label: 跨职能项目协作者
+  name: 林知行
+  phone: 138 0000 0000
+  summary: 擅长把模糊问题拆解成清晰计划，并与不同角色共同交付可靠成果。
+  url: https://example.com
+education:
+  - area: 信息管理
+    endDate: 2022-06
+    institution: 南方大学
+    score: GPA 3.6 · 专业前 20%
+    startDate: 2018-09
+    studyType: 本科
+projects:
+  - description: 梳理用户反馈、业务目标和交付约束，推动团队完成核心流程改版。
+    endDate: 2025-01
+    highlights:
+      - 归纳 180 余条用户反馈，明确三个优先改进方向。
+      - 协调设计、开发与运营按期发布，并建立复盘机制。
+    keywords:
+      - 用户研究
+      - 项目协作
+      - 数据分析
+    name: 服务体验改进计划
+    startDate: 2024-02
+    type: 跨职能项目
+  - description: 建立统一的项目记录和决策归档方式，降低跨团队沟通成本。
+    endDate: 2023-12
+    highlights:
+      - 设计模板和维护流程，覆盖 6 个常用协作场景。
+      - 新成员查找关键信息的平均时间缩短约 40%。
+    name: 团队知识库
+    startDate: 2023-05
+    type: 效率建设
+skills:
+  - keywords:
+      - 问题拆解
+      - 沟通协作
+      - 项目推进
+    name: 核心能力
+  - keywords:
+      - Notion
+      - Figma
+      - Excel
+    name: 常用工具
+x-web-resume:
+  sectionOrder:
+    - education
+    - projects
+    - skills
+    - other
+  sections:
+    education:
+      icon: ri:graduation-cap-line
+      items:
+        - city: 广州
+          icon: ri:building-line
+      title: 教育背景
+    projects:
+      icon: ri:folders-line
+      items:
+        - keywordDetails:
+            - name: 用户研究
+              icon: ri:user-search-line
+            - name: 项目协作
+              icon: ri:team-line
+            - name: 数据分析
+              icon: ri:bar-chart-line
+          logo: ri:compass-3-line
+        - logo: ri:book-open-line
+      title: 代表经历
+    skills:
+      icon: ri:flask-line
+      items:
+        - keywordDetails:
+            - name: 问题拆解
+              icon: ri:mind-map
+            - name: 沟通协作
+              icon: ri:chat-3-line
+            - name: 项目推进
+              icon: ri:route-line
+        - keywordDetails:
+            - name: Notion
+              icon: simple-icons:notion
+            - name: Figma
+              icon: simple-icons:figma
+            - name: Excel
+              icon: ri:file-excel-2-line
+      title: 能力与工具
+  version: 1
+  basics:
+    location: 中国 · 可远程
+  contacts:
+    email:
+      icon: ri:mail-line
+    phone:
+      icon: ri:smartphone-line
+    blog:
+      icon: ri:earth-line
+      label: Portfolio
+  other:
+    icon: ri:more-2-fill
+    title: 补充信息
+    info:
+      - 语言：中文 · 英语
+      - 兴趣：徒步 · 摄影 · 阅读

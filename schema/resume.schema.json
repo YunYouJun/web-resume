@@ -1,0 +1,983 @@
+{
+  "definitions": {
+    "jsonResume": {
+      "additionalProperties": true,
+      "definitions": {
+        "iso8601": {
+          "type": "string",
+          "description": "Similar to the standard date type, but each section after the year is optional. e.g. 2014-06-29 or 2023-04",
+          "pattern": "^([1-2][0-9]{3}-[0-1][0-9]-[0-3][0-9]|[1-2][0-9]{3}-[0-1][0-9]|[1-2][0-9]{3})$"
+        }
+      },
+      "properties": {
+        "$schema": {
+          "type": "string",
+          "description": "link to the version of the schema that can validate the resume",
+          "format": "uri"
+        },
+        "basics": {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "label": {
+              "type": "string",
+              "description": "e.g. Web Developer"
+            },
+            "image": {
+              "type": "string",
+              "description": "URL (as per RFC 3986) to a image in JPEG or PNG format"
+            },
+            "email": {
+              "type": "string",
+              "description": "e.g. thomas@gmail.com",
+              "format": "email"
+            },
+            "phone": {
+              "type": "string",
+              "description": "Phone numbers are stored as strings so use any format you like, e.g. 712-117-2923"
+            },
+            "url": {
+              "type": "string",
+              "description": "URL (as per RFC 3986) to your website, e.g. personal homepage",
+              "format": "uri"
+            },
+            "summary": {
+              "type": "string",
+              "description": "Write a short 2-3 sentence biography about yourself"
+            },
+            "location": {
+              "type": "object",
+              "additionalProperties": true,
+              "properties": {
+                "address": {
+                  "type": "string",
+                  "description": "To add multiple address lines, use \n. For example, 1234 Glücklichkeit Straße\nHinterhaus 5. Etage li."
+                },
+                "postalCode": {
+                  "type": "string"
+                },
+                "city": {
+                  "type": "string"
+                },
+                "countryCode": {
+                  "type": "string",
+                  "description": "code as per ISO-3166-1 ALPHA-2, e.g. US, AU, IN"
+                },
+                "region": {
+                  "type": "string",
+                  "description": "The general region where you live. Can be a US state, or a province, for instance."
+                }
+              }
+            },
+            "profiles": {
+              "type": "array",
+              "description": "Specify any number of social networks that you participate in",
+              "items": {
+                "type": "object",
+                "additionalProperties": true,
+                "properties": {
+                  "network": {
+                    "type": "string",
+                    "description": "e.g. Facebook or Twitter"
+                  },
+                  "username": {
+                    "type": "string",
+                    "description": "e.g. neutralthoughts"
+                  },
+                  "url": {
+                    "type": "string",
+                    "description": "e.g. http://twitter.example.com/neutralthoughts",
+                    "format": "uri"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "work": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": true,
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "e.g. Facebook"
+              },
+              "location": {
+                "type": "string",
+                "description": "e.g. Menlo Park, CA"
+              },
+              "description": {
+                "type": "string",
+                "description": "e.g. Social Media Company"
+              },
+              "position": {
+                "type": "string",
+                "description": "e.g. Software Engineer"
+              },
+              "url": {
+                "type": "string",
+                "description": "e.g. http://facebook.example.com",
+                "format": "uri"
+              },
+              "startDate": {
+                "$ref": "#/definitions/jsonResume/definitions/iso8601"
+              },
+              "endDate": {
+                "$ref": "#/definitions/jsonResume/definitions/iso8601"
+              },
+              "summary": {
+                "type": "string",
+                "description": "Give an overview of your responsibilities at the company"
+              },
+              "highlights": {
+                "type": "array",
+                "description": "Specify multiple accomplishments",
+                "items": {
+                  "type": "string",
+                  "description": "e.g. Increased profits by 20% from 2011-2012 through viral advertising"
+                }
+              }
+            }
+          }
+        },
+        "volunteer": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": true,
+            "properties": {
+              "organization": {
+                "type": "string",
+                "description": "e.g. Facebook"
+              },
+              "position": {
+                "type": "string",
+                "description": "e.g. Software Engineer"
+              },
+              "url": {
+                "type": "string",
+                "description": "e.g. http://facebook.example.com",
+                "format": "uri"
+              },
+              "startDate": {
+                "$ref": "#/definitions/jsonResume/definitions/iso8601"
+              },
+              "endDate": {
+                "$ref": "#/definitions/jsonResume/definitions/iso8601"
+              },
+              "summary": {
+                "type": "string",
+                "description": "Give an overview of your responsibilities at the company"
+              },
+              "highlights": {
+                "type": "array",
+                "description": "Specify accomplishments and achievements",
+                "items": {
+                  "type": "string",
+                  "description": "e.g. Increased profits by 20% from 2011-2012 through viral advertising"
+                }
+              }
+            }
+          }
+        },
+        "education": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": true,
+            "properties": {
+              "institution": {
+                "type": "string",
+                "description": "e.g. Massachusetts Institute of Technology"
+              },
+              "url": {
+                "type": "string",
+                "description": "e.g. http://facebook.example.com",
+                "format": "uri"
+              },
+              "area": {
+                "type": "string",
+                "description": "e.g. Arts"
+              },
+              "studyType": {
+                "type": "string",
+                "description": "e.g. Bachelor"
+              },
+              "startDate": {
+                "$ref": "#/definitions/jsonResume/definitions/iso8601"
+              },
+              "endDate": {
+                "$ref": "#/definitions/jsonResume/definitions/iso8601"
+              },
+              "score": {
+                "type": "string",
+                "description": "grade point average, e.g. 3.67/4.0"
+              },
+              "courses": {
+                "type": "array",
+                "description": "List notable courses/subjects",
+                "items": {
+                  "type": "string",
+                  "description": "e.g. H1302 - Introduction to American history"
+                }
+              }
+            }
+          }
+        },
+        "awards": {
+          "type": "array",
+          "description": "Specify any awards you have received throughout your professional career",
+          "items": {
+            "type": "object",
+            "additionalProperties": true,
+            "properties": {
+              "title": {
+                "type": "string",
+                "description": "e.g. One of the 100 greatest minds of the century"
+              },
+              "date": {
+                "$ref": "#/definitions/jsonResume/definitions/iso8601"
+              },
+              "awarder": {
+                "type": "string",
+                "description": "e.g. Time Magazine"
+              },
+              "summary": {
+                "type": "string",
+                "description": "e.g. Received for my work with Quantum Physics"
+              }
+            }
+          }
+        },
+        "certificates": {
+          "type": "array",
+          "description": "Specify any certificates you have received throughout your professional career",
+          "items": {
+            "type": "object",
+            "additionalProperties": true,
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "e.g. Certified Kubernetes Administrator"
+              },
+              "date": {
+                "$ref": "#/definitions/jsonResume/definitions/iso8601"
+              },
+              "url": {
+                "type": "string",
+                "description": "e.g. http://example.com",
+                "format": "uri"
+              },
+              "issuer": {
+                "type": "string",
+                "description": "e.g. CNCF"
+              }
+            }
+          }
+        },
+        "publications": {
+          "type": "array",
+          "description": "Specify your publications through your career",
+          "items": {
+            "type": "object",
+            "additionalProperties": true,
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "e.g. The World Wide Web"
+              },
+              "publisher": {
+                "type": "string",
+                "description": "e.g. IEEE, Computer Magazine"
+              },
+              "releaseDate": {
+                "$ref": "#/definitions/jsonResume/definitions/iso8601"
+              },
+              "url": {
+                "type": "string",
+                "description": "e.g. http://www.computer.org.example.com/csdl/mags/co/1996/10/rx069-abs.html",
+                "format": "uri"
+              },
+              "summary": {
+                "type": "string",
+                "description": "Short summary of publication. e.g. Discussion of the World Wide Web, HTTP, HTML."
+              }
+            }
+          }
+        },
+        "skills": {
+          "type": "array",
+          "description": "List out your professional skill-set",
+          "items": {
+            "type": "object",
+            "additionalProperties": true,
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "e.g. Web Development"
+              },
+              "level": {
+                "type": "string",
+                "description": "e.g. Master"
+              },
+              "keywords": {
+                "type": "array",
+                "description": "List some keywords pertaining to this skill",
+                "items": {
+                  "type": "string",
+                  "description": "e.g. HTML"
+                }
+              }
+            }
+          }
+        },
+        "languages": {
+          "type": "array",
+          "description": "List any other languages you speak",
+          "items": {
+            "type": "object",
+            "additionalProperties": true,
+            "properties": {
+              "language": {
+                "type": "string",
+                "description": "e.g. English, Spanish"
+              },
+              "fluency": {
+                "type": "string",
+                "description": "e.g. Fluent, Beginner"
+              }
+            }
+          }
+        },
+        "interests": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": true,
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "e.g. Philosophy"
+              },
+              "keywords": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "description": "e.g. Friedrich Nietzsche"
+                }
+              }
+            }
+          }
+        },
+        "references": {
+          "type": "array",
+          "description": "List references you have received",
+          "items": {
+            "type": "object",
+            "additionalProperties": true,
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "e.g. Timothy Cook"
+              },
+              "reference": {
+                "type": "string",
+                "description": "e.g. Joe blogs was a great employee, who turned up to work at least once a week. He exceeded my expectations when it came to doing nothing."
+              }
+            }
+          }
+        },
+        "projects": {
+          "type": "array",
+          "description": "Specify career projects",
+          "items": {
+            "type": "object",
+            "additionalProperties": true,
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "e.g. The World Wide Web"
+              },
+              "description": {
+                "type": "string",
+                "description": "Short summary of project. e.g. Collated works of 2017."
+              },
+              "highlights": {
+                "type": "array",
+                "description": "Specify multiple features",
+                "items": {
+                  "type": "string",
+                  "description": "e.g. Directs you close but not quite there"
+                }
+              },
+              "keywords": {
+                "type": "array",
+                "description": "Specify special elements involved",
+                "items": {
+                  "type": "string",
+                  "description": "e.g. AngularJS"
+                }
+              },
+              "startDate": {
+                "$ref": "#/definitions/jsonResume/definitions/iso8601"
+              },
+              "endDate": {
+                "$ref": "#/definitions/jsonResume/definitions/iso8601"
+              },
+              "url": {
+                "type": "string",
+                "format": "uri",
+                "description": "e.g. http://www.computer.org/csdl/mags/co/1996/10/rx069-abs.html"
+              },
+              "roles": {
+                "type": "array",
+                "description": "Specify your role on this project or in company",
+                "items": {
+                  "type": "string",
+                  "description": "e.g. Team Lead, Speaker, Writer"
+                }
+              },
+              "entity": {
+                "type": "string",
+                "description": "Specify the relevant company/entity affiliations e.g. 'greenpeace', 'corporationXYZ'"
+              },
+              "type": {
+                "type": "string",
+                "description": " e.g. 'volunteering', 'presentation', 'talk', 'application', 'conference'"
+              }
+            }
+          }
+        },
+        "meta": {
+          "type": "object",
+          "description": "The schema version and any other tooling configuration lives here",
+          "additionalProperties": true,
+          "properties": {
+            "canonical": {
+              "type": "string",
+              "description": "URL (as per RFC 3986) to latest version of this document",
+              "format": "uri"
+            },
+            "version": {
+              "type": "string",
+              "description": "A version field which follows semver - e.g. v1.0.0"
+            },
+            "lastModified": {
+              "type": "string",
+              "description": "Using ISO 8601 with YYYY-MM-DDThh:mm:ss"
+            }
+          }
+        }
+      },
+      "title": "Resume Schema",
+      "type": "object"
+    },
+    "legacy": {
+      "description": "简历配置",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "basics": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "description": "姓名",
+              "type": "string"
+            },
+            "label": {
+              "type": "string"
+            },
+            "bio": {
+              "type": "string"
+            },
+            "sex": {
+              "type": "string"
+            },
+            "birth": {
+              "type": "string"
+            },
+            "location": {
+              "type": "string"
+            },
+            "avatar": {
+              "type": "string"
+            },
+            "age": {
+              "description": "年龄",
+              "type": [
+                "string",
+                "number"
+              ]
+            }
+          },
+          "required": [
+            "name"
+          ]
+        },
+        "contact": {
+          "$ref": "#/definitions/legacy/definitions/Contact",
+          "description": "联系方式"
+        },
+        "education": {
+          "description": "教育背景",
+          "$ref": "#/definitions/legacy/definitions/Education"
+        },
+        "skill": {
+          "description": "技能经验",
+          "$ref": "#/definitions/legacy/definitions/Skill"
+        },
+        "project": {
+          "description": "项目经历",
+          "$ref": "#/definitions/legacy/definitions/Project"
+        },
+        "certificate": {
+          "description": "奖项",
+          "$ref": "#/definitions/legacy/definitions/Certificate"
+        },
+        "work": {
+          "description": "工作经历",
+          "$ref": "#/definitions/legacy/definitions/Work"
+        },
+        "volunteer": {
+          "description": "工作经历",
+          "$ref": "#/definitions/legacy/definitions/Work"
+        },
+        "publications": {
+          "description": "项目经历",
+          "$ref": "#/definitions/legacy/definitions/Project"
+        },
+        "languages": {
+          "description": "其他",
+          "$ref": "#/definitions/legacy/definitions/Other"
+        },
+        "interests": {
+          "description": "其他",
+          "$ref": "#/definitions/legacy/definitions/Other"
+        },
+        "references": {
+          "description": "其他",
+          "$ref": "#/definitions/legacy/definitions/Other"
+        },
+        "other": {
+          "description": "其他",
+          "$ref": "#/definitions/legacy/definitions/Other"
+        },
+        "footer": {
+          "description": "页脚",
+          "type": "object",
+          "properties": {
+            "link": {
+              "description": "链接",
+              "type": "string"
+            }
+          },
+          "required": [
+            "link"
+          ]
+        }
+      },
+      "required": [
+        "basics",
+        "contact"
+      ],
+      "definitions": {
+        "Contact": {
+          "description": "联系方式",
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/legacy/definitions/BaseContact"
+          },
+          "properties": {
+            "email": {
+              "$ref": "#/definitions/legacy/definitions/BaseContact",
+              "description": "邮箱"
+            },
+            "phone": {
+              "$ref": "#/definitions/legacy/definitions/BaseContact",
+              "description": "电话"
+            },
+            "blog": {
+              "$ref": "#/definitions/legacy/definitions/BaseContact",
+              "description": "博客"
+            }
+          },
+          "required": [
+            "blog",
+            "email",
+            "phone"
+          ]
+        },
+        "BaseContact": {
+          "type": "object",
+          "properties": {
+            "href": {
+              "description": "链接",
+              "type": "string"
+            },
+            "icon": {
+              "description": "图标",
+              "type": "string"
+            },
+            "label": {
+              "description": "显示的内容",
+              "type": "string"
+            }
+          },
+          "required": [
+            "href",
+            "icon",
+            "label"
+          ]
+        },
+        "Education": {
+          "description": "教育背景",
+          "type": "object",
+          "properties": {
+            "histories": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/legacy/definitions/EducationHistory"
+              }
+            },
+            "icon": {
+              "description": "图标",
+              "type": "string"
+            },
+            "title": {
+              "description": "标题",
+              "type": "string"
+            }
+          },
+          "required": [
+            "histories",
+            "icon",
+            "title"
+          ]
+        },
+        "EducationHistory": {
+          "type": "object",
+          "properties": {
+            "school": {
+              "type": "string"
+            },
+            "icon": {
+              "type": "string"
+            },
+            "logo": {
+              "description": "学校 Logo",
+              "type": "string"
+            },
+            "start": {
+              "description": "开始时间",
+              "type": "string"
+            },
+            "end": {
+              "description": "结束时间",
+              "type": "string"
+            },
+            "grade": {
+              "description": "成绩",
+              "type": "string"
+            },
+            "area": {
+              "description": "专业类型",
+              "type": "string"
+            },
+            "studyType": {
+              "description": "类型",
+              "type": "string"
+            },
+            "city": {
+              "description": "城市",
+              "type": "string"
+            }
+          },
+          "required": [
+            "area",
+            "city",
+            "end",
+            "grade",
+            "school",
+            "start",
+            "studyType"
+          ]
+        },
+        "Skill": {
+          "description": "技能经验",
+          "type": "object",
+          "properties": {
+            "sets": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/legacy/definitions/SkillSet"
+              }
+            },
+            "icon": {
+              "description": "图标",
+              "type": "string"
+            },
+            "title": {
+              "description": "标题",
+              "type": "string"
+            }
+          },
+          "required": [
+            "icon",
+            "sets",
+            "title"
+          ]
+        },
+        "SkillSet": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "keywords": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/legacy/definitions/Keyword"
+              }
+            }
+          },
+          "required": [
+            "keywords",
+            "title"
+          ]
+        },
+        "Keyword": {
+          "description": "关键字",
+          "type": "object",
+          "properties": {
+            "name": {
+              "description": "名称",
+              "type": "string"
+            },
+            "icon": {
+              "description": "图标",
+              "type": "string"
+            },
+            "logo": {
+              "description": "Logo",
+              "type": "string"
+            }
+          }
+        },
+        "Project": {
+          "description": "项目经历",
+          "type": "object",
+          "properties": {
+            "sets": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/legacy/definitions/ProjectSet"
+              }
+            },
+            "icon": {
+              "description": "图标",
+              "type": "string"
+            },
+            "title": {
+              "description": "标题",
+              "type": "string"
+            }
+          },
+          "required": [
+            "icon",
+            "sets",
+            "title"
+          ]
+        },
+        "ProjectSet": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "logo": {
+              "type": "string"
+            },
+            "open": {
+              "description": "是否展开",
+              "type": "boolean"
+            },
+            "repo": {
+              "description": "GitHub Repo",
+              "type": "string"
+            },
+            "type": {
+              "description": "类型",
+              "type": "string"
+            },
+            "start": {
+              "description": "开始时间",
+              "type": "string"
+            },
+            "end": {
+              "description": "结束时间",
+              "type": "string"
+            },
+            "url": {
+              "description": "链接",
+              "type": "string"
+            },
+            "summary": {
+              "description": "简介",
+              "type": "string"
+            },
+            "keywords": {
+              "type": "array",
+              "items": {
+                "anyOf": [
+                  {
+                    "$ref": "#/definitions/legacy/definitions/Keyword"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ]
+              }
+            },
+            "highlights": {
+              "description": "亮点",
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "badges": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "end",
+            "logo",
+            "name",
+            "start",
+            "type"
+          ]
+        },
+        "Certificate": {
+          "description": "奖项",
+          "type": "object",
+          "properties": {
+            "histories": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/legacy/definitions/CertificateHistory"
+              }
+            },
+            "icon": {
+              "description": "图标",
+              "type": "string"
+            },
+            "title": {
+              "description": "标题",
+              "type": "string"
+            }
+          },
+          "required": [
+            "histories",
+            "icon",
+            "title"
+          ]
+        },
+        "CertificateHistory": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "description": "名称",
+              "type": "string"
+            },
+            "place": {
+              "description": "地点",
+              "type": "string"
+            },
+            "time": {
+              "description": "时间",
+              "type": [
+                "string",
+                "number"
+              ]
+            }
+          },
+          "required": [
+            "name",
+            "time"
+          ]
+        },
+        "Work": {
+          "description": "工作经历",
+          "type": "object",
+          "properties": {
+            "sets": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/legacy/definitions/ProjectSet"
+              }
+            },
+            "icon": {
+              "description": "图标",
+              "type": "string"
+            },
+            "title": {
+              "description": "标题",
+              "type": "string"
+            }
+          },
+          "required": [
+            "icon",
+            "sets",
+            "title"
+          ]
+        },
+        "Other": {
+          "description": "其他",
+          "type": "object",
+          "properties": {
+            "info": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "icon": {
+              "description": "图标",
+              "type": "string"
+            },
+            "title": {
+              "description": "标题",
+              "type": "string"
+            }
+          },
+          "required": [
+            "icon",
+            "info",
+            "title"
+          ]
+        }
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "anyOf": [
+    {
+      "$ref": "#/definitions/jsonResume"
+    },
+    {
+      "$ref": "#/definitions/legacy"
+    }
+  ],
+  "description": "Accepts JSON Resume documents and legacy web-resume YAML during the 0.4 migration period.",
+  "title": "Web Resume document"
+}

@@ -1,0 +1,109 @@
+# JSON Resume compatible document
+$schema: >-
+  https://raw.githubusercontent.com/jsonresume/jsonresume.org/54eba4131801b6b32aa947ce8a4fbef526800a08/packages/schema/schema.json
+basics:
+  email: zhouhe@example.com
+  label: 计算机科学本科生 · 前端实习申请者
+  name: 周禾
+  phone: 138 0000 0000
+  summary: 喜欢把课堂知识做成可使用的产品，希望在真实团队中继续提升工程能力。
+  url: https://example.com/zhouhe
+  profiles:
+    - network: github
+      url: https://github.com/example-student
+      username: example-student
+education:
+  - area: 计算机科学与技术
+    endDate: 2027-06
+    institution: 江城大学
+    score: GPA 3.7 · 专业前 15%
+    startDate: 2023-09
+    studyType: 本科
+projects:
+  - description: 聚合社团活动和场地信息，帮助同学快速发现附近活动。
+    endDate: 2025-06
+    highlights:
+      - 独立完成需求拆解、界面设计、前端开发和部署。
+      - 优化移动端首屏资源，使弱网加载时间降低约 45%。
+    keywords:
+      - Vue
+      - TypeScript
+      - MapLibre
+    name: 校园活动地图
+    startDate: 2025-03
+    type: 独立项目
+  - description: 为课程资料建立全文搜索和标签浏览能力。
+    endDate: 2025-01
+    highlights:
+      - 负责搜索交互和索引接口联调，并编写端到端测试。
+      - 在 4 人团队中维护迭代看板和每周演示。
+    name: 实验室资料检索工具
+    startDate: 2024-10
+    type: 课程团队项目
+skills:
+  - keywords:
+      - HTML / CSS
+      - JavaScript
+      - Vue
+    name: 前端
+  - keywords:
+      - 数据结构
+      - Git
+      - 英语 CET-6
+    name: 基础
+x-web-resume:
+  sectionOrder:
+    - education
+    - projects
+    - skills
+  sections:
+    education:
+      icon: ri:graduation-cap-line
+      items:
+        - city: 武汉
+          icon: ri:building-line
+      title: 教育背景
+    projects:
+      icon: ri:folders-line
+      items:
+        - keywordDetails:
+            - name: Vue
+              icon: simple-icons:vuedotjs
+            - name: TypeScript
+              icon: simple-icons:typescript
+            - name: MapLibre
+              icon: ri:map-2-line
+          logo: ri:map-pin-line
+        - logo: ri:search-line
+      title: 项目与实践
+    skills:
+      icon: ri:code-box-line
+      items:
+        - keywordDetails:
+            - name: HTML / CSS
+              icon: simple-icons:html5
+            - name: JavaScript
+              icon: simple-icons:javascript
+            - name: Vue
+              icon: simple-icons:vuedotjs
+        - keywordDetails:
+            - name: 数据结构
+              icon: ri:git-branch-line
+            - name: Git
+              icon: simple-icons:git
+            - name: 英语 CET-6
+              icon: ri:translate-2
+      title: 技能
+  version: 1
+  basics:
+    location: 武汉
+  contacts:
+    email:
+      icon: ri:mail-line
+    phone:
+      icon: ri:smartphone-line
+    blog:
+      icon: ri:earth-line
+      label: 个人主页
+    github:
+      icon: ri:github-line

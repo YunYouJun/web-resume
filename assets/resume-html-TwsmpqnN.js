@@ -1,0 +1,8 @@
+function h(m,l){const e=document.implementation.createHTMLDocument(l);e.documentElement.lang=document.documentElement.lang||"zh-CN";const i=e.createElement("meta");i.setAttribute("charset","utf-8"),e.head.prepend(i);const a=e.createElement("meta");a.name="viewport",a.content="width=device-width, initial-scale=1",e.head.append(a);const s=e.createElement("meta");s.httpEquiv="Content-Security-Policy",s.content="script-src 'none'; object-src 'none'; base-uri 'none'",e.head.append(s);const u=Array.from(document.styleSheets,t=>Array.from(t.cssRules,n=>n.cssText).join(`
+`).replace(/url\((['"]?)([^)'"\s]+)\1\)/g,(n,c,d)=>`url(${JSON.stringify(new URL(d,t.href||document.baseURI).href)})`)).join(`
+`),r=e.createElement("style");r.textContent=`${u}
+html, body { margin: 0; padding: 0; background: white; color: black; }
+body > .resume { margin: 0 auto; min-width: 0; width: 100%; max-width: 210mm; box-shadow: none; }
+@media print { body > .resume { max-width: none; } }`,r.textContent=r.textContent.replace(/<\/style/gi,"<\\/style"),e.head.append(r);const o=m.cloneNode(!0);o.classList.remove("min-w-500px"),o.querySelectorAll(".resume-section__controls, button, script, iframe, object, embed").forEach(t=>t.remove());for(const t of[o,...o.querySelectorAll("*")]){for(const n of Array.from(t.attributes))(/^on/i.test(n.name)||["contenteditable","draggable","tabindex"].includes(n.name))&&t.removeAttribute(n.name);for(const n of["src","href"]){const c=t.getAttribute(n);c&&!c.startsWith("#")&&t.setAttribute(n,new URL(c,document.baseURI).href)}}return e.body.append(o),`<!DOCTYPE html>
+${e.documentElement.outerHTML}`}export{h as createResumeHtml};
+//# sourceMappingURL=resume-html-TwsmpqnN.js.map
