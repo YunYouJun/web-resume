@@ -25,7 +25,43 @@ describe('main domain routing', () => {
       headers: { cookie: '__Host-ylf-web-resume-session=private' },
     }), {})
     const request = upstream.mock.calls[0]![0]
-    expect(request.url).toBe('https://resume.elpsy.cn/user')
+    expect(request.url).toBe('https://web-resume.yunyoujun.cn/user')
     expect(request.headers.get('cookie')).toBeNull()
+  })
+})
+
+describe('main domain gateway', () => {
+  const env = { YLF_LOGIN_API_ENABLED: 'true', YLF_CLOUD_API_ENABLED: 'false' }
+
+  it('serves EdgeOne assets without forwarding account credentials', async () => {
+    const fetchMock = vi.fn(async (_input: RequestInfo | URL) => new Response('page'))
+    vi.stubGlobal('fetch', fetchMock)
+    await worker.fetch(new Request('https://resume.yunle.fun/settings?theme=dark', {
+      headers: { cookie: 'session=private', authorization: 'Bearer private' },
+    }), env)
+    const forwarded = fetchMock.mock.calls[0]![0] as Request
+    expect(forwarded.url).toBe('https://web-resume.yunyoujun.cn/settings?theme=dark')
+    expect(forwarded.headers.has('cookie')).toBe(false)
+    expect(forwarded.headers.has('authorization')).toBe(false)
+  })
+
+  it('keeps EdgeOne redirects on the main domain', async () => {
+    vi.stubGlobal('fetch', vi.fn(async () => new Response(null, {
+      status: 301,
+      headers: { location: 'https://web-resume.yunyoujun.cn/docs/' },
+    })))
+    const response = await worker.fetch(new Request('https://resume.yunle.fun/docs'), env)
+    expect(response.headers.get('location')).toBe('https://resume.yunle.fun/docs/')
+  })
+
+  it('routes sessions to Drive and keeps cloud storage disabled', async () => {
+    const fetchMock = vi.fn(async (_input: RequestInfo | URL) => Response.json({ session: null }))
+    vi.stubGlobal('fetch', fetchMock)
+    const response = await worker.fetch(new Request('https://resume.yunle.fun/api/session'), env)
+    expect(response.headers.get('content-type')).toContain('application/json')
+    expect(String(fetchMock.mock.calls[0]![0])).toBe('https://drive.yunle.fun/api/v1/web-resume/session')
+    const blocked = await worker.fetch(new Request('https://resume.yunle.fun/api/documents'), env)
+    expect(blocked.status).toBe(404)
+    expect(fetchMock).toHaveBeenCalledOnce()
   })
 })

@@ -1,6 +1,6 @@
 import { onRequest } from '../functions/api/[[path]].js'
 
-const ASSET_ORIGIN = 'https://resume.elpsy.cn'
+const ASSET_ORIGIN = 'https://web-resume.yunyoujun.cn'
 
 export default {
   async fetch(request, env) {
